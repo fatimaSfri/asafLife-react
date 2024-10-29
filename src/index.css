@@ -1,68 +1,200 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@font-face {
+    font-family: 'IRANSansX-Bold'; 
+    src: url('../Font/woff/IRANSansX-Bold.woff') format('woff'); 
+      
   }
-  a:hover {
-    color: #747bff;
+  
+  @font-face {
+    font-family: 'IRANSansX-Regular'; 
+    src: url('../Font/woff/IRANSansX-Regular.woff') format('woff'); 
+   
   }
-  button {
-    background-color: #f9f9f9;
+  
+  @font-face {
+    font-family: 'IRANSansX-Light'; 
+    src: url('../Font/woff/IRANSansX-Light.woff') format('woff'); 
+   
   }
-}
+  
+  @font-face {
+    font-family: 'KalamehWeb-Bold'; 
+    src: url('../Font/woff/KalamehWeb-Bold.woff') format('woff'); 
+     
+    
+  }
+  @font-face {
+    font-family: 'KalamehWeb-Regular'; 
+    src: url('../Font/woff/KalamehWeb-Regular.woff') format('woff'); 
+   
+  }
+  
+  @font-face {
+    font-family: 'KalamehWeb-Thin'; 
+    src: url('../Font/woff/KalamehWeb-Thin.woff') format('woff'); 
+   
+  }
+  
+  @font-face {
+    font-family: 'KalamehWeb-Black' ; 
+    src: url('../Font/woff/KalamehWeb-Black.woff') format('woff'); 
+   
+  }
+  
+  *{
+  
+    font-family: "IRANSansX-Regular";
+  
+   }
+  
+
+  .router-link-exact-active {
+    color: inherit; 
+    font-weight: normal; 
+    font-weight: bold;
+    color:#008061;
+    font-size:18px;
+  }
+  .router-link-active{
+    font-weight: bold;
+    color:#008061;
+    font-size:18px;
+  }
+  .nav-link {
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  .active{
+    width:30px;
+    height: 15px;
+    animation: bubble 0.7s forwards;
+  }
+  @keyframes bubble {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5); 
+    }
+    100% {
+      transform: scale(1); 
+    }
+  }
+  
+  .text-shadow-scal{
+    text-shadow: 2px 3px 10px #f1b101;
+   }
+   .text-shadow-treatment{
+     text-shadow: 2px 3px 10px  #0051ff ;
+    }
+    .text-shadow-psychology{
+     text-shadow: 2px 3px 10px #003771;
+    }
+    .text-shadow-child{
+     text-shadow: 2px 3px 10px #0051ff;
+    }
+  
+  
+  
+    .my-custom-alert{
+     width: 450px;
+     font-size: 18px;
+      
+    }
+  
+    @media (max-width:768px){
+      .my-custom-alert{
+        width: 80%;
+       
+       }
+  
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .hover\:animate-pulse:hover {
+      animation: pulse 0.5s infinite;
+    }
+    /* .scrollbar-thin::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background-color: #06eeb4; 
+      border-radius: 10px;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: #e5e7eb; 
+    } */
+  
+    /* for firefox */
+    .scrollbar-thin {
+      scrollbar-width: thin; 
+      scrollbar-color: #06eeb4 #f1f1f1; 
+      border-radius: 10px;
+  }
+  
+  
+.slide img {
+      transition: filter 0.5s ease;
+  }
+  
+  .slide img:hover {
+      filter: brightness(1.1) contrast(1);
+  }
+  
+  
+  .slide img {
+      animation: comboAnimation 0.7s forwards;
+  }
+  /* ************************ */
+  
+  @keyframes rotateLeft {
+    from {
+        transform: rotateY(45deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+  }
+  
+  .slider.rotate {
+    animation: rotateLeft 0.9s forwards;
+  }
+  
+  @keyframes slideUp {
+      from {
+          transform: translateY(100%);
+          opacity: 0;
+      }
+      to {
+          transform: translateY(0);
+          opacity: 1;
+      }
+  }
+  
+  .slider.slide-up {
+      animation: slideUp 0.9s forwards;
+  }
+  
+  
+  
+  
+  
