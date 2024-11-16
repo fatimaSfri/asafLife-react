@@ -1,105 +1,124 @@
+import Lottie from "lottie-react";
+import legal from '/public/json/legal.json'
+import life from  '/public/json/life.json'
+import investment from '/public/json/investment.json'
+import psychology from '/public/json/psychology.json'
+import retirement from "/public/json/retirement.json"
+import animal from "/public/json/animal.json"
 
 function Services (){
+
+
   return(
-<div class=" w-full flex flex-col justify-around " >
-            <div class=" mx-auto  w-3/12 text-center h-10 my-6 rounded-xl p-1 max-sm:pt-3 max-sm:text-[10px] bg-[#008061] text-white font-bold  "> سرویس ها </div>
-            <div class=" boreder-red-500 w-11/12 mx-auto grid  
-              sm:grid-cols-[repeat(auto-fit,minmax(300px,auto))] auto-rows-fr gap-x-3 gap-y-3 ">
+<div class=" w-full flex justify-center items-center  h-auto py-28" >
+<div class="grid gap-6 px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
-               <a>
-                <div class="shadow-xl rounded-xl p-2 ">
-                    <div class=" flex items-center  mx-auto ">
-                        <div class="  h-32 w-1/2 mx-2 flex flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-sm">بیمه خدام </h1>
-                            <p class="p-1 pb-4 text-center text-[12px] max-sm:text-[10px] text-[#4f4f4f]">دریافت سرمایه فوت معادل هزینه دفن در اماکن متبرکه رضوی</p>
-                        </div>
-                        <img src="./img/servics/shrine.jpg" class="border  mx-auto h-32 max-sm:w-1/2 w-1/2  rounded-xl"></img>
-                    </div>
-                </div></a>
+  {/* 1 */}
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2 ">
-                    <div class=" flex items-center  mx-auto">
-                        <div class="  h-32 w-1/2  mx-2 flex   flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold pt-5 max-sm:text-sm"> روانشناسی</h1>
-                            <p class="p-1 pb-4 text-center text-[14px] max-sm:text-[10px] text-[#4f4f4f] ">آرامش در هر لحظه با آساف لایف </p>
-                        </div>
-                        <img src="./img/servics/psychology1.jpg" class="border  mx-auto h-32 max-sm:w-1/2 w-1/2  rounded-xl"></img>
-                    </div>
-                </div>
-                </a>
+  <div class="bg-white rounded-3xl shadow min-w-[200px] max-w-[350px] flex flex-col min-h-[350px] ">
+    {/* px-8 */}
+    <div className="font-bold border w-11/12 mt-8 py-[2px] bg-[#dad9da] rounded-e-[14px] flex relative">
+    <div className="flex justify-center items-center 
+     w-14 absolute -mt-5">
+     <Lottie animationData={legal} loop={true} />
+     </div>
+    <h2 class="text-lg max-sm:text-[14px]  mx-auto text-[#213063]">
+     مشاوره حقوقی </h2>
+    </div>
+    <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+    <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+    <div className="w-full">
+    <img src="./img/servics/03.jpg " alt="" className=" rounded-3xl" /></div>
+  </div>
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex  w-1/2 flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-[12px]">  بیمه ثالث بدنه </h1>
-                            <p class="p-1 pb-4 text-center text-[12px]  text-[#4f4f4f] max-sm:text-[10px]">همگام با شما تا آینده ای مطمئن</p>
-                        </div>
-                        <img src="./img/servics/carBody.jpg" class="border  h-32  mx-auto rounded-xl w-1/2 max-sm:w-1/2"></img></div>
-                </div></a>
+{/* 2 */}
+<div class="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px] ">
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex  w-1/2 flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-sm">   خانواده </h1>
-                            <p class="p-1 pb-4 text-center text-[14px]  text-[#4f4f4f] max-sm:text-[10px]"> آساف لایف سپر امانت زندگی شما</p>
-                        </div>
-                        <img src="./img/servics/housing.jpg" class="border  mx-auto h-32 w-1/2 rounded-xl max-sm:w-1/2"></img>
-                    </div>
-                </div></a>
+<div className="font-bold border w-11/12 mt-8 py-[2px] bg-[#dad9da] rounded-e-[14px] flex relative">
+<div className="flex justify-center items-center 
+ w-14 absolute -mt-5">
+ <Lottie animationData={psychology} loop={true} />
+ </div>
+<h2 class="text-lg  max-sm:text-[14px] mx-auto text-[#213063]">
+ مشاوره روانشناسی </h2>
+</div>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+<div className="w-full">
+<img src="./img/servics/psychology.jpg " alt="" className=" rounded-3xl" /></div>
+</div>
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex w-1/2 flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-sm"> سالمندان   </h1>
-                            <p class="p-1 pb-4 text-center text-[14px]  text-[#4f4f4f] max-sm:text-[10px]">ما پشتیبان شما هستیم</p>
-                        </div>
-                        <img src="./img/servics/elderly.jpg" class="border mx-auto max-sm:w-1/2 w-1/2 h-32  rounded-xl"></img>
-                    </div>
-                </div></a>
+{/* 3 */}
+<div class="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px] ">
 
+<div className="font-bold border w-11/12 mt-8 py-[2px] bg-[#dad9da] rounded-e-[14px] flex relative">
+<div className="flex justify-center items-center 
+ w-14 absolute -mt-5">
+ <Lottie animationData={investment} loop={true} />
+ </div>
+<h2 class="text-lg mx-auto max-sm:text-[14px] text-[#213063]">
+ مشاور سرمایه گذاری </h2>
+</div>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<button class="text-[#55c7e0] hover:underline text-[14px] text-left px-4 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+<div className="w-full">
+<img src="./img/servics/investment.jpg " alt="" className=" rounded-3xl" /></div>
+</div>
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex w-1/2 flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold pt-5 max-sm:text-[10px] ">  بیمه حیوانات خانگی </h1>
-                            <p class="p-1 pb-4 text-center text-[12px]  text-[#4f4f4f] max-sm:text-[10px] "> اطمینان خاطر در هر شرایطی</p>
-                        </div>
-                        <img src="./img/servics/animals.jpg" class="border  h-32  max-sm:w-1/2 w-1/2 mx-auto rounded-xl "></img>
-                    </div>
-                 </div></a>
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex w-1/2 flex-col justify-between overflow-hidden">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-sm"> مشاوره بورس </h1>
-                            <p class="p-1 pb-4 text-center text-[14px]  text-[#4f4f4f] max-sm:text-[10px]">اطمینان در کیف پول شما</p>
-                        </div>
-                        <img src="./img/servics/chart (2).jpg" class="border  mx-auto h-32 max-sm:w-1/2  w-1/2 rounded-xl"></img>
-                    </div>
-                </div></a>
+{/*  4 */}
+<div class="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px] ">
 
+<div className="font-bold border w-11/12 mt-8 py-[2px] bg-[#dad9da] rounded-e-[14px] flex relative">
+<div className="flex justify-center items-center 
+ w-14 absolute -mt-5">
+ <Lottie animationData={retirement} loop={true} />
+ </div>
+<h2 class="text-lg max-sm:text-[14px] mr-14 text-[#213063]">
+  بیمه بازنشستگی پیش از موعد </h2>
+</div>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px] ">  توضیحات بیشتر &#62; </button>
+<div className="w-full">
+<img src="./img/servics/retirement.jpg " alt="" className=" rounded-3xl" /></div>
+</div>
 
-                <a>
-                <div class="shadow-xl rounded-xl p-2">
-                    <div class=" flex items-center ">
-                        <div class="  h-32  mx-2 flex  w-1/2 flex-col justify-between overflow-hidden ">
-                            <h1 class="p-1 text-center font-bold  pt-5 max-sm:text-sm"> بیمه درمان   </h1>
-                            <p class="p-1 pb-4 text-center text-[14px] max-sm:text-[10px]  text-[#4f4f4f]">حافظ امنیت و سلامتی خود باشید</p>
-                        </div>
-                        <img src="./img/servics/treament1.jpg" class="border mx-auto h-32 max-sm:w-1/2 w-1/2 rounded-xl"></img>
-                    </div>
+{/* 5 */}
+<div class="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px] ">
 
+<div className="font-bold  w-11/12 mt-8 py-[2px] bg-[#dad9da] rounded-e-[14px] flex relative">
+<div className="flex justify-center items-center 
+ w-14 absolute -mt-5">
+ <Lottie animationData={life} loop={true} />
+ </div>
+<h2 class="text-lg max-sm:text-[14px] mx-auto text-[#213063]">
+  بیمه زندگی </h2>
+</div>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+<div className="w-full">
+<img src="./img/servics/life.jpg " alt="" className=" rounded-3xl" /></div>
+</div>
 
-                </div></a>
+{/* 6 */}
+<div class="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px] ">
 
-
-            </div>
-        </div>
+<div className="font-bold  w-11/12 mt-8 py-[2px]  bg-[#dad9da] rounded-e-[14px] flex relative">
+<div className="flex justify-center items-center 
+ w-14 absolute -mt-5">
+ <Lottie animationData={animal} loop={true} />
+ </div>
+<h2 class="text-lg max-sm:text-[14px] mx-auto text-[#213063]">
+ بیمه حیوانات خانگی  </h2>
+</div>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+<div className="w-full">
+<img src="./img/servics/animal.jpg " alt="" className=" rounded-3xl" /></div>
+</div>
+  
+  
+</div>
+</div>
   )
 
 }

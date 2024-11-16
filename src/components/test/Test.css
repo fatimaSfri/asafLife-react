@@ -1,0 +1,27 @@
+
+.relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .opacity-0 {
+    opacity: 0;
+  }
+  
+  .opacity-100 {
+    opacity: 1;
+  }
+  
+  .z-10 {
+    z-index: 10; 
+  }
+  
+  .z-0 {
+    z-index: 0; 
+  }
+
+  

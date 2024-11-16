@@ -2,75 +2,51 @@ import React from 'react';
 
 function  Footer(){
     return(
-    <div class=" rounded-t-3xl  max-lg:h-96 max-lg:w-full lg:w-9/12 mx-auto h-80 mt-20  flex flex-col items-end  bg-[#f8f8f8] mb-0 px-3 ">
+    <div class=" rounded-t-3xl bg-[#213063] max-lg:h-[550px] w-full mx-auto h-60  flex flex-col items-end mb-0 px-3 ">
 
-    <div class="z-50  w-full h-3/4 flex ">
-        <div class="w-1/2  flex ">
+    <div class="z-50  w-full h-full flex max-lg:flex-col ">
+        <div class="w-6/12 flex max-lg:w-full p-4 justify-center ">
+          
+            <div class=" w-1/3 flex flex-col p-5 max-lg:w-2/3  lg:text-[16px] z-20 ">
+                <p class="font-bold mb-3 text-[#55c7e0]">درباره ما</p>
+            <a href="#" class=" mb-4 lg:text-[14px]  text-white">تماس با ما</a><a href="#" class="text-[14px] mb-4   text-white">چرا آساف لایف؟</a>
+            <a href="#" class="text-[14px] mb-4  text-white">مجله</a></div>
 
-            <div class=" w-1/3 flex flex-col p-5 max-lg:w-2/3 max-lg:text-[12px] ">
-                <p class="font-bold mb-3">درباره ما</p>
-            <a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]">تماس با ما</a><a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]">چرا آساف لایف؟</a>
-            <a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]">مجله</a></div>
-
-            <div class=" w-1/3  flex flex-col p-5 max-lg:w-2/3 max-lg:text-[12px] mr-[-42px]">
-                <p class="font-bold mb-3  "> خدمات </p>
-                <a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]"> بیمه خدام </a><a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]"> بیمه درمان</a>
-                <a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]">بیمه ثالث بدنه</a>  <a href="#" class="text-[14px] mb-4 max-lg:text-[12px] max-sm:text-[9px]"> خانواده </a>
+            <div class=" w-1/3  flex flex-col p-5 max-lg:w-2/3  mr-[-42px]">
+                <p class="font-bold mb-3 text-[#55c7e0] "> خدمات </p>
+                <a href="#" class="text-[14px] mb-4  text-white"> بیمه خدام </a><a href="#" class="text-[14px] mb-4  text-white"> بیمه درمان</a>
+                <a href="#" class="text-[14px] mb-4   text-white">بیمه ثالث بدنه</a>  <a href="#" class="text-[14px] mb-4  text-white"> خانواده </a>
             </div>
 
-
-                <div class=" w-1/3 flex flex-col p-5 max-lg:hidden mr-[-42px]">
-                    <p class="font-bold mb-3"> اطلاعات تکمیلی</p>
-                <a href="#" class="text-[14px] mb-4"> سنجش رضایتمندی  </a><a href="#" class="text-[14px] mb-4"> </a>
+          <div class=" w-1/3 flex flex-col p-5 max-lg:hidden mr-[-42px]">
+                    <p class="font-bold mb-3 text-[#55c7e0]"> اطلاعات تکمیلی</p>
+                <a href="#" class="text-[14px] mb-4 text-white"> سنجش رضایتمندی  </a><a href="#" class="text-[14px] mb-4"> </a>
                 <a href="#" class="text-[14px] mb-4"></a>
                     </div>
         </div>
-        <div class="w-1/2 ">
-
-            <div class=" w-full h-1/4 flex  justify-end px-4" >
-                <img src="./img/icon/ASAF Life Insurance.svg" class="w-28 max-sm:w-20 h-full"></img>
-            </div>
-            
-            <div class=" w-full  text-end pt-3 pl-4 text-sm  max-lg:text-[10px] " >شعبه مرکزی تهران: 91098951-021_  مدیریت: 09121887644  </div>
-            <div class=" w-full  text-end pt-3 pl-4 text-sm max-lg:text-[10px] ">آدرس: خیابان دانشگاه,دانشگاه 18,پلاک 304</div>
-
-              <div class="flex " dir="ltr">
-
+        <div className='w-4/12 max-lg:w-11/12 h-full flex flex-col  justify-center mx-4 max-lg:mb-10 '>
+        <div className=' h-10 flex items-center my-1'>
+        <img src="./img/footer/phone.png" alt="" className='h-7 pl-4' />
+            <p className='font-bold text-white' >مدیریت:</p>
+            <p className=' text-white px-2'>09121887644</p>
+        </div>
+        <div className='h-10  flex items-center my-1'>
+        <img src="./img/footer/fax.png" alt="" className='h-7 pl-4' />
+        <p className='font-bold text-white'>شعبه مرکزی:</p>
+        <p className=' text-white px-2'>021-91098951</p>
+        </div>
+        <div className=' h-10 flex items-center my-1'>
+        <img src="./img/footer/placeholder.png" alt="" className='h-7 pl-4' />
+        <p className='font-bold text-white'>آدرس:</p>
+        <p className=' text-white px-2'>خیابان دانشگاه،دانشگاه 18، پلاک 304</p>
+       </div>
         
-
-            <div class="mx-5 h-2/4 z-50 flex  pt-1 pl-2 lg:pt-5"> 
-                <div>
-             <div class="w-14 h-14 max-sm:w-10 max-sm:h-10 "> <img src="./img/icon/ASAF-01.svg" class="w-full h-full object-cover z-50 mt-1 "></img>
-             </div>
-              <p class="text-[10px] max-lg:text-[9px] pt-4 text-center ">بیمه حمل و نقل</p>
-          </div>
-          </div></div>
         </div>
-    </div>
-  <div class="w-full   h-1/4 flex justify-between mt-2 pb-5 ">
-    <div class=" w-1/2 max-lg:2/3 h-16  text-center max-sm:text-[7px] pt-3 text-[10px]  bg-[#bbbbbb] rounded-lg">  تمامی حقوق مادی و معنوی سایت  محفوظ و متعلق به شرکت آینده سازان آسایش فردا می باشد 
-    <br/> طراحی و توسعه تیم انفورماتیک  آینده سازان آسایش فردا</div>
-
-    <div class=" w-1/4 h-full flex  justify-end max-md:w-1/2 "  >
-        <div  class=" w-2/12 h-full flex items-center justify-center ">
-            <img src="./img/footer/social/instagram-2016-logo-svgrepo-com.svg"  class="w-5 h-5 object-cover cursor-pointer"></img>
-        </div>
-        <div class="w-2/12 h-full flex items-center justify-center ">
-          <a > 
-             <img src="./img/footer/social/telegram-svgrepo-com.svg"  class="w-6 h-6 object-cover cursor-pointer"></img>
-            </a>
-        </div>
-        <div class=" w-2/12 h-full flex items-center justify-center ">
-            <img src="./img/footer/social/whatsapp-symbol-logo-svgrepo-com.svg"  class="w-6 h-6 object-cover cursor-pointer"></img>
-        </div>
-    
-        <div class="  w-2/12 h-full  flex items-center justify-center ">
-            <img src="./img/footer/social/eitaa-icon-colorful.svg " class="w-5 h-5 object-cover cursor-pointer"></img>
-        </div>
-       
-    </div>
+        
+        <img src="./img/footer/ASAFLogo.svg" alt="" className='w-[20%] h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' />
   </div>     
 </div>
+
     )
 
 
