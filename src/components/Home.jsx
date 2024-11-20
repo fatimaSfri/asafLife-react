@@ -8,6 +8,8 @@ import Test from './test/Test.jsx'
 import Staff from './staff/Staff.jsx';
 import Blog from './blog/Blog.jsx';
 import Footer from './footer/Footer.jsx';
+import TestTwo from './test/TestTwo.jsx'
+import Infography from './infography/Infography.jsx';
 
 export default function Home(){
    return(
@@ -18,9 +20,10 @@ export default function Home(){
     <Logo></Logo>
     <Informathion></Informathion>
     <Counseling></Counseling>
+    <Infography></Infography>
     <Staff></Staff>
-   <Blog></Blog>
-   <Footer></Footer>
+    <Blog></Blog>
+    <Footer></Footer>
    </div>
 
    )

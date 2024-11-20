@@ -106,7 +106,7 @@ return(
         className="w-10/12 h-44 max-md:h-16 flex flex-col items-center justify-around"
       >
         <img
-          src="./img/icon/ASAF Life-01.svg"
+          src="./src/assets/img/icon/ASAF Life-01.svg"
           className="w-24 h-24 max-md:hidden"
         />
         <h1
@@ -170,12 +170,12 @@ return(
       className="md:w-10/12 md:h-[660px] m-3 max-md:h-56 max-md:w-11/12 flex justify-between"
     >
       <img
-        src="./img/login/legalL.jpg"
+        src="./src/assets/img/login/legalL.jpg"
         alt="not find"
         className="md:hidden max-md:mt-[-35px] max-md:w-full rounded"
       ></img>
       <img
-        src="./img/login/legalL.jpg"
+        src="./src/assets/img/login/legalL.jpg"
         alt="not find"
         className="h-full w-full rounded xl:object-center max-xl:object-cover max-md:hidden"
       ></img>

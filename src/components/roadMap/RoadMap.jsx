@@ -1,98 +1,5 @@
-// // import React from 'react'
 
-// // export default function Test() {
-// //   return (
-// //     <div className='h-screen w-full border border-red-950'>
-// //     {/*       
-// //      <video className="rounded-3xl "
-// //          src= "./src/assets/img/roadMap/roadmap.mp4"
-// //          preload="auto"
-// //          controls
-// //          autoPlay
-// //          loop
-// //          muted >
-// //       </video> */}
-      
-// //       </div>
-  
-// //   )
-// // }
-
-
-// import React, { useState, useEffect } from 'react';
-
-// const Roadmap = () => {
-//   const milestones = [
-//     { title: 'مرحله ۱', description: 'شرح مرحله ۱', date: 'تاریخ ۱' },
-//     { title: 'مرحله ۲', description: 'شرح مرحله ۲', date: 'تاریخ ۲' },
-//     { title: 'مرحله ۳', description: 'شرح مرحله ۳', date: 'تاریخ ۳' },
-//     { title: 'مرحله ۴', description: 'شرح مرحله ۴', date: 'تاریخ ۴' },
-//     { title: 'مرحله 5', description: 'شرح مرحله 5', date: 'تاریخ 5' },
-//   ];
-
-//   const [progress, setProgress] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setProgress((prev) => {
-//         if (prev < milestones.length) {
-//           return prev + 1;
-//         } else {
-//           // بعد از اتمام مراحل، پیشرفت را به صفر برمی‌گردانیم
-//           return 0; 
-//         }
-//       });
-//     }, 2000); // هر دو ثانیه یک مرحله به نمایش در می‌آید
-
-//     return () => clearInterval(interval);
-//   }, [milestones.length]); // اضافه کردن length به dependency array
-
-
-
-//   return (
-//     <div className='flex justify-end items-center'>
-//     <div className="flex flex-col items-center justify-center py-10 lg:w-1/2 max-lg:w-full border h-[500px] border-red-500" >
-     
-//       <div className="flex items-center justify-center w-full relative flex-row-reverse border border-sky-900 gap-12">
-//         {/* خط اصلی */}
-//         <div className="absolute top-5 left-0 h-1 bg-blue-500 transition-all duration-2000" style={{ width: `${(progress / milestones.length) * 100}%` }}></div>
-
-//         {milestones.map((milestone, index) => (
-//           <div key={index} className="flex flex-col items-center relative z-10 " >
-//             {/* دایره‌های مراحل */}
-//             <div
-//               className={`w-10 h-10 bg-blue-500 rounded-full flex  items-center justify-center text-white transition-opacity duration-500`}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 100}ms`, // تأخیر متناسب با ایندکس
-//               }}
-//             >
-//               {index + 1}
-//             </div>
-//             {/* توضیحات مرحله */}
-//             <div
-//               className={`mt-2 text-center transition-opacity duration-500`}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-//               }}
-//             >
-//               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-//               <p className="text-gray-600">{milestone.description}</p>
-//               <span className="text-gray-400">{milestone.date}</span>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//     </div>
-//   );
-// };
-
-// export default Roadmap;
-
-
-import './Test.css'
+import './RoadMap.css'
 import React, { useState, useEffect } from 'react';
 
 const Roadmap = () => {
@@ -126,8 +33,8 @@ const Roadmap = () => {
 
   return (
     <>
-       <div className='flex justify-end items-center max-md:hidden'>
-          <div className="flex flex-col items-center justify-center py-10 lg:w-8/12 max-lg:w-full border h-[500px] border-red-500" >
+       {/* <div className='flex justify-end items-center max-md:hidden border border-red-900'> */}
+          <div className="flex flex-col items-center justify-center py-10 lg:w-8/12 max-md:hidden  max-lg:w-full border h-[500px] border-red-500" >
      
        <div className="flex items-center justify-center w-full relative flex-row-reverse border border-sky-900 max-xl:gap-14 xl:gap-24">
          {/* خط اصلی */}
@@ -200,7 +107,7 @@ const Roadmap = () => {
            
         ))}
       </div>
-    </div>
+    {/* </div> */}
     </div>
 
 
@@ -300,18 +207,6 @@ const Roadmap = () => {
         ))}
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     
     </>

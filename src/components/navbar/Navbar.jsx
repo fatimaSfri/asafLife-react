@@ -63,8 +63,8 @@ return(
                 <div className= {`rounded-b-sm mt-0 pt-0 flex flex-row-reverse max-md:justify-end fixed w-full
                  z-40   transition-colors duration-300 ${bgColor?'bg-[rgba(33,48,99,0.9)] shadow-lg':''}`}>
 
-                 <div className="flex items-center  justify-between px-7 h-16 w-full">
-                 <div className="dropdown-menu  left-0 max-lg:bg-[#0000009f] w-full flex flex-col max-lg:items-center gap-7 
+                 <div className="flex items-center justify-between px-7 h-16 w-full">
+                 <div className="dropdown-menu left-0 max-lg:bg-[#0000009f] w-full flex flex-col max-lg:items-center gap-7 
                                  text-lg font-bold  max-lg:invisible lg:flex-row lg:justify-center z-30 mr-20" >
 
                         <ul className=" lg:flex-row lg:gap-8 dropdown-menu  max-lg:bg-[#0000009f] w-full flex flex-col items-center
@@ -82,11 +82,11 @@ return(
                      <input type="search" placeholder='جستجو'
                       className='md:w-10/12 h-5/6 bg-white md:px-4 rounded-r-lg -mr-20 max-lg:hidden'/>
                      <div className='w-2/12 h-5/6 rounded-lg bg-blue-950 flex items-center justify-center max-lg:hidden'>
-                     <img src="./img/icon/search.png" alt=""  className='w-6 h-6'/></div>
+                     <img src="./src/assets/img/icon/search.png" alt=""  className='w-6 h-6'/></div>
                      </div>
                         <div className=" flex lg:flex-row-reverse max-lg:flex w-1/12 max-lg:absolute " >
-                        <img src="/img/icon/Menu.png" className="w-8 h-6 font-[#4f4f4f]  lg:hidden cursor-pointer " onClick={handleMenu} ></img></div>
-                        <img src="/img/icon/Asaflogo.png" className= {`w-32 max-md:w-44  max-md:mr-3 max-md:hidden  ${toggle?'hidden':''}`} ></img>
+                        <img src="./src/assets/img/icon/Menu.png" className="w-8 h-6 font-[#4f4f4f]  lg:hidden cursor-pointer " onClick={handleMenu} ></img></div>
+                        <img src="./src/assets/img/icon/Asaflogo.png" className= {`w-32 max-md:w-44  max-md:mr-3 max-md:hidden  ${toggle?'hidden':''}`} ></img>
                      
                        
                     </div>

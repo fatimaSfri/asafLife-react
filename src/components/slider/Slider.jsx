@@ -4,12 +4,12 @@ import React, { useEffect } from 'react';
 
 function Slider(){
   const [ image , setImage ] =useState([
-    './img/background/IMG_2413.MP4',
-    './img/background/treatment.png',
-    './img/background/brain.png',
-    './img/background/child.png',
-    './img/background/scal.png',
-    './img/background/halo.png',
+    './src/assets/img/background/IMG_2413.MP4',
+    './src/assets/img/background/treatment.png',
+    './src/assets/img/background/brain.png',
+    './src/assets/img/background/child.png',
+    './src/assets/img/background/scal.png',
+    './src/assets/img/background/halo.png',
  ])     
  
  const preloadImages = () => {
@@ -54,7 +54,7 @@ const [imgSecond, setImgSecond] = useState(true);
     {video:image[0] , videoShow:true , background:'bg-[#005051]'},
     {background: 'bg-back-gradint-yellow',frontObject: image[4] , title: "مشـــاوره حقـــوقی" , text:"راهنمایی به سوی عدالت", btntext:"درخواست مشاوره " ,
      classText:' text-[#ffffff] bg-[#014e4c] ' , sloganClass:"text-[#005051]" , rotate:'rotate'  },
-    {background:'bg-back-gradint-blue' ,frontObject:'./img/background/treatment.png' , title: "بــــــا بیمــــــه درمــــــان", text:"مسیر بهبودی را هموار کنید", btntext:"صدور بیمه" , classText:"text-[#0065cc] bg-white " , shadowClass:"text-shadow-treatment" , rotate:'rotate'},
+    {background:'bg-back-gradint-blue' ,frontObject:'./src/assets/img/background/treatment.png' , title: "بــــــا بیمــــــه درمــــــان", text:"مسیر بهبودی را هموار کنید", btntext:"صدور بیمه" , classText:"text-[#0065cc] bg-white " , shadowClass:"text-shadow-treatment" , rotate:'rotate'},
     {background:'bg-back-gradint-blue' ,frontObject:image[2] , title: "  مشـاوره روانشـناسی", text:" حَــرفش با تو،حَــلش با ما ", btntext:"دریافت مشاوره" , classText:"text-[#00b4ff] bg-white" ,  shadowClass:"text-shadow-psychology" , rotate:'rotate'},
     {background:'bg-back-gradint-dark-skinned' , frontObject:image[3] ,
     frontObject1:image[5] , title: " نگهـــــداری کودکـــان" , text:"آغوشی امن برای فرزند شما", btntext:"صدور بیمه" , classText:"text-[#00b4ff] bg-white" , imgSecond:true , shadowClass:"text-shadow-child" , customClass:"  max-sm:mb-[-19%] max-md:mb-[-5%] max-lg:mb-[-19%]  max-xl:mb-[-10%] xl:mb-[-2%] flex " , rotate:'rotate' },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Lottie from "lottie-react";
-import  counseling   from  '/public/json/counseling.json'
+import  counseling   from  '/src/assets/json/counseling.json'
 import "./Counseling.css"
 
 export default function Counseling() {
@@ -27,9 +27,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
       duration: "۶۰ دقیقه",
       color:"#55c7e0",
-      image: "./img/counseling/psychology.jpg",
-      iconClock: "./img/counseling/clockblue.svg",
-      iconUser:"./img/counseling/userblue.svg"
+      image: "./src/assets/img/counseling/psychology.jpg",
+      iconClock: "./src/assets/img/counseling/clockblue.svg",
+      iconUser:"./src/assets/img/counseling/userblue.svg"
     },
     {
       title: "مشاوره حقوقی",
@@ -37,9 +37,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
       duration: "۶۰ دقیقه",
       color: "#fdce0b",
-      image: "./img/counseling/legal.jpg",
-      iconClock: "./img/counseling/clockYellow.svg",
-      iconUser:"./img/counseling/userYellow.svg"
+      image: "./src/assets/img/counseling/legal.jpg",
+      iconClock: "./src/assets/img/counseling/clockYellow.svg",
+      iconUser:"./src/assets/img/counseling/userYellow.svg"
     },
     {
       title: "مشاوره سرمایه گذاری",
@@ -47,9 +47,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
        duration: "۶۰ دقیقه",
        color:"#6827b5",
-      image: "./img/counseling/investment.jpg",
-      iconClock: "./img/counseling/clockpurple.svg",
-      iconUser:"./img/counseling/userpurple.svg"
+      image: "./src/assets/img/counseling/investment.jpg",
+      iconClock: "./src/assets/img/counseling/clockpurple.svg",
+      iconUser:"./src/assets/img/counseling/userpurple.svg"
     },
     {
       title: "مشاوره شغلی",
@@ -57,9 +57,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
        duration: "۶۰ دقیقه",
        color:"#55c7e0",
-       image: "./img/counseling/psychology.jpg",
-      iconClock: "./img/counseling/clockblue.svg",
-      iconUser:"./img/counseling/userblue.svg"
+       image: "./src/assets/img/counseling/psychology.jpg",
+      iconClock: "./src/assets/img/counseling/clockblue.svg",
+      iconUser:"./src/assets/img/counseling/userblue.svg"
     },
   ];
 
@@ -91,7 +91,7 @@ export default function Counseling() {
                 <img src={card.image} alt={card.title} className="rounded-t-lg xl:h-full max-xl:h-[400px] object-cover" />
                 <div class="flex justify-center items-center group ">
              <div class="bg-[rgba(250,250,250,0.9)] shadow-lg rounded-lg w-11/12 overflow-hidden absolute mb-28 group-hover:h-80 group-hover:mb-80 group-hover:justify-around transition-transform duration-300 ease-in-out flex flex-col ">
-                <div class="p-1 transition-all duration-500 h-16  group-hover:mb-32">
+                <div class="p-1 transition-all duration-900 h-16  group-hover:mb-32">
                 <h3 class='text-lg font-bold' style={{ color: card.color }}>{card.title}</h3>
                 <div className='flex justify-center gap-2'>
                   <div className='flex gap-1'>
@@ -135,7 +135,7 @@ export default function Counseling() {
           </p>
         </div>
         <div className=" w-3/12 max-sm:w-1/12 h-full flex-col max-xl:justify-between items-center mx-auto p-5 ">
-            <img src="./img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute  '/>
+            <img src="./src/assets/img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute  '/>
           <div></div>
           <div></div>
         </div>
