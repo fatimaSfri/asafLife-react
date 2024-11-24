@@ -5,10 +5,9 @@ import Timer from '../timer/Timer'
 export default function Infography() {
   return (
     // <div className='flex border border-violet-500' >
-  <div className='lg:flex gap-16 max-lg:flex-col-reverse justify-end items-center border border-red-900'>
+  <div className='bg-[url("./src/assets/img/infography/map.jpg")] flex max-lg:flex-col-reverse  lg:justify-around items-center border border-red-900 overflow-hidden lg:relative z-20'>
      <Timer></Timer>
     <Roadmap></Roadmap>
-   
-    </div>
+   </div>
   )
 }

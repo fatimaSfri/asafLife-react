@@ -3,51 +3,33 @@
 @tailwind utilities;
 
 
-@font-face {
-    font-family: 'IRANSansX-Bold'; 
-    src: url('../Font/woff/IRANSansX-Bold.woff') format('woff'); 
-      
-  }
-  
   @font-face {
-    font-family: 'IRANSansX-Regular'; 
-    src: url('../Font/woff/IRANSansX-Regular.woff') format('woff'); 
-   
-  }
-  
-  @font-face {
-    font-family: 'IRANSansX-Light'; 
-    src: url('../Font/woff/IRANSansX-Light.woff') format('woff'); 
-   
-  }
-  
-  @font-face {
-    font-family: 'KalamehWeb-Bold'; 
-    src: url('../Font/woff/KalamehWeb-Bold.woff') format('woff'); 
+    font-family: 'Kalameh-Bold'; 
+    src: url('../Font/Kalameh-Bold.ttf') format('TrueType'); 
      
     
   }
   @font-face {
-    font-family: 'KalamehWeb-Regular'; 
-    src: url('../Font/woff/KalamehWeb-Regular.woff') format('woff'); 
+    font-family: 'Kalameh-Regular'; 
+    src: url('../Font/Kalameh-Regular.ttf') format('TrueType'); 
    
   }
   
   @font-face {
-    font-family: 'KalamehWeb-Thin'; 
-    src: url('../Font/woff/KalamehWeb-Thin.woff') format('woff'); 
+    font-family: 'Kalameh-Thin'; 
+    src: url('../Font/Kalameh-Thin.woff') format('TrueType'); 
    
   }
   
   @font-face {
-    font-family: 'KalamehWeb-Black' ; 
-    src: url('../Font/woff/KalamehWeb-Black.woff') format('woff'); 
+    font-family: 'Kalameh-Black' ; 
+    src: url('../Font/Kalameh-Black.woff') format('TrueType'); 
    
   }
   
   *{
   
-    font-family: "IRANSansX-Regular";
+    font-family: "Kalameh-Regular";
   
    }
   

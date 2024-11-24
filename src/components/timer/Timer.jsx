@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './Timer.css'
 export default function TestTwo() {
   const initialTime = { days: 147, hours: 23, minutes: 60, seconds: 60, secendOne: 59, secendTwo: 58, secendThree: 61, secendFour: 62 };
   const [time, setTime] = useState(initialTime);
@@ -13,7 +13,7 @@ export default function TestTwo() {
         let { days, hours, minutes, seconds, secendOne, secendTwo, secendThree, secendFour } = prevTime;
 
         if (seconds > 0) {
-          seconds--;
+          seconds-- ;
           secendOne = secendOne > 0 ? secendOne - 1 : 60;
           secendTwo = secendTwo > 0 ? secendTwo - 1 : 59;
           secendThree = secendThree > 0 ? secendThree - 1 : 60;
@@ -45,19 +45,30 @@ export default function TestTwo() {
   }, []);
 
   return (
-    <div className='flex flex-col gap-4'>
-      <div className=''>
-        <div className='w-40 h-20 border-4 border-blue-500 flex items-center justify-center'>{time.secendFour}</div>
-        <div className='w-40 h-20 border-4 border-teal-500 flex items-center justify-center'>{time.secendThree}</div>
-        <div className='flex items-center gap-4'>
-          <div className='w-40 h-20 border-4 border-red-500 flex items-center justify-center'>{time.seconds}</div>
-          <p className="text-2xl mt-4">
-            {time.days}:{String(time.hours).padStart(2, '0')}:{String(time.minutes).padStart(2, '0')}
-          </p>
-        </div>
-        <div className='w-40 h-20 border-4 border-sky-500 flex items-center justify-center'>{time.secendOne}</div>
-        <div className='w-40 h-20 border-4 border-green-500 flex items-center justify-center'>{time.secendTwo}</div>
+    <div className='flex max-sm:flex-col-reverse justify-center items-center sm:gap-8 h-full lg:w-5/12 max-lg:w-full max-sm:w-full mx-auto  max-sm:h-[300px]  max-lg:relative max-lg:overflow-hidden px-6'>
+      <div className='flex sm:flex-col sm:gap-6 max-sm:gap-6 justify-between items-center max-sm:h-2/6  max-sm:w-full md:h-[450px] max-lg:relative z-10  md:mr-10 max-sm:mt-8 '>
+      
+        <div className='w-10 h-10 flex items-center justify-center md:-ml-28 sm:-ml-12 
+        max-sm:-mt-14 lg:text-[22px] max-lg:text-[20px] text-white opacity-50 media-R'>{String(time.secendFour).padStart(2, '0')}</div>
+        <div className='w-10 h-10 lg:text-[22px] max-lg:text-[20px] text-white opacity-75 flex items-center justify-center '>{String(time.secendThree).padStart(2, '0')}</div>
+       
+          <div className='w-10 h-10 lg:text-[22px] max-lg:text-[20px] text-white flex items-center justify-center sm:ml-6 max-sm:mt-10 '>{String(time.seconds).padStart(2, '0')}</div>
+      
+        <div className='w-10 h-10 lg:text-[22px] max-lg:text-[20px] text-white opacity-75 flex items-center justify-center ' >{String(time.secendOne).padStart(2, '0')}</div>
+        <div className='w-10 h-10  lg:text-[22px] max-lg:text-[20px] text-white opacity-50 flex items-center justify-center md:-ml-28 max-sm:-mt-14 sm:-ml-12 media-R'>{String(time.secendTwo).padStart(2, '0')}</div>
+      
       </div>
+      
+      <img src="./src/assets/img/roadMap/Shape-01.png" alt="" className='absolute sm:ml-32 max-sm:rotate-[92deg] max-sm:w-[300px] max-sm:mb-10'/>
+      <div className="md:text-xl max-md:text-lg mt-4 h-full flex flex-row-reverse md:gap-2 max-md:gap-1 max-sm:-mb-52">
+            <p className='text-[#55c7e0] text-bold'>{time.days}</p>
+            <p className='pr-4 text-gray-700'>Day</p> 
+            <p className='text-[#55c7e0] text-bold'>{String(time.hours).padStart(2, '0')} </p>
+            <p className='pr-4 text-gray-700'>Hrs</p>
+            <p className='text-[#55c7e0] text-bold'>{String(time.minutes).padStart(2, '0')}</p>
+            <p className='pr-4 text-gray-700'>Min</p>
+          </div>
     </div>
+    
   );
 }
