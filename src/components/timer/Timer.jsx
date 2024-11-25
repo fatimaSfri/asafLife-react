@@ -59,7 +59,7 @@ export default function TestTwo() {
       
       </div>
       
-      <img src="./src/assets/img/roadMap/Shape-01.png" alt="" className='absolute sm:ml-32 max-sm:rotate-[92deg] max-sm:w-[300px] max-sm:mb-10'/>
+      <img src="./img/roadMap/Shape-01.png" alt="" className='absolute sm:ml-32 max-sm:rotate-[92deg] max-sm:w-[300px] max-sm:mb-10'/>
       <div className="md:text-xl max-md:text-lg mt-4 h-full flex flex-row-reverse md:gap-2 max-md:gap-1 max-sm:-mb-52">
             <p className='text-[#55c7e0] text-bold'>{time.days}</p>
             <p className='pr-4 text-gray-700'>Day</p> 

@@ -82,11 +82,11 @@ return(
                      <input type="search" placeholder='جستجو'
                       className='md:w-10/12 h-5/6 bg-white md:px-4 rounded-r-lg -mr-20 max-lg:hidden'/>
                      <div className='w-2/12 h-5/6 rounded-lg bg-blue-950 flex items-center justify-center max-lg:hidden'>
-                     <img src="./src/assets/img/icon/search.png" alt=""  className='w-6 h-6'/></div>
+                     <img src="./img/icon/search.png" alt=""  className='w-6 h-6'/></div>
                      </div>
                         <div className=" flex lg:flex-row-reverse max-lg:flex w-1/12 max-lg:absolute " >
-                        <img src="./src/assets/img/icon/Menu.png" className="w-8 h-6 font-[#4f4f4f]  lg:hidden cursor-pointer " onClick={handleMenu} ></img></div>
-                        <img src="./src/assets/img/icon/Asaflogo.png" className= {`w-32 max-md:w-44  max-md:mr-3 max-md:hidden  ${toggle?'hidden':''}`} ></img>
+                        <img src="./img/icon/Menu.png" className="w-8 h-6 font-[#4f4f4f]  lg:hidden cursor-pointer " onClick={handleMenu} ></img></div>
+                        <img src="./img/icon/Asaflogo.png" className= {`w-32 max-md:w-44  max-md:mr-3 max-md:hidden  ${toggle?'hidden':''}`} ></img>
                      
                        
                     </div>

@@ -28,7 +28,7 @@ function Services (){
     <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
     <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
     <div className="w-full">
-    <img src="./src/assets/img/servics/03.jpg " alt="" className=" rounded-3xl" /></div>
+    <img src="./img/servics/03.jpg " alt="" className=" rounded-3xl" /></div>
   </div>
 
 {/* 2 */}
@@ -45,7 +45,7 @@ function Services (){
 <p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
-<img src="./src/assets/img/servics/psychology.jpg " alt="" className=" rounded-3xl" /></div>
+<img src="./img/servics/psychology.jpg " alt="" className=" rounded-3xl" /></div>
 </div>
 
 {/* 3 */}
@@ -62,7 +62,7 @@ function Services (){
 <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-4 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
-<img src="./src/assets/img/servics/investment.jpg " alt="" className=" rounded-3xl" /></div>
+<img src="./img/servics/investment.jpg " alt="" className=" rounded-3xl" /></div>
 </div>
 
 {/*  4 */}
@@ -79,7 +79,7 @@ function Services (){
 <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px] ">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
-<img src="./src/assets/img/servics/retirement.jpg " alt="" className=" rounded-3xl" /></div>
+<img src="./img/servics/retirement.jpg " alt="" className=" rounded-3xl" /></div>
 </div>
 
 {/* 5 */}
@@ -96,7 +96,7 @@ function Services (){
 <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
-<img src="./src/assets/img/servics/life.jpg " alt="" className=" rounded-3xl" /></div>
+<img src="./img/servics/life.jpg " alt="" className=" rounded-3xl" /></div>
 </div>
 
 {/* 6 */}
@@ -113,7 +113,7 @@ function Services (){
 <p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
-<img src="./src/assets/img/servics/animal.jpg " alt="" className=" rounded-3xl" /></div>
+<img src="./img/servics/animal.jpg " alt="" className=" rounded-3xl" /></div>
 </div>
   
   

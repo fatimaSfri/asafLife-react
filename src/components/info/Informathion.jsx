@@ -71,17 +71,17 @@ export default function Informathion() {
      <div className="lg:w-1/2 max-lg:w-full h-[50vh] flex items-center justify-center relative lg:ml-20">
      <div className="sm:w-[500px] max-sm:w-11/12 h-full max-md:h-5/6 flex items-end absolute">
      <div  className="w-1/3 h-2/6  z-10 flex items-center max-sm:hidden suspended-security">
-     <img src="./src/assets/img/info/security.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12"/>
+     <img src="./img/info/security.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12"/>
      </div>
      <div className="w-1/3 h-1/4 self-start flex justify-center items-center z-10 max-sm:hidden suspended-first-aid">
-      <img src="./src/assets/img/info/first-aid.png" alt="" className="md:w-20 md:h-20 max-md:w-14 max-md:h-14 mr-10" />
+      <img src="./img/info/first-aid.png" alt="" className="md:w-20 md:h-20 max-md:w-14 max-md:h-14 mr-10" />
      </div>
      <div className="w-1/3 h-1/6  z-10 -rotate-12 max-sm:hidden suspended-heart ">
-     <img src="./src/assets/img/info/heart.png" alt="" className="md:w-16 md:h-16 max-md:w-14 max-md:h-14 mr-10 "/>
+     <img src="./img/info/heart.png" alt="" className="md:w-16 md:h-16 max-md:w-14 max-md:h-14 mr-10 "/>
     </div>
 
-     <img src="./src/assets/img/info/bg-blue.png" alt="" className="w-full absolute self-center " /> 
-     <img src="./src/assets/img/info/family-photo.png" alt="" className="w-11/12 absolute self-center mr-2 " /> 
+     <img src="./img/info/bg-blue.png" alt="" className="w-full absolute self-center " /> 
+     <img src="./img/info/family-photo.png" alt="" className="w-11/12 absolute self-center mr-2 " /> 
      </div>
       
 

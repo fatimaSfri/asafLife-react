@@ -35,19 +35,19 @@ function  Footer(){
             <p className=' text-white px-2'>09121887644</p>
         </div>
         <div className='h-10  flex items-center my-1'>
-        <img src="./src/assets/img/footer/fax.png" alt="" className='h-7 pl-4' />
+        <img src="./img/footer/fax.png" alt="" className='h-7 pl-4' />
         <p className='font-bold text-white'>شعبه مرکزی:</p>
         <p className=' text-white px-2'>021-91098951</p>
         </div>
         <div className=' h-10 flex items-center my-1'>
-        <img src="./src/assets/img/footer/placeholder.png" alt="" className='h-7 pl-4' />
+        <img src="./img/footer/placeholder.png" alt="" className='h-7 pl-4' />
         <p className='font-bold text-white'>آدرس:</p>
         <p className=' text-white px-2'>خیابان دانشگاه،دانشگاه 18، پلاک 304</p>
        </div>
         
         </div>
         
-        <img src="./src/assets/img/footer/ASAFLogo.svg" alt="" className='w-[20%] h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' />
+        <img src="./img/footer/ASAFLogo.svg" alt="" className='w-[20%] h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' />
   </div>     
 </div>
 

@@ -21,7 +21,7 @@ export default function Blog() {
  <div class="bg-white rounded-3xl shadow min-w-[200px] max-w-[350px] flex flex-col  min-h-[350px] ">
     {/* px-8 */}
     <div className="w-full">
-    <img src="./src/assets/img/blog/blog3.jpg " alt="" className="  rounded-2xl " /></div>
+    <img src="./img/blog/blog3.jpg " alt="" className="  rounded-2xl " /></div>
     <div className="font-bold w-10/12   flex relative">
    <h2 class="text-lg max-sm:text-[14px]  text-[#213063] mt-4 mr-6">
      مشاوره حقوقی </h2>
@@ -36,7 +36,7 @@ export default function Blog() {
    <div class="bg-white rounded-3xl shadow min-w-[200px] max-w-[350px] flex flex-col  min-h-[350px] ">
     {/* px-8 */}
     <div className="w-full">
-    <img src="./src/assets/img/blog/blog2.jpg " alt="" className="  rounded-2xl " /></div>
+    <img src="./img/blog/blog2.jpg " alt="" className="  rounded-2xl " /></div>
     <div className="font-bold w-10/12   flex relative">
    <h2 class="text-lg max-sm:text-[14px]  text-[#213063] mt-4 mr-6">
      مشاوره حقوقی </h2>
@@ -51,7 +51,7 @@ export default function Blog() {
    <div class="bg-white rounded-3xl shadow min-w-[200px] max-w-[350px] flex flex-col  min-h-[350px] ">
     {/* px-8 */}
     <div className="w-full">
-    <img src="./src/assets/img/blog/blog1.jpg " alt="" className="  rounded-2xl " /></div>
+    <img src="./img/blog/blog1.jpg " alt="" className="  rounded-2xl " /></div>
     <div className="font-bold w-10/12   flex relative">
    <h2 class="text-lg max-sm:text-[14px]  text-[#213063] mt-4 mr-6">
      مشاوره حقوقی </h2>

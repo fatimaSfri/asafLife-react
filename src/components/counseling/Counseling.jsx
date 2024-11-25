@@ -27,9 +27,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
       duration: "۶۰ دقیقه",
       color:"#55c7e0",
-      image: "./src/assets/img/counseling/psychology.jpg",
-      iconClock: "./src/assets/img/counseling/clockblue.svg",
-      iconUser:"./src/assets/img/counseling/userblue.svg"
+      image: "./img/counseling/psychology.jpg",
+      iconClock: "./img/counseling/clockblue.svg",
+      iconUser:"./img/counseling/userblue.svg"
     },
     {
       title: "مشاوره حقوقی",
@@ -37,9 +37,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
       duration: "۶۰ دقیقه",
       color: "#fdce0b",
-      image: "./src/assets/img/counseling/legal.jpg",
-      iconClock: "./src/assets/img/counseling/clockYellow.svg",
-      iconUser:"./src/assets/img/counseling/userYellow.svg"
+      image: "./img/counseling/legal.jpg",
+      iconClock: "./img/counseling/clockYellow.svg",
+      iconUser:"./img/counseling/userYellow.svg"
     },
     {
       title: "مشاوره سرمایه گذاری",
@@ -47,9 +47,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
        duration: "۶۰ دقیقه",
        color:"#6827b5",
-      image: "./src/assets/img/counseling/investment.jpg",
-      iconClock: "./src/assets/img/counseling/clockpurple.svg",
-      iconUser:"./src/assets/img/counseling/userpurple.svg"
+      image: "./img/counseling/investment.jpg",
+      iconClock: "./img/counseling/clockpurple.svg",
+      iconUser:"./img/counseling/userpurple.svg"
     },
     {
       title: "مشاوره شغلی",
@@ -57,9 +57,9 @@ export default function Counseling() {
       description: " شرکت آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت و بیمه و ایجاد باشگاه مشتریان  ",
        duration: "۶۰ دقیقه",
        color:"#55c7e0",
-       image: "./src/assets/img/counseling/psychology.jpg",
-      iconClock: "./src/assets/img/counseling/clockblue.svg",
-      iconUser:"./src/assets/img/counseling/userblue.svg"
+       image: "./img/counseling/psychology.jpg",
+      iconClock: "./img/counseling/clockblue.svg",
+      iconUser:"./img/counseling/userblue.svg"
     },
   ];
 
@@ -135,7 +135,7 @@ export default function Counseling() {
           </p>
         </div>
         <div className=" w-3/12 max-sm:w-1/12 h-full flex-col max-xl:justify-between items-center mx-auto p-5 ">
-            <img src="./src/assets/img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute  '/>
+            <img src="./img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute  '/>
           <div></div>
           <div></div>
         </div>

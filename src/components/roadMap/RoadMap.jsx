@@ -52,7 +52,7 @@ const Roadmap = () => {
                 transitionDelay: `${index * 300}ms`, 
               }}
             >
-              <h2 className="text-xl font-semibold">{milestone.title}</h2>
+              <h2 className="text-xl font-semibold bg-red-500">{milestone.title}</h2>
               <span className='text-[28px] text-bold ' style={{color:milestone.color}}>{milestone.date}</span>
             </div>
             :
