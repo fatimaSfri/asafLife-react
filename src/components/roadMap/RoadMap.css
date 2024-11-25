@@ -61,3 +61,35 @@
   }
   
   
+  .roadMap{
+    clip-path: inset(0 0 0 100%); 
+    opacity: 0; 
+    animation: revealRoadMap 12.3s forwards infinite; 
+}
+@keyframes revealRoadMap {
+    0% {
+        clip-path: inset(0 100% 0 0); 
+        opacity: 0; 
+    }
+    100% {
+        clip-path: inset(0 0 0 0); 
+        opacity: 1; 
+    }
+}
+
+.roadMapVertical {
+  transform: translateY(-100%); 
+  opacity: 0; 
+  animation: revealRoadMa 12.3s forwards infinite; 
+}
+
+@keyframes revealRoadMa {
+  0% {
+    transform: translateY(-100%); 
+    opacity: 0; 
+  }
+  100% {
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}

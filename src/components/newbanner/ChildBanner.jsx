@@ -1,5 +1,5 @@
 import React, { useEffect , useState } from 'react';
-export default function PsychologyBanner(props) {
+export default function ChildBanner(props) {
     
       
       const [ image , setImage ] =useState([

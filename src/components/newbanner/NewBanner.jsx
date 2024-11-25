@@ -7,20 +7,35 @@ import Legal from "./LegalBanner"
 import Child from "./ChildBanner"
 import Treatment from './Treatment';
 import Psychology from './PsychologyBanner';
-
+import AnimalBanner from './AnimalBanner';
+import LifeBanner from './LifeBanner';
+import MobileBanner from './MobilBanner';
 
 function  NewBanner(){
 
     const [videoShow , setVideoShow] = useState(false)
- 
+    const [allVideos , setAllVideo] = useState({
+      defultVideo:"./img/Animation/asafdesign.mp4", carBodyVideo:"", animalVideo:""
+    })
+
     //  , frontObjectCarOff:image[0],frontObjectCarOn:image[1], text:image[2]
     const [sliderImages,setsliderImages]= useState(
       [
-        { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar>},
-        { component: <Legal  videoShowHandle={videoShowHandle}></Legal>},
-        { component: <Treatment  videoShowHandle={videoShowHandle}></Treatment>},
-        { component: <Child  videoShowHandle={videoShowHandle}></Child>},
-        { component: <Psychology  videoShowHandle={videoShowHandle}></Psychology>}, 
+        { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
+         modalVideo:"./img/video/CarBody.MP4" },
+        { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
+        modalVideo:'./img/Animation/asafdesign.mp4'},
+        { component: <AnimalBanner  videoShowHandle={videoShowHandle}></AnimalBanner> , 
+        modalVideo:'./img/video/Animal.MP4'},
+        { component: <MobileBanner  videoShowHandle={videoShowHandle}></MobileBanner> , modalVideo:'./img/Animation/asafdesign.mp4'},
+        { component: <Legal  videoShowHandle={videoShowHandle}></Legal> , 
+        modalVideo:'./img/Animation/asafdesign.mp4'},
+        { component: <Treatment  videoShowHandle={videoShowHandle}></Treatment> , 
+        modalVideo:'./img/Animation/asafdesign.mp4'},
+        { component: <Child  videoShowHandle={videoShowHandle}></Child> , 
+        modalVideo:'./img/Animation/asafdesign.mp4' },
+        { component: <Psychology  videoShowHandle={videoShowHandle}></Psychology> , 
+        modalVideo:'./img/Animation/asafdesign.mp4' }, 
      ]
      )
 
@@ -64,14 +79,15 @@ function  NewBanner(){
 return (
         <>
         {/* if click play Modal event exists in modal for close */}
-        <Modal videoShow={videoShow}  setVideoShow={setVideoShow} ></Modal>
+     
+        <Modal videoShow={videoShow}  setVideoShow={setVideoShow} defultVideo={sliderImages[newIndex].modalVideo} ></Modal>
         <Navbar></Navbar>
           <div className="w-full z-10 h-[750px] flex items-end justify-center gap-4 pb-3 absolute">
           {sliderImages.map((item, index) => (
         <span
           key={index}
           onClick={() => setActiveImage(index)}
-          className={`w-4 h-4  bg-white  rounded-full block transition-all duration-300 ${
+          className={`w-3 h-3  bg-white  rounded-full block transition-all duration-300 ${
             newIndex == index ? "active" : ""
           }`}
         ></span>

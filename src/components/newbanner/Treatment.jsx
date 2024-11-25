@@ -1,5 +1,5 @@
 import React, { useEffect , useState } from 'react';
-export default function LegalBanner(props) {
+export default function Treatment(props) {
     
       const [ image , setImage ] =useState([
           './img/Animation/treatment/02-ob.png', 

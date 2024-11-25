@@ -4,11 +4,9 @@ import Services from './services/Services.jsx';
 import Logo from "./logo/Logo.jsx"
 import Informathion from './info/Informathion.jsx';
 import Counseling from './counseling/Counseling.jsx';
-import Test from './test/Test.jsx'
 import Staff from './staff/Staff.jsx';
 import Blog from './blog/Blog.jsx';
 import Footer from './footer/Footer.jsx';
-import TestTwo from './test/TestTwo.jsx'
 import Infography from './infography/Infography.jsx';
 
 export default function Home(){
@@ -22,8 +20,9 @@ export default function Home(){
     <Counseling></Counseling>
     <Infography></Infography>
     <Staff></Staff>
-    <Blog></Blog>
+    <Blog text="بلاگ"></Blog>
     <Footer></Footer>
+    
    </div>
 
    )
