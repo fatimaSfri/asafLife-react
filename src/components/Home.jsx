@@ -10,11 +10,12 @@ import Footer from './footer/Footer.jsx';
 import Infography from './infography/Infography.jsx';
 
 export default function Home(){
+
    return(
-     <div className="w-full h-[2600hv] flex flex-col " >
+     <div className="w-full h-[2600hv] flex flex-col "  >
       
     <NewBanner></NewBanner>
-    <Services></Services>
+    <Services ></Services>
     <Logo></Logo>
     <Informathion></Informathion>
     <Counseling></Counseling>

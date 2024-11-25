@@ -27,7 +27,7 @@ export default function Blog(props) {
     مشاوره </h2>
     </div>
     <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-1 text-[12px] "> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
-    <button class="text-[#55c7e0] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+    <button class="text-[#213063] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
    
   </div>
 
@@ -42,7 +42,7 @@ export default function Blog(props) {
      مشاوره</h2>
     </div>
     <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-1 text-[12px] "> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
-    <button class="text-[#55c7e0] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+    <button class="text-[#213063] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
    
   </div>
 
@@ -57,7 +57,7 @@ export default function Blog(props) {
     مشاوره </h2>
     </div>
     <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-1 text-[12px] "> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
-    <button class="text-[#55c7e0] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
+    <button class="text-[#213063] hover:underline text-[14px] text-left ml-6  py-4 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
    
   </div>
 

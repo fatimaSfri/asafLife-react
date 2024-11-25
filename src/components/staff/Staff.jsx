@@ -1,8 +1,14 @@
-
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from 'react';
 export default function Staff() {
+ 
+    useEffect(() => {
+        AOS.init();
+    }, []);
+
   return (
-    <div className=" w-full lg:h-[90vh] max-lg:h-[90vh] flex flex-col items-center justify-center">
+    <div className=" w-full lg:h-[90vh] max-lg:h-[90vh] flex flex-col items-center justify-center"  data-aos="fade-up" data-aos-duration="1500">
        <div className="w-8/12 max-md:w-full max-md:px-4  h-1/4 max-md:h-2/4 flex flex-col justify-center  ">
        <h1 className="text-right py-4 font-bold text-[#213063] text-lg xl:text-[20px] max-sm:text-[16px]">شرکت کارگزاری رسمی بیمه آینده سازان آسایش فردا  </h1>
        <p className="w-full xl:text-[18px] max-sm:text-[14px]">  شرکت کارگزاری آینده سازان آسایش فردا با سابقه 30 ساله مدیران خود در عرضه تجارت بیمه و ایجاد باشگـــاه مشتریان با بیش از 600 عضو حقوقی  و بیش از 10000 عضو حقیقی،  برای اولین بار در کشور اقدام به توسعه خدمات زندگی در عرصه بیمه های مربوطه  نموده است ، همراهی بیمه گـــذاران محترم در تمامی لحظات زندگــی و پشتیبــانی 24 ساعته از اهداف اصلی راه اندازی سامانه آســاف لایف می باشد. </p>
