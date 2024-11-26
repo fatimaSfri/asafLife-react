@@ -87,7 +87,7 @@ return (
         <span
           key={index}
           onClick={() => setActiveImage(index)}
-          className={`w-3 h-3  bg-white  rounded-full block transition-all duration-300 ${
+          className={`w-3 h-3 mb-4  bg-white  rounded-full block transition-all duration-300 ${
             newIndex == index ? "active" : ""
           }`}
         ></span>

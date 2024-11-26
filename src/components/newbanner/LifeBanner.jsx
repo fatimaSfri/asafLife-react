@@ -25,7 +25,7 @@ export default function LifeBanner(props) {
      {/* text */}
      <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">
       <img src= {image[1]} alt="" className=" px-8 cursor-pointer"  />
-      <img src="./img/Animation/life/08-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
+      <img src="./img/Animation/treatment/02-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
      </div>
     
      {/* play */}
