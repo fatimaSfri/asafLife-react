@@ -17,6 +17,7 @@ export default function CarBody() {
         autoPlay
         loop
         controls
+        muted
        >
      </video>
    </div>

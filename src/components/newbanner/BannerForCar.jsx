@@ -47,7 +47,7 @@ export default function PsychologyBanner(props) {
        w-full  flex justify-center max-md:flex-col  items-center overflow-hidden">
            {/* text */}
       <div className="xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20" >
-      <Link to="/carBody"> <img src= {image[2]} alt="" className=" px-8 cursor-pointer "/></Link> 
+      <Link to="/carBody" target="_blank" rel="noopener noreferrer"> <img src= {image[2]} alt="" className=" px-8 cursor-pointer "/></Link> 
            <img src="./img/Animation/car/Arrow.png" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12"></img>
           </div>
          
