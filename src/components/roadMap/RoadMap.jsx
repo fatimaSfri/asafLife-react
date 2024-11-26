@@ -6,10 +6,10 @@ import './RoadMap.css'
 const Roadmap = () => {
   const milestones = [
     { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/seo.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'تحلیل بازار و رقبا بهبود محصولات زیر ساخت های دیجیتال ', date: '1400' , color: '#fdce0b' },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/discount.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'بهره وری عملیاتی ارتباطات موثر با مشتریان  ', date: '1401'  , color: '#115052' },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/testing.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'نوآوری در محصولات بهبود خدمات مشتریان سرویس های پس انداز و سرمایه گذاری  ', date: '1402' , color: '#26b890'  },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/growth.png' ,subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'افزایش کانال های توزیع کمپین های بازار یابی آموزش و بهبود مهارت های فروش  ', date: '1403' , color: '#55c7e0'  },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/target.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'ارزیابی عملکرد و بهبود استراتژی ها تمرکز بر رضایت مشتری', date: '1404'  , color: '#213063' },
+    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/discount.png' , subTitle: 'تثبیت جایگاه و افزایش سهم بازار' , description: 'بهره وری عملیاتی ارتباطات موثر با مشتریان  ', date: '1401'  , color: '#115052' },
+    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/testing.png' , subTitle: 'شبکه  فروش  و تبلیغات  گسترده' , description: 'نوآوری در محصولات بهبود خدمات مشتریان سرویس های پس انداز و سرمایه گذاری  ', date: '1402' , color: '#26b890'  },
+    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/growth.png' ,subTitle: 'گسـترش نوآوری و خدمـات مشــتریان توسعه' , description: 'افزایش کانال های توزیع کمپین های بازار یابی آموزش و بهبود مهارت های فروش  ', date: '1403' , color: '#55c7e0'  },
+    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/target.png' , subTitle: 'رسیدن به هدف ۳۰ درصد سهم بازار ' , description: 'ارزیابی عملکرد و بهبود استراتژی ها تمرکز بر رضایت مشتری', date: '1404'  , color: '#213063' },
   ]
 
   const [progress, setProgress] = useState(0);
