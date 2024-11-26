@@ -90,7 +90,7 @@ export default function Counseling() {
               <div className="bg-white rounded-lg shadow-xl flex flex-col items-center text-center max-xl:w-5/12 max-lg:w-7/12 max-md:w-9/12 xl:min-w-[200px] relative ">
                 <img src={card.image} alt={card.title} className="rounded-t-lg xl:h-full max-xl:h-[400px] object-cover" />
                 <div class="flex justify-center items-center group ">
-             <div class="bg-[rgba(250,250,250,0.78)] shadow-lg rounded-lg w-11/12 overflow-hidden absolute mb-28 group-hover:h-80 group-hover:mb-80 group-hover:justify-around transition-all duration-700 ease-linear flex flex-col ">
+             <div class="bg-[rgba(250,250,250,0.78)] shadow-lg rounded-lg w-11/12 overflow-hidden absolute mb-28 group-hover:h-80 group-hover:mb-80 group-hover:justify-around transition-all duration-300 ease-out flex flex-col ">
                 <div class="p-1 transition-all duration-900 h-16  group-hover:mb-32">
                 <h3 class='text-lg font-bold' style={{ color: card.color }}>{card.title}</h3>
                 <div className='flex justify-center gap-2'>
@@ -135,7 +135,7 @@ export default function Counseling() {
           </p>
         </div>
         <div className=" w-3/12 max-sm:w-1/12 h-full flex-col max-xl:justify-between items-center mx-auto p-5 ">
-            <img src="./img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute '/>
+            <img src="./img/counseling/ob-purple.png" alt="" className='sm:w-14 sm:h-14 max-sm:w-10 max-sm:h-10 suspended max-md:absolute cu'/>
           <div></div>
           <div></div>
         </div>

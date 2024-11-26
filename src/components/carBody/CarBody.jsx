@@ -20,7 +20,7 @@ export default function CarBody() {
         muted >
      </video>
    </div>
-   <div className='w-full max-lg:h-[100vh] lg:h-[70vh] flex flex-col items-center justify-center'>
+   <div className='w-full max-lg:h-[100vh] lg:h-[70vh] flex flex-col items-center justify-center max-sm:my-24'>
 
     <div className='w-9/12   flex items-center gap-2'>
     <div className='w-4 h-10 bg-[#6827b5] rounded-full mr-10'></div>
@@ -32,7 +32,7 @@ export default function CarBody() {
     <div className='w-4 h-4 bg-[#6827b5] rounded-full mr-10'></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >بیمه بدنه:</h1>
     </div>
-    <p className=' lg:pr-24 max-lg:pr-10'> .این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.
+    <p className=' lg:pr-24 max-lg:pr-10'> این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.
     </p>
     </div>
 
@@ -47,9 +47,9 @@ export default function CarBody() {
     <div className='w-9/12 lg:h-1/6 '>
     <div className='flex items-center gap-4 p-6'>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full mr-10'></div>
-    <h1 className='font-bold text-[18px] text-[#213063]'>پوشش‌های اضافی:</h1>
+    <h1 className='font-bold text-[18px] text-[#213063] '>پوشش‌های اضافی:</h1>
     </div>
-    <p className=' lg:pr-20 max-lg:pr-10 pl-7 w-9/12' >شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
+    <p className=' lg:pr-24 max-lg:pr-10  ' >شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
     امکان انتخاب پوشش‌های متنوع بر اساس نیاز و ارزش خودرو.
    مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
    شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
@@ -57,7 +57,7 @@ export default function CarBody() {
    مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
     </p></div>
     <div className='w-9/12 h-1/6  flex items-end justify-end mouse-pointer '>
-     <img src="./img/Animation/car/button.png" alt=""  className='w-[150px] lg:ml-16 max-lg:ml-8 lg:-mb-20'/>
+     <img src="./img/Animation/car/button.png" alt=""  className='w-[150px] lg:ml-16 max-lg:ml-8 lg:-mb-20 cursor-pointer'/>
     </div>
     
    </div>
