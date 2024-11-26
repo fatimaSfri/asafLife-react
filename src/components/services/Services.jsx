@@ -25,7 +25,10 @@ function Services (){
     <h2 class="text-lg max-sm:text-[14px]  mx-auto text-[#213063]">
      مشاوره حقوقی </h2>
     </div>
-    <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+    <p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> 
+    مشاوره حقوقی تخصصی، راهی مطمئن برای حل مشکلات شما
+    در دنیای پیچیده قوانین و مقررات، همراهی یک مشاور حقوقی می‌تواند مسیر شما را هموارتر کند.
+    </p>
     <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
     <div className="w-full">
     <img src="./img/servics/03.jpg " alt="" className=" rounded-3xl" /></div>
@@ -42,7 +45,10 @@ function Services (){
 <h2 class="text-lg  max-sm:text-[14px] mx-auto text-[#213063]">
  مشاوره روانشناسی </h2>
 </div>
-<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]">
+مشاوره روانشناسی، قدمی برای آرامش و رشد شخصی
+زندگی پر از چالش‌هایی است که گاهی عبور از آن‌ها به تنهایی دشوار می‌شود. ما در کنار شما هستیم
+ </p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
 <img src="./img/servics/psychology.jpg " alt="" className=" rounded-3xl" /></div>
@@ -59,7 +65,10 @@ function Services (){
 <h2 class="text-lg mx-auto max-sm:text-[14px] text-[#213063]">
  مشاور سرمایه گذاری </h2>
 </div>
-<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> 
+مشاوره سرمایه‌گذاری، کلید موفقیت مالی شما
+سرمایه‌گذاری هوشمندانه می‌تواند آینده مالی شما را متحول کند.
+</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-4 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
 <img src="./img/servics/investment.jpg " alt="" className=" rounded-3xl" /></div>
@@ -76,7 +85,10 @@ function Services (){
 <h2 class="text-lg max-sm:text-[14px] mr-14 text-[#213063]">
   بیمه بازنشستگی پیش از موعد </h2>
 </div>
-<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> 
+بیمه بازنشستگی، آرامش امروز و امنیت فردا
+برنامه‌ریزی برای دوران بازنشستگی از مهم‌ترین تصمیماتی است که می‌توانید برای آینده خود بگیرید.
+</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px] ">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
 <img src="./img/servics/retirement.jpg " alt="" className=" rounded-3xl" /></div>
@@ -93,7 +105,10 @@ function Services (){
 <h2 class="text-lg max-sm:text-[14px] mx-auto text-[#213063]">
   بیمه زندگی </h2>
 </div>
-<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12  py-3 text-[12px]">
+ آرامش امروز و پشتوانه‌ای مطمئن برای آینده
+زندگی پر از اتفاقات پیش‌بینی‌نشده است، اما با بیمه زندگی می‌توانید از خود و عزیزانتان محافظت کنید.
+</p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
 <img src="./img/servics/life.jpg " alt="" className=" rounded-3xl" /></div>
@@ -110,7 +125,9 @@ function Services (){
 <h2 class="text-lg max-sm:text-[14px] mx-auto text-[#213063]">
  بیمه حیوانات خانگی  </h2>
 </div>
-<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]"> شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان</p>
+<p class="text-gray-600 flex-grow text-center mx-auto w-11/12 py-3 text-[12px]">
+بیمه حیوانات خانگی به شما این امکان را می‌دهد که با خیال راحت، بهترین خدمات درمانی و مراقبتی را برای دوست کوچک خود فراهم کنید،
+ </p>
 <button class="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">  توضیحات بیشتر &#62; </button>
 <div className="w-full">
 <img src="./img/servics/animal.jpg " alt="" className=" rounded-3xl" /></div>

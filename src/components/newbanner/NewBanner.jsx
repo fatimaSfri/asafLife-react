@@ -21,21 +21,21 @@ function  NewBanner(){
     //  , frontObjectCarOff:image[0],frontObjectCarOn:image[1], text:image[2]
     const [sliderImages,setsliderImages]= useState(
       [
+      { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
+        modalVideo:'./img/video/all.mp4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
-         modalVideo:"./img/video/CarBody.MP4" },
-        { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
-        modalVideo:'./img/video/all.MP4'},
+        modalVideo:"./img/video/CarBody.mp4" },
         { component: <AnimalBanner  videoShowHandle={videoShowHandle}></AnimalBanner> , 
-        modalVideo:'./img/video/Animal.MP4'},
-        { component: <MobileBanner  videoShowHandle={videoShowHandle}></MobileBanner> , modalVideo:'./img/video/all.MP4'},
+        modalVideo:'./img/video/pet.mp4'},
+        { component: <MobileBanner  videoShowHandle={videoShowHandle}></MobileBanner> , modalVideo:'./img/video/all.mp4'},
         { component: <Legal  videoShowHandle={videoShowHandle}></Legal> , 
-        modalVideo:'./img/video/all.MP4'},
+        modalVideo:'./img/video/all.mp4'},
         { component: <Treatment  videoShowHandle={videoShowHandle}></Treatment> , 
-        modalVideo:'./img/video/all.MP4'},
+        modalVideo:'./img/video/all.mp4'},
         { component: <Child  videoShowHandle={videoShowHandle}></Child> , 
-        modalVideo:'./img/video/all.MP4' },
+        modalVideo:'./img/video/all.mp4' },
         { component: <Psychology  videoShowHandle={videoShowHandle}></Psychology> , 
-        modalVideo:'./img/video/all.MP4' }, 
+        modalVideo:'./img/video/all.mp4' }, 
      ]
      )
 
