@@ -14,10 +14,10 @@ export default function CarBody() {
    <video className="rounded-3xl  lg:h-[700px] "
         src= "./img/video/CarBody.MP4"
         preload="auto"
-        controls
         autoPlay
         loop
-        muted >
+        controls
+       >
      </video>
    </div>
    <div className='w-full max-lg:h-[100vh] lg:h-[70vh] flex flex-col items-center justify-center max-sm:my-24'>

@@ -2,7 +2,7 @@ import React, { useEffect , useState } from 'react';
 export default function LifeBanner(props) {
     
       const [ image , setImage ] =useState([
-          './img/Animation/life/08-ob.png', 
+          './img/Animation/life/three.png', 
           './img/Animation/life/08-Textbutton.png',
        ])  
        
@@ -37,7 +37,7 @@ export default function LifeBanner(props) {
      </div>
      {/* object */}
      <div className=" md:h-4/5 xl:w-[600px] sm:min-w-[350px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right max-md:p-8 flex items-center 
-        justify-center xl:-ml-24">
+        justify-center xl:-ml-24 xl:p-8">
       <img src={image[0]}alt=""  className=" max-md:h-full pt-5 " />
      </div>
      </div>

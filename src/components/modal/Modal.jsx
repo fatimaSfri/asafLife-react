@@ -24,7 +24,7 @@ function showVideohandle(){
         controls
         autoPlay
         loop
-        muted >
+        >
      </video>
      </div>}
    </>
