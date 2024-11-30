@@ -167,12 +167,13 @@ export default function TestTwo() {
                   onChange={handleInputChange}
                   name={'phone'}
                   validationErrors={validationErrors.phone}
+                  count= {11}
                 />
               </>
             )}
             {navigate && (
               <>
-                <label className="sr-only">رمز عبور</label>
+              
                 <Input
                   placeholder="کد تایید"
                    icon="./img/login/key.png"
@@ -180,6 +181,7 @@ export default function TestTwo() {
                   onChange={handleInputChangePass}
                   name={'password'}
                   validationErrors={validationErrorsPass.password}
+                  count= {4}
                 />
                 
               </>
