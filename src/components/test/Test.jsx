@@ -1,321 +1,102 @@
-// // // import React from 'react'
+// import React, { useState } from 'react';
 
-// // // export default function Test() {
-// // //   return (
-// // //     <div className='h-screen w-full border border-red-950'>
-// // //     {/*       
-// // //      <video className="rounded-3xl "
-// // //          src= "./src/assets/img/roadMap/roadmap.mp4"
-// // //          preload="auto"
-// // //          controls
-// // //          autoPlay
-// // //          loop
-// // //          muted >
-// // //       </video> */}
-      
-// // //       </div>
+// const DashInput = ({ count=5 }) => {
+//   const [values, setValues] = useState(Array(count).fill(''));
   
-// // //   )
-// // // }
-
-
-// // import React, { useState, useEffect } from 'react';
-
-// // const Roadmap = () => {
-// //   const milestones = [
-// //     { title: 'مرحله ۱', description: 'شرح مرحله ۱', date: 'تاریخ ۱' },
-// //     { title: 'مرحله ۲', description: 'شرح مرحله ۲', date: 'تاریخ ۲' },
-// //     { title: 'مرحله ۳', description: 'شرح مرحله ۳', date: 'تاریخ ۳' },
-// //     { title: 'مرحله ۴', description: 'شرح مرحله ۴', date: 'تاریخ ۴' },
-// //     { title: 'مرحله 5', description: 'شرح مرحله 5', date: 'تاریخ 5' },
-// //   ];
-
-// //   const [progress, setProgress] = useState(0);
-
-// //   useEffect(() => {
-// //     const interval = setInterval(() => {
-// //       setProgress((prev) => {
-// //         if (prev < milestones.length) {
-// //           return prev + 1;
-// //         } else {
-// //           // بعد از اتمام مراحل، پیشرفت را به صفر برمی‌گردانیم
-// //           return 0; 
-// //         }
-// //       });
-// //     }, 2000); // هر دو ثانیه یک مرحله به نمایش در می‌آید
-
-// //     return () => clearInterval(interval);
-// //   }, [milestones.length]); // اضافه کردن length به dependency array
-
-
-
-// //   return (
-// //     <div className='flex justify-end items-center'>
-// //     <div className="flex flex-col items-center justify-center py-10 lg:w-1/2 max-lg:w-full border h-[500px] border-red-500" >
-     
-// //       <div className="flex items-center justify-center w-full relative flex-row-reverse border border-sky-900 gap-12">
-// //         {/* خط اصلی */}
-// //         <div className="absolute top-5 left-0 h-1 bg-blue-500 transition-all duration-2000" style={{ width: `${(progress / milestones.length) * 100}%` }}></div>
-
-// //         {milestones.map((milestone, index) => (
-// //           <div key={index} className="flex flex-col items-center relative z-10 " >
-// //             {/* دایره‌های مراحل */}
-// //             <div
-// //               className={`w-10 h-10 bg-blue-500 rounded-full flex  items-center justify-center text-white transition-opacity duration-500`}
-// //               style={{
-// //                 opacity: index < progress ? 1 : 0,
-// //                 transitionDelay: `${index * 100}ms`, // تأخیر متناسب با ایندکس
-// //               }}
-// //             >
-// //               {index + 1}
-// //             </div>
-// //             {/* توضیحات مرحله */}
-// //             <div
-// //               className={`mt-2 text-center transition-opacity duration-500`}
-// //               style={{
-// //                 opacity: index < progress ? 1 : 0,
-// //                 transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-// //               }}
-// //             >
-// //               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-// //               <p className="text-gray-600">{milestone.description}</p>
-// //               <span className="text-gray-400">{milestone.date}</span>
-// //             </div>
-// //           </div>
-// //         ))}
-// //       </div>
-// //     </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Roadmap;
-
-
-// import './Test.css'
-// import React, { useState, useEffect } from 'react';
-
-// const Roadmap = () => {
-//   const milestones = [
-//     { title: 'مرحله ۱', description: 'شرح مرحله ۱', date: 'تاریخ ۱' },
-//     { title: 'مرحله ۲', description: 'شرح مرحله ۲', date: 'تاریخ ۲' },
-//     { title: 'مرحله ۳', description: 'شرح مرحله ۳', date: 'تاریخ ۳' },
-//     { title: 'مرحله ۴', description: 'شرح مرحله ۴', date: 'تاریخ ۴' },
-//     { title: 'مرحله ۵', description: 'شرح مرحله ۵', date: 'تاریخ ۵' },
-//   ];
-
-//   const [progress, setProgress] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setProgress((prev) => {
-//         if (prev < milestones.length) {
-//           return prev + 1;
-//         } else {
-//           return 0; 
-//         }
-//       });
-//     }, 2000);
+//   const handleChange = (index, event) => {
+//     const newValues = [...values];
+//     newValues[index] = event.target.value.replace(/[^0-9]/g, ''); 
+//     setValues(newValues);
     
-
-//     return () => clearInterval(interval);
-//   }, [milestones.length]);
-
-// // ****************************
- 
+//     // اگر ورودی پر شد، به خط بعدی برو
+//     if (newValues[index] && index < count - 1) {
+//       document.getElementById(`input-${index + 1}`).focus();
+//     }
+//   };
 
 //   return (
-//     <>
-//        <div className='flex justify-end items-center max-md:hidden'>
-//           <div className="flex flex-col items-center justify-center py-10 lg:w-8/12 max-lg:w-full border h-[500px] border-red-500" >
-     
-//        <div className="flex items-center justify-center w-full relative flex-row-reverse border border-sky-900 max-xl:gap-14 xl:gap-24">
-//          {/* خط اصلی */}
-//         <div className="absolute top-26 left-0 h-1 bg-blue-500 transition-all duration-2000" style={{ width: `${(progress / milestones.length) * 100}%` }}></div>
-
-//          {milestones.map((milestone, index) => (
-//           <div key={index} className="flex flex-col items-center relative z-10 border border-green-900" >
-
-//           { (index%2-1) ?
-//             <div
-//               className={`mt-2 text-center transition-opacity duration-500 border-8 border-rose-500 h-[100px]  ${index < progress ? 'fade-in' : ''}
-//               `}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-//               }}
-//             >
-//               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-//               <span className="text-gray-400">{milestone.date}</span>
-//             </div>
-//             :
-//             <div
-//             className={`mt-2 text-center transition-opacity duration-500 border-8 border-rose-500 h-[100px]  ${index < progress ? 'fade-in' : ''}`}
-//             style={{
-//               opacity: index < progress ? 1 : 0,
-//               transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-//             }}
-//           >
-//            <p className="text-gray-600">{milestone.description}</p>
-//            </div>
-
-//             } 
-
-//             {/* دایره‌های مراحل */}
-//             <div
-//               className={`w-10 h-10  bg-blue-500 rounded-full flex  items-center justify-center text-white transition-opacity duration-500 `}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 100}ms`, // تأخیر متناسب با ایندکس
-//               }}
-//             >
-//               {index + 1}
-//             </div>
-//             {/* توضیحات مرحله */}
-
-//             { !(index%2-1) ?
-//             <div
-//               className={`mt-2 text-center transition-opacity duration-500 border-8 border-rose-500 h-[100px]  ${index < progress ? 'fade-out' : ''} `}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-//               }}
-//               >
-                
-//               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-//               <span className="text-gray-400">{milestone.date}</span>
-
-//              </div> :
-//             <div
-//             className={`mt-2 text-center transition-opacity duration-500 border-8 border-rose-500 h-[100px]  ${index < progress ? 'fade-out' : ''}`}
-//             style={{
-//               opacity: index < progress ? 1 : 0,
-//               transitionDelay: `${index * 300}ms`, // تأخیر متناسب با ایندکس
-//             }}
-//           >
-//            <p className="text-gray-600">{milestone.description}</p>
-//           </div>
-//          }
-//           </div>
-           
-//         ))}
-//       </div>
+//     <div className="flex space-x-2 flex-row-reverse">
+//       {values.map((value, index) => (
+//         <div key={index} className={`border-b-2 ${value ? 'border-gray-500' : 'border-red-500'} w-12`}>
+//           <input
+//             id={`input-${index}`}
+//             type="text"
+//             value={value}
+//             onChange={(e) => handleChange(index, e)}
+//             className="w-full text-center outline-none"
+//             maxLength={1} // فقط یک کاراکتر را اجازه بده
+//           />
+//         </div>
+//       ))}
 //     </div>
-//     </div>
-
-
-// {/* ********************************************************************************************************************************************** */}
-
-//     <div className='flex justify-center items-center md:hidden'>
-//       <div className="flex flex-col items-center justify-center  gap-10 py-10 lg:w-1/2 max-lg:w-full border  border-red-500 relative">
-//         <div className="absolute left-1/2 top-0 w-1 bg-blue-500 transition-all duration-2000" style={{ height: `${(progress / milestones.length) * 100}%` }}></div>
-
-//         {milestones.map((milestone, index) => (
-
-
-//           <div key={index} className="flex items-center gap-20   z-10 border" style={{ position: 'relative', top: `${(index / milestones.length) * 100}%` }}>
-//              {/* توضیحات مرحله */}
-//              { (index%2-1) ?
-//              <div
-//               className={`mt-2 text-center transition-opacity duration-500 border border-red-500  relative h-[100px] ` }
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`,
-//               }}
-//             >
-//               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-//               {/* <p className="text-gray-600">{milestone.description}</p> */}
-//               <span className="text-gray-400">{milestone.date}</span>
-//             </div>
-//             :
-//             <div
-//             className={`mt-2 text-center transition-opacity duration-500 border border-red-500  relative  h-[100px]`}
-//             style={{
-//               opacity: index < progress ? 1 : 0,
-//               transitionDelay: `${index * 300}ms`,
-//             }}
-//           >
-//             {/* <h2 className="text-xl font-semibold">{milestone.title}</h2> */}
-//             <p className="text-gray-600">{milestone.description}</p>
-//             {/* <span className="text-gray-400">{milestone.date}</span> */}
-//           </div>
-
-//             }
-
-
-
-//             {/* دایره‌های مراحل */}
-//             {/* ${(index / milestones.length) * 100} */}
-//             <div className={`w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white transition-opacity duration-500 border-8`}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 100}ms`,
-//                 position: 'absolute',
-//                 left: '50%',
-//                 transform: 'translateX(-50%)',
-//                 top: ``,
-//               }}
-//             >
-//               {index + 1}
-//             </div>
-//             {/* توضیحات مرحله */}
-//            {  !(index%2-1)?
-//             <div
-//               className={`mt-2 text-center transition-opacity duration-500 border border-red-500  relative h-[100px]` }
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`,
-//               }}
-//             >
-//               <h2 className="text-xl font-semibold">{milestone.title}</h2>
-//               {/* <p className="text-gray-600">{milestone.description}</p> */}
-//               <span className="text-gray-400">{milestone.date}</span>
-//             </div> :
-
-//                <div
-//               className={`mt-2 text-center transition-opacity duration-500 border border-red-500  relative h-[100px]`}
-//               style={{
-//                 opacity: index < progress ? 1 : 0,
-//                 transitionDelay: `${index * 300}ms`,
-//               }}
-//             >
-//               {/* <h2 className="text-xl font-semibold">{milestone.title}</h2> */}
-//               <p className="text-gray-600">{milestone.description}</p>
-//               {/* <span className="text-gray-400">{milestone.date}</span> */}
-//             </div> 
-
-
-
-
-
-
-//              }
-             
-
-
-//           </div>
-
-          
-
-//         ))}
-//       </div>
-//     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-//     </>
 //   );
 // };
 
-// export default Roadmap;
+// export default DashInput;
+
+import  { useState, useEffect } from 'react';
+
+const DashInput = ({ count }) => {
+  const [values, setValues] = useState(Array(count).fill(''));
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const handleChange = (index, event) => {
+    const newValues = [...values];
+    newValues[index] = event.target.value.replace(/[^0-9]/g, '');
+    setValues(newValues);
+
+
+    if (newValues[index] && index < count - 1) {
+      setCurrentIndex(index + 1);
+    }
+    
+   
+    if (newValues[index] === '') {
+      setHasInteracted(true);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowRight' && currentIndex < count - 1) {
+      setCurrentIndex(currentIndex + 1);
+      document.getElementById(`input-${currentIndex + 1}`).focus();
+    } else if (event.key === 'ArrowLeft' && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      document.getElementById(`input-${currentIndex - 1}`).focus();
+    }
+  };
+
+  useEffect(() => {
+    const currentInput = document.getElementById(`input-${currentIndex}`);
+    if (currentInput) {
+      currentInput.focus();
+    }
+  }, [currentIndex]);
+
+  return (
+    <div className="flex space-x-2">
+      {values.map((value, index) => {
+        const isEmpty = hasInteracted && value === '';
+        return (
+          <div
+            key={index}
+            className={`border-b-2 ${isEmpty ? 'border-red-500' : 'border-gray-500'} w-12`}
+          >
+            <input
+              id={`input-${index}`}
+              type="text"
+              value={value}
+              onChange={(e) => handleChange(index, e)}
+              onKeyDown={handleKeyDown}
+              className="w-full text-center outline-none"
+              maxLength={1} 
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default DashInput;

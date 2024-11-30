@@ -3,11 +3,17 @@ import './Informathion.css'
 import life from  '/src/assets/json/life.json'
 import child from '/src/assets/json/child.json'
 import family from '/src/assets/json/family.json'
+import 'aos/dist/aos.css';
+import AOS from 'aos';    
+import { useEffect } from 'react';
 
 export default function Informathion() {
+    useEffect(() => {
+        AOS.init();
+    }, []);
 
   return (
-    <div className=" w-full flex justify-center items-center  h-auto max-lg:flex-col-reverse my-32 py-8 bg-gray-100">
+    <div className=" w-full flex justify-center items-center  h-auto max-lg:flex-col-reverse my-32 py-8 bg-gray-100" data-aos="fade-up" data-aos-duration="2000">
         {/* information  */}
         {/* max-lg:h-[50vh] */}
      <div className="lg:w-1/2 max-lg:w-full lg:h-full  flex lg:justify-end max-lg:justify-center items-end  max-sm:-mt-16 ">

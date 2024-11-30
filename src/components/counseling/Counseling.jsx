@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Lottie from "lottie-react";
 import  counseling   from  '/src/assets/json/counseling.json'
 import "./Counseling.css"
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 export default function Counseling() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1540); 
+
+  useEffect(() => {
+    AOS.init();
+}, []);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,7 +81,7 @@ export default function Counseling() {
   }, [cards.length]);
 
   return (
-    <div className="w-full h-auto flex max-xl:flex-col-reverse relative overflow-hidden mb-24">
+    <div className="w-full h-auto flex max-xl:flex-col-reverse relative overflow-hidden mb-24" data-aos="fade-up" data-aos-duration="2000">
       <div className="w-10/12 max-xl:w-full flex justify-center items-center">
         {/* <div className=" w-full h-full"> */}
         {/* grid grid-cols-2 xl:grid-cols-4  py-8 gap-6 border w-full max-xl:mx-auto */}

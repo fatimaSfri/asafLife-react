@@ -1,6 +1,7 @@
 import './navbar.css'
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import Menu from '../menu/Menu'
+import { Link } from 'react-router-dom';
 
 function Navbar(){
  
@@ -20,7 +21,7 @@ function handleMenu(){
 const [bgColor, setBgColor] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 700) { 
+    if (window.scrollY > 200) { 
       setBgColor(true); 
     } else {
       setBgColor(false);
@@ -63,10 +64,10 @@ return(
                         <ul className=" lg:flex-row lg:gap-8 dropdown-menu  max-lg:bg-[#0000009f] w-full flex flex-col items-center
                         text-lg font-bold  max-lg:invisible  z-40 " dir="rtl">
                 
-                        <a><li className="hover:text-[#008061] text-white px-3 font-asaf cursor-pointer">خانه</li></a>
-                        <a href="#"><li className="hover:text-[#008061] text-white  px-3 py-5 cursor-pointer"> پشتیبانی </li></a>
-                        <a><li className="hover:text-[#008061] px-3 text-white py-5 cursor-pointer">سامانه</li></a>
-                        <a><li className="hover:text-[#008061] px-3 text-white py-5 cursor-pointer">ثبت نام / ورود</li></a>
+                        <a><li className="hover:text-[#55c7e0] text-white px-3 font-asaf cursor-pointer">خانه</li></a>
+                        <a href="#"><li className="hover:text-[#55c7e0] text-white  px-3 py-5 cursor-pointer"> پشتیبانی </li></a>
+                        <a><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">سامانه</li></a>
+                        <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">ثبت نام / ورود</li></Link>
                          </ul>
 
                      </div>

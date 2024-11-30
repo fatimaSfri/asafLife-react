@@ -48,7 +48,7 @@
 
    
 .route{
-  animation: rotate 20s linear infinite;
+  animation: rotate 20s linear ;
   transform-origin: 50% 50%;
 }
   @keyframes rotate {
@@ -64,7 +64,7 @@
   .roadMap{
     clip-path: inset(0 0 0 100%); 
     opacity: 0; 
-    animation: revealRoadMap 12.3s forwards infinite; 
+    animation: revealRoadMap 14.3s forwards ; 
 }
 @keyframes revealRoadMap {
     0% {
@@ -80,7 +80,7 @@
 .roadMapVertical {
   transform: translateY(-100%); 
   opacity: 0; 
-  animation: revealRoadMa 12.3s forwards infinite; 
+  animation: revealRoadMa 12.3s forwards ; 
 }
 
 @keyframes revealRoadMa {

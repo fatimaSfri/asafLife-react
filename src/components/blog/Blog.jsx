@@ -1,7 +1,14 @@
 import Lottie from "lottie-react";
 import blog from '/src/assets/json/blog.json';
+import { useEffect } from 'react';
+import 'aos/dist/aos.css';
+import AOS from 'aos';    
 
 export default function Blog({ text }) {
+  useEffect(() => {
+    AOS.init();
+}, []);
+
   const blogPosts = [
     {
       imgSrc: "./img/blog/blog3.jpg",
@@ -22,7 +29,7 @@ export default function Blog({ text }) {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center h-auto py-20 xl:mt-10">
+      <div className="w-full flex flex-col items-center justify-center h-auto py-20 xl:mt-10" data-aos="fade-up" data-aos-duration="1500" >
         <div className="xl:w-[1100px] lg:w-[900px] md:w-[700px] sm:w-[400px] max-sm:w-[300px] flex items-center">
           <div className="flex justify-center items-center w-14 -mt-5">
             <Lottie animationData={blog} loop={true} />

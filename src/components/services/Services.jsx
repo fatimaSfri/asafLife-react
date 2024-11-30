@@ -5,12 +5,17 @@ import investment from '/src/assets/json/investment.json'
 import psychology from '/src/assets/json/psychology.json'
 import retirement from "/src/assets/json/retirement.json"
 import animal from "/src/assets/json/animal.json"
+import 'aos/dist/aos.css';
+import AOS from 'aos';    
+import { useEffect } from 'react';
 
 function Services (){
-
+  useEffect(() => {
+    AOS.init();
+}, []);
 
   return(
-<div class=" w-full flex justify-center items-center  h-auto py-28" >
+<div class=" w-full flex justify-center items-center  h-auto py-28"  data-aos="fade-up" data-aos-duration="2000" >
 <div class="grid gap-6 px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
   {/* 1 */}
