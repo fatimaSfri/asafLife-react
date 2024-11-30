@@ -1,8 +1,9 @@
-import Input from "../input/Input";
+import Input from "../input/Input"
 import Joi from "joi";
 import { useEffect, useState } from "react";
 
-export default function NewLogin() {
+
+export default function TestTwo() {
   const initialTimeOut = 60; 
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState(null);
@@ -139,20 +140,29 @@ export default function NewLogin() {
   const handleInputChange = (name, value) => setPhone({ [name]: value });
   const handleInputChangePass = (name, value) => setPassword({ [name]: value });
 
+
+
+
+
+
   return (
-    <>
-      <div className="w-full h-screen flex justify-center items-center">
-        <div className="bg-white shadow-md rounded-lg w-full max-w-sm p-8 flex flex-col items-center">
-          <div className="bg-blue-900 w-full flex items-center justify-center py-4 rounded-md mb-6">
-            <h1 className="text-white text-xl font-bold">ASAFLIFE</h1>
-          </div>
-          <h2 className="text-lg font-semibold mb-4">ثبت‌ نام | ورود به حساب کاربری</h2>
-          <div className="w-full mb-4">
-            {!navigate && (
+    <div className='relative w-full h-screen overflow-hidden flex justify-center '>
+   <video className=" absolute top-0 left-0 w-full h-full object-cover -z-10"
+        src="./img/video/bg-login.MP4"
+        preload="auto"
+        autoPlay
+        loop
+        muted
+      ></video>
+      <div className=' h-full flex max-lg:flex-col-reverse items-center justify-evenly max-lg:gap-10 xl:w-10/12 max-xl:w-full '>
+      <div className='w-1/2 max-lg:w-full h-4/5  flex flex-col items-center lg:justify-center max-lg:justify-start'>
+      <h1 className='lg:w-[470px] max-lg:w-7/12 max-md:w-10/12  h-20  text-white text-lg font-bold flex items-center'>ورود/ثبت نام</h1>
+   
+       {!navigate && (
               <>
-                <label className="sr-only">شماره موبایل</label>
                 <Input
                   placeholder="شماره موبایل"
+                  icon="./img/login/phone.png"
                   initialValue={phone.phone}
                   onChange={handleInputChange}
                   name={'phone'}
@@ -164,32 +174,43 @@ export default function NewLogin() {
               <>
                 <label className="sr-only">رمز عبور</label>
                 <Input
-                  placeholder="رمزعبور"
+                  placeholder="کد تایید"
+                   icon="./img/login/key.png"
                   initialValue={password.password}
                   onChange={handleInputChangePass}
                   name={'password'}
                   validationErrors={validationErrorsPass.password}
                 />
-                <div className="text-[14px] w-full h-7">
-                  {data.timeOut !== null ? `00:${String(data.timeOut).padStart(2, '0')}` : ''}
-                </div>
-                {showLink && (
-                  <p className="text-[14px] underline underline-offset-4 cursor-pointer" onClick={generateNewCode}>
-                    ارسال دوباره کد
-                  </p>
-                )}
+                
               </>
             )}
-          </div>
-          <button
-            className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 focus:outline-none"
-            type="button"
-            onClick={navigate ? handleErrorPass : validate}
-          >
-            ادامه
-          </button>
-        </div>
+      <div className='md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5'>
+      <button className='sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg  bg-gradient-to-r from-[#213063] via-[#213063]  to-[#55c7e0]' onClick={navigate ? handleErrorPass : validate}>ورود</button>
+      {navigate && (
+              <>
+                <div className="text-[14px] h-10  bg-gray-200 flex flex-row-reverse items-center justify-center 
+                max-sm:w-1/2 sm:w-[250px] rounded-lg text-bold md:text-[18px] gap-2" >
+                  {data.timeOut !== null ? `00:${String(data.timeOut).padStart(2, '0')}` : ''}
+                 {showLink && (
+                  <>
+                   <div className="w-[3px] rounded-2xl h-5 bg-[#55c7e0]"></div>
+                  <p className="text-[14px] cursor-pointer  max-sm:text-[12px]"onClick={generateNewCode}>
+                    ارسال دوباره کد
+                  </p>
+                  </>
+                )}
+                 </div>
+              </>
+            )}
       </div>
-    </>
-  );
+      </div>
+      <div className='w-1/2 h-4/5  max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end'>   
+        <img src="./img/icon/Asaflogo.png" alt="" className="md:w-[300px] max-md:w-7/12 xl:w-[48%]" />
+        <p className="text-white md:text-[38px] max-md:text-[30px]">آینــــده ســـازان آسایــش فــــردا</p>
+        <p className="text-white md:text-[24px] max-md:text-[16px] ">Future builders of tomorrow's comfort</p>
+       </div>
+      </div>
+
+    </div>
+  )
 }

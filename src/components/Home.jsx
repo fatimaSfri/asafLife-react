@@ -9,12 +9,13 @@ import Blog from './blog/Blog.jsx';
 import Footer from './footer/Footer.jsx';
 import Infography from './infography/Infography.jsx';
 
+
 export default function Home(){
 
    return(
-     <div className="w-full h-[2600hv] flex flex-col "  >
-      
-    <NewBanner></NewBanner>
+     <div className="w-full h-[2600hv] flex flex-col " >
+   
+   <NewBanner></NewBanner>
     <Services ></Services>
     <Logo></Logo>
     <Informathion></Informathion>
@@ -22,7 +23,7 @@ export default function Home(){
     <Infography></Infography>
     <Staff></Staff>
     <Blog text="بلاگ"></Blog>
-    <Footer></Footer>
+   <Footer></Footer>
     
    </div>
 

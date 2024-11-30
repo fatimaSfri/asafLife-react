@@ -48,15 +48,8 @@ return(
               {toggle ?(
                 <Menu></Menu>
             )
-              // <ul className="flex flex-col items-center  lg:flex-row h-48  dropdown-menu absolute top-[85px] max-lg:bg-[#0000009f]  
-              //    text-lg font-bold  lg:justify-center w-full z-40 " dir="rtl">
-
-              //    <a className="w-full text-center hover:bg-[#c2fff1]"><li className="hover:text-[#008061] text-[#00C293] pt-2 font-asaf py-2  cursor-pointer">خانه</li></a>
-              //     <a href="" className="w-full text-center hover:bg-[#c2fff1]"><li className="hover:text-[#008061] text-[#00C293]   py-2 cursor-pointer w-full"> پشتیبانی</li></a>
-              //     <a href="" className="w-full text-center hover:bg-[#c2fff1]"> <li className="hover:text-[#008061] px-3 text-[#00C293] py-2 cursor-pointer "> سرویس</li></a>
-              //     <a className="w-full text-center hover:bg-[#c2fff1]"><li className="hover:text-[#008061] px-3 text-[#00C293] py-2 cursor-pointer">سامانه</li> </a>  
-              //  </ul>)
-                :<div></div> 
+             
+              :<div></div> 
                }  </header>
 
                 {/* menu for sm */}

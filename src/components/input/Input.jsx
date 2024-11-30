@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 
 
-function Input ({ initialValue, onChange, validationErrors , placeholder, name   }){
+function Input ({ initialValue, onChange, validationErrors , placeholder, name ,icon  }){
 
     const [value, setValue] = useState(initialValue);
 
@@ -15,16 +15,18 @@ function Input ({ initialValue, onChange, validationErrors , placeholder, name  
     
     
      return(
-
-    <div className="w-full flex flex-col items-center justify-center">
+  
+    <div className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20  flex flex-col items-center">
+     <div className='bg-white w-full rounded-xl h-4/5 flex items-center justify-between'>
+     <img src={icon} alt=""  className='h-10 w-10 mx-auto'/>
     <input
       type = "text"
-   className="w-full border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:border-blue-400 placeholder-gray-500 "
+   className="bg-gray-200 rounded-xl w-10/12 h-full px-4 focus:outline-none"
       placeholder = {placeholder}
       value={value} 
       onChange={(e) => setValue(e.target.value)}>
       </input>
-      
+      </div>
      {validationErrors &&
     <span
       className="w-full text-[12px] text-red-500 pt-1 pr-1"
