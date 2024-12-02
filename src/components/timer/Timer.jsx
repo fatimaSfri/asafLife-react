@@ -1,44 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Timer.css'
 export default function TestTwo() {
-  const initialTime = { days: 147, hours: 23, minutes: 60, seconds: 60, secendOne: 59, secendTwo: 58, secendThree: 61, secendFour: 62 };
-  const [time, setTime] = useState(initialTime);
+  
+  const targetDate = new Date('2025-04-28T00:00:00Z');
+
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = targetDate - now; 
+
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const totalSeconds = Math.floor(difference / 1000);
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    const secendThree = totalSeconds % 60 +1;
+    const secendOne = totalSeconds % 60 -1;
+    const secendFour = totalSeconds % 60 +2;
+    const secendTwo = totalSeconds % 60 -2;
+
+    return { days, hours, minutes, seconds,secendThree,secendOne,secendFour ,secendTwo };
+  };
+
+  const [time, setTime] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const storedTime = JSON.parse(localStorage.getItem('timer')) || initialTime;
-    setTime(storedTime);
-
     const interval = setInterval(() => {
-      setTime(prevTime => {
-        let { days, hours, minutes, seconds, secendOne, secendTwo, secendThree, secendFour } = prevTime;
-
-        if (seconds > 0) {
-          seconds-- ;
-          secendOne = secendOne > 0 ? secendOne - 1 : 60;
-          secendTwo = secendTwo > 0 ? secendTwo - 1 : 59;
-          secendThree = secendThree > 0 ? secendThree - 1 : 60;
-          secendFour = secendFour > 0 ? secendFour - 1 : 61;
-        } else if (minutes > 0) {
-          minutes--;
-          seconds = 59;
-          secendOne = 58; secendTwo = 57; secendThree = 60; secendFour = 61;
-        } else if (hours > 0) {
-          hours--;
-          minutes = 59; seconds = 59;
-          secendOne = 58; secendTwo = 57; secendThree = 60; secendFour = 61;
-        } else if (days > 0) {
-          days--;
-          hours = 23; minutes = 59; seconds = 59;
-          secendOne = 58; secendTwo = 57; secendThree = 60; secendFour = 61;
-        } else {
-          clearInterval(interval);
-          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        }
-
-        const newTime = { days, hours, minutes, seconds, secendOne, secendTwo, secendThree, secendFour };
-        localStorage.setItem('timer', JSON.stringify(newTime));
-        return newTime;
-      });
+      setTime(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(interval);

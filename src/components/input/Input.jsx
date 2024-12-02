@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 
-function Input({ initialValue, onChange, validationErrors, placeholder, name, icon, count }) {
+function Input({ onChange, validationErrors, name, icon, count }) {
   const [values, setValues] = useState(Array(count).fill(''));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const handleChange = (index, event) => {
     const newValues = [...values];
-    newValues[index] = event.target.value.replace(/[^0-9]/g, ''); 
+    newValues[index] = event.target.value.replace(/[^0-9]/g ,''); 
     setValues(newValues);
 
-    
     const concatenatedValues = newValues.join(''); 
     onChange(name, concatenatedValues); 
 
-   
+    // Move to the next input if the current input is filled
     if (newValues[index] && index < count - 1) {
       setCurrentIndex(index + 1);
     }
 
-  
+    // Mark as interacted
     setHasInteracted(true);
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'ArrowRight' && currentIndex < count - 1) {
-      setCurrentIndex(currentIndex + 1);
-      document.getElementById(`input-${currentIndex + 1}`).focus();
-    } else if (event.key === 'ArrowLeft' && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      document.getElementById(`input-${currentIndex - 1}`).focus();
+    if (event.key === 'ArrowRight') {
+      if (currentIndex < count - 1) {
+        setCurrentIndex(currentIndex + 1);
+      }
+    } else if (event.key === 'ArrowLeft') {
+      if (currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      }
+    } else if (event.key === 'Backspace') {
+      if (values[currentIndex] === '' && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      }
+    } else if (event.key === 'Enter') {
+      if (currentIndex < count - 1) {
+        setCurrentIndex(currentIndex + 1);
+      }
     }
   };
 
@@ -50,7 +59,7 @@ function Input({ initialValue, onChange, validationErrors, placeholder, name, ic
             return (
               <div
                 key={index}
-                className={`border-b-2 bg-gray-200 ${isEmpty ? 'border-red-500' : 'border-gray-500'}`}
+                className={`border-b-2 bg-gray-200 ${isEmpty ? 'border-gray-500' : 'border-[#55c7e0]'}`}
               >
                 <input
                   id={`input-${index}`}
@@ -58,7 +67,7 @@ function Input({ initialValue, onChange, validationErrors, placeholder, name, ic
                   value={value}
                   onChange={(e) => handleChange(index, e)}
                   onKeyDown={handleKeyDown}
-                  className="w-full text-center outline-none bg-gray-100 "
+                  className="w-full text-center outline-none bg-gray-200"
                   maxLength={1}
                 />
               </div>
