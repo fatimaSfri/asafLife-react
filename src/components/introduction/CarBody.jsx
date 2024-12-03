@@ -7,9 +7,10 @@ import Blog from '../blog/Blog'
 export default function CarBody() {
   return (
     <>
+  
    <Navbar></Navbar>
-   <BannerForCar></BannerForCar>
-   <div className='h-auto w-full bg-gray-200'>
+   <BannerForCar play="hidden" gap="xl:gap-40 gap-20" size="xl:w-4/12"></BannerForCar>
+   <div className='h-auto w-full bg-gray-200' >
    <div className='w-full  flex justify-center items-center py-16 '>
    <video className="rounded-3xl  lg:h-[700px] "
         src= "./img/video/CarBody.mp4"
@@ -20,6 +21,7 @@ export default function CarBody() {
         muted
        >
      </video>
+  
    </div>
    <div className='w-full max-lg:h-[100vh] lg:h-[70vh] flex flex-col items-center justify-center max-sm:my-24'>
 
