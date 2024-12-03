@@ -1,9 +1,10 @@
 
 import './RoadMap.css'
-import React, { useState, useEffect } from 'react';
-import './RoadMap.css'
+import  { useState, useEffect } from 'react';
+
 
 const Roadmap = () => {
+
   const milestones = [
     { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/seo.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'تحلیل بازار و رقبا بهبود محصولات زیر ساخت های دیجیتال ', date: '1400' , color: '#fdce0b' },
     { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/discount.png' , subTitle: 'تثبیت جایگاه و افزایش سهم بازار' , description: 'بهره وری عملیاتی ارتباطات موثر با مشتریان  ', date: '1401'  , color: '#115052' },
@@ -13,43 +14,27 @@ const Roadmap = () => {
   ]
 
   const [progress, setProgress] = useState(0);
-
+ const [animated , setAnimated] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
+       if(window.scrollY > 2400 && window.scrollY < 3400 ){
+        setAnimated(true)
       setProgress((prev) => {
-        if (prev < milestones.length) {
+        if (prev < milestones.length ) {
           return prev + 1;
         } else {
           clearInterval(interval); 
           
           return prev; 
         }
-      });
+      });}
     }, 2000);
     
     return () => clearInterval(interval);
    
   }, [milestones.length]);
 
-
-//   const interval = setInterval(() => {
-//     setProgress((prev) => {
-//       if (prev < milestones.length - 1) {
-//         return prev + 1;
-//       } else {
-//         clearInterval(interval); 
-//         setHasShown(true); 
-//         return prev; 
-//       }
-//     });
-//   }, 2000);
-
-//   return () => clearInterval(interval);
-// }, [milestones.length]);
-
-// ****************************
- 
 
   return (
     <>
@@ -58,7 +43,7 @@ const Roadmap = () => {
      
        <div className="flex items-center justify-center w-full relative flex-row-reverse  ">
         {/* style={{ width: `${(progress / milestones.length) * 90}%` }} */}
-        <div className="absolute top-26 left-0 h-[2px] bg-black transition-all duration-2000 mb-2 roadMap w-[90%]"  
+        <div className={`absolute top-26 left-0 h-[2px] bg-black transition-all duration-2000 mb-2  ${animated ?'roadMap w-[90%]':'' }`}  
         ></div>
 
          {milestones.map((milestone, index) => (
@@ -151,7 +136,7 @@ const Roadmap = () => {
     <div className='flex justify-center items-center md:hidden'>
       <div className="flex flex-col items-center justify-center gap-6 py-10 max-lg:w-full  relative">
         {/* style={{ height: `${(progress / milestones.length) * 86}%` }} */}
-        <div className="absolute left-1/2 top-0 w-[1px] bg-black transition-all duration-2000 roadMapVertical h-[86%]" 
+        <div className={`absolute left-1/2 top-0 w-[1px] bg-black transition-all duration-2000   ${animated?'roadMapVertical h-[86%]':''}`} 
          ></div>
 
         {milestones.map((milestone, index) => (
