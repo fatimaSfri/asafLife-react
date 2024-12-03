@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import Home from './components/Home.jsx';
 import Login from './components/login/Login.jsx';
-import CarBody from './components/carBody/CarBody.jsx'
+import CarBody from './components/introduction/CarBody.jsx'
 
 
 

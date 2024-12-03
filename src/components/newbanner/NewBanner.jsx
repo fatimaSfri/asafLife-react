@@ -1,15 +1,10 @@
-import React, { useEffect , useState } from 'react';
+import  { useEffect , useState } from 'react';
 import './NewBanner.css'
 import Modal from '../modal/Modal';
 import BannerForCar from './BannerForCar';
 import Navbar from '../navbar/Navbar'
-import Legal from "./LegalBanner"
-import Child from "./ChildBanner"
-import Treatment from './Treatment';
-import Psychology from './PsychologyBanner';
-import AnimalBanner from './AnimalBanner';
 import LifeBanner from './LifeBanner';
-import MobileBanner from './MobilBanner';
+
 
 function  NewBanner(){
 
@@ -25,19 +20,21 @@ function  NewBanner(){
         modalVideo:'./img/video/all.mp4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
         modalVideo:"./img/video/CarBody.mp4" },
-        { component: <AnimalBanner  videoShowHandle={videoShowHandle}></AnimalBanner> , 
-        modalVideo:'./img/video/pet.mp4'},
-        { component: <MobileBanner  videoShowHandle={videoShowHandle}></MobileBanner> , modalVideo:'./img/video/all.mp4'},
-        { component: <Legal  videoShowHandle={videoShowHandle}></Legal> , 
-        modalVideo:'./img/video/all.mp4'},
-        { component: <Treatment  videoShowHandle={videoShowHandle}></Treatment> , 
-        modalVideo:'./img/video/all.mp4'},
-        { component: <Child  videoShowHandle={videoShowHandle}></Child> , 
-        modalVideo:'./img/video/all.mp4' },
-        { component: <Psychology  videoShowHandle={videoShowHandle}></Psychology> , 
-        modalVideo:'./img/video/all.mp4' }, 
-     ]
+      ]
      )
+
+     //     modalVideo:'./img/video/pet.mp4'},
+     //     { component: <MobileBanner  videoShowHandle={videoShowHandle}></MobileBanner> , modalVideo:'./img/video/all.mp4'},
+     //     { component: <Legal  videoShowHandle={videoShowHandle}></Legal> , 
+     //     modalVideo:'./img/video/all.mp4'},
+     //     { component: <Treatment  videoShowHandle={videoShowHandle}></Treatment> , 
+     //     modalVideo:'./img/video/all.mp4'},
+     //     { component: <Child  videoShowHandle={videoShowHandle}></Child> , 
+     //     modalVideo:'./img/video/all.mp4' },
+     //     { component: <Psychology  videoShowHandle={videoShowHandle}></Psychology> , 
+     //     modalVideo:'./img/video/all.mp4' }, 
+     //  ]
+     
 
     const [newIndex ,setNewIndex] = useState(0)
      function sliderTimeOut (step = 1) { 
