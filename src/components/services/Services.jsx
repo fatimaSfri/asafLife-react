@@ -7,7 +7,7 @@ import retirement from "/src/assets/json/retirement.json";
 import animal from "/src/assets/json/animal.json";
 import 'aos/dist/aos.css';
 import AOS from 'aos';    
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { Link } from "react-router-dom";
 
 const servicesData = [
@@ -16,7 +16,8 @@ const servicesData = [
     title: "بیمه زندگی",
     description: "مشاوره حقوقی تخصصی، راهی مطمئن برای حل مشکلات شما در دنیای پیچیده قوانین و مقررات.",
     imgSrc: "./img/servics/Life.jpg",
-    link:"/Life"
+    link:"/Life",
+    color:"#f6f461"
   },
   {
     animation: investment,
@@ -55,7 +56,10 @@ const servicesData = [
 ];
 
 function ServiceCard({ animation, title, description, imgSrc }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
+    
     <div className="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px]">
       <div className="font-bold  w-11/12 mt-8 py-[2px] bg-gray-100 rounded-e-[14px] flex relative">
         <div className="flex justify-center items-center w-14 absolute -mt-5">
@@ -65,8 +69,23 @@ function ServiceCard({ animation, title, description, imgSrc }) {
       </div>
       <p className="text-gray-600 flex-grow  mx-auto w-11/12 py-3 text-[12px]">{description}</p>
       <button className="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">توضیحات بیشتر &#62;</button>
-      <div className="w-full">
-        <img src={imgSrc} alt={title} className="rounded-3xl" />
+      {/* <div className="w-full"> */}
+      <div 
+            className="relative w-full overflow-hidden" 
+            onMouseEnter={() => setIsHovered(true)} 
+            onMouseLeave={() => setIsHovered(false)}
+        >
+        <img src={imgSrc} alt={title} className="rounded-3xl " />
+        <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:servicesData.color }}  >
+              
+            </div>
+            <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-e-lg -mr-1 ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
+             style={{ backgroundColor:servicesData.color }}
+            >
+               
+            </div>
+       
+        
       </div>
     </div>
   );

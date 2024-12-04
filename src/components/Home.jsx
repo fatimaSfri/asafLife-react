@@ -8,7 +8,7 @@ import Staff from './staff/Staff.jsx';
 import Blog from './blog/Blog.jsx';
 import Footer from './footer/Footer.jsx';
 import Infography from './infography/Infography.jsx';
-
+import Test from "./test/Test.jsx"
 
 export default function Home(){
 
@@ -22,6 +22,7 @@ export default function Home(){
     <Counseling></Counseling>
     <Infography></Infography>
     <Staff></Staff>
+    <Test></Test>
     <Blog text="بلاگ" gap="py-20 xl:mt-10"></Blog>
    <Footer></Footer>
     

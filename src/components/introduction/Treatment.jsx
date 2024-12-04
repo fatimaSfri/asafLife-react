@@ -27,41 +27,42 @@ export default function CarBody() {
      </video>
   
    </div>
-   <div className='w-full md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
+   <div className='w-10/12  mx-auto md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
 
-    <div className='md:w-10/12 max-md:w-11/12  flex items-center gap-2  '>
+    <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
     <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>
-    <h1 className='font-bold text-[20px] text-[#213063]' > بیمه ثالث بدنه</h1>
+    <h1 className='font-bold text-[20px] text-[#213063]' > بیمه درمان </h1>
     </div>
 
     <div className='md:w-9/12 max-md:w-10/12 flex flex-col  '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >بیمه بدنه:</h1>
+    <h1 className='font-bold text-[18px] text-[#213063]' >بیمه‌های پایه </h1>
     </div>
-    <p className=' '> این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.
+    <p className=' '> 
+    این نوع بیمه معمولاً توسط دولت یا سازمان‌های بیمه‌گر عمومی ارائه می‌شود و شامل خدمات اساسی پزشکی است. بیمه‌های پایه معمولاً هزینه‌های بیمارستانی، ویزیت پزشک و برخی داروها را پوشش می‌دهند.
     </p>
     </div>
 
     <div className='md:w-9/12 max-md:w-10/12 '>
     <div className='flex items-center gap-4  '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >پوشش‌های اصلی: </h1>
+    <h1 className='font-bold text-[18px] text-[#213063]' >بیمه درمان خصوصی </h1>
     </div>
-    <p className=' '>شامل حوادثی مانند تصادف، آتش‌سوزی، سرقت کلی خودرو، یا واژگونی
+    <p className=' '>
+    این بیمه‌ها توسط شرکت‌های بیمه خصوصی ارائه می‌شوند و شامل خدمات گسترده‌تری نسبت به بیمه‌های پایه هستند. این نوع بیمه معمولاً انتخاب‌های بیشتری برای پزشکان و بیمارستان‌ها فراهم می‌کند.
     </p>
     </div>
-    <div className='md:w-9/12 max-md:w-10/12 lg:h-1/6 '>
+    <div className='md:w-9/12 max-md:w-10/12 lg:h-1/6' >
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full'></div>
-    <h1 className='font-bold text-[18px] text-[#213063] '>پوشش‌های اضافی:</h1>
+    <h1 className='font-bold text-[18px] text-[#213063] '>
+    بیمه درمان تکمیلی
+      </h1>
     </div>
-    <p className='    ' >شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
-    امکان انتخاب پوشش‌های متنوع بر اساس نیاز و ارزش خودرو.
-   مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
-   شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
-   امکان انتخاب پوشش‌های متنوع بر اساس نیاز و ارزش خودرو.
-   مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
+    <p className='    ' >
+    بیمه درمان تکمیلی به عنوان یک پوشش اضافی برای بیمه پایه عمل می‌کند. این بیمه هزینه‌هایی را که بیمه پایه پوشش نمی‌دهد، مانند هزینه‌های جراحی‌های خاص یا داروهای خاص، جبران می‌کند.
+
     </p></div>
     <div className='md:w-9/12 max-md:w-10/12 h-1/6  flex items-center justify-end mouse-pointer'>
      <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/>
