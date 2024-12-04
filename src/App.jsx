@@ -4,8 +4,10 @@ import './App.css'
 import Home from './components/Home.jsx';
 import Login from './components/login/Login.jsx';
 import CarBody from './components/introduction/CarBody.jsx'
-
-
+import Life from "./components/introduction/Life.jsx"
+import Treatment from "./components/introduction/Treatment.jsx"
+import Pet from "./components/introduction/Pet.jsx"
+import Mobile from "./components/introduction/Mobile.jsx"
 
 function App() {
    return (<>    
@@ -13,7 +15,10 @@ function App() {
          <Route path="/" element={<Home />}/>
          <Route path= "/login"  element={<Login/>}/> 
          <Route path='/carBody' element={<CarBody/>} />
-       
+         <Route path='/Life' element={<Life/>} />
+         <Route path='/treatment' element={<Treatment/>} />
+         <Route path='/pet' element={<Pet/>} />
+         <Route path='/Mobile' element={<Mobile/>} />
    </Routes>
    </>
   )

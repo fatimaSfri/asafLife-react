@@ -22,7 +22,7 @@ export default function Home(){
     <Counseling></Counseling>
     <Infography></Infography>
     <Staff></Staff>
-    <Blog text="بلاگ"></Blog>
+    <Blog text="بلاگ" gap="py-20 xl:mt-10"></Blog>
    <Footer></Footer>
     
    </div>

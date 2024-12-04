@@ -58,14 +58,14 @@ export default function Menu() {
  
     </div>
     
-    <button className="w-9/12 bg-white text-[#55c7e0] h-9  rounded-xl">ورود / ثبت نام</button>
+    <button className="w-9/12 bg-white text-[#55c7e0] h-9 rounded-xl">ورود / ثبت نام</button>
     <div className='h-[2px] w-9/12 bg-gray-400 '></div>
-    <div className="w-full h-10 -mt-4 flex flex-row-reverse mx-auto gap-2  justify-center overflow-hidden"> 
-    <div className="flex items-center "> 
+    <div className="w-full h-10 -mt-4 flex flex-row-reverse mx-auto gap-2 justify-center overflow-hidden "> 
+    <div className="flex items-center gap-1"> 
     <p className="text-gray-500 text-[14px] ">09121887644</p>
     <img src="./img/menu/phone.png" alt="" className="w-5 h-5"/>
    </div>
-   <div className="flex items-center "> 
+   <div className="flex items-center gap-1"> 
     <p className="text-gray-500 text-[14px] ">021-91098951</p>
     <img src="./img/menu/fax.png" alt="" className="w-5 h-5"/>
    </div>

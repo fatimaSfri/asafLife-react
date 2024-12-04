@@ -9,15 +9,13 @@ import LifeBanner from './LifeBanner';
 function  NewBanner(){
 
     const [videoShow , setVideoShow] = useState(false)
-    const [allVideos , setAllVideo] = useState({
-      defultVideo:"./img/Animation/asafdesign.mp4", carBodyVideo:"", animalVideo:""
-    })
+   
 
     //  , frontObjectCarOff:image[0],frontObjectCarOn:image[1], text:image[2]
     const [sliderImages,setsliderImages]= useState(
       [
       { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
-        modalVideo:'./img/video/all.mp4'},
+        modalVideo:'./img/video/asaf.mp4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
         modalVideo:"./img/video/CarBody.mp4" },
       ]
