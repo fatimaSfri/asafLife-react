@@ -18,7 +18,9 @@ const Roadmap = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-       if(window.scrollY > 2400 && window.scrollY < 3400 ){
+       if(innerWidth>900 && window.scrollY > 2400 && window.scrollY < 3400 || 
+        innerWidth<900 && window.scrollY > 4401 && window.scrollY < 5400 || window.scrollY > 3401 && window.scrollY < 4400 
+        ){
         setAnimated(true)
       setProgress((prev) => {
         if (prev < milestones.length ) {

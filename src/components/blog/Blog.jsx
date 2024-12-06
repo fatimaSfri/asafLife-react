@@ -1,58 +1,11 @@
-import Lottie from "lottie-react";
-import blog from '/src/assets/json/blog.json';
-import { useEffect } from 'react';
-import 'aos/dist/aos.css';
-import AOS from 'aos';    
+import Card from "../Card/Card"
 
-export default function Blog({ text ,gap }) {
-  useEffect(() => {
-    AOS.init();
-}, []);
-
-  const blogPosts = [
-    {
-      imgSrc: "./img/blog/blog3.jpg",
-      title: "مشاوره",
-      description: "شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان"
-    },
-    {
-      imgSrc: "./img/blog/blog2.jpg",
-      title: "مشاوره",
-      description: "شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان"
-    },
-    {
-      imgSrc: "./img/blog/blog1.jpg",
-      title: "مشاوره",
-      description: "شرکت کارگذاری آینده ســــازان آسایـش فردا با سابقه ۳۰ سالــه مدیران خود در عرضه تجارت و بیمه و ایجاد باشگــاه مشتریــان"
-    }
-  ];
-
+export default function Blog() {
   return (
-    <>
-      <div className={`w-full flex flex-col items-center justify-center h-auto ${gap}`} data-aos="fade-up" data-aos-duration="1500" >
-        <div className="xl:w-[1100px] lg:w-[900px] md:w-[700px] sm:w-[400px] max-sm:w-[300px] flex items-center">
-          <div className="flex justify-center items-center w-14 -mt-5">
-            <Lottie animationData={blog} loop={true} />
-          </div>
-          <p className="font-bold text-[#213063] text-[18px] px-2">{text}</p>
-        </div>
-        <div className="grid gap-6 px-4 py-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post, index) => (
-            <div key={index} className="bg-white rounded-3xl shadow min-w-[200px] max-w-[350px] flex flex-col min-h-[350px]">
-              <div className="w-full">
-                <img src={post.imgSrc} alt="" className="rounded-2xl" />
-              </div>
-              <div className="font-bold w-10/12 flex relative">
-                <h2 className="text-lg max-sm:text-[14px] text-[#213063] mt-4 mr-6">{post.title}</h2>
-              </div>
-              <p className="text-gray-600 flex-grow text-center mx-auto w-11/12 py-1 text-[12px]">{post.description}</p>
-              <button className="text-[#213063] hover:underline text-[14px] text-left ml-6 py-4 max-sm:text-[12px]">
-                توضیحات بیشتر &#62;
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+    <Card title="بلاگ" titleCardOne="چرا بیمه عمر ضروری است؟" subTitleOne="بیمه عمر نه‌تنها امنیت مالی را برای خانواده‌تان فراهم می‌کند، بلکه می‌تواند به عنوان یک سرمایه‌گذاری مطمئن نیز عمل کند. در این مقاله به مزایای بیمه عمر و ضرورت آن برای هر فرد می‌پردازیم"
+    titleCardTwo="چگونه بیمه خودرو انتخاب کنیم؟" 
+     subTitleTwo= " نتخاب بیمه خودرو ممکن است گاهی دشوار به نظر برسد. در این مقاله، نکات کلیدی برای انتخاب بیمه مناسب خودرو و عواملی که باید در نظر بگیرید را بررسی خواهیم کرد"
+    titleCardThree="بیمه مسئولیت" subTitleThree="بیمه مسئولیت می‌تواند شما را در برابر دعاوی حقوقی و هزینه‌های ناشی از آسیب‌های احتمالی محافظت کند. در این مقاله به اهمیت بیمه مسئولیت و دلایل نیاز به آن می‌پردازیم"
+    gap="py-20 xl:mt-10"></Card>
+  )
 }

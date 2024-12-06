@@ -83,8 +83,6 @@ export default function Counseling() {
   return (
     <div className="w-full h-auto flex max-xl:flex-col-reverse relative overflow-hidden mb-24" data-aos="fade-up" data-aos-duration="2000">
       <div className="w-10/12 max-xl:w-full flex justify-center items-center">
-        {/* <div className=" w-full h-full"> */}
-        {/* grid grid-cols-2 xl:grid-cols-4  py-8 gap-6 border w-full max-xl:mx-auto */}
         <div className=" flex  w-full gap-4  " >
         
           {cards.map((card, index) => (
@@ -127,7 +125,7 @@ export default function Counseling() {
         {/* </div> */}
       </div>
 
-      <div className="w-1/2 h-[400px] flex max-xl:h-[30vh] max-md:w-9/12 max-lg:w-7/12 max-xl:w-5/12 mx-auto" >
+      <div className="w-1/2 flex  max-md:w-9/12 max-lg:w-7/12 max-xl:w-5/12 mx-auto" >
         <div className="w-9/12 h-full max-xl:w-full" >
           <div className=" w-full h-1/6 max-xl:w-full max-xl:h-1/3 flex items-center ">
           <div className='w-24 h-12 bg-gray-100 rounded-l-xl flex items-center justify-end '>
@@ -137,7 +135,7 @@ export default function Counseling() {
           </div>
           <h1 className='md:pr-2 font-bold text-[#213063] md:text-lg max-md:text-[14px]'> مشــاوره هـا </h1>
           </div>
-          <p className=" w-full h-5/6 max-xl:h-2/3 p-6 md:px-4 max-sm:text-[12px] text-right xl:px-10 overflow-hidden ">
+          <p className=" min-w-[200px] p-6 md:px-4 max-sm:text-[12px] text-right xl:px-10 overflow-hidden">
           مشاوره یکی از مؤثرترین راه‌ها برای دریافت اطلاعات تخصصی و پیدا کردن راه‌حل‌های مناسب در موضوعات مختلف است. از مسائل شخصی گرفته تا موضوعات حرفه‌ای، مشاوره به شما کمک می‌کند تا با دید بازتری تصمیم‌گیری کنید و بهترین مسیر را انتخاب کنید.    
           </p>
         </div>

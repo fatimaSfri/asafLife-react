@@ -14,48 +14,59 @@ const servicesData = [
   {
     animation: life,
     title: "بیمه زندگی",
-    description: "مشاوره حقوقی تخصصی، راهی مطمئن برای حل مشکلات شما در دنیای پیچیده قوانین و مقررات.",
-    imgSrc: "./img/servics/Life.jpg",
+    description:
+"این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
+    imgSrc: "./img/servics/life.jpg",
     link:"/Life",
     color:"#f6f461"
   },
   {
     animation: investment,
     title: "ثالث بدنه",
-    description: "مشاوره روانشناسی، قدمی برای آرامش و رشد شخصی.",
+    description: 
+   "بیمه ثالث بدنه، نوعی بیمه خودرو است که شامل دو بخش اصلی می‌شود: بیمه مسئولیت مدنی (ثالث) و بیمه .بدنه این نوع بیمه به مالکان خودرو کمک می‌کند . ",
     imgSrc: "./img/servics/carBody.jpg",
-    link:"./carBody"
+    link:"./carBody",
+    color:"#fdce0b"
   },
   {
     animation: psychology  ,
     title: " بیمه درمان",
-    description: "مشاوره سرمایه‌گذاری، کلید موفقیت مالی شما.",
-    imgSrc: "./img/servics/treatment.jpg",
-    link:"/treatment"
+    description: 
+"بیمه درمان به افراد کمک می‌کند تا در صورت بروز بیماری یا حادثه، نگرانی کمتری درباره هزینه‌های درمان داشته باشند و بتوانند به راحتی به خدمات پزشکی دسترسی پیدا کنند." , 
+  imgSrc: "./img/servics/treatment.jpg",
+    link:"/treatment",
+    color:"#c32c3e"
   },
   {
     animation: animal,
     title: "بیمه حیوانات خانگی ",
-    description: "برنامه‌ریزی برای دوران بازنشستگی از مهم‌ترین تصمیمات است.",
+    description: 
+    "بیمه حیوانات خانگی به شما این امکان را می‌دهد که با خیال راحت، بهترین خدمات درمانی و مراقبتی را برای دوست کوچک خود فراهم کنید.",
     imgSrc: "./img/servics/animals.jpg",
-    link:"/pet"
+    link:"/pet",
+    color:"#552ade"
   },
   {
     animation: legal ,
     title: "بیمه موبایل",
-    description: "زندگی پر از اتفاقات پیش‌بینی‌نشده است، اما با بیمه زندگی می‌توانید از خود و عزیزانتان محافظت کنید.",
+    description: 
+    "بیمه موبایل به کاربران کمک می‌کند تا از هزینه‌های بالای تعمیر یا تعویض گوشی‌های خود در صورت بروز حادثه محافظت کنند و آرامش خاطر بیشتری داشته باشند.",
     imgSrc: "./img/servics/mobile.jpg",
-    link:"/Mobile"
+    link:"/Mobile",
+    color:"#d21a1a"
   },
   {
     animation: retirement,
     title: "بیمه خدام",
-    description: "بیمه حیوانات خانگی به شما این امکان را می‌دهد که با خیال راحت، بهترین خدمات درمانی و مراقبتی را برای دوست کوچک خود فراهم کنید.",
+    description:
+    "پوشش بیماری: برخی از بیمه‌ها ممکن است هزینه‌های درمانی را در صورت بیماری کارمند نیز پوشش دهند  و همچنین امنیت بیشتری برای کارمندان فراهم کند.",
     imgSrc: "./img/servics/img-06.jpg",
+    color:"#00ff84"
   },
 ];
 
-function ServiceCard({ animation, title, description, imgSrc }) {
+function ServiceCard({ animation, title, description, imgSrc,color }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -76,11 +87,11 @@ function ServiceCard({ animation, title, description, imgSrc }) {
             onMouseLeave={() => setIsHovered(false)}
         >
         <img src={imgSrc} alt={title} className="rounded-3xl " />
-        <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:servicesData.color }}  >
+        <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:color }}  >
               
             </div>
             <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-e-lg -mr-1 ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
-             style={{ backgroundColor:servicesData.color }}
+             style={{ backgroundColor:color }}
             >
                
             </div>

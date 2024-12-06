@@ -2,7 +2,7 @@ import  {  useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import BannerForCar from  '../newbanner/BannerForCar';
 import Footer from '../footer/Footer'
-import Blog from '../blog/Blog'
+import PreviewServices from '../services/PreviewSrvices';
 
 export default function CarBody() {
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function CarBody() {
      </video>
   
    </div>
-   <div className='w-10/12 md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto '>
+   <div className='w-11/12 md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto '>
 
     <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
     <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>
@@ -68,7 +68,7 @@ export default function CarBody() {
     </div>
     
    </div>
-   <Blog text='بیمه ها' gap="md:mb-32 max-md:py-10" ></Blog>
+   <PreviewServices ></PreviewServices>
    <Footer></Footer>
    </div>
 

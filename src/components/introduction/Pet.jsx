@@ -1,7 +1,7 @@
 import  {  useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
-import Blog from '../blog/Blog'
+import PreviewServices from '../services/PreviewSrvices';
 import Animal from '../newbanner/AnimalBanner.jsx';
 
 export default function CarBody() {
@@ -71,7 +71,7 @@ export default function CarBody() {
     </div>
     
    </div>
-   <Blog text='بیمه ها' gap="md:mb-32 max-md:py-10" ></Blog>
+   <PreviewServices></PreviewServices>
    <Footer></Footer>
    </div>
 
