@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import Lottie from "lottie-react";
 import  counseling   from  '/src/assets/json/counseling.json'
 import "./Counseling.css"
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import { Link } from 'react-router-dom';
+import { link } from 'joi';
 
 export default function Counseling() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1540); 
@@ -36,7 +38,8 @@ export default function Counseling() {
       color:"#55c7e0",
       image: "./img/counseling/psychology.jpg",
       iconClock: "./img/counseling/clockblue.svg",
-      iconUser:"./img/counseling/userblue.svg"
+      iconUser:"./img/counseling/userblue.svg",
+      link :"/psychology"
     },
     {
       title: "مشاوره حقوقی",
@@ -46,7 +49,8 @@ export default function Counseling() {
       color: "#115052",
       image: "./img/counseling/legal.jpg",
       iconClock: "./img/counseling/clockYellow.svg",
-      iconUser:"./img/counseling/userYellow.svg"
+      iconUser:"./img/counseling/userYellow.svg",
+      link :"/legalAdvice"
     },
     {
       title: "مشاوره سرمایه گذاری",
@@ -86,7 +90,8 @@ export default function Counseling() {
         <div className=" flex  w-full gap-4  " >
         
           {cards.map((card, index) => (
-      
+            <>
+            
             <div key={index}
               className={`${isMobile?' w-full h-full transition-transform duration-500 ease-in-out  flex items-center justify-center' : 'w-full '} 
                 ${index === currentIndex  ? 'max-xl:opacity-100 max-xl:flex max-xl:z-10 max-xl:translate-x-0' : 'max-xl:opacity-0  max-xl:z-0 max-xl:translate-x-full max-xl:hidden'}
@@ -108,9 +113,9 @@ export default function Counseling() {
                 </div>
                 <p className='text-[12px] mt-5'>{card.description}</p>
                <div class="opacity-0 group-hover:opacity-100  group-hover:mt-4 transition-opacity duration-300 ">
-               <button class = 'mouse-pointer text-white font-bold py-1 px-4 rounded-xl transition-colors duration-300' style={{ backgroundColor: card.color }}>
+               <Link to={card.link}> <button class = 'mouse-pointer text-white font-bold py-1 px-4 rounded-xl transition-colors duration-300' style={{ backgroundColor: card.color }}>
                 درخواست مشاوره
-               </button>
+               </button></Link>
               
              </div>
              </div>
@@ -119,6 +124,8 @@ export default function Counseling() {
 
               </div>
             </div>
+            
+            </>
           ))}
           </div>
 

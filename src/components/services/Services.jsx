@@ -16,7 +16,7 @@ const servicesData = [
     title: "بیمه زندگی",
     description:
 "این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
-    imgSrc: "./img/servics/life.jpg",
+    imgSrc: "./img/servics/Life.jpg",
     link:"/Life",
     color:"#f6f461"
   },
