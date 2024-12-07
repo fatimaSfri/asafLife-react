@@ -27,7 +27,7 @@ export default function CarBody() {
      </video>
   
    </div>
-   <div className='w-11/12 md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto '>
+   <div className=' w-full md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto '>
 
     <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
     <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>

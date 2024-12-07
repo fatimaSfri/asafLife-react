@@ -87,10 +87,10 @@ function ServiceCard({ animation, title, description, imgSrc,color }) {
             onMouseLeave={() => setIsHovered(false)}
         >
         <img src={imgSrc} alt={title} className="rounded-3xl " />
-        <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:color }}  >
+        <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-[4%] rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:color }}  >
               
             </div>
-            <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-1/12 rounded-e-lg -mr-1 ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
+            <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-[4%] rounded-e-lg -mr-1 ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
              style={{ backgroundColor:color }}
             >
                
