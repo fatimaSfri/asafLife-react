@@ -1,10 +1,10 @@
 import Lottie from "lottie-react";
-import legal from '/src/assets/json/legal.json';
 import life from '/src/assets/json/life.json';
-import investment from '/src/assets/json/investment.json';
-import psychology from '/src/assets/json/psychology.json';
-import retirement from "/src/assets/json/retirement.json";
 import animal from "/src/assets/json/animal.json";
+import carBody from "/src/assets/json/car-body.json";
+import phone from "/src/assets/json/phone.json";
+import mosque from "/src/assets/json/mosque.json";
+import treatment from "/src/assets/json/health-checkup.json";
 import 'aos/dist/aos.css';
 import AOS from 'aos';    
 import { useEffect,useState } from 'react';
@@ -15,13 +15,13 @@ const servicesData = [
     animation: life,
     title: "بیمه زندگی",
     description:
-"این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
-    imgSrc: "./img/servics/Life.jpg",
+   "این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
+    imgSrc: "./img/servics/life-service.jpg",
     link:"/Life",
     color:"#f6f461"
   },
   {
-    animation: investment,
+    animation: carBody,
     title: "ثالث بدنه",
     description: 
    "بیمه ثالث بدنه، نوعی بیمه خودرو است که شامل دو بخش اصلی می‌شود: بیمه مسئولیت مدنی (ثالث) و بیمه .بدنه این نوع بیمه به مالکان خودرو کمک می‌کند . ",
@@ -30,10 +30,10 @@ const servicesData = [
     color:"#fdce0b"
   },
   {
-    animation: psychology  ,
+    animation: treatment  ,
     title: " بیمه درمان",
     description: 
-"بیمه درمان به افراد کمک می‌کند تا در صورت بروز بیماری یا حادثه، نگرانی کمتری درباره هزینه‌های درمان داشته باشند و بتوانند به راحتی به خدمات پزشکی دسترسی پیدا کنند." , 
+   "بیمه درمان به افراد کمک می‌کند تا در صورت بروز بیماری یا حادثه، نگرانی کمتری درباره هزینه‌های درمان داشته باشند و بتوانند به راحتی به خدمات پزشکی دسترسی پیدا کنند." , 
   imgSrc: "./img/servics/treatment.jpg",
     link:"/treatment",
     color:"#c32c3e"
@@ -48,7 +48,7 @@ const servicesData = [
     color:"#552ade"
   },
   {
-    animation: legal ,
+    animation: phone ,
     title: "بیمه موبایل",
     description: 
     "بیمه موبایل به کاربران کمک می‌کند تا از هزینه‌های بالای تعمیر یا تعویض گوشی‌های خود در صورت بروز حادثه محافظت کنند و آرامش خاطر بیشتری داشته باشند.",
@@ -57,7 +57,7 @@ const servicesData = [
     color:"#d21a1a"
   },
   {
-    animation: retirement,
+    animation: mosque,
     title: "بیمه خدام",
     description:
     "پوشش بیماری: برخی از بیمه‌ها ممکن است هزینه‌های درمانی را در صورت بیماری کارمند نیز پوشش دهند  و همچنین امنیت بیشتری برای کارمندان فراهم کند.",
@@ -66,7 +66,7 @@ const servicesData = [
   },
 ];
 
-function ServiceCard({ animation, title, description, imgSrc,color }) {
+function ServiceCard({ animation , title, description , imgSrc , color }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -90,7 +90,7 @@ function ServiceCard({ animation, title, description, imgSrc,color }) {
         <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-[4%] rounded-s-lg ${isHovered ? 'translate-x-0'  : '-translate-x-full'}  p-2 bg-white`}  style={{backgroundColor:color }}  >
               
             </div>
-            <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-[4%] rounded-e-lg -mr-1 ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
+            <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 h-3/5 w-[4%] rounded-e-lg -mr-[0.5px] ${isHovered ? 'translate-x-0 ' : 'translate-x-full'}  p-2  bg-white`}
              style={{ backgroundColor:color }}
             >
                

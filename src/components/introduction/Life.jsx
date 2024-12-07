@@ -27,14 +27,14 @@ export default function CarBody() {
      </video>
   
    </div>
-   <div className='w-11/12 mx-auto md:h-[700px] max-md:h-[950px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
+   <div className='w-full mx-auto md:h-[700px] max-md:h-[950px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
 
-    <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
-    <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 flex items-center gap-2  '>
+    <div className='md:w-4 max-md:w-3 h-10 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[20px] text-[#213063]' >بیمه زندگی  </h1>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 flex flex-col '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' > تأمین مالی خانواده: </h1>
@@ -43,7 +43,7 @@ export default function CarBody() {
     </p>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 '>
     <div className='flex items-center gap-4  '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >مفهوم تأمین مالی </h1>
@@ -51,7 +51,7 @@ export default function CarBody() {
     <p className=' '>تأمین مالی به معنای فراهم آوردن منابع مالی لازم برای تأمین نیازهای زندگی روزمره، هزینه‌های تحصیل، مسکن، درمان و سایر مخارج ضروری خانواده است. در صورت فوت بیمه‌شده، مبلغ بیمه به وراث یا ذینفعان پرداخت می‌شود تا آنها بتوانند به راحتی با این شرایط کنار بیایند
     </p>
     </div>
-    <div className='md:w-9/12 max-md:w-10/12 lg:h-1/6 '>
+    <div className='xl:w-[1250px] max-xl:w-full lg:h-1/6 px-4 '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[18px] text-[#213063] '>انتخاب ذینفعان</h1>
@@ -59,12 +59,12 @@ export default function CarBody() {
     <p className='    ' >
     بیمه‌گذاران می‌توانند ذینفعان خود را انتخاب کنند، که معمولاً شامل همسر، فرزندان، والدین یا هر فرد دیگری است که در زندگی مالی بیمه‌شده نقش دارد. این انتخاب به تأمین مالی مستقیم برای افرادی که بیشترین نیاز به حمایت مالی دارند، کمک می‌کند
     </p></div>
-    <div className='md:w-9/12 max-md:w-10/12 h-1/6  flex items-center justify-end mouse-pointer'>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  h-1/6  flex items-center justify-end mouse-pointer'>
      <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/>
     </div>
     
    </div>
-   <PreviewServices ></PreviewServices>
+   <PreviewServices></PreviewServices>
    <Footer></Footer>
    </div>
 

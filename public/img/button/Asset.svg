@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.02 29.02">
+  <g id="OBJECTS">
+    <g>
+      <path d="M14.51,1c7.45,0,13.51,6.06,13.51,13.51s-6.06,13.51-13.51,13.51S1,21.96,1,14.51,7.06,1,14.51,1M14.51,0C6.5,0,0,6.5,0,14.51s6.5,14.51,14.51,14.51,14.51-6.5,14.51-14.51S22.52,0,14.51,0h0Z" fill="#fff"/>
+      <g>
+        <path d="M16.95,8.27c.54.56,1.79,1.91,2.29,2.47v10.01h-9.46v-12.48h7.17M17.36,7.27h-7.96c-.34,0-.62.28-.62.62v13.24c0,.34.28.62.62.62h10.22c.34,0,.62-.28.62-.62v-10.74c0-.08-2.81-3.12-2.88-3.12h0Z" fill="#fff"/>
+        <line x1="12.26" y1="12.85" x2="16.76" y2="12.85" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"/>
+        <line x1="12.26" y1="15.41" x2="16.76" y2="15.41" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"/>
+        <line x1="12.26" y1="17.96" x2="16.76" y2="17.96" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"/>
+      </g>
+    </g>
+  </g>
+</svg>

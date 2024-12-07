@@ -27,14 +27,14 @@ export default function CarBody() {
      </video>
   
    </div>
-   <div className='w-10/12 mx-auto md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
+   <div className='w-full mx-auto md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
 
-    <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
-    <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  flex items-center gap-2  '>
+    <div className='md:w-4 max-md:w-3 h-10 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[20px] text-[#213063]' > بیمه حیوانات خانگی</h1>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 flex flex-col  '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col  '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >معاینات سالانه</h1>
@@ -45,7 +45,7 @@ export default function CarBody() {
     </p>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  '>
     <div className='flex items-center gap-4  '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >درمان‌های اورژانسی</h1>
@@ -55,7 +55,7 @@ export default function CarBody() {
      داروهای تجویزی: هزینه‌های داروهایی که دامپزشک برای درمان بیماری‌های خاص تجویز می‌کند آزمایشات تشخیصی: هزینه‌های آزمایشات اولیه مانند آزمایش خون یا ادرار
     </p>
     </div>
-    <div className='md:w-9/12 max-md:w-10/12 lg:h-1/6 '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  lg:h-1/6 '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[18px] text-[#213063] '>
@@ -66,7 +66,7 @@ export default function CarBody() {
     پوشش هزینه‌های جراحی‌های ضروری، مانند جراحی‌های اورژانسی یا جراحی‌های مرتبط با بیماری‌ها
     ،هزینه‌های درمان‌های تخصصی که توسط دامپزشکان متخصص انجام می‌شود، مانند درمان‌های اورتوپدی یا قلبی
        </p></div>
-    <div className='md:w-9/12 max-md:w-10/12 h-1/6  flex items-center justify-end mouse-pointer'>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  h-1/6  flex items-center justify-end mouse-pointer'>
      <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/>
     </div>
     

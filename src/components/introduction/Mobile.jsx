@@ -27,14 +27,14 @@ export default function Mobile() {
      </video>
   
    </div>
-   <div className='w-11/12  md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto'>
+   <div className='w-full md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto'>
 
-    <div className='md:w-9/12 max-md:w-10/12  flex items-center gap-2  '>
-    <div className='w-4 h-10 bg-[#6827b5] rounded-full'></div>
+    <div className='xl:w-[1250px] max-xl:w-full px-4   flex items-center gap-2  '>
+    <div className='md:w-4 max-md:w-3 h-10 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[20px] text-[#213063]' > بیمه موبایل</h1>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 flex flex-col  '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col  '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >پوشش سرقت:</h1>
@@ -44,7 +44,7 @@ export default function Mobile() {
     </p>
     </div>
 
-    <div className='md:w-9/12 max-md:w-10/12 '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  '>
     <div className='flex items-center gap-4  '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
     <h1 className='font-bold text-[18px] text-[#213063]' >آسیب فیزیکی: </h1>
@@ -54,7 +54,7 @@ export default function Mobile() {
        مدارک آسیب از تعمیرگاه معتبر نیاز است.
     </p>
     </div>
-    <div className='md:w-9/12 max-md:w-10/12 lg:h-1/6 '>
+    <div className='xl:w-[1250px] max-xl:w-full px-4 lg:h-1/6 '>
     <div className='flex items-center gap-4 '>
     <div className='w-4 h-4 bg-[#6827b5] rounded-full'></div>
     <h1 className='font-bold text-[18px] text-[#213063] '>پوشش‌های اضافی:</h1>
@@ -64,7 +64,7 @@ export default function Mobile() {
 گارانتی و خدمات اضافی: برخی از بیمه‌ها خدماتی مانند تعمیرات سریع یا تعویض فوری گوشی را ارائه می‌دهند.
 هزینه‌های اضافی: در بعضی موارد، بیمه ممکن است هزینه‌های جانبی مانند هزینه‌های ثبت‌نام یا مشاوره را نیز پوشش دهد
      </p></div>
-    <div className='md:w-9/12 max-md:w-10/12 h-1/6  flex items-center justify-end mouse-pointer'>
+    <div className='xl:w-[1250px] max-xl:w-full px-4  h-1/6  flex items-center justify-end mouse-pointer'>
      <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/>
     </div>
     

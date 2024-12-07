@@ -1,0 +1,6 @@
+.custom-bg {
+    background: linear-gradient(to bottom, rgb(199, 87, 255), rgb(246, 227, 255) 0.2%, rgb(117, 50, 240), #3f0883);
+}
+.custom-shadow {
+    box-shadow: -15px 15px 30px rgba(188, 188, 188, 0.5), 10px -10px 20px rgba(255, 255, 255, 0.7);
+}
