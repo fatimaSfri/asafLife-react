@@ -171,6 +171,8 @@ export default function TestTwo() {
                 />
               </>
             )}
+           
+
             {navigate && (
               <>
               
@@ -186,6 +188,7 @@ export default function TestTwo() {
                 
               </>
             )}
+
       <div className='md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5'>
       <button className='sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg  bg-gradient-to-r from-[#213063] via-[#213063]  to-[#55c7e0]' onClick={navigate ? handleErrorPass : validate}>ورود</button>
       {navigate && (
@@ -204,6 +207,7 @@ export default function TestTwo() {
                  </div>
               </>
             )}
+
       </div>
       </div>
       <div className='w-1/2 h-4/5  max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end'>   

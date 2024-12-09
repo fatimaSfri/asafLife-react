@@ -9,6 +9,8 @@ import Pet from "./components/introduction/Pet.jsx"
 import Mobile from "./components/introduction/Mobile.jsx"
 import Psychology from "./components/introduction/Psychology.jsx"
 import LegalAdvice from "./components/introduction/LegalAdvice.jsx"
+import Test from "./components/test/Test.jsx"
+import Input from './components/input/Input.jsx';
 
 function App() {
    return (<>    
@@ -22,7 +24,10 @@ function App() {
          <Route path='/Mobile' element={<Mobile/>} />
          <Route path='/psychology' element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
+         <Route path='/Test' element={<Test/>} />
+         <Route path='input' element={<Input/>} />
    </Routes>
+
    </>
   )
 }
