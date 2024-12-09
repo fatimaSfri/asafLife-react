@@ -39,7 +39,6 @@ export default function CarBody() {
         autoPlay
         loop
         controls
-        muted
        >
      </video>
   
@@ -82,7 +81,7 @@ export default function CarBody() {
     </p></div>
     <div className='xl:w-[1250px] max-xl:w-full px-4 h-1/6  flex items-center justify-end mouse-pointer'>
      {/* <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/> */}
-     <button className='w-[150px] h-10 bg-purple-500 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'>
+     <button className='w-[150px] h-10  rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'>
       <img src="./img/button/Asset.svg" alt="" className='w-8'/>
       درخواست
      </button>

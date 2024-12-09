@@ -39,7 +39,7 @@ export default function AnimalBanner(props) {
 
      {/* object */}
 
-     <div className="xl:w-[600px] sm:min-w-[450px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right  flex items-center 
+     <div className="xl:w-[600px] sm:min-w-[450px]  max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right  flex items-center 
         justify-center">
       <img src={image[0]}alt=""  className=" xl:h-full " />
      </div>

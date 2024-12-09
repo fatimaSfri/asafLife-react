@@ -18,7 +18,8 @@ const servicesData = [
    "این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
     imgSrc: "./img/servics/life-service.jpg",
     link:"/Life",
-    color:"#f6f461"
+    color:"#f6f461",
+    bgColor:"#29a8ac"
   },
   {
     animation: carBody,
@@ -27,7 +28,8 @@ const servicesData = [
    "بیمه ثالث بدنه، نوعی بیمه خودرو است که شامل دو بخش اصلی می‌شود: بیمه مسئولیت مدنی (ثالث) و بیمه .بدنه این نوع بیمه به مالکان خودرو کمک می‌کند . ",
     imgSrc: "./img/servics/carBody.jpg",
     link:"./carBody",
-    color:"#fdce0b"
+    color:"#fdce0b",
+    bgColor:"#975fff"
   },
   {
     animation: treatment  ,
@@ -36,7 +38,8 @@ const servicesData = [
    "بیمه درمان به افراد کمک می‌کند تا در صورت بروز بیماری یا حادثه، نگرانی کمتری درباره هزینه‌های درمان داشته باشند و بتوانند به راحتی به خدمات پزشکی دسترسی پیدا کنند." , 
   imgSrc: "./img/servics/treatment.jpg",
     link:"/treatment",
-    color:"#c32c3e"
+    color:"#c32c3e",
+    bgColor:"#72e2fb"
   },
   {
     animation: animal,
@@ -45,7 +48,8 @@ const servicesData = [
     "بیمه حیوانات خانگی به شما این امکان را می‌دهد که با خیال راحت، بهترین خدمات درمانی و مراقبتی را برای دوست کوچک خود فراهم کنید.",
     imgSrc: "./img/servics/animals.jpg",
     link:"/pet",
-    color:"#552ade"
+    color:"#552ade",
+    bgColor:"#fcb000"
   },
   {
     animation: phone ,
@@ -54,7 +58,8 @@ const servicesData = [
     "بیمه موبایل به کاربران کمک می‌کند تا از هزینه‌های بالای تعمیر یا تعویض گوشی‌های خود در صورت بروز حادثه محافظت کنند و آرامش خاطر بیشتری داشته باشند.",
     imgSrc: "./img/servics/mobile.jpg",
     link:"/Mobile",
-    color:"#d21a1a"
+    color:"#d21a1a",
+    bgColor:"#a7a7a7"
   },
   {
     animation: mosque,
@@ -62,21 +67,22 @@ const servicesData = [
     description:
     "پوشش بیماری: برخی از بیمه‌ها ممکن است هزینه‌های درمانی را در صورت بیماری کارمند نیز پوشش دهند  و همچنین امنیت بیشتری برای کارمندان فراهم کند.",
     imgSrc: "./img/servics/img-06.jpg",
-    color:"#00ff84"
+    color:"#00ff84",
+   bgColor:"#f8c67a"
   },
 ];
 
-function ServiceCard({ animation , title, description , imgSrc , color }) {
+function ServiceCard({ animation , title, description , imgSrc , color, bgColor }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     
     <div className="bg-white rounded-3xl shadow min-w-[250px] max-w-[350px] flex flex-col min-h-[350px]">
-      <div className="font-bold  w-11/12 mt-8 py-[2px] bg-gray-100 rounded-e-[14px] flex relative">
-        <div className="flex justify-center items-center w-14 absolute -mt-5">
+      <div className="font-bold  w-11/12 mt-8 py-[2px] bg-gray-100 rounded-e-[14px] flex relative" style={{ backgroundColor:bgColor }}>
+        <div className="flex justify-center items-center w-14 absolute -mt-5" >
           <Lottie animationData={animation} loop={true} />
         </div>
-        <h2 className="text-lg max-sm:text-[14px] mx-auto text-[#213063]">{title}</h2>
+        <h2 className="text-lg max-sm:text-[14px] mx-auto text-white">{title}</h2>
       </div>
       <p className="text-gray-600 flex-grow  mx-auto w-11/12 py-3 text-[12px]">{description}</p>
       <button className="text-[#55c7e0] hover:underline text-[14px] text-left px-6 py-2 max-sm:text-[12px]">توضیحات بیشتر &#62;</button>
