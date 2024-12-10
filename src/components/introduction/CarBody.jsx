@@ -17,7 +17,7 @@ export default function CarBody() {
 {/* ****************** */}
 
 
-<div className='bg-[url("../../../public/img/ten-ten/bg.png")]  back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
+<div className='bg-[url("../../public/img/ten-ten/bg.png")]  back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
        w-full flex justify-center max-md:flex-col  items-center overflow-hidden' >
           
           {/* object */}
