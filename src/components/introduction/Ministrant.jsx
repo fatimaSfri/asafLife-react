@@ -18,7 +18,7 @@ export default function Mobile() {
    <div className='h-auto w-full bg-gray-200' >
    <div className='w-full  flex justify-center items-center py-16 '>
    <video className="rounded-3xl  lg:h-[700px] "
-        src= "./img/video/asaf.mp4"
+        src= "./img/video/bimekhodam.mp4"
         preload="auto"
         autoPlay
         loop
