@@ -30,6 +30,7 @@ export default {
          'bg-sm-life':"url('../../img/Animation/life/sm-life.jpg')",
          'bg-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
          'bg-sm-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
+          "bg-carbody" :"url('../../img/ten-ten/bg.png')",
          },
     },
   },
