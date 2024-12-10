@@ -28,6 +28,8 @@ export default {
          'bg-sm-animal':"url('../../img/Animation/animal/sm-pet.jpg')",
          'bg-life':"url('../../img/Animation/life/08-bg.jpg')",
          'bg-sm-life':"url('../../img/Animation/life/sm-life.jpg')",
+         'bg-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
+         'bg-sm-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
          },
     },
   },

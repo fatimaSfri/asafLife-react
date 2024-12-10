@@ -11,9 +11,12 @@ import Psychology from "./components/introduction/Psychology.jsx"
 import LegalAdvice from "./components/introduction/LegalAdvice.jsx"
 import Test from "./components/test/Test.jsx"
 import Input from './components/input/Input.jsx';
+import Ministrant from "./components/introduction/Ministrant.jsx"
 
 function App() {
-   return (<>    
+   return (
+   
+   <>    
     <Routes>
          <Route path="/" element={<Home />}/>
          <Route path= "/login"  element={<Login/>}/> 
@@ -26,6 +29,7 @@ function App() {
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
          <Route path='/Test' element={<Test/>} />
          <Route path='input' element={<Input/>} />
+         <Route path='/ministrant' element={<Ministrant/>} />
    </Routes>
 
    </>
