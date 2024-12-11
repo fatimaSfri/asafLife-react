@@ -28,10 +28,19 @@ function App() {
          <Route path='/psychology' element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
          <Route path='/Test' element={<Test/>} />
-         <Route path='input' element={<Input/>} />
+         <Route path='/input' element={<Input/>} />
          <Route path='/ministrant' element={<Ministrant/>} />
+         <Route path="test" element={<Test />}>
+         <Route path="phone" element={<Input/>} />
+          <Route path="password" element={<Input />} />
+         </Route>
    </Routes>
-
+   <Routes>
+                <Route path="test/*" element={<Test/>}>
+                    <Route path="phone" element={<Input />} />
+                    <Route path="password" element={<Input />} />
+                </Route>
+            </Routes>
    </>
   )
 }

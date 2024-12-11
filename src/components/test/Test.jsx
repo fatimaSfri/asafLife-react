@@ -1,9 +1,15 @@
 import Input from "../input/Input"
 import Joi from "joi";
 import { useEffect, useState } from "react";
-import { Outlet , Link } from "react-router-dom"; 
+import { Outlet , Link,useLocation } from "react-router-dom"; 
+import { useNavigate } from 'react-router-dom';
 
 export default function TestTwo() {
+  const location = useLocation();
+
+  const isPhone = location.pathname.includes('test/phone');
+  const isPassword = location.pathname.includes('password');
+
   const initialTimeOut = 60; 
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState(null);
@@ -14,6 +20,7 @@ export default function TestTwo() {
   const [navigate, setNavigate] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [validationErrorsPass, setValidationErrorsPass] = useState({});
+
 
   // ** validat by joi **
   const schema = Joi.object({
@@ -140,6 +147,22 @@ export default function TestTwo() {
   const handleInputChange = (name, value) => setPhone({ [name]: value });
   const handleInputChangePass = (name, value) => setPassword({ [name]: value });
 
+//   const navigate1 = useNavigate();
+//   const dataPhone ={
+//     placeholder:"شماره موبایل",
+//    icon:"./img/login/phone.png",
+//     initialValue:phone.phone,
+//     onChange:handleInputChange,
+//      name:'phone',
+//      validationErrors:validationErrors.phone,
+//      count:11
+//   }
+
+// useEffect(()=>{
+
+//   navigate1('/input', { state: dataPhone });
+
+// },[])
 
 
 
@@ -156,9 +179,18 @@ export default function TestTwo() {
       <div className='w-1/2 max-lg:w-full h-4/5  flex flex-col items-center lg:justify-center max-lg:justify-start'>
       <h1 className='lg:w-[470px] max-lg:w-7/12 max-md:w-10/12  h-20  text-white text-lg font-bold flex items-center'>ورود/ثبت نام</h1>
    
-       {/* {!navigate && (
+        {!navigate && (
               <>
-                <Input
+                {isPhone && <Outlet
+                 context={{ 
+                  placeholder:"کد تایید",
+                     icon:"./img/login/key.png",
+                    initialValue:password.password,
+                    onChange:handleInputChangePass,
+                    name:'password',
+                    validationErrors:validationErrorsPass.password,
+                    count:11  }} />}  {/* محتوای مربوط به بازیابی رمز عبور */}
+                {/* <Input
                   placeholder="شماره موبایل"
                   icon="./img/login/phone.png"
                   initialValue={phone.phone}
@@ -166,27 +198,37 @@ export default function TestTwo() {
                   name={'phone'}
                   validationErrors={validationErrors.phone}
                   count= {11}
-                />
+                /> */}
               </>
-            )} */}
-                <Outlet />
+            )} 
+                {/* <Outlet /> */}
           
             {navigate && (
-<></>
+
       
-            //   <>
-              
-            //     <Input
-            //       placeholder="کد تایید"
-            //        icon="./img/login/key.png"
-            //       initialValue={password.password}
-            //       onChange={handleInputChangePass}
-            //       name={'password'}
-            //       validationErrors={validationErrorsPass.password}
-            //       count= {4}
-            //     />
+              <>
+             <div>
+               <Outlet 
+               context={{ 
+                placeholder:"کد تایید",
+                   icon:"./img/login/key.png",
+                  initialValue:password.password,
+                  onChange:handleInputChangePass,
+                  name:'password',
+                  validationErrors:validationErrorsPass.password,
+                  count:4  }} /> {/* محتوای مربوط به ثبت نام */}</div>
+{/*               
+                <Input
+                  placeholder="کد تایید"
+                   icon="./img/login/key.png"
+                  initialValue={password.password}
+                  onChange={handleInputChangePass}
+                  name={'password'}
+                  validationErrors={validationErrorsPass.password}
+                  count= {4}
+                /> */}
                 
-            //   </>
+              </>
             )}
 
       <div className='md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5'>

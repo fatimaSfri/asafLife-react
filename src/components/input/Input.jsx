@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+// import { useOutletContext } from 'react-router-dom';
 
-function Input({ onChange, validationErrors, name, icon, count }) {
+function Input(context) {
+
+  const{ onChange, validationErrors, name, icon, count} = context
   const [values, setValues] = useState(Array(count).fill(''));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
