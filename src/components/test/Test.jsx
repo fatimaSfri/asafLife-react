@@ -1,15 +1,8 @@
-import Input from "../input/Input"
 import Joi from "joi";
-import { useEffect, useState } from "react";
-import { Outlet , Link,useLocation } from "react-router-dom"; 
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState  } from "react";
+import { Outlet,  useLocation,useNavigate} from "react-router-dom";
 
 export default function TestTwo() {
-  const location = useLocation();
-
-  const isPhone = location.pathname.includes('test/phone');
-  const isPassword = location.pathname.includes('password');
-
   const initialTimeOut = 60; 
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState(null);
@@ -17,11 +10,12 @@ export default function TestTwo() {
   const [showLink, setShowLink] = useState(false);
   const [phone, setPhone] = useState({ phone: "" });
   const [password, setPassword] = useState({ password: "" });
-  const [navigate, setNavigate] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [validationErrorsPass, setValidationErrorsPass] = useState({});
-
-
+  const location = useLocation(); 
+  const isPassword = location.pathname.includes("test/password");
+   const navigate = useNavigate()
+ 
   // ** validat by joi **
   const schema = Joi.object({
     phone: Joi.string()
@@ -65,11 +59,11 @@ export default function TestTwo() {
         setData({ timeOut: remainingTime });
         setIsActive(true);
         setCode(phoneEntry.password); 
-        setNavigate(true);
       } else {
         // more than 1 minutes have passed generate new code
         generateNewCode();
       }
+      
     }
   }, [phone.phone]);
 
@@ -79,7 +73,7 @@ export default function TestTwo() {
     if (isActive && data.timeOut > 0) {
       interval = setInterval(() => {
         setData(prevData => ({
-          ...prevData,
+          ...prevData ,
           timeOut: prevData.timeOut - 1,
         }));
       }, 1000);
@@ -106,27 +100,29 @@ export default function TestTwo() {
     setCode(newCode);
     setData({ timeOut: initialTimeOut });
     setIsActive(true);
-    setNavigate(true);
-    setShowLink(false);
+   setShowLink(false);
   };
   // validate for input
   const validate = () => {
-    const { value, error } = schema.validate(phone, { abortEarly: false });
+    const { error } = schema.validate(phone, { abortEarly: false });
     clearErrors();
-
-    if (error && !navigate) {
+  
+     if (error) {
       const errors = {};
       error.details.forEach(item => {
         errors[item.context.key] = item.message;
       });
       setValidationErrors(errors);
+     
     } else {
       generateNewCode();
+      if(phone){
+     navigate("/test/password")}
     }
   };
 
   const handleErrorPass = () => {
-    const { value, error } = schemaPassword.validate(password, { abortEarly: false });
+    const { error } = schemaPassword.validate(password, { abortEarly: false });
     clearErrors();
 
     if (error) {
@@ -146,94 +142,57 @@ export default function TestTwo() {
   // get phone & password of component Input
   const handleInputChange = (name, value) => setPhone({ [name]: value });
   const handleInputChangePass = (name, value) => setPassword({ [name]: value });
+  
+  
 
-//   const navigate1 = useNavigate();
-//   const dataPhone ={
-//     placeholder:"شماره موبایل",
-//    icon:"./img/login/phone.png",
-//     initialValue:phone.phone,
-//     onChange:handleInputChange,
-//      name:'phone',
-//      validationErrors:validationErrors.phone,
-//      count:11
-//   }
+  const inputProps = isPassword ?{
+    placeholder: "کد تایید",
+    icon: "../img/login/key.png",
+    initialValue: password.password,
+    name: "password",
+    validationError: validationErrorsPass.password,
+    count: 4,
+    onChange: handleInputChangePass,
+  } : {
+   placeholder: "شماره موبایل",
+    icon: "../img/login/phone.png",
+    initialValue: phone.phone,
+    name: "phone",
+    validationError: validationErrors.phone,
+    count: 11,
+    onChange: handleInputChange,
+  };
 
-// useEffect(()=>{
+// ** useEffect for checking if we need to reset states when route changes **
+useEffect(() => {
+  // Reset all validation errors and states when the location changes (every route change)
+  setValidationErrors({});
+  setValidationErrorsPass({});
 
-//   navigate1('/input', { state: dataPhone });
-
-// },[])
-
+}, [location.pathname]); // Only reset when location pathname changes
 
 
   return (
     <div className='relative w-full h-screen overflow-hidden flex justify-center '>
    <video className=" absolute top-0 left-0 w-full h-full object-cover -z-10"
-        src="./img/video/bg-login.MP4"
+        src="../img/video/bg-login.MP4"
         preload="auto"
         autoPlay
         loop
         muted
       ></video>
+     
+
       <div className=' h-full flex max-lg:flex-col-reverse items-center justify-evenly max-lg:gap-10 xl:w-10/12 max-xl:w-full '>
       <div className='w-1/2 max-lg:w-full h-4/5  flex flex-col items-center lg:justify-center max-lg:justify-start'>
       <h1 className='lg:w-[470px] max-lg:w-7/12 max-md:w-10/12  h-20  text-white text-lg font-bold flex items-center'>ورود/ثبت نام</h1>
    
-        {!navigate && (
-              <>
-                {isPhone && <Outlet
-                 context={{ 
-                  placeholder:"کد تایید",
-                     icon:"./img/login/key.png",
-                    initialValue:password.password,
-                    onChange:handleInputChangePass,
-                    name:'password',
-                    validationErrors:validationErrorsPass.password,
-                    count:11  }} />}  {/* محتوای مربوط به بازیابی رمز عبور */}
-                {/* <Input
-                  placeholder="شماره موبایل"
-                  icon="./img/login/phone.png"
-                  initialValue={phone.phone}
-                  onChange={handleInputChange}
-                  name={'phone'}
-                  validationErrors={validationErrors.phone}
-                  count= {11}
-                /> */}
-              </>
-            )} 
-                {/* <Outlet /> */}
-          
-            {navigate && (
-
-      
-              <>
-             <div>
-               <Outlet 
-               context={{ 
-                placeholder:"کد تایید",
-                   icon:"./img/login/key.png",
-                  initialValue:password.password,
-                  onChange:handleInputChangePass,
-                  name:'password',
-                  validationErrors:validationErrorsPass.password,
-                  count:4  }} /> {/* محتوای مربوط به ثبت نام */}</div>
-{/*               
-                <Input
-                  placeholder="کد تایید"
-                   icon="./img/login/key.png"
-                  initialValue={password.password}
-                  onChange={handleInputChangePass}
-                  name={'password'}
-                  validationErrors={validationErrorsPass.password}
-                  count= {4}
-                /> */}
-                
-              </>
-            )}
-
+    
+      {!isPassword &&  (<Outlet  context={{inputProps}} />)}
+      {isPassword && (<Outlet  context={{inputProps}} />)}  
       <div className='md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5'>
-     <Link to="/input"> <button className='sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg  bg-gradient-to-r from-[#213063] via-[#213063]  to-[#55c7e0]' onClick={navigate ? handleErrorPass : validate}>ورود</button></Link>
-      {navigate && (
+      <button className='sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg  bg-gradient-to-r from-[#213063] via-[#213063]  to-[#55c7e0]' onClick={isPassword ? handleErrorPass : validate}>ورود</button>
+      {isPassword && (
               <>
                 <div className="text-[14px] h-10  bg-gray-200 flex flex-row-reverse items-center justify-center 
                 max-sm:w-1/2 sm:w-[250px] rounded-lg text-bold md:text-[18px] gap-2" >
@@ -253,8 +212,8 @@ export default function TestTwo() {
       </div>
       </div>
       <div className='w-1/2 h-4/5  max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end'>   
-        <img src="./img/icon/Asaflogo.png" alt="" className="md:w-[300px] max-md:w-7/12 xl:w-[48%]" />
-        <p className="text-white md:text-[38px] max-md:text-[30px]">آینــــده ســـازان آسایــش فــــردا</p>
+        <img src="../img/icon/Asaflogo.png" alt="" className="md:w-[300px] max-md:w-7/12 xl:w-[48%]" />
+        <p className="text-white md:text-[38px] max-md:text-[30px]">آینده سازان آسایش فردا</p>
         <p className="text-white md:text-[24px] max-md:text-[16px] ">Future builders of tomorrow's comfort</p>
        </div>
       </div>

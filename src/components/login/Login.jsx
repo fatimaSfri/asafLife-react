@@ -212,7 +212,7 @@ export default function TestTwo() {
       </div>
       <div className='w-1/2 h-4/5  max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end'>   
         <img src="./img/icon/Asaflogo.png" alt="" className="md:w-[300px] max-md:w-7/12 xl:w-[48%]" />
-        <p className="text-white md:text-[38px] max-md:text-[30px]">آینــــده ســـازان آسایــش فــــردا</p>
+        <p className="text-white md:text-[38px] max-md:text-[30px]">آی آفــــردا</p>
         <p className="text-white md:text-[24px] max-md:text-[16px] ">Future builders of tomorrow's comfort</p>
        </div>
       </div>

@@ -11,7 +11,10 @@ import Psychology from "./components/introduction/Psychology.jsx"
 import LegalAdvice from "./components/introduction/LegalAdvice.jsx"
 import Test from "./components/test/Test.jsx"
 import Input from './components/input/Input.jsx';
-import Ministrant from "./components/introduction/Ministrant.jsx"
+import InsuredPerson from "./components/dashbord/InsuredPerson.jsx"
+import Registration from "./components/dashbord/Registration.jsx"
+import Contract from "./components/dashbord/Contract.jsx"
+
 
 function App() {
    return (
@@ -27,20 +30,20 @@ function App() {
          <Route path='/Mobile' element={<Mobile/>} />
          <Route path='/psychology' element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
-         <Route path='/Test' element={<Test/>} />
-         <Route path='/input' element={<Input/>} />
-         <Route path='/ministrant' element={<Ministrant/>} />
-         <Route path="test" element={<Test />}>
-         <Route path="phone" element={<Input/>} />
-          <Route path="password" element={<Input />} />
+
+        <Route path="test/*" element={<Test/>}>
+                <Route
+                 index element={ <Input />} />
+                <Route
+                  path="password"
+                  element={<Input /> } />
          </Route>
+         <Route path='/insuredPerson' element={<InsuredPerson/>} />
+       <Route path='/registration' element={<Registration/>} />
+       <Route path='/contract' element={<Contract/>} />
+
    </Routes>
-   <Routes>
-                <Route path="test/*" element={<Test/>}>
-                    <Route path="phone" element={<Input />} />
-                    <Route path="password" element={<Input />} />
-                </Route>
-            </Routes>
+  
    </>
   )
 }
