@@ -1,9 +1,15 @@
 
 export default function Button(props) {
   return (
-    <button className='w-[150px] h-10 bg-purple-500 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'>
-    <img src="./img/button/Asset.svg" alt="" className='w-8'/>
-    درخواست
-   </button>
+    <div className={`md:w-10/12 max-md:w-full flex justify-end items-center mx-auto gap-2 ${props.mt}`}>
+   <button className='md:w-[150px] max-md:w-[100px] h-10 rounded-2xl  custom-shadow flex items-center border justify-center text-white gap-2 bg-gray-400'
+    >انصراف</button>
+   <button className='md:w-[150px] max-md:w-[100px] h-10 rounded-2xl  custom-shadow flex items-center justify-center text-white gap-2'
+   style={{
+     background: 'linear-gradient(to bottom, #dbf7ff 0.2%, #7fe2ff ,#0096e3 30%)',
+   }}>تایید</button>
+
+
+  </div>
   )
 }

@@ -1,19 +1,31 @@
-
+import Menu from '../menu/Menu'
+import  { useState } from 'react';
 
 export default function Dashbord() {
+
+  const [toggle ,setToggle] = useState(false)
+
+function handleMenu(){ 
+  setToggle(prev => !prev) 
+  console.log(toggle)
+}
+
   return (
-    <div className="w-full h-[1000px] bg-gray-200 flex items-center flex-col -z-20 absolute">
+    <div className="w-full h-[150px] bg-gray-200 flex items-center flex-col -z-20 ">
         {/* header */}
-      <div className="flex items-center gap-8 w-10/12 justify-between pt-10">
-      <img src="./img/icon/bars-solid.svg" alt=""  className=" lg:w-[50px] max-lg:w-[35px] max-md:w-[30px]"/>
-      <div className="flex items-center gap-4 ">
+        <header className="rounded-b-sm  pt-0 w-full fixed z-40 " >     
+                      {toggle ? (<Menu></Menu> )  : <div></div> } </header>
+        
+      <div className="flex items-center gap-8 w-10/12 justify-between pt-8 ">
+      <img src="./img/icon/bars-solid.svg" alt=""  className=" lg:w-[50px] max-lg:w-[35px] max-md:w-[30px] z-50" onClick={handleMenu}/>
+      
+      <div className="flex items-center gap-4  ">
       <p className=' lg:text-[20px] max-lg:text-[14px] font-bold text-[#213063] mb-1'> آینــده ســازان آسایــش فـردا</p>
-      <img src="./img/menu/ASAFLogo.svg" className=" lg:w-[150px] max-lg:w-[120px] max-md:w-[95px] "></img> </div> 
+      <img src="./img/menu/ASAFLogo.svg" className=" lg:w-[150px] max-lg:w-[120px] max-md:w-[95px] "  ></img> </div> 
       </div>
       <div className='h-[2px] w-11/12 bg-[#55c7e0] mt-4'></div>
 
-
-
+     
     </div>
    
   )

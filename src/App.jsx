@@ -21,17 +21,17 @@ function App() {
    
    <>    
     <Routes>
-         <Route path="/" element={<Home />}/>
-         <Route path= "/login"  element={<Login/>}/> 
-         <Route path='/carBody' element={<CarBody/>} />
-         <Route path='/Life' element={<Life/>} />
-         <Route path='/treatment' element={<Treatment/>} />
-         <Route path='/pet' element={<Pet/>} />
-         <Route path='/Mobile' element={<Mobile/>} />
-         <Route path='/psychology' element={<Psychology/>} />
+         <Route path="/"            element={<Home />}/>
+         <Route path= "/login"      element={<Login/>}/> 
+         <Route path='/carBody'     element={<CarBody/>} />
+         <Route path='/Life'        element={<Life/>} />
+         <Route path='/treatment'   element={<Treatment/>} />
+         <Route path='/pet'         element={<Pet/>} />
+         <Route path='/Mobile'      element={<Mobile/>} />
+         <Route path='/psychology'  element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
 
-        <Route path="test/*" element={<Test/>}>
+        <Route path="test/*"  element={<Test/>}>
                 <Route
                  index element={ <Input />} />
                 <Route
