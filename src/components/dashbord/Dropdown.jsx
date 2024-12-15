@@ -19,7 +19,7 @@ export default function Dropdown(props) {
    <>
      {/* Dropdown Button */}
      <div
-     className={`max-lg:w-full bg-white rounded-2xl block px-4 py-2 border border-gray-300 shadow-sm focus:outline-none text-[#213063] text-[20px] font-bold cursor-pointer flex justify-between items-center ${props.size}`}
+     className={`max-lg:w-full bg-white rounded-2xl  px-4 py-2 border border-gray-300 shadow-sm focus:outline-none text-[#213063] text-[18px] font-bold cursor-pointer flex justify-between items-center ${props.size}`}
      onClick={handleDropdownToggle}
    >
      {selectedOption}
@@ -36,7 +36,7 @@ export default function Dropdown(props) {
        {options.map((option, index) => (
          <li
            key={index}
-           className="px-4 py-2 text-[#213063] text-[20px] hover:bg-gray-100 cursor-pointer"
+           className="px-4 py-2 text-[#213063] text-[18px] hover:bg-gray-100 cursor-pointer"
            onClick={() => handleOptionSelect(option)}
          >
            {option}

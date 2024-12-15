@@ -1,7 +1,7 @@
 
 export default function Button(props) {
   return (
-    <div className={`md:w-10/12 max-md:w-full flex justify-end items-center mx-auto gap-2 ${props.mt}`}>
+    <div className={`max-lg:w-full flex justify-end items-center mx-auto gap-2 ${props.mt} ${props.width}`}>
    <button className='md:w-[150px] max-md:w-[100px] h-10 rounded-2xl  custom-shadow flex items-center border justify-center text-white gap-2 bg-gray-400'
     >انصراف</button>
    <button className='md:w-[150px] max-md:w-[100px] h-10 rounded-2xl  custom-shadow flex items-center justify-center text-white gap-2'

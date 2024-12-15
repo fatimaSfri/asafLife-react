@@ -30,7 +30,7 @@ export default function Registration() {
             <p className="text-red-500 text-[20px]">*</p>
           </div>
             <File></File>
-            <Button></Button>
+            <Button width="lg:w-10/12" ></Button>
          </div>
         </div>
        
