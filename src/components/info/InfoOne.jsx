@@ -1,47 +1,30 @@
-
-import Lottie from "lottie-react";
 import './Informathion.css';
-import life from '/src/assets/json/life.json';
-import child from '/src/assets/json/child.json';
-import family from '/src/assets/json/family.json';
 import 'aos/dist/aos.css';
 import AOS from 'aos';    
 import { useEffect } from 'react';
+import life from '/src/assets/json/life.json';
+import child from '/src/assets/json/child.json';
+import family from '/src/assets/json/family.json';
+import InfoCard from "./InfoCard"
 
-const infoData = [
+
+export const infoData = [
   {
     animation: life,
-    title: "بیمه زندگی",
+    title: " بدون سود",
     description: "حافظ امنیت و زندگی خود باشید",
   },
   {
     animation: child,
-    title: " بیمه درمان",
+    title: " 10 درصد پیش پرداخت",
     description: "آساف لایف سپر امنیت خانواده شما",
   },
   {
     animation: family,
-    title: " مشاور خانواده",
+    title: " ثالث بدنه",
     description: "اطمینان خاطر در هر لحظه",
   },
 ];
-
-function InfoCard({ animation, title, description }) {
-    
-  return (
-    <div className="h-[70px] w-11/12 flex justify-center">
-      <div className="rounded-full border-2 border-[#55c7e0] w-16 h-16 z-10 -mt-5 flex justify-center items-center bg-gray-200">
-        <div className="w-14">
-          <Lottie animationData={animation} loop={true} />
-        </div>
-      </div>
-      <div className="w-10/12 rounded-xl h-full -mr-10 shadow-custom lg:min-w-[350px] bg-white">
-        <h1 className="md:pr-16 max-md:pr-14 max-md:text-[14px] pt-3 font-bold text-[#213063]">{title}</h1>
-        <p className="md:pr-16 max-md:pr-12 max-md:text-[12px]">{description}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function Informathion() {
   useEffect(() => {
@@ -65,8 +48,8 @@ export default function Informathion() {
       </div>
 
       {/* Image Section */}
-      <div className="lg:w-1/2 max-lg:w-full h-[50vh] flex items-center justify-center relative lg:ml-20">
-        <div className="sm:w-[500px] max-sm:w-11/12 h-full max-md:h-5/6 flex items-end absolute">
+      <div className="lg:w-1/2 max-lg:w-full h-[50vh] flex items-center justify-center relative lg:ml-20 ">
+        <div className="sm:w-[500px] max-sm:w-11/12 h-full max-md:h-5/6 flex items-end absolute ">
           <div className="w-1/3 h-2/6 z-10 flex items-center max-sm:hidden suspended-security">
             <img src="./img/info/security.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12" />
           </div>
