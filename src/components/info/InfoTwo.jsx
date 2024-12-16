@@ -2,26 +2,26 @@ import './Informathion.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';    
 import { useEffect } from 'react';
-import life from '/src/assets/json/life.json';
-import child from '/src/assets/json/child.json';
-import family from '/src/assets/json/family.json';
+import walking from '/src/assets/json/walking.json';
+import hospitalBed from '/src/assets/json/hospital-bed.json';
+import ambulance from '/src/assets/json/ambulance.json';
 import InfoCard from "./InfoCard"
 
 
 export const infoData = [
   {
-    animation: life,
-    title: " بدون سود",
+    animation: walking,
+    title: " بیمه سالمندان سامان ",
     description: "حافظ امنیت و زندگی خود باشید",
   },
   {
-    animation: child,
-    title: " 10 درصد پیش پرداخت",
+    animation: hospitalBed,
+    title: " بستری سالمندان ",
     description: "آساف لایف سپر امنیت خانواده شما",
   },
   {
-    animation: family,
-    title: " ثالث بدنه",
+    animation: ambulance,
+    title: " خدمات پزشکی اورژانسی ",
     description: "اطمینان خاطر در هر لحظه",
   },
 ];
@@ -42,42 +42,28 @@ export default function Informathion() {
               <InfoCard key={info.title} {...info} />
             ))}
             <div className="w-[80%] h-[40px] lg:min-w-[350px] flex justify-end self-center">
-              <button className="text-[12px] w-24 rounded-lg bg-custom-gradient text-white">ادامه مطلب</button>
+              <button className="text-[12px] w-24 rounded-lg bg-gray-100 font-bold text-[#213063]">ادامه مطلب</button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Image Section */}
-      {/* <div className="lg:w-1/2 max-lg:w-full h-[50vh] flex items-center justify-center relative lg:ml-20">
-        <div className="sm:w-[500px] max-sm:w-11/12 h-full max-md:h-5/6 flex items-end absolute">
-          <div className="w-1/3 h-2/6 z-10 flex items-center max-sm:hidden suspended-security">
-            <img src="./img/info/security.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12" />
-          </div>
-          <div className="w-1/3 h-1/4 self-start flex justify-center items-center z-10 max-sm:hidden suspended-first-aid">
-            <img src="./img/info/first-aid.png" alt="" className="md:w-20 md:h-20 max-md:w-14 max-md:h-14 mr-10" />
-          </div>
-          <div className="w-1/3 h-1/6 z-10 -rotate-12 max-sm:hidden suspended-heart">
-            <img src="./img/info/heart.png" alt="" className="md:w-16 md:h-16 max-md:w-14 max-md:h-14 mr-10" />
-          </div>
-          <img src="./img/info/bg-blue.png" alt="" className="w-full absolute self-center" />
-          <img src="./img/info/family-photo.png" alt="" className="w-11/12 absolute self-center mr-2" />
-        </div>
-      </div>
-    </div> */}
-
-    <div className="lg:w-1/2 max-lg:w-full h-[450px] flex flex-col  relative lg:ml-20  ">
-    
-    <div className='w-full h-1/6 flex items-center justify-center '>
-    <img src="./img/elderly/saman.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12" />
+     
+     <div className='lg:w-1/2 max-lg:w-full h-[450px]  flex items-center justify-center relative '>
+     <div className='flex flex-col z-50 sm:w-[600px] max-sm:w-[500px] sm:-mt-72 max-sm:-mt-60 '>
+     <div className='w-full h-1/6 flex items-center justify-center  '>
+    <img src="./img/elderly/saman.png" alt="" className="md:w-16 md:h-20 max-md:w-12 max-md:h-14 suspended "/>
     </div>
     <div className='w-full h-1/6 flex items-center justify-between '>
-    <img src="./img/elderly/icon1 .png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12" />
-    <img src="./img/elderly/icon 2.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12" />
+    <img src="./img/elderly/iconTwo.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12 max-sm:mr-4  suspended-first-aid "/>
+    <img src="./img/elderly/iconOne.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12  max-sm:ml-3 -rotate-[20deg] suspended-heart"/>
+    </div></div>
+
+     <img src="./img/elderly/subject.png" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4" />
+      </div>
+
     </div>
-    <img src="./img/elderly/subject.png" alt="" className=" object-cover lg:min-h-[400px] absolute bottom-0 self-center mr-2" />
-    </div>
-     
-    </div>
+
   );
 }

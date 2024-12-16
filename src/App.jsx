@@ -14,7 +14,7 @@ import Input from './components/input/Input.jsx';
 import InsuredPerson from "./components/dashbord/InsuredPerson.jsx"
 import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
-
+import Ministrant from "./components/introduction/Ministrant.jsx"
 
 function App() {
    return (
@@ -30,7 +30,8 @@ function App() {
          <Route path='/Mobile'      element={<Mobile/>} />
          <Route path='/psychology'  element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
-
+         <Route path='/Ministrant' element={<Ministrant/>} />
+         
         <Route path="test/*"  element={<Test/>}>
                 <Route
                  index element={ <Input />} />

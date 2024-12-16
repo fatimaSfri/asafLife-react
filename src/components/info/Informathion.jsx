@@ -9,7 +9,7 @@ function  NewBanner(){
 
     const [sliderImages,setsliderImages]= useState(
       [
-    //  {componnet:<InfoOne></InfoOne>},
+     {componnet:<InfoOne></InfoOne>},
      {componnet:<InfoTwo></InfoTwo>}
      ]
      )
@@ -33,7 +33,7 @@ function  NewBanner(){
     
       // slider
       useEffect(() => {
-        const intervalId = setInterval(sliderTimeOut, 10000);
+        const intervalId = setInterval(sliderTimeOut, 6000);
         return () => clearInterval(intervalId); 
         });
      
