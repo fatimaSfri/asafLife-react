@@ -12,6 +12,6 @@ export default function PreviewServices() {
     subTitleThree="
     بیمه درمان، پوشش مالی برای هزینه‌های پزشکی و درمانی افراد است. این نوع بیمه می‌تواند شامل هزینه‌های بیمارستان، دارو، آزمایشات و خدمات پزشکی دیگر باشد. 
     "
-    gap="md:mb-32 max-md:py-10"></Card>
+    gap="md:mb-20 mt-32 max-md:py-10"></Card>
   )
 }
