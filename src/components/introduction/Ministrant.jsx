@@ -16,7 +16,8 @@ export default function Mobile() {
    <Navbar></Navbar>
    <Ministrant play="hidden" gap="xl:gap-96 gap-20" size="xl:w-4/12"></Ministrant>
    <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full  flex justify-center items-center py-16 '>
+
+   {/* <div className='w-full  flex justify-center items-center py-16 '>
    <video className="rounded-3xl  lg:h-[700px] "
         src= "./img/video/bimekhodam.mp4"
         preload="auto"
@@ -25,8 +26,26 @@ export default function Mobile() {
         controls
        >
      </video>
-  
-   </div>
+   </div> */}
+   <div className='w-full h-[250px] flex justify-center items-center'>
+   <div className='w-[96%] h-[200px] flex max-md:flex-col items-center justify-around border border-red-500 mx-auto rounded-xl bg-[#9b9b9b] '>
+
+      <div className='flex flex-col gap-5 border border-red-500 items-center '>
+        <div className='flex border border-red-500  items-center gap-4'>
+        <div className='w-4 h-4 border-2 border-[#fdce0b] bg-black rounded-full '></div>
+        <p className='text-[20px]'> کارشنـاس صــدور : ســرکـار خانـم رعـنا صبــاغ</p>
+        </div>
+
+
+        <div className='flex border border-red-800 w-[300px] h-10 bg-white rounded-lg items-center justify-between '>
+        <div className='w-10/12 h-full bg-gray-200 rounded-lg ' ></div>
+         <img src="./img/Animation/ministrant/Layer.png" className='w-8 ml-4'></img>
+        </div>
+
+      </div>
+      <div></div>
+   </div></div>
+
    <div className='w-full md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto'>
 
     <div className='xl:w-[1250px] max-xl:w-full px-4   flex items-center gap-2  '>

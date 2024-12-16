@@ -29,7 +29,7 @@ export default {
          'bg-life':"url('../../img/Animation/life/08-bg.jpg')",
          'bg-sm-life':"url('../../img/Animation/life/sm-life.jpg')",
          'bg-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
-         'bg-sm-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
+         'bg-sm-ministrant':"url('../../img/Animation/ministrant/09-bg.png')",
           "bg-carbody" :"url('../../img/ten-ten/bg.png')",
          },
     },
