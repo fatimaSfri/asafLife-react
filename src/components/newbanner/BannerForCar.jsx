@@ -1,6 +1,8 @@
 import  { useEffect , useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import "./NewBanner.css"
+import Text from './Text';
+import Border from './border';
 
 export default function PsychologyBanner(props) {
     
@@ -21,7 +23,7 @@ export default function PsychologyBanner(props) {
             }, []);
         
           
-            const [ image , setImage ] =useState([
+            const [ image ] =useState([
                 './img/Animation/car/carOff.png',
                 './img/Animation/car/carOn.png', 
                 './img/Animation/car/Textbutton.png',
@@ -44,13 +46,17 @@ export default function PsychologyBanner(props) {
     
       return (
     
-      <div className={` md:bg-bg-car max-md:bg-bg-sm-car back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
+      <div className={`bg-gradient-circle-carBody back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
        w-full  flex justify-center max-md:flex-col items-center overflow-hidden ${props.gap}`}>
-           {/* text */}
-      <div className="xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20" >
+        <Border></Border>
+       {/* text */}
+
+      {/* <div className="xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20" >
       <Link to="/carBody" target="_blank" rel="noopener noreferrer"> <img src= {image[2]} alt="" className=" px-8 cursor-pointer "/></Link> 
            <img src="./img/Animation/car/Arrow.png" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12"></img>
-          </div>
+          </div> */}
+
+          <Text colorText="text-yellow-400"  title="بیمـــه ثالث بدنه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp" ></Text>
          
           {/* play */}
           <div className={` md:w-3/12 md:h-4/5 max-md:w-10/12 max-md:h-1/6 flex items-center justify-center ${props.play}`}>

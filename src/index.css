@@ -16,14 +16,14 @@
   }
   
   @font-face {
-    font-family: 'Kalameh-Thin'; 
-    src: url('../Font/Kalameh-Thin.woff') format('TrueType'); 
+    font-family:'Kalameh-Thin'; 
+    src: url('../Font/Kalameh-Thin.ttf') format('TrueType'); 
    
   }
   
   @font-face {
     font-family: 'Kalameh-Black' ; 
-    src: url('../Font/Kalameh-Black.woff') format('TrueType'); 
+    src: url('../Font/Kalameh-Black.ttf') format('TrueType'); 
    
   }
   

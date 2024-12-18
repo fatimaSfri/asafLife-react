@@ -1,8 +1,10 @@
-import React, { useEffect , useState } from 'react';
+import  { useEffect , useState } from 'react';
+import "./NewBanner.css"
+
 export default function ChildBanner(props) {
     
       
-      const [ image , setImage ] =useState([
+      const [ image ] =useState([
           './img/Animation/children/03-ob.png', 
           './img/Animation/children/03-Textbutton.png',
        ])  

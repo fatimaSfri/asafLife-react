@@ -1,7 +1,9 @@
-import React, { useEffect , useState } from 'react';
+import  { useEffect , useState } from 'react';
+import "./NewBanner.css"
+
 export default function AnimalBanner(props) {
     
-      const [ image , setImage ] =useState([
+      const [ image ] =useState([
           './img/Animation/animal/06-ob.png', 
           './img/Animation/animal/06-Textbutton.png',
        ])  
@@ -20,7 +22,7 @@ export default function AnimalBanner(props) {
       return (
      <>
        {/* for max-md */}
-       <div className= " max-md:bg-bg-sm-animal md:bg-bg-animal back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col items-center">
+       <div className= "bg-gradient-circle-pet max-md:bg-bg-sm-animal md:bg-bg-animal back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col items-center">
      
      {/* text */}
      <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">

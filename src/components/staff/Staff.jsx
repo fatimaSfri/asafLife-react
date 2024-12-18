@@ -20,7 +20,7 @@ export default function Staff() {
        </div>
        <div className="w-8/12  h-2/4 flex  justify-center max-lg:items-center max-md:w-11/12">
        <div className="xl:w-11/12 max-xl:w-full">
-         <img src="./img/staff/staf.jpg " alt="" className=" rounded-2xl object-cover" /></div>
+         <img src="./img/staff/staff2.jpg " alt="" className=" rounded-2xl object-cover" /></div>
        </div>
    </div>
    

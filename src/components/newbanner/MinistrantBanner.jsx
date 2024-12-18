@@ -1,7 +1,9 @@
 import { useEffect , useState } from 'react';
+import "./NewBanner.css"
+
 export default function MobileBanner(props) {
     
-      const [ image , setImage ] =useState([
+      const [ image ] =useState([
           './img/Animation/ministrant/shrine.png', 
           './img/Animation/ministrant/text.png',
        ])  
@@ -20,7 +22,7 @@ export default function MobileBanner(props) {
       return (
      <>
        {/* for max-md */}
-       <div className= " max-md:bg-bg-sm-ministrant md:bg-bg-ministrant back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col-reverse items-center ">
+       <div className= " bg-gradient-circle-ministrant  back_medium_01 bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col-reverse items-center ">
    
      {/* text */}
      <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 max-md:-mt-32 z-20">
@@ -31,11 +33,7 @@ export default function MobileBanner(props) {
 
     {/* object */}
 
-     {/* <div className=" md:h-3/5 xl:w-[700px] sm:min-w-[350px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right max-md:p-8 flex items-center 
-        justify-center xl:-mr-10">
-      <img src={image[0]}alt=""  className=" max-md:h-full pt-5 " />
-     </div> */}
-
+  
      <div className='md:w-1/2 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20'>
       <video className="rounded-lg"
         src= "./img/video/bimekhodam.mp4"

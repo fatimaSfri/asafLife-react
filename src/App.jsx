@@ -16,13 +16,14 @@ import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
 
+
+
 function App() {
    return (
    
    <>    
     <Routes>
          <Route path="/"            element={<Home />}/>
-         <Route path= "/login"      element={<Login/>}/> 
          <Route path='/carBody'     element={<CarBody/>} />
          <Route path='/Life'        element={<Life/>} />
          <Route path='/treatment'   element={<Treatment/>} />
@@ -32,7 +33,7 @@ function App() {
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
          <Route path='/Ministrant' element={<Ministrant/>} />
          
-        <Route path="test/*"  element={<Test/>}>
+        <Route path="login/*"  element={<Login/>}>
                 <Route
                  index element={ <Input />} />
                 <Route

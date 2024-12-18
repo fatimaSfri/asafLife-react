@@ -1,3 +1,4 @@
+import "./NewBanner.css"
 import { useEffect , useState } from 'react';
 
 export default function PsychologyBanner(props) {
@@ -21,7 +22,7 @@ export default function PsychologyBanner(props) {
     
       return (
     
-      <div className=" md:bg-bg-psychology max-md:bg-bg-sm-psychology back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-center max-md:flex-col items-center xl:gap-52 gap-20">
+      <div className="bg-gradient-circle-psychology  back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-center max-md:flex-col items-center xl:gap-52 gap-20">
          
           {/* text */}
           <div className="xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20 max-md:mb-16">

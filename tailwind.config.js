@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        KalamehBold: ['Kalameh-Bold'],
+      },
       backgroundImage:{
        "back_large_login1":"url('./img/login/legalL.jpg')",
         "back_medium_login1":"url('../../img/login/legalM.jpg')",

@@ -1,7 +1,9 @@
-import React, { useEffect , useState } from 'react';
+import  { useEffect , useState } from 'react';
+import "./NewBanner.css"
+
 export default function LegalBanner(props) {
     
-      const [ image , setImage ] =useState([
+      const [ image ] =useState([
           './img/Animation/legal/05-ob.png', 
           './img/Animation/legal/Textbutton.png',
        ])  
@@ -21,7 +23,7 @@ export default function LegalBanner(props) {
      <>
       
        {/* for max-md */}
-       <div className= "max-md:bg-bg-sm-legal md:bg-bg-legal back_medium_01 bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] w-full flex justify-center max-md:flex-col-reverse items-center xl:gap-40 gap-20">
+       <div className= "bg-gradient-circle-legal back_medium_01 bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] w-full flex justify-center max-md:flex-col-reverse items-center xl:gap-40 gap-20">
      
 
      {/* object */}

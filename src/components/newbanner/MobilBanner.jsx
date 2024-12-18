@@ -1,4 +1,6 @@
-import React, { useEffect , useState } from 'react';
+import  { useEffect , useState } from 'react';
+import "./NewBanner.css"
+
 export default function MobileBanner(props) {
     
       const [ image , setImage ] =useState([
@@ -20,7 +22,7 @@ export default function MobileBanner(props) {
       return (
      <>
        {/* for max-md */}
-       <div className= " max-md:bg-bg-sm-mobile md:bg-bg-mobile back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col-reverse items-center ">
+       <div className= " bg-gradient-circle-Mobile  back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col-reverse items-center ">
      
   {/* object */}
   <div className=" md:h-3/5 xl:w-[300px] sm:min-w-[350px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right max-md:p-8 flex items-center 

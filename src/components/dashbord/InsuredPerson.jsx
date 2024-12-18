@@ -6,7 +6,7 @@ export default function InsuredPerson() {
   return (
      <>
       <Dashbord></Dashbord>
-            <div className="w-full h-full  flex items-center justify-center bg-gray-200">
+            <div className="w-full h-[800px]  flex items-center justify-center bg-gray-200">
               <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col gap-8 justify-center items-center">
                 <h1 className="md:text-[28px] max-md:text-[20px] font-bold  text-[#213063] w-10/12">
                 تعریف شخص بیمه گذار 
