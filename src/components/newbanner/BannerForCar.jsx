@@ -47,8 +47,8 @@ export default function PsychologyBanner(props) {
       return (
     
       <div className={`bg-gradient-circle-carBody back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
-       w-full  flex justify-center max-md:flex-col items-center overflow-hidden ${props.gap}`}>
-        <Border></Border>
+       w-full flex justify-center max-md:flex-col items-center overflow-hidden p-4 ${props.gap}`}>
+        <Border background="bg-car" ></Border>
        {/* text */}
 
       {/* <div className="xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20" >
@@ -56,7 +56,7 @@ export default function PsychologyBanner(props) {
            <img src="./img/Animation/car/Arrow.png" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12"></img>
           </div> */}
 
-          <Text colorText="text-yellow-400"  title="بیمـــه ثالث بدنه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp" ></Text>
+          <Text colorText="text-car"  title="بیمـــه ثالث بدنه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp" ></Text>
          
           {/* play */}
           <div className={` md:w-3/12 md:h-4/5 max-md:w-10/12 max-md:h-1/6 flex items-center justify-center ${props.play}`}>

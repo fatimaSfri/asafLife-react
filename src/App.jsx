@@ -41,8 +41,8 @@ function App() {
                   element={<Input /> } />
          </Route>
          <Route path='/insuredPerson' element={<InsuredPerson/>} />
-       <Route path='/registration' element={<Registration/>} />
-       <Route path='/contract' element={<Contract/>} />
+        <Route path='/registration' element={<Registration/>} />
+        <Route path='/contract' element={<Contract/>} />
 
    </Routes>
   

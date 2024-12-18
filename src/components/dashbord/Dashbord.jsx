@@ -14,8 +14,8 @@ function handleMenu(){
     <div className="w-full h-[150px] bg-gray-200 flex items-center flex-col -z-20 ">
         {/* header */}
         <header className="rounded-b-sm  pt-0 w-full fixed z-40 " >     
-                      {toggle ? (<Menu></Menu> )  : <div></div> } </header>
-        
+           {toggle ? (<Menu></Menu> )  : <div></div> } </header>
+           
       <div className="flex items-center gap-8 w-10/12 justify-between pt-8 ">
       <img src="./img/icon/bars-solid.svg" alt=""  className=" lg:w-[50px] max-lg:w-[35px] max-md:w-[30px] z-50" onClick={handleMenu}/>
       

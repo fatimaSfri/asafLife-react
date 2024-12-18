@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors:{
+        life:'#f6f462',
+        car :'#fdce0b'
+      },
       fontFamily: {
         KalamehBold: ['Kalameh-Bold'],
       },

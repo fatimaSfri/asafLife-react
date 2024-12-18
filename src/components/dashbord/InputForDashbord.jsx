@@ -1,7 +1,7 @@
 
 export default function InputForDashbord(props) {
   return (
-    <div className={` w-full flex flex-col justify-center ${props.items}`}>
+    <div className={`w-full flex flex-col justify-center ${props.items}`}>
     <div className="flex lg:w-8/12 max-lg:w-full">
       <p className="text-[16px] text-[#213063] mt-4 ">
         {props.lable}

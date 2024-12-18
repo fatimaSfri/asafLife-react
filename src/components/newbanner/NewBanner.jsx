@@ -12,10 +12,10 @@ function  NewBanner(){
    
 
     //  , frontObjectCarOff:image[0],frontObjectCarOn:image[1], text:image[2]
-    const [sliderImages,setsliderImages]= useState(
+    const [sliderImages]= useState(
       [
       { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
-        modalVideo:'./img/video/asaf.mp4'},
+        modalVideo:'./img/video/all.MP4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
         modalVideo:"./img/video/tenTen.mp4" },
       ]
