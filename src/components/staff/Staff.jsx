@@ -16,7 +16,7 @@ export default function Staff() {
        <div className="w-8/12  h-[10%] flex items-center justify-between max-md:px max-md:w-11/12">
         <img src="./img/staff/ob-staff.png" alt=""  className=" w-16 h-16 lg:mx-10"/>
         <img src="./img/staff/Shape-01.svg" alt=""  className=" w-20 h-20 lg:mx-10"/>
-
+        
        </div>
        <div className="w-8/12  h-2/4 flex  justify-center max-lg:items-center max-md:w-11/12">
        <div className="xl:w-11/12 max-xl:w-full">

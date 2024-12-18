@@ -15,7 +15,7 @@ import InsuredPerson from "./components/dashbord/InsuredPerson.jsx"
 import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
-
+import ManagementPanel from './components/managementpanel/ManagementPanel.jsx';
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
          <Route path='/psychology'  element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
          <Route path='/Ministrant' element={<Ministrant/>} />
-         
+         <Route path="/panel"      element={<ManagementPanel/>} />
         <Route path="login/*"  element={<Login/>}>
                 <Route
                  index element={ <Input />} />
