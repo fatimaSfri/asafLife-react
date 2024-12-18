@@ -6,7 +6,7 @@ import Border from './border';
 export default function LifeBanner(props) {
     
       const [ image ] =useState([
-          './img/Animation/life/08-ob.png', 
+          './img/Animation/life/life-ob.webp', 
           './img/Animation/life/08-Textbutton.png',
        ])  
        
@@ -37,7 +37,7 @@ export default function LifeBanner(props) {
     
      {/* play */}
      <div className= {`md:w-3/12 md:h-4/5  max-md:w-10/12 max-md:h-1/6 flex items-center justify-center ${props.play} `} >
-      <img src="./img/Animation/life/08-Play.png" alt=""  className="
+      <img src="./img/Animation/life/08-Play.webp" alt=""  className="
         xl:w-[90px]  max-xl:w-[70px] xl:hover:w-[100px]  max-xl:hover:w-[80px] transition-width duration-300 ease-in-in z-30 cursor-pointer max-md:-mb-10 "  onClick={props.videoShowHandle}  />
       <img src="./img/Animation/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10 " />
       <img src='./img/Animation/car/mouse.png' className='absolute z-30 lg:w-[30px] lg:h-[40px] max-lg:w-[20px] max-lg:h-[25px] movement -mb-[100px] 
