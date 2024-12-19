@@ -27,8 +27,6 @@ export default function LifeBanner(props) {
        {/* bg-gradient-circle-life  */}
        <div className=  {` bg-gradient-circle-life back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
          h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 ${props.gap}`}>
-
-
      {/* around */}
       <Border background="bg-life" ></Border>
      

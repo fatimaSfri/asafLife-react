@@ -1,4 +1,4 @@
-import { Outlet , Link } from "react-router-dom";
+import { Outlet , Link , NavLink} from "react-router-dom";
 import  { useState } from 'react';
 import MenuForPannel from "../managementPanel/MenuForPannel";
 
@@ -37,22 +37,44 @@ export default function ManagementPanel() {
 
     <div>
     <ul className=" border border-red-500  xl:w-[400px] lg:w-[300px] h-[300px]  flex flex-col justify-evenly" >
-   <Link to="/panel/profile"><li className="flex items-center gap-4">
-    <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-      پروفایل</li></Link> 
 
-   <Link to="/panel/mycontracts" ><li className="flex items-center gap-4"> 
-    <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-      سرویس ها</li></Link>
+    <NavLink
+            to="/panel/profile"
+            className={({ isActive }) =>
+              isActive ? 'text-white font-bold' : 'text-gray-400'
+            }
+          >
+        <li className="flex items-center gap-4">
+          <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+          پروفایل 
+       </li> 
+     </NavLink>
 
-   <Link to="/panel/services" ><li className="flex items-center gap-4">
-    <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-      قرارداد های من </li></Link>
+   <NavLink
+            to="/panel/services"
+            className={({ isActive }) =>
+              isActive ? 'text-white font-bold' : 'text-gray-400'}> 
+           <li className="flex items-center gap-4"> 
+         <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+           سرویس ها</li>
+ </NavLink>
+
+ <NavLink
+           to="/panel/mycontracts"
+            className={({ isActive }) =>
+              isActive ? 'text-white font-bold' : 'text-gray-400'}>
+         <li className="flex items-center gap-4">
+         <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+          قرارداد های من </li></NavLink>
  
-  <Link to="/panel/support"> <li className="flex items-center gap-4">
-    <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-    پشتیبانی 
-    </li></Link>
+      <NavLink
+           to="/panel/support"
+            className={({ isActive }) =>
+              isActive ? 'text-white font-bold' : 'text-gray-400'}>
+         <li className="flex items-center gap-4">
+          <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+        پشتیبانی 
+         </li></NavLink>
 
     <li className="flex items-center gap-4">
     <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
@@ -63,9 +85,9 @@ export default function ManagementPanel() {
    </div>
    </div>
      <div className="w-full h-full border-2 border-blue-500 flex justify-center items-center">
-   <Outlet></Outlet></div>
-   
-  </div>
+   <Outlet></Outlet>
+   </div>
+    </div>
   </>
   )
 }
