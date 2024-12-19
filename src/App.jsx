@@ -16,6 +16,10 @@ import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
 import ManagementPanel from './components/managementpanel/ManagementPanel.jsx';
+import MyContracts from './components/managementPanel/MyContracts.jsx';
+import Profile from './components/managementPanel/Profile.jsx';
+import Services from './components/managementPanel/ServicesPanel.jsx';
+import Support from './components/managementPanel/Support.jsx';
 
 
 function App() {
@@ -32,14 +36,21 @@ function App() {
          <Route path='/psychology'  element={<Psychology/>} />
          <Route path='/legalAdvice' element={<LegalAdvice/>} />
          <Route path='/Ministrant' element={<Ministrant/>} />
-         <Route path="/panel"      element={<ManagementPanel/>} />
-        <Route path="login/*"  element={<Login/>}>
+         <Route path="login/*"  element={<Login/>}>
                 <Route
                  index element={ <Input />} />
                 <Route
                   path="password"
                   element={<Input /> } />
          </Route>
+
+         <Route path="panel/*"  element={<ManagementPanel/>}>
+            <Route index path='profile' element={< Profile/>}/>
+            <Route path="mycontracts"  element={<MyContracts />}/>
+            <Route path="services"  element={<Services />}/>
+           <Route  path="support" element={<Support />}/>
+         </Route>
+
          <Route path='/insuredPerson' element={<InsuredPerson/>} />
         <Route path='/registration' element={<Registration/>} />
         <Route path='/contract' element={<Contract/>} />

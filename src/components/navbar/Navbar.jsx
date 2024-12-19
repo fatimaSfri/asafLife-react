@@ -39,9 +39,7 @@ const [bgColor, setBgColor] = useState(false);
     };
   }, []);
 
-// function handleSearch(){
-//   setSearchToggle(prev => !prev)
-//  }
+
 
 return(
 
@@ -56,8 +54,8 @@ return(
                }  </header>
 
                 {/* menu for sm */}
-                <div className= {`rounded-b-sm mt-0 pt-0 flex flex-row-reverse max-md:justify-end fixed w-full
-                 z-40   transition-colors duration-300 ${bgColor?'bg-[rgba(33,48,99,0.9)] shadow-lg':''}`}>
+                <div className={`rounded-b-sm mt-0 pt-0 flex flex-row-reverse max-md:justify-end fixed w-full
+                 z-40 transition-colors duration-300 ${bgColor?'bg-[rgba(33,48,99,0.9)] shadow-lg':''}`}>
 
                  <div className="flex items-center justify-between px-7 h-16 w-full">
                  <div className="dropdown-menu left-0 max-lg:bg-[#0000009f] w-full flex flex-col max-lg:items-center gap-7 
