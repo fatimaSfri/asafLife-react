@@ -3,6 +3,7 @@ import Button from "../button/Button";
 import axiosInstance from "../axiosConfig";
 import { useState, useCallback } from "react";
 import CreateUserValidation from "./validationInput/createUserValidation";
+import InputField from "./InputForDashbord.jsx"
 
 export default function InsuredPerson() {
   const [formData, setFormData] = useState({
@@ -120,14 +121,15 @@ export default function InsuredPerson() {
             موقعیت کاربر با موفقیت ثبت شد.
           </div>
         )}
-        <form onSubmit={handleSubmit} className="w-full mt-4">
+        <form onSubmit={handleSubmit} className="w-full mt-4 flex items-center justify-center">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
-            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border w-10/12">
+            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border md:w-11/12 lg:w-[69%] max-md:w-10/12">
               تعریف شخص بیمه گذار
             </h1>
-            <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center  mx-auto">
-              <div className="md:flex max-md:flex-col w-full gap-2 ">
+            <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center  mx-auto ">
+              <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2 mx-auto  ">
                 <InputField
+                  items="items-end"
                   label="نام"
                   name="firstName"
                   value={formData.firstName}
@@ -135,6 +137,7 @@ export default function InsuredPerson() {
                   error={errors.firstName}
                 />
                 <InputField
+                 items="items-start"
                   label="نام خانوادگی"
                   name="lastName"
                   value={formData.lastName}
@@ -142,8 +145,9 @@ export default function InsuredPerson() {
                   error={errors.lastName}
                 />
               </div>
-              <div className="md:flex max-md:flex-col w-full gap-2">
+              <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
                 <InputField
+                items="items-end"
                   label="کد ملی"
                   name="nationalId"
                   value={formData.nationalId}
@@ -151,6 +155,7 @@ export default function InsuredPerson() {
                   error={errors.nationalId}
                 />
                 <InputField
+                 items="items-start"
                   label="شماره تماس"
                   name="phone"
                   value={formData.phone}
@@ -159,40 +164,12 @@ export default function InsuredPerson() {
                 />
               </div>
               <div className="w-full">
-                <Button mt="mt-10" type="submit" width="w-10/12" />
+                <Button mt="mt-10" type="submit" width="w-8/12" />
               </div>
             </div>
           </div>
         </form>
       </div>
     </>
-  );
-}
-
-function InputField({
-  label,
-  name,
-  value,
-  onChange,
-  error,
-  type = "text",
- required = true,
-}) {
-  const toPersianNumbers = (str) => str.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
-  return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <label className="flex lg:w-8/12 max-lg:w-full">
-        <p className="text-[16px] text-[#213063]">{label}</p>
-        {required && <p className="text-red-500 text-[20px] pr-1">*</p>}
-      </label>
-      <input
-        type={type}
-        name={name}
-        value={toPersianNumbers(value)}
-        onChange={onChange}
-        className="lg:w-8/12 max-lg:w-full h-10 rounded-2xl px-5"
-      />
-      {error && <p className="text-red-500">{error}</p>}
-    </div>
   );
 }
