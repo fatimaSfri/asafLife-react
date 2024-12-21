@@ -132,7 +132,7 @@ export default function InsuredPerson() {
                 <InputField
                   items="items-end"
                   label="نام"
-                  name="firstName"
+                  name="first_name"
                   value={formData.first_name}
                   onChange={handleInputChange}
                   error={errors.first_name}
@@ -140,7 +140,7 @@ export default function InsuredPerson() {
                 <InputField
                  items="items-start"
                   label="نام خانوادگی"
-                  name="lastName"
+                  name="last_name"
                   value={formData.last_name}
                   onChange={handleInputChange}
                   error={errors.last_name}
@@ -150,7 +150,7 @@ export default function InsuredPerson() {
                 <InputField
                 items="items-end"
                   label="کد ملی"
-                  name="nationalId"
+                  name="national_id"
                   value={formData.national_id}
                   onChange={handleInputChange}
                   error={errors.national_id}
