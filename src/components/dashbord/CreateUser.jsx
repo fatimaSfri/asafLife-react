@@ -83,7 +83,7 @@ export default function InsuredPerson() {
 
         setSubmitted(true);
         setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 3000);
+        setTimeout(() => setShowPopup(false), 7000);
       } catch (error) {
         const backendErrors = {};
 
@@ -118,7 +118,7 @@ export default function InsuredPerson() {
       <Dashbord />
       <div className="w-full h-[802px] flex flex-col items-center justify-start bg-gray-200 ">
         {showPopup && (
-          <div className="fixed top-0 left-1/2 transform -translate-x-1/2  text-white p-4 rounded-xl shadow-lg">
+          <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
             موقعیت کاربر با موفقیت ثبت شد.
           </div>
         )}

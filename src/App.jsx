@@ -45,7 +45,8 @@ function App() {
          </Route>
 
          <Route path="panel/*"  element={<ManagementPanel/>}>
-            <Route index path='profile' element={< Profile/>}/>
+            <Route index   element={< Profile/>}/>
+            <Route path='profile' element={< Profile/>}/>
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>

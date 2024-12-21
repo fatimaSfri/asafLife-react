@@ -27,15 +27,19 @@ export default function ManagementPanel() {
                }  </header>
 
     <div className="w-full flex h-screen shadow-lg relative">
-    <div className={`w-full h-16 absolute max-md:z-40 ${!bgColor?'bg-[#e9e9e9] shadow-lg':''}`}>
-    <img src={toggle?icon.close:icon.menu} className={`${!toggle?"w-8 h-6":"w-10 h-10"} font-[#4f4f4f] lg:hidden cursor-pointer z-50`} onClick={handleMenu}></img>
+    <div className={`w-full h-16 absolute  flex md:flex-row-reverse items-center ${!bgColor?'bg-[#e9e9e9] shadow-lg':''}`}>
+    <img src={toggle?icon.close:icon.menu} className={`${!toggle?"w-10 h-8 p-[2px]":"w-10 h-10"} mr-4 font-[#4f4f4f] lg:hidden cursor-pointer z-50 md:hidden `} onClick={handleMenu}></img>
+    <div className="md:w-10/12 max-md:w-full h-full  flex items-center justify-between px-4 ">
+     <img src="../img/pannel/Notification.svg" alt="" className="md:w-10 md:h-10 md:mr-20 mr-2 max-md:w-6 max-md:w-h-6" />
+     <img src="../img/icon/ASAF Logo copy.svg" alt="" className="md:h-14 max-md:h-10" />
+    </div>
     </div>
    
     <div className=" h-full w-3/12 bg-[#e9e9e9] rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28 max-md:hidden">
     <div className=" w-[120px] h-[120px] rounded-full relative">
       <img src="../img/pannel/User.svg" alt="" className="object-center "/>
       {/* div for notification */}
-      {/* <div className="xl:w-10 xl:h-10 max-xl:w-8 max-xl:h-8 bg-red-500 rounded-full absolute -mt-10 -mr-2 text-white "></div> */}
+      {/* <div className="xl:w-10 xl:h-10 max-xl:w-8 max-xl:h-8 bg-red-500 rounded-full absolute -mt-10 -mr-2 text-white"></div> */}
       <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#535353]">حسن مومنی</p>
     </div>
     
