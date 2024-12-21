@@ -83,13 +83,13 @@ const GetDashbordUsers = () => {
                 className="hover:bg-gray-50 transition-colors duration-200 text-right"
               >
                 <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
-                  {user.firstName}
+                  {user.first_name}
                 </td>
                 <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
-                  {user.lastName}
+                  {user.last_name}
                 </td>
                 <td className="hidden lg:table-cell px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
-                  {user.nationalId}
+                  {user.national_id}
                 </td>
                 <td className="hidden md:table-cell px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
                   {user.phone}

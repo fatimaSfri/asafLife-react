@@ -7,10 +7,11 @@ import InputField from "./InputForDashbord.jsx"
 
 export default function InsuredPerson() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    nationalId: "",
+    first_name: "",
+    last_name: "",
+    national_id: "",
     phone: "",
+    
   });
 
   const [errors, setErrors] = useState({});
@@ -52,8 +53,8 @@ export default function InsuredPerson() {
       });
     }
 
-    if (!checkCodeMeli(formData.nationalId)) {
-      validationErrors.nationalId = "کد ملی وارد شده نامعتبر است.";
+    if (!checkCodeMeli(formData.national_id)) {
+      validationErrors.national_id = "کد ملی وارد شده نامعتبر است.";
     }
 
     setErrors(validationErrors);
@@ -74,9 +75,9 @@ export default function InsuredPerson() {
         localStorage.setItem("insuredPersonData", JSON.stringify(formData));
 
         setFormData({
-          firstName: "",
-          lastName: "",
-          nationalId: "",
+          first_name: "",
+          last_name: "",
+          national_id: "",
           phone: "",
         });
 
@@ -89,11 +90,11 @@ export default function InsuredPerson() {
         if (error.response && error.response.data) {
           const { message, errors } = error.response.data;
 
-          if (message?.includes("کد ملی تکراری است")) {
-            backendErrors.nationalId = "کد ملی وارد شده قبلاً ثبت شده است.";
+          if (message?.includes(`کد ملی \"${formData.national_id}\" قبلا ثبت شده است.`)) {
+            backendErrors.national_id = "کد ملی وارد شده قبلاً ثبت شده است.";
           }
 
-          if (message?.includes("شماره تماس تکراری است")) {
+          if (message?.includes(`شماره تلفن \"${formData.phone}\" قبلا ثبت شده است.`)) {
             backendErrors.phone = "شماره تماس وارد شده قبلاً ثبت شده است.";
           }
 
@@ -132,17 +133,17 @@ export default function InsuredPerson() {
                   items="items-end"
                   label="نام"
                   name="firstName"
-                  value={formData.firstName}
+                  value={formData.first_name}
                   onChange={handleInputChange}
-                  error={errors.firstName}
+                  error={errors.first_name}
                 />
                 <InputField
                  items="items-start"
                   label="نام خانوادگی"
                   name="lastName"
-                  value={formData.lastName}
+                  value={formData.last_name}
                   onChange={handleInputChange}
-                  error={errors.lastName}
+                  error={errors.last_name}
                 />
               </div>
               <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
@@ -150,9 +151,9 @@ export default function InsuredPerson() {
                 items="items-end"
                   label="کد ملی"
                   name="nationalId"
-                  value={formData.nationalId}
+                  value={formData.national_id}
                   onChange={handleInputChange}
-                  error={errors.nationalId}
+                  error={errors.national_id}
                 />
                 <InputField
                  items="items-start"

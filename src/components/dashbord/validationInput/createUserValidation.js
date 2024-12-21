@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const CreateUserValidation = Joi.object({
-  firstName: Joi.string()
+  first_name: Joi.string()
     .min(2)
     .max(50)
     .regex(/^[\u0600-\u06FF\s]+$/)
@@ -13,7 +13,7 @@ const CreateUserValidation = Joi.object({
       "string.pattern.base": "نام فقط می‌تواند شامل حروف فارسی باشد.",
     }),
 
-  lastName: Joi.string()
+  last_name: Joi.string()
     .min(2)
     .max(50)
     .regex(/^[\u0600-\u06FF\s]+$/)
@@ -25,7 +25,7 @@ const CreateUserValidation = Joi.object({
       "string.pattern.base": "نام خانوادگی فقط می‌تواند شامل حروف فارسی باشد.",
     }),
 
-  nationalId: Joi.string()
+  national_id: Joi.string()
     .length(10)
     .regex(/^\d+$/)
     .required()
@@ -42,8 +42,6 @@ const CreateUserValidation = Joi.object({
       "string.empty": "شماره تماس الزامی است.",
       "string.pattern.base": "شماره تماس وارد شده معتبر نیست. لطفاً شماره‌ای با فرمت صحیح وارد کنید.",
     }),
-
-
 
 });
 
