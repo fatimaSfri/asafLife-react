@@ -5,7 +5,7 @@ import "./Counseling.css"
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { Link } from 'react-router-dom';
-import { link } from 'joi';
+
 
 export default function Counseling() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1540); 
@@ -50,7 +50,7 @@ export default function Counseling() {
       image: "./img/counseling/legal.jpg",
       iconClock: "./img/counseling/clockYellow.svg",
       iconUser:"./img/counseling/userYellow.svg",
-      link :"/legalAdvice"
+      link :"/legal-advice"
     },
     {
       title: "مشاوره سرمایه گذاری",

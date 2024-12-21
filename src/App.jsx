@@ -9,9 +9,8 @@ import Pet from "./components/introduction/Pet.jsx"
 import Mobile from "./components/introduction/Mobile.jsx"
 import Psychology from "./components/introduction/Psychology.jsx"
 import LegalAdvice from "./components/introduction/LegalAdvice.jsx"
-import Test from "./components/test/Test.jsx"
 import Input from './components/input/Input.jsx';
-import InsuredPerson from "./components/dashbord/InsuredPerson.jsx"
+import CreateUser from "./components/dashbord/CreateUser.jsx"
 import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
@@ -20,22 +19,24 @@ import MyContracts from './components/managementPanel/MyContracts.jsx';
 import Profile from './components/managementPanel/Profile.jsx';
 import Services from './components/managementPanel/ServicesPanel.jsx';
 import Support from './components/managementPanel/Support.jsx';
+import GetDashbordUsers from './components/dashbord/GetDashbordUsers.jsx'
 
 
 function App() {
+ 
    return (
    
    <>    
     <Routes>
-         <Route path="/"            element={<Home />}/>
-         <Route path='/carBody'     element={<CarBody/>} />
-         <Route path='/Life'        element={<Life/>} />
-         <Route path='/treatment'   element={<Treatment/>} />
-         <Route path='/pet'         element={<Pet/>} />
-         <Route path='/Mobile'      element={<Mobile/>} />
-         <Route path='/psychology'  element={<Psychology/>} />
-         <Route path='/legalAdvice' element={<LegalAdvice/>} />
-         <Route path='/Ministrant' element={<Ministrant/>} />
+         <Route path="/"      element={<Home />}/>
+         <Route path='/carBody'  element={<CarBody/>} />
+         <Route path='/life'     element={<Life/>} />
+         <Route path='/treatment'  element={<Treatment/>} />
+         <Route path='/pet'   element={<Pet/>} />
+         <Route path='/mobile'  element={<Mobile/>} />
+         <Route path='/psychology' element={<Psychology/>} />
+         <Route path='/legal-advice' element={<LegalAdvice/>} />
+         <Route path='/ministrant' element={<Ministrant/>} />
          <Route path="login/*"  element={<Login/>}>
                 <Route
                  index element={ <Input />} />
@@ -51,8 +52,9 @@ function App() {
            <Route  path="support" element={<Support />}/>
          </Route>
 
-         <Route path='/insuredPerson' element={<InsuredPerson/>} />
+         <Route path='/user-create' element={<CreateUser/>} />
         <Route path='/registration' element={<Registration/>} />
+        <Route path='/user' element={<GetDashbordUsers/>} />
         <Route path='/contract' element={<Contract/>} />
 
    </Routes>

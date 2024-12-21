@@ -4,7 +4,7 @@ import "./NewBanner.css"
 export default function AnimalBanner(props) {
     
       const [ image ] =useState([
-          './img/Animation/animal/06-ob.png', 
+          './img/Animation/animal/pet-ob.webp', 
           './img/Animation/animal/06-Textbutton.png',
        ])  
        
@@ -30,15 +30,7 @@ export default function AnimalBanner(props) {
       <img src="./img/Animation/treatment/02-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
      </div>
     
-     {/* play */}
-
-     {/* <div className=" md:w-3/12 md:h-4/5  max-md:w-10/12 max-md:h-1/6  flex items-center justify-center ">
-      <img src="./img/Animation/animal/06-Play.png" alt=""  className="
-        xl:w-[90px]  max-xl:w-[70px] xl:hover:w-[100px]  max-xl:hover:w-[80px] transition-width duration-300 ease-in-in  z-30 cursor-pointer max-md:-mb-10 "  onClick={props.videoShowHandle}  />
-      <img src="./img/Animation/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10 " />
-      <img src='./img/Animation/car/mouse.png' className='absolute z-30 lg:w-[30px] lg:h-[40px] max-lg:w-[20px] max-lg:h-[25px] movement -mb-[100px] md:ml-[70px] max-md:ml-[50px] '></img>
-     </div> */}
-
+    
      {/* object */}
 
      <div className="xl:w-[600px] sm:min-w-[450px]  max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right  flex items-center 

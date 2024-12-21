@@ -1,9 +1,8 @@
 import Dashbord from "./Dashbord";
 import Button from "../button/Button";
-import axios from "axios";
+import axiosInstance from "../axiosConfig";
 import { useState, useCallback } from "react";
 import CreateUserValidation from "./validationInput/createUserValidation";
-// import { useNavigate } from "react-router-dom";
 
 export default function InsuredPerson() {
   const [formData, setFormData] = useState({
@@ -16,7 +15,6 @@ export default function InsuredPerson() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  // const navigate = useNavigate();
 
   const toEnglishNumbers = (str) => {
     return str.replace(/[۰-۹]/g, (d) => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
@@ -38,6 +36,7 @@ export default function InsuredPerson() {
     const { name, value } = e.target;
     const englishValue = toEnglishNumbers(value);
     setFormData((prev) => ({ ...prev, [name]: englishValue }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   }, []);
 
   const handleValidation = useCallback(() => {
@@ -57,48 +56,77 @@ export default function InsuredPerson() {
     }
 
     setErrors(validationErrors);
-
     return Object.keys(validationErrors).length === 0;
   }, [formData]);
 
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
+
       if (!handleValidation()) {
         setSubmitted(false);
         return;
       }
-  
-      console.log(formData);
+
       try {
-        await axios.post("https://asaflife.com/api/user", formData, {
-          headers: { "Content-Type": "application/json" },
-        });
-        
+        await axiosInstance.post("/user", formData);
         localStorage.setItem("insuredPersonData", JSON.stringify(formData));
-        
+
+        setFormData({
+          firstName: "",
+          lastName: "",
+          nationalId: "",
+          phone: "",
+        });
+
         setSubmitted(true);
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 3000);
       } catch (error) {
-        setErrors({ apiError: "مشکلی در ارسال اطلاعات رخ داده است." });
+        const backendErrors = {};
+
+        if (error.response && error.response.data) {
+          const { message, errors } = error.response.data;
+
+          if (message?.includes("کد ملی تکراری است")) {
+            backendErrors.nationalId = "کد ملی وارد شده قبلاً ثبت شده است.";
+          }
+
+          if (message?.includes("شماره تماس تکراری است")) {
+            backendErrors.phone = "شماره تماس وارد شده قبلاً ثبت شده است.";
+          }
+
+          if (errors) {
+            for (const field in errors) {
+              backendErrors[field] = errors[field].join(" ");
+            }
+          }
+        } else {
+          backendErrors.apiError = "مشکلی در ارسال اطلاعات رخ داده است.";
+        }
+
+        setErrors(backendErrors);
       }
     },
     [formData, handleValidation]
   );
-  
 
   return (
     <>
       <Dashbord />
-      <div className="w-full h-[802px] flex items-center justify-center bg-gray-200">
-        <form onSubmit={handleSubmit} className="w-full">
-          <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col gap-10 md:px-16 -mt-40">
-            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063]">
+      <div className="w-full h-[802px] flex flex-col items-center justify-start bg-gray-200 ">
+        {showPopup && (
+          <div className="fixed top-0 left-1/2 transform -translate-x-1/2  text-white p-4 rounded-xl shadow-lg">
+            موقعیت کاربر با موفقیت ثبت شد.
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="w-full mt-4">
+          <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
+            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border w-10/12">
               تعریف شخص بیمه گذار
             </h1>
-            <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center max-lg:gap-20 mx-auto">
-              <div className="md:flex max-md:flex-col w-full gap-2">
+            <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center  mx-auto">
+              <div className="md:flex max-md:flex-col w-full gap-2 ">
                 <InputField
                   label="نام"
                   name="firstName"
@@ -131,22 +159,25 @@ export default function InsuredPerson() {
                 />
               </div>
               <div className="w-full">
-                <Button mt="mt-10" type="submit" />
+                <Button mt="mt-10" type="submit" width="w-10/12" />
               </div>
             </div>
           </div>
         </form>
       </div>
-      {showPopup && (
-        <div className="fixed top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg animate-bounce">
-          کاربر با موفقیت ثبت شد
-        </div>
-      )}
     </>
   );
 }
 
-function InputField({ label, name, value, onChange, error, type = "text", required = true }) {
+function InputField({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  type = "text",
+ required = true,
+}) {
   const toPersianNumbers = (str) => str.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -161,7 +192,7 @@ function InputField({ label, name, value, onChange, error, type = "text", requir
         onChange={onChange}
         className="lg:w-8/12 max-lg:w-full h-10 rounded-2xl px-5"
       />
-      {error && <p className="text-red-500 lg:w-8/12 max-lg:w-full text-[14px]">{error}</p>}
+      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 }

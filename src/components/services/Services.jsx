@@ -17,7 +17,7 @@ const servicesData = [
     description:
    "این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
     imgSrc: "./img/servics/life-service.jpg",
-    link:"/Life",
+    link:"/life",
     color:"#f6f461",
     bgColor:"#29a8ac"
   },
@@ -57,7 +57,7 @@ const servicesData = [
     description: 
     "بیمه موبایل به کاربران کمک می‌کند تا از هزینه‌های بالای تعمیر یا تعویض گوشی‌های خود در صورت بروز حادثه محافظت کنند و آرامش خاطر بیشتری داشته باشند.",
     imgSrc: "./img/servics/mobile.jpg",
-    link:"/Mobile",
+    link:"/mobile",
     color:"#d21a1a",
     bgColor:"#a7a7a7"
   },

@@ -8,7 +8,8 @@ export default {
     extend: {
       colors:{
         life:'#f6f462',
-        car :'#fdce0b'
+        car :'#fdce0b',
+        
       },
       fontFamily: {
         KalamehBold: ['Kalameh-Bold'],
@@ -38,6 +39,7 @@ export default {
          'bg-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
          'bg-sm-ministrant':"url('../../img/Animation/ministrant/09-bg.png')",
           "bg-carbody" :"url('../../img/ten-ten/bg.png')",
+
          },
     },
   },

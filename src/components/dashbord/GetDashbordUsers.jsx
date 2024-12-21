@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../axiosConfig"; 
 
 const GetDashbordUsers = () => {
   const [users, setUsers] = useState([]); 
@@ -10,16 +10,22 @@ const GetDashbordUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://asaflife.com/api/user");
-        setUsers(response.data); 
-        setFilteredUsers(response.data);
+        const response = await axiosInstance.get("/user");
+        console.log(response.data); 
+        if (response.data && Array.isArray(response.data.data)) {
+          setUsers(response.data.data); 
+          setFilteredUsers(response.data.data); 
+        } else {
+          console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+        }
       } catch (error) {
-        console.error("\u062E\u0637\u0627 \u062F\u0631 \u062F\u0631\u06CC\u0627\u0641\u062A \u0627\u0637\u0644\u0627\u0639\u0627\u062A \u06A9\u0627\u0631\u0628\u0631\u0627\u0646:", error);
+        console.error("خطا در دریافت اطلاعات کاربران:", error);
       }
     };
-
+  
     fetchUsers();
   }, []);
+  
 
   const totalPages = Math.ceil(filteredUsers.length / recordsPerPage);
 

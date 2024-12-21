@@ -20,10 +20,6 @@ export default function ServicesPanel() {
      </div>
       <div className="w-full h-1/2 border-4"></div>
     </div>
-
-
-
-
     </div>
 
   )
