@@ -14,7 +14,6 @@ import CreateUser from "./components/dashbord/CreateUser.jsx"
 import Registration from "./components/dashbord/Registration.jsx"
 import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
-import ManagementPanel from './components/managementpanel/ManagementPanel.jsx';
 import MyContracts from './components/managementPanel/MyContracts.jsx';
 import Profile from './components/managementPanel/Profile.jsx';
 import Services from './components/managementPanel/ServicesPanel.jsx';
@@ -45,12 +44,12 @@ function App() {
                   element={<Input /> } />
          </Route>
 
-         <Route path="panel/*"  element={<ManagementPanel/>}>
+         {/* <Route path="panel/*"  element={<ManagementPanel/>}>
             <Route index path='profile' element={< Profile/>}/>
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>
-         </Route>
+         </Route> */}
 
          <Route path='/user-create' element={<CreateUser/>} />
         <Route path='/registration' element={<Registration/>} />
