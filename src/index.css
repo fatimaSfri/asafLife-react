@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  @font-face {
+    font-family: 'Kalameh-Bold'; 
+    src: url('../Font/Kalameh-Bold.ttf') format('TrueType'); 
+     
+    
+  }
+  @font-face {
+    font-family: 'Kalameh-Regular'; 
+    src: url('../Font/Kalameh-Regular.ttf') format('TrueType'); 
+   
+  }
+  
+  @font-face {
+    font-family:'Kalameh-Thin'; 
+    src: url('../Font/Kalameh-Thin.ttf') format('TrueType'); 
+   
+  }
+  
+  @font-face {
+    font-family: 'Kalameh-Black' ; 
+    src: url('../Font/Kalameh-Black.ttf') format('TrueType'); 
+   
+  }
+  
+  *{
+  
+    font-family: "Kalameh-Regular";
+  
+   }
+  
+
+  .router-link-exact-active {
+    color: inherit; 
+    font-weight: normal; 
+    font-weight: bold;
+    color:#008061;
+    font-size:18px;
+  }
+  .router-link-active{
+    font-weight: bold;
+    color:#008061;
+    font-size:18px;
+  }
+  .nav-link {
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  .active{
+    width:30px;
+    height: 15px;
+    animation: bubble 0.7s forwards;
+  }
+  @keyframes bubble {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5); 
+    }
+    100% {
+      transform: scale(1); 
+    }
+  }
+  
+  .text-shadow-scal{
+    text-shadow: 2px 3px 10px #f1b101;
+   }
+   .text-shadow-treatment{
+     text-shadow: 2px 3px 10px  #0051ff ;
+    }
+    .text-shadow-psychology{
+     text-shadow: 2px 3px 10px #003771;
+    }
+    .text-shadow-child{
+     text-shadow: 2px 3px 10px #0051ff;
+    }
+  
+  
+  
+    .my-custom-alert{
+     width: 450px;
+     font-size: 18px;
+      
+    }
+  
+    @media (max-width:768px){
+      .my-custom-alert{
+        width: 80%;
+       
+       }
+  
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .hover\:animate-pulse:hover {
+      animation: pulse 0.5s infinite;
+    }
+    
+ 
+  
+.slide img {
+      transition: filter 0.5s ease;
+  }
+  
+  .slide img:hover {
+      filter: brightness(1.1) contrast(1);
+  }
+  
+  
+  .slide img {
+      animation: comboAnimation 0.7s forwards;
+  }
+  /* ************************ */
+  
+  @keyframes rotateLeft {
+    from {
+        transform: rotateY(45deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+  }
+  
+  .slider.rotate {
+    animation: rotateLeft 0.9s forwards;
+  }
+  
+  @keyframes slideUp {
+      from {
+          transform: translateY(100%);
+          opacity: 0;
+      }
+      to {
+          transform: translateY(0);
+          opacity: 1;
+      }
+  }
+  
+  .slider.slide-up {
+      animation: slideUp 0.9s forwards;
+  }
+  
+  
+  
+  
+  
