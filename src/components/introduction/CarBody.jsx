@@ -34,7 +34,7 @@ export default function CarBody() {
    <div className='h-auto w-full bg-gray-200' >
    <div className='w-full flex justify-center items-center py-16 '>
    <video className="rounded-3xl  lg:h-[700px] "
-        src= "./img/video/tenTen.mp4"
+        src= "./img/video/forCar.MP4"
         preload="auto"
         autoPlay
         loop

@@ -36,7 +36,7 @@ export default function MobileBanner(props) {
   
      <div className='md:w-1/2 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20'>
       <video className="rounded-lg"
-        src= "./img/video/bimekhodam.mp4"
+        src= "./img/video/ministrant.MP4"
         preload="auto"
         autoPlay
         loop
