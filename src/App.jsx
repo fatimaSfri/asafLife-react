@@ -53,7 +53,7 @@ function App() {
          </Route>
 
          <Route path='/user-create' element={<CreateUser/>} />
-        <Route path='/registration' element={<Registration/>} />
+        <Route path='/insurance' element={<Registration/>} />
         <Route path='/user' element={<GetDashbordUsers/>} />
         <Route path='/contract' element={<Contract/>} />
 
