@@ -98,7 +98,7 @@ export default function ManagementPanel() {
     </ul>
    </div>
    </div>
-     <div className="w-full h-full border-2 border-blue-500 flex justify-center items-center">
+     <div className="w-full h-full flex justify-center items-center">
    <Outlet></Outlet>
    </div>
     </div>

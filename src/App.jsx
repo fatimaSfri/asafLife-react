@@ -20,6 +20,7 @@ import Services from './components/managementPanel/ServicesPanel.jsx';
 import Support from './components/managementPanel/Support.jsx';
 import GetDashbordUsers from './components/dashbord/GetDashbordUsers.jsx'
 import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
+import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 
 function App() {
  
@@ -47,6 +48,8 @@ function App() {
          <Route path="panel/*"  element={<ManagementPanel/>}>
             <Route index   element={< Profile/>}/>
             <Route path='profile' element={< Profile/>}/>
+            <Route path='table' element={< ChildProfil/>}/>
+        
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>

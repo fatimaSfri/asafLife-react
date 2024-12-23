@@ -1,41 +1,41 @@
-
+import {Link} from "react-router-dom";
 
 export default function MyContracts() {
   return (
     <>
-    <div className="w-full h-full border-4 border-green-500  flex flex-col pt-24 ">
-       <div className=" w-full h-[300px] border-4 border-red-400 flex items-center justify-evenly">
-        <div className="w-1/4 border border-teal-700 h-40 "></div>
-        <div></div>
-        <div></div>
-       </div>
-    <table className="w-full border-collapse border border-gray-300" >
+   
+   <div className="w-full h-full flex items-center justify-center " >
+    <table className="md:w-10/12 max-md:w-[95%] h-1/3  rounded-2xl overflow-hidden " >
     <thead>
-      <tr className="bg-gray-200">
-        <th className="border border-gray-300 px-4 py-2">عنوان ۱</th>
-        <th className="border border-gray-300 px-4 py-2">عنوان ۲</th>
-        <th className="border border-gray-300 px-4 py-2">عنوان ۳</th>
+      <tr className="bg-gray-200 rounded-2xl h-14 max-md:text-[12px] ">
+        <th className=""> تاریخ صدور</th>
+        <th className="  "> کد رایانامه صدور</th>
+        <th className="  "> عنوان رشته</th>
+        <th className=" "> شماره بیمه نامه</th>
+        <th className=" ">تنظیمات</th>
       </tr>
     </thead>
     <tbody>
-      <tr className="hover:bg-gray-100">
-        <td className="border border-gray-300 px-4 py-2">مورد ۱</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۲</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۳</td>
+      <tr className="max-md:text-[12px]">
+        <td className="border border-gray-300 text-center">1403/09/03</td>
+        <td className="border border-gray-300 text-center">125965242</td>
+        <td className="border border-gray-300 text-center"> عمر انفرادی</td>
+        <td className="border border-gray-300 text-center">9</td>
+        <td className="border border-gray-300 text-center">
+        <Link to="/panel/table" ><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
       </tr>
-      <tr className="hover:bg-gray-100">
-        <td className="border border-gray-300 px-4 py-2">مورد ۴</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۵</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۶</td>
-      </tr>
-      <tr className="hover:bg-gray-100">
-        <td className="border border-gray-300 px-4 py-2">مورد ۷</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۸</td>
-        <td className="border border-gray-300 px-4 py-2">مورد ۹</td>
+      <tr className="max-md:text-[12px]">
+        <td className="border border-gray-300 text-center">1403/09/03</td>
+        <td className="border border-gray-300 text-center">5465411566</td>
+        <td className="border border-gray-300 text-center">تشکیل سرمایه</td>
+        <td className="border border-gray-300 text-center">18</td>
+        <td className="border border-gray-300 text-center">
+        <Link to="/panel/table"><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
       </tr>
     </tbody>
   </table>
-  </div>
+   </div>
+   
 </>
   )
 }
