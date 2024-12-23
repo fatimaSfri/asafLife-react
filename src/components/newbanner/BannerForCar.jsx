@@ -51,17 +51,10 @@ export default function PsychologyBanner(props) {
         <Border background="bg-car" ></Border>
      
 
-<<<<<<< HEAD
-          <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>
-         
-          {/* play */}
-          <div className={` md:w-3/12 md:h-4/5 max-md:w-10/12 max-md:h-1/6 flex items-center mb-20 justify-center ${props.play}`}>
-=======
           <Text colorText="text-car"  title="بیمـــه ثالث بدنه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp" ></Text>
          
           {/* play */}
           <div className={` md:w-3/12 md:h-4/5 max-md:w-10/12 max-md:h-1/6 flex items-center justify-center ${props.play}`}>
->>>>>>> feature-branch
            <img src="./img/Animation/car/01-Play.webp" alt=""  className=
            " xl:w-[90px]  max-xl:w-[70px] xl:hover:w-[100px]  max-xl:hover:w-[80px] transition-width duration-300 ease-in-in  z-30 cursor-pointer max-md:-mb-10 "  onClick={props.videoShowHandle} />
            <img src="./img/Animation/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10" />

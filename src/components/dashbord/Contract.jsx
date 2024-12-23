@@ -127,13 +127,31 @@ export default function Contract() {
   const [backendErrors, setBackendErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [users, setUsers] = useState([]);
+
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axiosInstance.get("/user");
+        if (response.data && Array.isArray(response.data.data)) {
+          setUsers(response.data.data); 
+        } else {
+          console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+        }
+      } catch (error) {
+        console.error("خطا در دریافت اطلاعات کاربران:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     let timeout;
     if (showPopup) {
       timeout = setTimeout(() => setShowPopup(false), 7000);
     }
-
     return () => clearTimeout(timeout);
   }, [showPopup]);
 
@@ -151,7 +169,7 @@ export default function Contract() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
     try {
       await contractValidation.validate(formData, { abortEarly: false });
     } catch (error) {
@@ -189,7 +207,7 @@ export default function Contract() {
           });
         }
       } else {
-        backendErrors.apiError = "یک خطای ناشانه رخ داده است.";
+        backendErrors.apiError = "یک خطای ناشناخته رخ داده است.";
       }
       setBackendErrors(backendErrors);
     }
@@ -210,9 +228,7 @@ export default function Contract() {
             <strong className="font-bold">خطاهای سرور:</strong>
             <ul className="list-none pl-0">
               {Object.entries(backendErrors).map(([key, value]) => (
-                <li key={key}>
-                  {value}
-                </li>
+                <li key={key}>{value}</li>
               ))}
             </ul>
           </div>
@@ -266,11 +282,7 @@ export default function Contract() {
                     size="w-full"
                     width="w-full"
                     mt="mt-2"
-                    items={[
-                      "حسن مومنی",
-                      "آرش رستمی",
-                      "لادن موسوی",
-                    ]}
+                    items={users.map(user => `${user.first_name} ${user.last_name}`)} 
                     onSelect={(option) =>
                       setFormData((prev) => ({
                         ...prev,
@@ -323,3 +335,5 @@ export default function Contract() {
     </>
   );
 }
+
+

@@ -1,18 +1,10 @@
 import  { useEffect , useState } from 'react';
 import "./NewBanner.css"
-<<<<<<< HEAD
-import Text from './Text';
-=======
->>>>>>> feature-branch
 
 export default function Treatment(props) {
     
       const [ image , setImage ] =useState([
-<<<<<<< HEAD
-          './img/Animation/treatment/02-ob.webp', 
-=======
           './img/Animation/treatment/02-ob.png', 
->>>>>>> feature-branch
           './img/Animation/treatment/02-Textbutton.png',
        ])  
        
@@ -33,11 +25,6 @@ export default function Treatment(props) {
        <div className= " bg-gradient-circle-treatment back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col items-center ">
      
      {/* text */}
-<<<<<<< HEAD
-    
-     <Text colorText="text-red-700"  title="با بیمه درمان"  subTitle=" مسیر بهبودی را هموار کنید" icon="./img/Animation/treatment/02-Shield.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
-     
-=======
      <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">
       <img src= {image[1]} alt="" className=" px-8 cursor-pointer"  />
       <img src="./img/Animation/treatment/02-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
@@ -53,7 +40,6 @@ export default function Treatment(props) {
      </div> */}
 
 
->>>>>>> feature-branch
      {/* object */}
 
      <div className=" md:h-4/5 xl:w-[600px] sm:min-w-[350px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right  lg:p-14 xl:p-1 flex items-center 
