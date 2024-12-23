@@ -33,123 +33,16 @@
 //             <Button width="lg:w-10/12" ></Button>
 //          </div>
 //         </div>
-       
-//     </>
-//   );
-// }
 
-// import { useState } from "react";
-// import Dashbord from "./Dashbord";
-// import Dropdown from "./Dropdown";
-// import File from "./File";
-// import Button from "../button/Button";
-
-// export default function Registration() {
-//   const items = ["بیمه حکمت", "بیمه ایران", "بیمه دانا"];
-//   const [selectedOption, setSelectedOption] = useState("");
-//   const [selectedFile, setSelectedFile] = useState(null);
-//   const [errors, setErrors] = useState({}); 
-
-//   const handleDropdownSelect = (option) => {
-//     setSelectedOption(option);
-//     setErrors((prevErrors) => ({ ...prevErrors, selectedOption: "" })); 
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     const validationErrors = {};
-
-//     if (!selectedFile) {
-//       validationErrors.selectedFile = "لطفا یک فایل انتخاب کنید.";
-//     } else if (selectedFile.size > 500 * 1024) {
-//       validationErrors.selectedFile = "حجم فایل نباید بیشتر از 500 کیلوبایت باشد.";
-//     }
-
-
-//     if (!selectedOption) {
-//       validationErrors.selectedOption = "لطفا یک گزینه انتخاب کنید.";
-//     }
-
-//     setErrors(validationErrors);
-
-//     if (Object.keys(validationErrors).length === 0) {
-//       const formData = new FormData();
-//       formData.append("image", selectedFile);
-//       formData.append("selectedOption", selectedOption);
-
-//       for (let [key, value] of formData.entries()) {
-//         console.log(`${key}:`, value);
-//       }
-
-//       // ارسال به API (در صورت نیاز)
-//       // fetch("API_ENDPOINT", {
-//       //   method: "POST",
-//       //   body: formData,
-//       // })
-//       //   .then((response) => response.json())
-//       //   .then((data) => console.log("Data from API:", data))
-//       //   .catch((error) => console.error("Error:", error));
-//     }
-//   };
-
-//   return (
-//     <>
-//       <Dashbord />
-//       <div className="w-full h-[802px] flex items-center justify-center bg-gray-200">
-//         <div className="w-11/12 h-[700px] flex flex-col gap-10 md:px-16 max-md:px-8 -mt-40 h-fit">
-//           <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063]">
-//             ثبت شرکت بیمه
-//           </h1>
-//           <form onSubmit={handleSubmit} className="flex flex-col gap-10">
-//             {/* Dropdown */}
-//             <div>
-//               <div className="flex">
-//                 <p className="md:text-[20px] max-md:text-[16px] text-[#213063]">
-//                   شرکت بیمه را انتخاب کنید
-//                 </p>
-//                 <p className="text-red-500 text-[20px]">*</p>
-//               </div>
-//               <div className="w-full flex justify-center relative">
-//                 <Dropdown
-//                   size="md:w-10/12 max-md:w-full"
-//                   width="md:w-10/12 max-md:full"
-//                   mt="m-12"
-//                   items={items}
-//                   onSelect={handleDropdownSelect}
-//                 />
-//               </div>
-//               {errors.selectedOption && (
-//                 <p className="text-red-500 text-sm mt-2">{errors.selectedOption}</p>
-//               )}
-//             </div>
-
-//             {/* File */}
-//             <div>
-//               <div className="flex">
-//                 <p className="md:text-[20px] max-md:text-[16px] text-[#213063]">
-//                   آواتار بیمه را انتخاب کنید
-//                 </p>
-//                 <p className="text-red-500 text-[20px]">*</p>
-//               </div>
-//               <File setFile={setSelectedFile} />
-//               {errors.selectedFile && (
-//                 <p className="text-red-500 text-sm mt-2">{errors.selectedFile}</p>
-//               )}
-//             </div>
-
-//             {/* Button */}
-//             <Button mt="mt-10" type="submit" width="w-8/12" />
-//           </form>
-//         </div>
-//       </div>
 //     </>
 //   );
 // }
 
 
 
-import { useState } from "react";
+
+
+import React, { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import { registrationSchema } from "./validationInput/registrationSchema";
 import Dashbord from "./Dashbord";
@@ -164,12 +57,29 @@ export default function Registration() {
     formData: { name: "", image: "" },
     selectedFile: null,
     errors: {},
+    backendErrors: {},
     popup: {
       show: false,
       message: "",
       isError: false,
     },
   });
+
+  useEffect(() => {
+    let timeout;
+    if (state.popup.show) {
+      timeout = setTimeout(() => {
+        setState((prevState) => ({
+          ...prevState,
+          popup: { ...prevState.popup, show: false },
+        }));
+      }, 7000);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [state.popup.show]);
 
   const handleDropdownSelect = (option) => {
     setState((prevState) => ({
@@ -181,6 +91,17 @@ export default function Registration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!state.formData.name || !state.selectedFile) {
+      setState((prevState) => ({
+        ...prevState,
+        errors: {
+          name: !state.formData.name ? "نام الزامی است." : "",
+          selectedFile: !state.selectedFile ? "تصویر الزامی است." : "",
+        },
+      }));
+      return;
+    }
 
     const validationResult = registrationSchema.validate(
       { name: state.formData.name, selectedFile: state.selectedFile },
@@ -208,59 +129,85 @@ export default function Registration() {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      setState({
+      setState((prevState) => ({
+        ...prevState,
         formData: { name: "", image: "" },
         selectedFile: null,
         errors: {},
+        backendErrors: {},
         popup: {
           show: true,
           message: "شرکت بیمه با موفقیت ثبت شد.",
           isError: false,
         },
-      });
-
-      setTimeout(() => {
-        setState((prevState) => ({
-          ...prevState,
-          popup: { ...prevState.popup, show: false },
-        }));
-      }, 7000);
+      }));
     } catch (error) {
+      const backendErrors = {};
+      if (error.response && error.response.data) {
+        const { message, errors } = error.response.data;
+
+        if (message?.includes(`فیلد نام نباید خالی باشد.`)) {
+          backendErrors.name = "فیلد نام نباید خالی باشد.";
+        }
+
+        if (message?.includes(`property image should not exist`)) {
+          backendErrors.image = "تصویر نباید خالی باشد";
+        }
+
+        if (errors) {
+          Object.keys(errors).forEach((field) => {
+            backendErrors[field] = Array.isArray(errors[field])
+              ? errors[field].join(" ")
+              : errors[field];
+          });
+        }
+      } else if (error.request) {
+        backendErrors.apiError = "مشکلی در ارتباط با سرور رخ داده است.";
+      } else {
+        backendErrors.apiError = "یک خطا رخ داده است.";
+      }
+
       setState((prevState) => ({
         ...prevState,
-        popup: {
-          show: true,
-          message: "مشکلی در ثبت اطلاعات رخ داد. لطفاً دوباره تلاش کنید.",
-          isError: true,
-        },
+        errors: {},
+        backendErrors: backendErrors,
       }));
-
-      setTimeout(() => {
-        setState((prevState) => ({
-          ...prevState,
-          popup: { ...prevState.popup, show: false },
-        }));
-      }, 7000);
     }
   };
 
   return (
     <>
       <Dashbord />
+
       <div className="w-full h-[802px] flex items-center justify-center bg-gray-200">
         {state.popup.show && (
           <div
-            className={`fixed top-0 left-1/2 transform -translate-x-1/2 p-4 rounded-xl shadow-lg ${
-              state.popup.isError ? "bg-red-500" : "bg-green-500"
-            } text-white`}
+            className={`fixed top-0 left-1/2 transform -translate-x-1/2 p-4 rounded-xl shadow-lg ${state.popup.isError ? "bg-red-500" : "bg-green-500"
+              } text-white`}
           >
             {state.popup.message}
           </div>
         )}
+
+
+
         <div className="w-11/12 h-[700px] flex flex-col gap-10 md:px-16 max-md:px-8 -mt-40 h-fit">
+
           <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063]">
             ثبت شرکت بیمه
           </h1>
+          {Object.keys(state.backendErrors).length > 0 && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-0 rounded relative mb-4 space-y-0" role="alert">
+              <strong className="font-bold">خطاهای سرور:</strong>
+              <ul className="list-none pl-0">
+                {Object.entries(state.backendErrors).map(([key, value]) => (
+                  <li key={key}>
+                    {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="flex flex-col gap-10">
             {/* Dropdown */}
             <div>
@@ -307,17 +254,23 @@ export default function Registration() {
                 </p>
               )}
               <p className="text-gray-500 text-sm mt-1">
-                فرمت‌های مجاز: jpeg, png, jpg | حداکثر حجم: ۵۰۰ کیلوبایت
+                فرمت‌های مجاز: jpeg, png, jpg | حداکثر حجم: ۵00 کیلوبایت
               </p>
             </div>
 
             {/* Button */}
             <Button mt="mt-10" type="submit" width="w-8/12" />
+
           </form>
+
         </div>
+
       </div>
+
+
     </>
   );
 }
+
 
 
