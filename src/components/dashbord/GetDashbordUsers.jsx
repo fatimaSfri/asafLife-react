@@ -12,6 +12,7 @@ const GetDashbordUsers = () => {
     const fetchUsers = async () => {
       try {
         const response = await axiosInstance.get("/user");
+        console.log(response)
         if (response.data && Array.isArray(response.data.data)) {
           setUsers(response.data.data);
           setFilteredUsers(response.data.data);

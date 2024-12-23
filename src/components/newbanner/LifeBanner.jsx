@@ -31,11 +31,19 @@ export default function LifeBanner(props) {
       <Border background="bg-life" ></Border>
      
      {/* text */}
+<<<<<<< HEAD
      <Text colorText="text-life"  title="بیمـــه زنـدگــی "  subTitle="فردات ساخته ،امروزت آسوده " icon="./img/Animation/life/08-iconButton.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
      
     
      {/* play */}
      <div className= {`md:w-3/12 md:h-4/5  max-md:w-10/12 max-md:h-1/6 flex items-center justify-center md:mb-10  ${props.play} `} >
+=======
+     <Text colorText="text-life"  title="بیمـــه زنـدگــی "  subTitle="فردات ساخته ،امروزت آسوده " icon="./img/Animation/life/08-iconButton.webp"></Text>
+     
+    
+     {/* play */}
+     <div className= {`md:w-3/12 md:h-4/5  max-md:w-10/12 max-md:h-1/6 flex items-center justify-center ${props.play} `} >
+>>>>>>> feature-branch
       <img src="./img/Animation/life/08-Play.webp" alt=""  className="
         xl:w-[90px]  max-xl:w-[70px] xl:hover:w-[100px]  max-xl:hover:w-[80px] transition-width duration-300 ease-in-in z-30 cursor-pointer max-md:-mb-10 "  onClick={props.videoShowHandle}  />
       <img src="./img/Animation/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10 " />

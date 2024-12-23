@@ -11,6 +11,7 @@ export default function Dropdown(props) {
        const handleOptionSelect = (option) => {
          setSelectedOption(option);
          setIsDropdownOpen(false); 
+         props.onSelect(option) //send data
        };
      
        const options = props.items;

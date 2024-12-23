@@ -15,9 +15,15 @@ function  NewBanner(){
     const [sliderImages]= useState(
       [
       { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
+<<<<<<< HEAD
         modalVideo:'./img/video/allinsurance.MP4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
         modalVideo:"./img/video/forCar.MP4" },
+=======
+        modalVideo:'./img/video/all.MP4'},
+        { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
+        modalVideo:"./img/video/tenTen.mp4" },
+>>>>>>> feature-branch
       ]
      )
 

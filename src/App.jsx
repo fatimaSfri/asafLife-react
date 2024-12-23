@@ -45,8 +45,12 @@ function App() {
          </Route>
 
          <Route path="panel/*"  element={<ManagementPanel/>}>
+<<<<<<< HEAD
             <Route index   element={< Profile/>}/>
             <Route path='profile' element={< Profile/>}/>
+=======
+            <Route index path='profile' element={< Profile/>}/>
+>>>>>>> feature-branch
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>
