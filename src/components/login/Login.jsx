@@ -227,7 +227,7 @@ if (error) {
           <img src="../img/icon/Asaflogo.png" alt="" className="md:w-[300px] max-md:w-7/12 xl:w-[48%]" />
           <p className="text-white md:text-[38px] max-md:text-[30px]">آینده سازان آسایش فردا</p>
           <p className="text-white md:text-[24px] max-md:text-[16px]">
-            Future builders of tomorrow's comfort
+            Future builders of  comfort
           </p>
         </div>
       </div>
