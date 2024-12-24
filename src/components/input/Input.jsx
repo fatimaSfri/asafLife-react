@@ -18,11 +18,11 @@ function Input() {
   
   
 
-     const handleChange = (event) => {
-     onChange(name,value); 
-     isNaN(event.target.value.replaceAll(' ',''))? value : setValue(event.target.value.replaceAll(" ",''));
-    }
+  const handleChange = (event) => isNaN(event.target.value.replaceAll(' ',''))? value : setValue(event.target.value.replaceAll(" ",''));
  
+  useEffect(() => {
+  onChange(name,value); 
+ },[value]);
  
   return (
     <div className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20 flex flex-col items-center">

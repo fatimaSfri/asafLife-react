@@ -149,12 +149,14 @@ if (error) {
   };
 
   // Handle input changes
-  const handleInputChange = (name, value) => setPhone({ [name]: value });
+  const handleInputChange = (name, value) => {
+    setPhone({ [name]: value })
+  };
   const handleInputChangePass = (name, value) => setPassword({ [name]: value });
 
   const inputProps = isPassword
     ? {
-        placeholder: "کد تایید",
+        placeholder: "****",
         icon: "../img/login/key.png",
         initialValue: password.password,
         name: "password",
@@ -173,7 +175,9 @@ if (error) {
         onChange: handleInputChange,
         placeholder:"09** *** ****"
       };
-
+ 
+      console.log(phone.phone)
+    
   // Reset validation errors on route change
   useEffect(() => {
     setValidationErrors({});

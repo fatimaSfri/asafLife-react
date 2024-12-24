@@ -21,7 +21,8 @@ export default function Registration() {
             <p className="text-red-500 text-[20px]">*</p>
           </div>
           <div className="w-full flex justify-center relative">
-          <Dropdown size="md:w-10/12 max-md:w-full" width="md:w-10/12 max-md:full" mt="m-12" items={items} ></Dropdown>
+          <Dropdown size=" lg:w-[600px] max-lg:w-[290px]"
+                    width=" lg:w-[600px] max-lg:w-[290px]"  items={items} ></Dropdown>
           </div>
           <div className="flex">
             <p className="md:text-[20px] max-md:text-[16px] text-[#213063]">

@@ -22,7 +22,7 @@ export default function Dropdown(props) {
   };
 
   return (
-    <div className={` flex flex-col ${props.flex}`} >
+    <div className={`${props.flex}`} >
       {/* Dropdown Button */}
        <label className={`text-[16px] text-[#213063] py-2 pt-3 ${props.labelW}`}>{props.name}</label>
       <div

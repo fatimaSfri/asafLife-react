@@ -299,8 +299,8 @@ const Contract = () => {
                     name="نام فرد"
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     labelW="lg:w-8/12 max-lg:w-full"
-                    mt="mt-20"
-                    flex="items-end"
+                    mt="mt-[5.5rem]"
+                    flex="items-end flex flex-col"
                     items={lastTenUsers}
                     type="user"
                     onSelect={(user) => {
@@ -321,7 +321,8 @@ const Contract = () => {
                     size="w-8/12"
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     name="شرکت بیمه"
-                    mt="mt-20"
+                    flex="flex flex-col"
+                    mt="mt-[5.5rem]"
                     type="insurance"
                     items={lastTenInsurance}
                     onSelect={(insurance) => {
