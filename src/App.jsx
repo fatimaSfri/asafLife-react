@@ -47,7 +47,7 @@ function App() {
                   element={<Input /> } />
          </Route>
 
-         <Route path="panel/*"  element={<ManagementPanel/>}>
+         <Route path="dashbord/*"  element={<ManagementPanel/>}>
             <Route index   element={< Profile/>}/>
             <Route path='profile' element={< Profile/>}/>
             <Route path='table' element={< ChildProfil/>}/>

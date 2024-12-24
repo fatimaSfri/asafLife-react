@@ -24,7 +24,7 @@ export default function Dropdown(props) {
   return (
     <div className={` flex flex-col ${props.flex}`} >
       {/* Dropdown Button */}
-       <label className={`text-[16px] text-[#213063] ${props.labelW}`}>{props.name}</label>
+       <label className={`text-[16px] text-[#213063] py-2 pt-3 ${props.labelW}`}>{props.name}</label>
       <div
         className={`max-lg:w-full bg-white rounded-2xl px-4 py-2 border border-gray-300 shadow-sm focus:outline-none text-[#213063] text-[18px] font-bold cursor-pointer flex  items-center justify-between ${props.size}`}
         onClick={handleDropdownToggle}

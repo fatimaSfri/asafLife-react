@@ -258,9 +258,9 @@ const Contract = () => {
             قرارداد با موفقیت ثبت شد.
           </div>
         )}
-        <form onSubmit={handleSubmit} className="w-full mt-4 flex items-center justify-center ">
+        <form onSubmit={handleSubmit} className="w-full md:mt-4 max-md:-mt-10 flex items-center justify-center ">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
-            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border md:w-11/12 lg:w-[70%] max-md:w-10/12">
+            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 mb-6  text-[#213063] border md:w-11/12 lg:w-[70%] max-md:w-10/12">
               ثبت قرارداد
             </h1>
             <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center mx-auto">
