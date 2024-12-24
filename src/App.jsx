@@ -21,6 +21,8 @@ import Support from './components/managementPanel/Support.jsx';
 import GetDashbordUsers from './components/dashbord/GetDashbordUsers.jsx'
 import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
+import Test from "./components/test/Test.jsx"
+
 
 function App() {
  
@@ -57,8 +59,9 @@ function App() {
 
          <Route path='/user-create' element={<CreateUser/>} />
         <Route path='/insurance' element={<Registration/>} />
-        <Route path='/user' element={<GetDashbordUsers/>} />
+        <Route path='/user'  element={<GetDashbordUsers/>} />
         <Route path='/contract' element={<Contract/>} />
+        <Route path='/test'  element={<Test/>} />
 
    </Routes>
   

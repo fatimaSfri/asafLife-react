@@ -3,6 +3,7 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
+
 export default function Login() {
   const initialTimeOut = 60; // 60 seconds
   const [data, setData] = useState({ timeOut: null });
@@ -16,6 +17,7 @@ export default function Login() {
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
+
 
   //  Validation schemas (Joi) 
   const schema = Joi.object({
@@ -159,15 +161,17 @@ if (error) {
         validationError: validationErrorsPass.password,
         count: 4,
         onChange: handleInputChangePass,
+      
       }
     : {
-        placeholder: "شماره موبایل",
+        
         icon: "../img/login/phone.png",
         initialValue: phone.phone,
         name: "phone",
         validationError: validationErrors.phone,
         count: 11,
         onChange: handleInputChange,
+        placeholder:"09** *** ****"
       };
 
   // Reset validation errors on route change
@@ -192,7 +196,7 @@ if (error) {
           <h1 className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20 text-white text-lg font-bold flex items-center">
             ورود/ثبت نام
           </h1>
-
+       
           {!isPassword && <Outlet context={{ inputProps }} />}
           {isPassword && <Outlet context={{ inputProps }} />}
           <div className="md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5">
