@@ -258,9 +258,9 @@ const Contract = () => {
             قرارداد با موفقیت ثبت شد.
           </div>
         )}
-        <form onSubmit={handleSubmit} className="w-full md:mt-4 max-md:-mt-10 flex items-center justify-center ">
+        <form onSubmit={handleSubmit} className="w-full md:mt-4  flex items-center justify-center ">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
-            <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 mb-6  text-[#213063] border md:w-11/12 lg:w-[70%] max-md:w-10/12">
+            <h1 className="md:text-[28px] max-md:text-[20px] mb-8 font-bold  text-[#213063] border md:w-11/12 lg:w-[70%] max-md:w-10/12">
               ثبت قرارداد
             </h1>
             <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center mx-auto">
@@ -299,7 +299,7 @@ const Contract = () => {
                     name="نام فرد"
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     labelW="lg:w-8/12 max-lg:w-full"
-                    mt="mt-16"
+                    mt="mt-20"
                     flex="items-end"
                     items={lastTenUsers}
                     type="user"
@@ -321,7 +321,7 @@ const Contract = () => {
                     size="w-8/12"
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     name="شرکت بیمه"
-                    mt="mt-16"
+                    mt="mt-20"
                     type="insurance"
                     items={lastTenInsurance}
                     onSelect={(insurance) => {
