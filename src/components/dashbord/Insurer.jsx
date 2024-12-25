@@ -9,7 +9,8 @@ import Button from "../button/Button";
 import InputField from "./InputForDashbord.jsx";
 import Dropdown from "./Dropdown";
 
-const Contract = () => {
+
+const Insurer = () => {
   const [formData, setFormData] = useState({
     insurer_code: "",
     computer_code: "",
@@ -157,39 +158,24 @@ const Contract = () => {
         <form onSubmit={handleSubmit} className="w-full md:mt-4  flex items-center justify-center ">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
             <h1 className="md:text-[28px] max-md:text-[20px] mb-8 font-bold  text-[#213063] border md:w-11/12 lg:w-[70%] max-md:w-10/12">
-              ثبت قرارداد
+              ثبت بیمه گذار
             </h1>
             <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center mx-auto">
               <div className="md:flex max-md:flex-col w-full gap-4 ">
-                {/* <InputField
+                <InputField
                   label="کد بیمه‌گذار"
                   items="items-end"
                   name="insurer_code"
                   value={formData.insurer_code}
                   onChange={handleInputChange}
                   error={errors.insurer_code || backendErrors.insurer_code}
-                /> */}
-                <InputField
-                  label="کد رایانامه"
-                  name="computer_code"
-                  value={formData.computer_code}
-                  onChange={handleInputChange}
-                  error={errors.computer_code || backendErrors.computer_code}
                 />
+                
               </div>
-              <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
-                <InputField
-                  label="رشته"
-                  items="items-center"
-                  name="reshte"
-                  value={formData.reshte}
-                  onChange={handleInputChange}
-                  error={errors.reshte || backendErrors.reshte}
-                />
-              </div>
+              
               <div className="md:flex max-md:flex-col w-full ">
               
-                {/* <div className="w-full xl:mx-2">
+                <div className="w-full xl:mx-2">
                   <Dropdown
                     size="w-8/12"
                     name="نام فرد"
@@ -210,14 +196,14 @@ const Contract = () => {
                   <div className="w-full flex justify-end">
                     <p className="text-red-500 text-sm mt-2 lg:w-8/12 max-lg:w-full">{errors.user_id || backendErrors.user_id}</p></div>
                   )}
-                </div> */}
-                <div className="w-full xl:mx-2 ">
+                </div>
+                <div className="w-full xl:mx-2  ">
                   
                   <Dropdown
                     size="w-8/12"
                     width="lg:w-[27.5%] max-lg:w-[80%]"
-                    name="نام شرکت بیمه _  بیمه گذار  "
-                    flex="flex flex-col items-center"
+                    name=" شرکت بیمه "
+                    flex="flex flex-col items-start"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
                     type="insurance"
@@ -246,7 +232,7 @@ const Contract = () => {
   );
 };
 
-export default Contract;
+export default Insurer;
 
 
 
