@@ -2,12 +2,14 @@
 import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import axiosInstance from '../axiosConfig';
+import Cookies from "js-cookie";
 
 
 export default function Login() {
   const initialTimeOut = 60; // 60 seconds
   const [data, setData] = useState({ timeOut: null });
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState({ code: "" });
   const [isActive, setIsActive] = useState(false);
   const [showLink, setShowLink] = useState(false);
   const [phone, setPhone] = useState({ phone: "" });
@@ -18,11 +20,10 @@ export default function Login() {
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
 
-
-  //  Validation schemas (Joi) 
+  // Validation schemas (Joi)
   const schema = Joi.object({
     phone: Joi.string()
-      .pattern(new RegExp("^09[0|1|2|3][0-9]{8}$"))
+      .pattern(new RegExp("^09[0-9]{9}$"))
       .required()
       .messages({
         "any.required": "*تلفن الزامی است.",
@@ -34,7 +35,7 @@ export default function Login() {
   const schemaPassword = Joi.object({
     password: Joi.string()
       .custom((value, helpers) => {
-        if (value != code) {
+        if (value !== code.code) {
           return helpers.error("any.invalid");
         }
         return value;
@@ -48,31 +49,25 @@ export default function Login() {
   // Check phone number when it changes
   useEffect(() => {
     if (!phone.phone) return;
-    
-    // Skip if no phone number is entered
-    // Get data from localStorage
-    
+
     const storedAuth = JSON.parse(localStorage.getItem("auth")) || {};
     const phoneEntry = storedAuth[phone.phone];
 
     if (phoneEntry) {
       const createdAt = new Date(phoneEntry.created_at);
       const now = new Date();
-      const timeDiff = (now - createdAt) / 1000; // Time difference in seconds
+      const timeDiff = (now - createdAt) / 1000;
 
       if (timeDiff < initialTimeOut) {
-        // If the timeout has not expired, continue with the remaining time
         const remainingTime = Math.floor(initialTimeOut - timeDiff);
         setData({ timeOut: remainingTime });
-        setCode(phoneEntry.password); // Retrieve the existing code
+        setCode({ code: phoneEntry.password });
         setIsActive(true);
         setShowLink(false);
       } else {
-        // If timeout has expired, generate a new code
         generateNewCode();
       }
     } else {
-      // If phone is not found in localStorage, generate a new code
       generateNewCode();
     }
   }, [phone.phone]);
@@ -93,24 +88,73 @@ export default function Login() {
       setShowLink(true);
     }
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [isActive, data.timeOut]);
-
+  
+  useEffect(() => {
+    const storedData = localStorage.getItem('timerData');
+    if (storedData) {
+      const { timeOut, isActive } = JSON.parse(storedData);
+      setData({ timeOut });
+      setIsActive(isActive);
+      setShowLink(timeOut === 0); // این خط جدید است
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (isActive && data.timeOut > 0) {
+      const interval = setInterval(() => {
+        setData(prevData => ({
+          ...prevData,
+          timeOut: prevData.timeOut - 1
+        }));
+      }, 1000);
+      localStorage.setItem('timerData', JSON.stringify({ timeOut: data.timeOut, isActive }));
+  
+      return () => clearInterval(interval);
+    } else if (data.timeOut === 0) {
+      setShowLink(true);
+    }
+  }, [isActive, data.timeOut]);
   // Generate new code
   const generateNewCode = () => {
-    const newCode = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit random code
+    const newCode = Math.floor(1000 + Math.random() * 9000);
     const auth = JSON.parse(localStorage.getItem("auth")) || {};
     auth[phone.phone] = { created_at: new Date().toISOString(), password: newCode };
     localStorage.setItem("auth", JSON.stringify(auth));
-    setCode(newCode);
+    setCode({ code: String(newCode) });
     setData({ timeOut: initialTimeOut });
     setIsActive(true);
     setShowLink(false);
+    console.log("New code generated:", newCode);
   };
 
-  // Validate phone number input
+  const sendSmsCode = async (phoneNumber) => {
+    try {
+      const response = await axiosInstance.post('user/send-sms-code', {
+        phone: phoneNumber,
+      });
+      console.log('SMS code sent successfully:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error sending SMS code:', error.response?.data || error.message);
+      throw error;
+    }
+  };
+
+  const verifyCode = async () => {
+    try {
+      const response = await axiosInstance.post('user/verify-code', {
+        code: code.code, 
+      });
+      console.log('Code verified successfully:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error verifying code:', error.response?.data || error.message);
+      // throw error;
+    }
+  };
+
   const validate = () => {
     const { error } = schema.validate(phone, { abortEarly: false });
     clearErrors();
@@ -121,26 +165,32 @@ export default function Login() {
         errors[item.context.key] = item.message;
       });
       setValidationErrors(errors);
-    } else {
-      if (phone.phone) {
-        navigate("/login/password");
-      }
+      return false;
     }
+    Cookies.set("phone", phone.phone, { expires: 7 });
+    return true;
   };
 
-  // Validate password input
   const handleErrorPass = () => {
     const { error } = schemaPassword.validate(password, { abortEarly: false });
     clearErrors();
 
-
-if (error) {
+    if (error) {
       const errorsPass = {};
       error.details.forEach((item) => {
         errorsPass[item.context.key] = item.message;
       });
       setValidationErrorsPass(errorsPass);
+      return false;
     }
+
+    verifyCode().then(() => {
+      navigate("/login/password");
+    }).catch((error) => {
+      console.error('Error sending verification:', error);
+    });
+
+    return true;
   };
 
   const clearErrors = () => {
@@ -148,11 +198,14 @@ if (error) {
     setValidationErrorsPass({});
   };
 
-  // Handle input changes
   const handleInputChange = (name, value) => {
-    setPhone({ [name]: value })
+    setPhone({ [name]: value });
   };
-  const handleInputChangePass = (name, value) => setPassword({ [name]: value });
+
+  const handleInputChangePass = (name, value) => {
+    setPassword({ [name]: value });
+    setCode({ code: value });
+  };
 
   const inputProps = isPassword
     ? {
@@ -163,26 +216,16 @@ if (error) {
         validationError: validationErrorsPass.password,
         count: 4,
         onChange: handleInputChangePass,
-      
       }
     : {
-        
         icon: "../img/login/phone.png",
         initialValue: phone.phone,
         name: "phone",
         validationError: validationErrors.phone,
         count: 11,
         onChange: handleInputChange,
-        placeholder:"09** *** ****"
+        placeholder: "09** *** ****",
       };
- 
-      console.log(phone.phone)
-    
-  // Reset validation errors on route change
-  useEffect(() => {
-    setValidationErrors({});
-    setValidationErrorsPass({});
-  }, [location.pathname]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden flex justify-center">
@@ -200,16 +243,52 @@ if (error) {
           <h1 className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20 text-white text-lg font-bold flex items-center">
             ورود/ثبت نام
           </h1>
-       
-          {!isPassword && <Outlet context={{ inputProps }} />}
-          {isPassword && <Outlet context={{ inputProps }} />}
+
+          {!isPassword && (
+            <>
+              <Outlet context={{ inputProps }} />
+              <div className="mt-4">
+                <button
+                  className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  onClick={() => {
+                    if (validate()) {
+                      sendSmsCode(phone.phone);
+                      navigate("/login/password");
+                    }
+                  }}
+                >
+                  ثبت نام
+                </button>
+
+              </div>
+            </>
+          )}
+          {isPassword && (
+            <>
+              <Outlet context={{ inputProps }} />
+              <div className="mt-4">
+                <button
+                  className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  onClick={() => {
+                    if (handleErrorPass()) {
+                      
+                      verifyCode()
+                    }
+                  }}
+                >
+                  ورود
+                </button>
+
+              </div>
+            </>
+          )}
           <div className="md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5">
-            <button
+            {/* <button
               className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
               onClick={isPassword ? handleErrorPass : validate}
             >
               ورود
-            </button>
+            </button> */}
             {isPassword && (
               <div
                 className="text-[14px] h-10 bg-gray-200 flex flex-row-reverse items-center justify-center 
@@ -240,6 +319,6 @@ if (error) {
         </div>
       </div>
     </div>
-    
+
   );
 }
