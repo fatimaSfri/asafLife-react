@@ -20,7 +20,7 @@ export default function MenuForPannel() {
            <ul className="max-sm:w-[250px] sm:w-[350px] h-[300px] flex  flex-col justify-evenly " >
        
            <NavLink
-                   to="/panel/profile"
+                   to="/dashbord/profile"
                    className={({ isActive }) =>
                      isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                    }
@@ -32,7 +32,7 @@ export default function MenuForPannel() {
             </NavLink>
        
           <NavLink
-                   to="/panel/services"
+                   to="/dashbord/services"
                    className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                      }> 
@@ -42,7 +42,7 @@ export default function MenuForPannel() {
         </NavLink>
        
         <NavLink
-                  to="/panel/mycontracts"
+                  to="/dashbord/mycontracts"
                    className={({ isActive }) =>
                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                      }>
@@ -51,7 +51,7 @@ export default function MenuForPannel() {
                  قرارداد های من </li></NavLink>
         
              <NavLink
-                  to="/panel/support"
+                  to="/dashbord/support"
                    className={({ isActive }) =>
                isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                   } >
