@@ -8,11 +8,12 @@ export default function Dropdown(props) {
   const handleDropdownToggle = () => {
     setIsDropdownOpen((prev) => !prev);
   };
-
+  
   const handleOptionSelect = (item) => {
-    setSelectedOption(item.name || item.first_name + " " + item.last_name);
+    setSelectedOption(item.name || item.first_name + " " + item.last_name ||
+      item.user.first_name+ " " + item.user.last_name +" "+ item.insurance.name);
     setIsDropdownOpen(false);
-    props.onSelect(item); 
+    props.onSelect(item.key); 
   };
 
   const handleSearchUserSelect = (user) => {
@@ -54,11 +55,10 @@ export default function Dropdown(props) {
           <ul className="max-h-60 overflow-auto">
             {props.items.map((item, index) => (
               <li
-                key={index}
+                key={item.key}
                 className="px-4 py-2 text-[#213063] text-[18px] hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleOptionSelect(item)}
-              >
-                {item.name || item.first_name + " " + item.last_name}
+                onClick={() => handleOptionSelect(item)}>
+                  {item.value}
               </li>
             ))}
           </ul>
