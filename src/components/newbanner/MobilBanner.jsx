@@ -1,5 +1,6 @@
 import  { useEffect , useState } from 'react';
 import "./NewBanner.css"
+import Text from './Text';
 
 export default function MobileBanner(props) {
     
@@ -32,10 +33,12 @@ export default function MobileBanner(props) {
     
 
      {/* text */}
-     <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">
+     {/* <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">
       <img src= {image[1]} alt="" className=" px-8 cursor-pointer"  />
       <img src="./img/Animation/children/03-Arrow.svg" alt="" className="max-md:hidden mt-5 mr-20 image-reverse w-4/12 "></img>
-     </div>
+     </div> */}
+     <Text colorText="text-[#d21a1a]"  title="بیمــه موبایل "  subTitle="در امان، از خط و خش و زیان" icon="./img/Animation/mobile/07-Shield.webp"
+       sizeTitle="xl:text-[70px] lg:text-[65px] md:text-[50px] max-md:text-[45px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[24px]" colorSubTitle="text-[#552ade]"></Text>
     
      {/* play */}
 

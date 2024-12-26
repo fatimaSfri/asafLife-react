@@ -23,14 +23,14 @@ export default function AnimalBanner(props) {
       return (
      <>
        {/* for max-md */}
-       <div className= "bg-gradient-circle-pet max-md:bg-bg-sm-animal md:bg-bg-animal back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col items-center">
+       <div className= "bg-gradient-circle-pet max-md:bg-bg-sm-animal md:bg-bg-animal back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px]  w-full  flex justify-evenly max-md:flex-col items-center px-10 ">
      
      {/* text */}
      {/* <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex md:flex-col md:justify-center items-center md:mt-20 z-20">
       <img src= {image[1]} alt="" className=" px-8 cursor-pointer"  />
       <img src="./img/Animation/treatment/02-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
      </div> */}
-     <Text colorText="text-[#552ade]"  title="بیمـــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/Animation/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px]" colorSubTitle="text-[#552ade]"></Text>
+     <Text colorText="text-[#552ade]"  title="بیمــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/Animation/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[20px]" colorSubTitle="text-[#552ade]"></Text>
     
     
      {/* object */}
