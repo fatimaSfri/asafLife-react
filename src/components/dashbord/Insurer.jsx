@@ -24,10 +24,18 @@ const Insurer = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [users, setUsers] = useState([]);
   const [insurance, setInsurance] = useState([]);
-  const lastTenUsers = users.slice(-10);
+  // const lastTenUsers = users.slice(-10);
   // console.log(lastTenUsers.map((item) => { return {key:item.id, value: item.user.first_name}}));
 
-  const lastTenInsurance = insurance.slice(-10);
+  const lastTenUsers = users.slice(-10).map((item) => ({
+    key: item.id,
+    value: `${item.first_name} ${item.last_name}`
+  }));
+
+  const lastTenInsurance = insurance.slice(-10).map((item) => ({
+    key: item.id,
+    value: item.name
+  }));
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -181,15 +189,15 @@ const Insurer = () => {
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
+                    type="user"
                     flex="items-end flex flex-col"
                     // [{key:0,value:'asdasdsad}]
                     items={lastTenUsers}
 
                     onSelect={(user) => {
-                      console.log(user);
                       setFormData((prev) => ({
                         ...prev,
-                        user_id: user.id,
+                        user_id: user,
                       }));
                     }}
                   />
@@ -207,13 +215,12 @@ const Insurer = () => {
                     flex="flex flex-col items-start"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
-                    
+                    type="insurance"
                     items={lastTenInsurance}
                     onSelect={(insurance) => {
-                      console.log(insurance);
                       setFormData((prev) => ({
                         ...prev,
-                        insurance_id: insurance.id,
+                        insurance_id: insurance,
                       }));
                     }}
                   />

@@ -22,9 +22,8 @@ const Contract = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [insurance, setInsurance] = useState([]);
 
-  const lastTenInsurance = insurance.slice(-10).map((item) => ({key:item.id , value: item.insurance.name + " " +item.user.national_id}));
+  const lastTenInsurance = insurance.slice(-10).map((item) => ({key:item.id , value: item.user.first_name+"  "+item.user.last_name+"  "+"  "+item.user.national_id+"  "+item.insurance.name  }));
   
-  console.log(lastTenInsurance.data);
 
 
 
@@ -78,7 +77,7 @@ const Contract = () => {
       ...formData,
       computer_code: convertToEnglishNumbers(formData.computer_code),
       reshte: convertToEnglishNumbers(formData.reshte),
-      insurance_user_id: convertToEnglishNumbers(formData.insurance_user_id),
+      insurance_user_id: formData.insurance_user_id,
     };
     console.log(formDataInEnglish);
 
@@ -203,11 +202,12 @@ const Contract = () => {
                     flex="flex flex-col items-center"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
+                    type="insuranceUser"
                     items={lastTenInsurance}
                     onSelect={(selectedItem) => {
                       setFormData((prev) => ({
                         ...prev,
-                        insurance_user_id: selectedItem.id,
+                        insurance_user_id: parseInt(selectedItem),
                       }));
                     }}
                   />

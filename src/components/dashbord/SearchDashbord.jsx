@@ -1,61 +1,43 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 
+const searchConfig = {
+  user: {
+    endpoint: "/user",
+    searchField: (item) => `${item.first_name} ${item.last_name}`,
+    placeholder: "جستجوی کاربر...",
+  },
+  insurance: {
+    endpoint: "/insurance",
+    searchField: (item) => item.name,
+    placeholder: "جستجوی بیمه...",
+  },
+  insuranceUser: {
+    endpoint: "/insurance-user",
+    searchField: (item) =>
+      `${item.user.first_name} ${item.user.last_name} ${item.user.national_id} ${item.insurance.name}`,
+    placeholder: "جستجوی کاربر-بیمه...",
+  },
+};
+
 export default function SearchComponent({ onSelect, type = "user" }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [dataOptions, setDataOptions] = useState([]);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(""); 
 
+  const config = searchConfig[type] || searchConfig["user"];
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        let endpoint = "";
-        switch (type) {
-          case "user":
-            endpoint = "/user";
-            break;
-          case "insurance":
-            endpoint = "/insurance";
-            break;
-          case "insurance-user":
-            endpoint = "/insurance-user";
-            break;
-          default:
-            endpoint = "/user";
-        }
-
-        const response = await axiosInstance.get(endpoint);
-
-        let combinedData = [];
-
-        if (type === "insurance-user") {
-          combinedData = response.data?.data?.map((item) => ({
-            id: item.id || Math.random(),
-            user: item.user || null,
-            insurance: item.insurance || null,
-          })) || [];
-        } else if (type === "user") {
-          combinedData = response.data?.data?.map((user) => ({
-            id: user.id,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            national_id: user.national_id,
-            type: "user",
-          })) || [];
-        } else if (type === "insurance") {
-          combinedData = response.data?.data?.map((insurance) => ({
-            id: insurance.id,
-            name: insurance.name,
-            type: "insurance",
-          })) || [];
-        }
-
-        setDataOptions(combinedData);
-        setFilteredOptions(combinedData);
+        const response = await axiosInstance.get(config.endpoint);
+        const data = response.data?.data || [];
+        setDataOptions(data);
+        setFilteredOptions(data);
       } catch (error) {
         console.error(`خطا در دریافت اطلاعات:`, error);
         setDataOptions([]);
@@ -66,71 +48,33 @@ export default function SearchComponent({ onSelect, type = "user" }) {
     };
 
     fetchData();
-  }, [type]);
+  }, [config]);
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setFilteredOptions(dataOptions);
     } else {
-      const filtered = dataOptions.filter((item) => {
-        if (item.user && item.user.first_name) {
-          const searchField = `${item.user.first_name} ${item.user.last_name} ${item.user.national_id || ""}`;
-          return searchField
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase());
-        } else if (item.insurance && item.insurance.name) {
-          return item.insurance.name
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase());
-        } else if (type === "user" && item.first_name) {
-          const searchField = `${item.first_name} ${item.last_name} ${item.national_id || ""}`;
-          return searchField
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase());
-        } else if (type === "insurance" && item.name) {
-          return item.name.toLowerCase().includes(searchTerm.toLowerCase());
-        }
-        return false;
-      });
+      const filtered = dataOptions.filter((item) =>
+        config.searchField(item).toLowerCase().includes(searchTerm.toLowerCase())
+      );
       setFilteredOptions(filtered);
     }
-  }, [searchTerm, dataOptions, type]);
-
+  }, [searchTerm, dataOptions, config]);
 
   const handleSelect = (item) => {
-    let displayName = "";
-
-    if (item.user && item.insurance) {
-      displayName = `${item.user.first_name} ${item.user.last_name} - ${item.user.national_id || "نامشخص"} - ${item.insurance.name}`;
-    } else if (item.user) {
-      displayName = `${item.user.first_name} ${item.user.last_name} - ${item.user.national_id || "نامشخص"}`;
-    } else if (item.insurance) {
-      displayName = `نامشخص - نامشخص - ${item.insurance.name}`;
-    } else if (item.first_name) {
-      displayName = `${item.first_name} ${item.last_name} - ${item.national_id || "نامشخص"}`;
-    } else if (item.name) {
-      displayName = `نامشخص - نامشخص - ${item.name}`;
-    } else {
-      displayName = "نامشخص - نامشخص - نامشخص";
-    }
-
-    setSearchTerm(displayName);
-    onSelect(item);
-    setIsDropdownOpen(false);
+    const displayName = config.searchField(item); // تنظیم نام برای نمایش
+    setSelectedOption(displayName); // تنظیم مقدار انتخاب‌شده
+    setSearchTerm(""); 
+    setIsDropdownOpen(false); // بستن لیست
+    onSelect(item.id); // ارسال گزینه انتخاب‌شده به والد
   };
 
   return (
     <div className="relative w-full">
-
+      {/* فیلد جستجو */}
       <input
         type="text"
-        placeholder={
-          type === "user"
-            ? "جستجوی کاربر..."
-            : type === "insurance"
-            ? "جستجوی بیمه..."
-            : "جستجوی کاربر یا بیمه..."
-        }
+        placeholder={selectedOption || config.placeholder} // نمایش نام انتخاب‌شده یا جای‌خالی
         value={searchTerm}
         onChange={(e) => {
           setSearchTerm(e.target.value);
@@ -140,7 +84,7 @@ export default function SearchComponent({ onSelect, type = "user" }) {
         className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
-
+      {/* نمایش نتایج جستجو */}
       {isDropdownOpen && (
         <ul className="absolute left-0 right-0 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto mt-1 z-50">
           {isLoading ? (
@@ -152,15 +96,7 @@ export default function SearchComponent({ onSelect, type = "user" }) {
                 className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                 onClick={() => handleSelect(item)}
               >
-                {item.user && item.insurance
-                  ? `${item.user.first_name} ${item.user.last_name} - ${item.user.national_id || "نامشخص"} - ${item.insurance.name}`
-                  : item.user
-                  ? `${item.user.first_name} ${item.user.last_name} - ${item.user.national_id || "نامشخص"}`
-                  : item.insurance
-                  ? `نامشخص - نامشخص - ${item.insurance.name}`
-                  : item.first_name
-                  ? `${item.first_name} ${item.last_name} - ${item.national_id || "نامشخص"}`
-                  : item.name || "نامشخص - نامشخص - نامشخص"}
+                {config.searchField(item)}
               </li>
             ))
           ) : (
