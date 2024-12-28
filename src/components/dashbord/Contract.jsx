@@ -21,8 +21,9 @@ const Contract = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [insurance, setInsurance] = useState([]);
+  
 
-  const lastTenInsurance = insurance.slice(-10).map((item) => ({key:item.id , value: item.user.first_name+"  "+item.user.last_name+"  "+"  "+item.user.national_id+"  "+item.insurance.name  }));
+  const lastTenInsurance = insurance.map((item) => ({key:item.id , value: item.user.first_name+"  "+item.user.last_name+"  "+"  "+item.user.national_id+"  "+item.insurance.name  }));
   
 
 
@@ -203,6 +204,7 @@ const Contract = () => {
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
                     type="insuranceUser"
+                    // onChangeSearch={(newSeachValue) => setLastTenInsurance(lastTenInsurance.filter(newSeachValue))}
                     items={lastTenInsurance}
                     onSelect={(selectedItem) => {
                       setFormData((prev) => ({

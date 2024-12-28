@@ -27,12 +27,12 @@ const Insurer = () => {
   // const lastTenUsers = users.slice(-10);
   // console.log(lastTenUsers.map((item) => { return {key:item.id, value: item.user.first_name}}));
 
-  const lastTenUsers = users.slice(-10).map((item) => ({
+  const lastTenUsers = users.map((item) => ({
     key: item.id,
     value: `${item.first_name} ${item.last_name}`
   }));
 
-  const lastTenInsurance = insurance.slice(-10).map((item) => ({
+  const lastTenInsurance = insurance.map((item) => ({
     key: item.id,
     value: item.name
   }));

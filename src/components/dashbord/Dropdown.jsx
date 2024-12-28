@@ -1,31 +1,28 @@
 import { useState } from "react";
-import SearchUser from "./SearchDashbord";
+// import SearchUser from "./SearchDashbord";
 
 export default function Dropdown(props) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("انتخاب کنید");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
   const handleOptionSelect = (item) => {
-    setSelectedOption(item.value); // نمایش مقدار انتخاب‌شده
+    setSelectedOption(item.value); 
     setIsDropdownOpen(false);
-    props.onSelect(item.key); // ارسال ID به والد
+    props.onSelect(item.key);
   };
 
-    const handleSearchUserSelect = (user) => {
-      
-      const displayName =
-        user.first_name && user.last_name
-          ? `${user.first_name} ${user.last_name}`
-          : user.name;
-          console.log("انتخاب شد")
-      setSelectedOption(displayName); 
-      props.onSelect(user); 
-      setIsDropdownOpen(false); 
-    };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredItems = props.items.filter((item) =>
+    item.value.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className={`${props.flex}`}>
@@ -49,16 +46,25 @@ export default function Dropdown(props) {
         />
       </div>
 
-
+      {/* محتوای Dropdown */}
       {isDropdownOpen && (
         <div
           className={`absolute bg-white border border-gray-300 rounded-lg shadow-md z-10 ${props.width} ${props.mt}`}
         >
+          {/* جستجو */}
+          <div className="p-2 border-b border-gray-200">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              placeholder="جستجو..."
+              className="w-full px-2 py-1 border rounded-md focus:outline-none"
+            />
+          </div>
 
-          <SearchUser onSelect={handleSearchUserSelect} type={props.type} />
-
+          {/* لیست آیتم‌ها */}
           <ul className="max-h-60 overflow-auto">
-            {props.items.map((item) => (
+            {filteredItems.map((item) => (
               <li
                 key={item.key}
                 className="px-4 py-2 text-[#213063] text-[18px] hover:bg-gray-100 cursor-pointer"
@@ -67,6 +73,11 @@ export default function Dropdown(props) {
                 {item.value}
               </li>
             ))}
+            {filteredItems.length === 0 && (
+              <li className="px-4 py-2 text-gray-400 text-[16px]">
+                موردی یافت نشد
+              </li>
+            )}
           </ul>
         </div>
       )}
