@@ -33,7 +33,8 @@ export default function Informathion() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-[url('../../img/elderly/background.jpg')]" data-aos="fade-up" data-aos-duration="2000">
+    // bg-[url('../../img/elderly/background.jpg')]
+    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg" data-aos="fade-up" data-aos-duration="2000">
       {/* Information Section */}
       <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
         <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
