@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import axiosInstance from "../axiosConfig";
 import { useState, useCallback } from "react";
 import CreateUserValidation from "./validationInput/createUserValidation";
-import InputField from "./InputForDashbord.jsx"
+import InputField from "./InputForDashbord.jsx";
 
 export default function InsuredPerson() {
   const [formData, setFormData] = useState({
@@ -11,10 +11,10 @@ export default function InsuredPerson() {
     last_name: "",
     national_id: "",
     phone: "",
-    
   });
 
   const [errors, setErrors] = useState({});
+  const [backendErrors, setBackendErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -86,28 +86,21 @@ export default function InsuredPerson() {
         setTimeout(() => setShowPopup(false), 7000);
       } catch (error) {
         const backendErrors = {};
+        const { message, errors } = error.response?.data || {};
 
-        if (error.response && error.response.data) {
-          const { message, errors } = error.response.data;
-
-          if (message?.includes(`کد ملی \"${formData.national_id}\" قبلا ثبت شده است.`)) {
-            backendErrors.national_id = "کد ملی وارد شده قبلاً ثبت شده است.";
-          }
-
-          if (message?.includes(`شماره تلفن \"${formData.phone}\" قبلا ثبت شده است.`)) {
-            backendErrors.phone = "شماره تماس وارد شده قبلاً ثبت شده است.";
-          }
-
-          if (errors) {
-            for (const field in errors) {
-              backendErrors[field] = errors[field].join(" ");
-            }
-          }
-        } else {
-          backendErrors.apiError = "مشکلی در ارسال اطلاعات رخ داده است.";
+        if (errors) {
+          Object.keys(errors).forEach((field) => {
+            backendErrors[field] = Array.isArray(errors[field])
+              ? errors[field].join(" ")
+              : errors[field];
+          });
+        } else if (message) {
+          backendErrors.general = message;
         }
 
-        setErrors(backendErrors);
+        setErrors({}); // Clear the form errors before setting backend errors
+        setBackendErrors(backendErrors); // Set backend errors to display on the UI
+        setTimeout(() => setBackendErrors({}), 7000);
       }
     },
     [formData, handleValidation]
@@ -122,11 +115,24 @@ export default function InsuredPerson() {
             موقعیت کاربر با موفقیت ثبت شد.
           </div>
         )}
+
+        {Object.keys(backendErrors).length > 0 && (
+          <div className="bg-red-100 text-red-700 px-4 py-3 rounded absolute " role="alert">
+            <strong className="font-bold">خطاهای سرور:</strong>
+            <ul className="list-none pl-0">
+              {Object.entries(backendErrors).map(([key, value]) => (
+                <li key={key}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="w-full mt-4 flex items-center justify-center">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
             <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border md:w-11/12 lg:w-[69%] max-md:w-10/12">
               تعریف شخص بیمه گذار
             </h1>
+
             <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center  mx-auto ">
               <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2 mx-auto  ">
                 <InputField
@@ -138,7 +144,7 @@ export default function InsuredPerson() {
                   error={errors.first_name}
                 />
                 <InputField
-                 items="items-start"
+                  items="items-start"
                   label="نام خانوادگی"
                   name="last_name"
                   value={formData.last_name}
@@ -148,7 +154,7 @@ export default function InsuredPerson() {
               </div>
               <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
                 <InputField
-                items="items-end"
+                  items="items-end"
                   label="کد ملی"
                   name="national_id"
                   value={formData.national_id}
@@ -156,7 +162,7 @@ export default function InsuredPerson() {
                   error={errors.national_id}
                 />
                 <InputField
-                 items="items-start"
+                  items="items-start"
                   label="شماره تماس"
                   name="phone"
                   value={formData.phone}

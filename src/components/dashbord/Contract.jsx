@@ -113,6 +113,9 @@ const Contract = () => {
           });
         }
         setBackendErrors(backendErrors);
+        setTimeout(() => {
+          setBackendErrors({});
+        }, 7000);
       }
     }
   };

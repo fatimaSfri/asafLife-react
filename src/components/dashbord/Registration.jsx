@@ -114,11 +114,11 @@ export default function Registration() {
       const uploadData = new FormData();
       uploadData.append("name", state.formData.name);
       uploadData.append("image", state.selectedFile);
-
+    
       await axiosInstance.post("/insurance", uploadData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-
+    
       setState((prevState) => ({
         ...prevState,
         formData: { name: "", image: "" },
@@ -131,38 +131,45 @@ export default function Registration() {
           isError: false,
         },
       }));
+    
+      setTimeout(() => {
+        setState((prevState) => ({
+          ...prevState,
+          popup: {
+            ...prevState.popup,
+            show: false,
+          },
+        }));
+      }, 7000); 
+    
     } catch (error) {
       const backendErrors = {};
-      if (error.response && error.response.data) {
-        const { message, errors } = error.response.data;
-
-        if (message?.includes(`فیلد نام نباید خالی باشد.`)) {
-          backendErrors.name = "فیلد نام نباید خالی باشد.";
-        }
-
-        if (message?.includes(`property image should not exist`)) {
-          backendErrors.image = "تصویر نباید خالی باشد";
-        }
-
-        if (errors) {
-          Object.keys(errors).forEach((field) => {
-            backendErrors[field] = Array.isArray(errors[field])
-              ? errors[field].join(" ")
-              : errors[field];
-          });
-        }
-      } else if (error.request) {
-        backendErrors.apiError = "مشکلی در ارتباط با سرور رخ داده است.";
-      } else {
-        backendErrors.apiError = "یک خطای رخ داده است.";
+      const { message, errors } = error.response?.data || {};
+    
+      if (errors) {
+        Object.keys(errors).forEach((field) => {
+          backendErrors[field] = Array.isArray(errors[field])
+            ? errors[field].join(" ")
+            : errors[field];
+        });
+      } else if (message) {
+        backendErrors.general = message;
       }
-
+    
       setState((prevState) => ({
         ...prevState,
         errors: {},
         backendErrors: backendErrors,
       }));
+    
+      setTimeout(() => {
+        setState((prevState) => ({
+          ...prevState,
+          backendErrors: {}, 
+        }));
+      }, 7000); 
     }
+    
   };
 
   const handleInputChange = (e) => {
@@ -177,28 +184,8 @@ export default function Registration() {
   return (
     <>
       <Dashbord />
-
-      <div className="w-full h-[802px] flex items-center justify-center bg-gray-200">
-        {state.popup.show && (
-          <div
-            className={`fixed top-0 left-1/2 transform -translate-x-1/2 p-4 rounded-xl shadow-lg ${
-              state.popup.isError ? "bg-red-500" : "bg-green-500"
-            } text-white`}
-          >
-            {state.popup.message}
-          </div>
-        )}
-
-        <div className="w-11/12  flex flex-col gap-10 md:px-16 max-md:px-8 -mt-40 h-fit">
-          <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063]  md:w-8/12 max-md:w-full mx-auto">
-            ثبت شرکت بیمه
-          </h1>
-          
-          {Object.keys(state.backendErrors).length > 0 && (
-            <div
-              className="bg-red-100  text-red-700 px-4 py-0 rounded relative mb-4 space-y-0"
-              role="alert"
-            >
+      {Object.keys(state.backendErrors).length > 0 && (
+            <div className="bg-red-100 text-red-700 px-4 py-3 rounded absolute mb-4 " role="alert">
               <strong className="font-bold">خطاهای سرور:</strong>
               <ul className="list-none pl-0">
                 {Object.entries(state.backendErrors).map(([key, value]) => (
@@ -207,7 +194,25 @@ export default function Registration() {
               </ul>
             </div>
           )}
+      <div className="w-full h-[802px] flex items-center justify-center bg-gray-200">
+      
+        {state.popup.show && (
+          <div
+            className={`fixed top-0 left-1/2 transform -translate-x-1/2 p-4 rounded-xl shadow-lg ${state.popup.isError ? "bg-red-500" : "bg-green-500"
+              } text-white`}
+          >
+            {state.popup.message}
+          </div>
+        )}
+        
+
+        <div className="w-11/12  flex flex-col gap-10 md:px-16 max-md:px-8 -mt-40 h-fit">
+          <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063]  md:w-8/12 max-md:w-full mx-auto">
+            ثبت شرکت بیمه
+          </h1>
+
           
+
           <form onSubmit={handleSubmit} className="flex flex-col gap-10 lg:w-8/12 max-lg:w-full mx-auto ">
             {/* Input برای نام شرکت بیمه */}
             <InputForDashbord
@@ -218,7 +223,7 @@ export default function Registration() {
               error={state.errors.name}
               required={true}
               items="mb-4  flex items-center justify-center"
-              
+
             />
 
             {/* File */}
@@ -238,7 +243,7 @@ export default function Registration() {
                   }))
                 }
               />
-             {state.errors.selectedFile && (
+              {state.errors.selectedFile && (
                 <p className="text-red-500 text-sm mt-2  md:w-10/12 max-md:w-full mx-auto">
                   {state.errors.selectedFile}
                 </p>
