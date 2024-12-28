@@ -344,7 +344,7 @@ import axiosInstance from "../axiosConfig";
 import Cookies from "js-cookie";
 
 export default function Login() {
-  const initialTimeOut = 60; // 60 seconds
+  const initialTimeOut = 60; 
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState({ code: "" });
   const [isActive, setIsActive] = useState(false);
@@ -384,7 +384,7 @@ export default function Login() {
 
   useEffect(() => {
     let interval = null;
-
+  
     if (isActive && data.timeOut > 0) {
       interval = setInterval(() => {
         setData((prevData) => ({
@@ -396,21 +396,28 @@ export default function Login() {
       clearInterval(interval);
       setShowLink(true);
     }
-
+  
     return () => clearInterval(interval);
   }, [isActive, data.timeOut]);
+  
 
   const generateNewCode = () => {
     const newCode = Math.floor(1000 + Math.random() * 9000);
     const auth = JSON.parse(localStorage.getItem("auth")) || {};
     auth[phone.phone] = { created_at: new Date().toISOString(), password: newCode };
     localStorage.setItem("auth", JSON.stringify(auth));
+  
     setCode({ code: String(newCode) });
-    setData({ timeOut: initialTimeOut });
+    setData((prevData) => ({
+      ...prevData,
+      timeOut: initialTimeOut,
+    }));
     setIsActive(true);
     setShowLink(false);
+  
     console.log("New code generated:", newCode);
   };
+  
 
   const sendSmsCode = async (phoneNumber) => {
     try {
