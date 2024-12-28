@@ -19,7 +19,7 @@ export const registrationSchema = Joi.object({
         return helpers.error("file.required");
       }
 
-      const validFormats = ["image/jpeg", "image/png", "image/jpg"];
+      const validFormats = ["image/jpeg", "image/png", "image/jpg" , "image/webp"];
       if (!validFormats.includes(file.type)) {
         return helpers.error("file.invalidFormat");
       }

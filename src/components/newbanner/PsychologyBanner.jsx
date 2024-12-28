@@ -5,7 +5,7 @@ export default function PsychologyBanner(props) {
     
       
       const [ image , setImage ] =useState([
-          './img/Animation/psychology/04-ob.png', 
+          './img/banner/psychology/04-ob.png', 
           './img/Animation/psychology/04-Textbutton.png',
        ])  
        
@@ -36,7 +36,6 @@ export default function PsychologyBanner(props) {
            <img src={image[0]} alt=""  className=" max-md:h-full pt-5 " />
           </div>
           </div>
-    
   
       )
     }
