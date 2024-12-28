@@ -1,5 +1,5 @@
 
-export default function Text({colorText , title , subTitle , icon , sizeTitle , sizeSubTitle ,colorSubTitle }) {
+export default function Text({colorText , title , subTitle , icon , sizeTitle , sizeSubTitle ,colorSubTitle , arrow}) {
   return (
     <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex flex-col md:justify-center items-center md:mt-20 z-20 ">
     <h1 className={` font-bold  whitespace-nowrap font-KalamehBold cursor-pointer ${sizeTitle} ${colorText}`}>{title}</h1>
@@ -9,7 +9,7 @@ export default function Text({colorText , title , subTitle , icon , sizeTitle , 
      <img src={icon} alt="" className=' absolute lg:-mt-5 md:-mt-3 max-md:-mt-2 -mr-3 lg:h-16 md:h-14 max-md:h-12'/>
      <p className='w-full h-full flex justify-center items-center lg:text-[24px] max-lg:text-[20px] font-bold text-[#213063] cursor-pointer'>صـــــدور بیمـــــه </p>
    </div>
-   <img src="./img/Animation/treatment/02-Arrow.svg" alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
+   <img src={arrow} alt="" className="max-md:hidden mt-5 -mr-20 image w-4/12 "></img>
   </div>
  
   )

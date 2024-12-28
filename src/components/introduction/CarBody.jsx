@@ -22,7 +22,7 @@ export default function CarBody() {
          <Border background="bg-car" ></Border>
         
         {/* text */}
-        <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>
+        <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/banner/car/01-Shield.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>
         <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
          <video className="rounded-lg"
         src= "./img/video/forCar.MP4"

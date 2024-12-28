@@ -21,7 +21,7 @@ export default function CarBody() {
          {/* <Border background="bg-car" ></Border> */}
         
         {/* text */}
-        <Text colorText="text-[#552ade]"  title="بیمــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/Animation/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[20px]" colorSubTitle="text-[#552ade]"></Text>
+        <Text colorText="text-[#552ade]"  title="بیمــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/banner/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[20px]" colorSubTitle="text-[#552ade]"></Text>
     
         <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
          <video className="rounded-lg"
