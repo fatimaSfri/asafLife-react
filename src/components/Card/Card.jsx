@@ -11,17 +11,17 @@ export default function Card({ title , gap ,titleCardOne,subTitleOne , titleCard
 
   const blogPosts = [
     {
-      imgSrc: "./img/blog/blog3.jpg",
+      imgSrc: "./img/blog/blog3.webp",
       title: titleCardOne,
       description:subTitleOne  
     },
     {
-      imgSrc: "./img/blog/blog2.jpg",
+      imgSrc: "./img/blog/blog2.webp",
       title:titleCardTwo,
       description: subTitleTwo
     },
     {
-      imgSrc: "./img/blog/blog1.jpg",
+      imgSrc: "./img/blog/blog1.webp",
       title: titleCardThree,
       description: subTitleThree
     }

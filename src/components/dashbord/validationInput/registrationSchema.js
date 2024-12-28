@@ -32,7 +32,7 @@ export const registrationSchema = Joi.object({
     })
     .messages({
       "file.required": "انتخاب آواتار الزامی است.",
-      "file.invalidFormat": "فرمت فایل باید یکی از jpeg, png یا jpg باشد.",
+      "file.invalidFormat": "فرمت فایل باید یکی از webp, jpeg, png یا jpg باشد.",
       "file.maxSize": "حجم فایل نباید بیشتر از ۵۰۰ کیلوبایت باشد.",
     }),
 });

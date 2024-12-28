@@ -4,7 +4,16 @@ import Text from './Text';
 import Border from './border';
 
 export default function LifeBanner(props) {
+  
+    console.log("hi first")
+
+    useEffect(()=>{
+      console.log("useEfect")
+    },[])
+
     
+
+
       const [ image ] =useState([
           './img/banner/life/life-ob.webp', 
        ])  
@@ -19,7 +28,8 @@ export default function LifeBanner(props) {
        useEffect(() => {
           preloadImages();
         }, []); 
-    
+        console.log("hi secuond")
+
       return (
      <>
        {/* for max-md */}
