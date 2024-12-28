@@ -1,4 +1,3 @@
-import React from 'react'
 import Roadmap from '../roadMap/RoadMap'
 import Timer from '../timer/Timer'
 

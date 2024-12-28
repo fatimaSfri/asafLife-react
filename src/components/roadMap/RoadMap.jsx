@@ -1,4 +1,3 @@
-
 import './RoadMap.css'
 import  { useState, useEffect } from 'react';
 import Lottie from "lottie-react";
