@@ -20,7 +20,7 @@ export default function Mobile() {
          {/* <Border background="bg-car" ></Border> */}
         
         {/* text */}
-         <Text colorText="text-[#d21a1a]"  title="بیمــه موبایل "  subTitle="در امان، از خط و خش و زیان" icon="./img/Animation/mobile/07-Shield.webp"
+         <Text colorText="text-[#d21a1a]"  title="بیمــه موبایل "  subTitle="در امان، از خط و خش و زیان" icon="./img/banner/mobile/07-Shield.webp"
               sizeTitle="xl:text-[70px] lg:text-[65px] md:text-[50px] max-md:text-[45px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[24px]" colorSubTitle="text-[#552ade]"></Text>
     
         <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>

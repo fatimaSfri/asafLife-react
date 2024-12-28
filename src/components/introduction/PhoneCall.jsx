@@ -11,7 +11,7 @@ export default function PhoneCall({phone,post,employeeName}) {
     <div className='w-10/12 h-full bg-gray-200 rounded-3xl flex items-center justify-center lg:text-[20px] max-lg:text-[18px] pt-1'>
     <a href={`tel:${phone}`} className="px-2">
     {phone}</a></div>
-     <img src="./img/Animation/ministrant/Layer.png" className='w-8 mx-auto p-1'></img>
+     <img src="./img/banner/ministrant/Layer.png" className='w-8 mx-auto p-1'></img>
     </div>
     </div>
   )
