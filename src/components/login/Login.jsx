@@ -72,6 +72,13 @@ export default function Login() {
     }
   }, [phone.phone]);
 
+  useEffect(() => {
+    const xToken = Cookies.get("X-Token"); 
+    if (xToken) {
+      console.log("شما قبلاً ثبت نام کرده‌اید");
+    }
+  }, []);
+
   // Timer logic
   useEffect(() => {
     let interval = null;
@@ -148,14 +155,6 @@ export default function Login() {
         phone: phone.phone,
         code: code.code,
       });
-      const { token } = response.data;
-  
-      if (token) {
-        Cookies.set('X-token', token, { expires: 7 });
-        console.log('Token:', token);
-      } else {
-        console.error('Token not found in response');
-      }
   
       console.log('Code verified successfully:', response.data);
   
