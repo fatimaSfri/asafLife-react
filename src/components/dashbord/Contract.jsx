@@ -1,9 +1,9 @@
 
 /*************************************************************** */
 
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
-import contractValidation from "./validationInput/contractValidation";
+import contractValidation from "./validationInput/contractValidation.js";
 import Dashbord from "./Dashbord";
 import Button from "../button/Button";
 import InputField from "./InputForDashbord.jsx";
@@ -11,45 +11,33 @@ import Dropdown from "./Dropdown";
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    insurer_code: "",
     computer_code: "",
     reshte: "",
-    user_id: "",
-    insurance_id: "",
+    insurance_user_id: "",
   });
 
   const [errors, setErrors] = useState({});
   const [backendErrors, setBackendErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [users, setUsers] = useState([]);
   const [insurance, setInsurance] = useState([]);
-  const lastTenUsers = users.slice(-10);
-  const lastTenInsurance = insurance.slice(-10);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axiosInstance.get("/user");
-        setUsers(response.data?.data || []);
-      } catch (error) {
-        console.error("خطا در دریافت اطلاعات کاربران:", error);
-      }
-    };
-
-    fetchUsers();
-  }, []);
   
+
+  const lastTenInsurance = insurance.map((item) => ({key:item.id , value: item.user.first_name+"  "+item.user.last_name+"  "+"  "+item.user.national_id+"  "+item.insurance.name  }));
+  
+
+
+
   useEffect(() => {
     const fetchInsurance = async () => {
       try {
-        const response = await axiosInstance.get("/insurance");
+        const response = await axiosInstance.get("/insurance-user");
+        console.log(response.data?.data);
         setInsurance(response.data?.data || []);
       } catch (error) {
         console.error("خطا در دریافت اطلاعات بیمه:", error);
       }
     };
-
     fetchInsurance();
   }, []);
 
@@ -64,12 +52,12 @@ const Contract = () => {
 
   const convertToEnglishNumbers = (str) => {
     if (typeof str !== 'string') {
-      str = String(str); 
+      str = String(str);
     }
-  
+
     const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  
+
     return str.split('').map(char => {
       const index = persianDigits.indexOf(char);
       return index !== -1 ? englishDigits[index] : char;
@@ -85,14 +73,12 @@ const Contract = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const formDataInEnglish = {
       ...formData,
-      insurer_code: convertToEnglishNumbers(formData.insurer_code),
       computer_code: convertToEnglishNumbers(formData.computer_code),
       reshte: convertToEnglishNumbers(formData.reshte),
-      user_id: convertToEnglishNumbers(formData.user_id),
-      insurance_id: convertToEnglishNumbers(formData.insurance_id),
+      insurance_user_id: formData.insurance_user_id,
     };
     console.log(formDataInEnglish);
 
@@ -101,10 +87,10 @@ const Contract = () => {
     if (error) {
       const validationErrors = {};
       error.details.forEach((detail) => {
-        console.log(detail.message);  
+        console.log(detail.message);
         validationErrors[detail.path[0]] = detail.message;
       });
-      setErrors(validationErrors); 
+      setErrors(validationErrors);
     } else {
       setErrors({});
       try {
@@ -112,11 +98,9 @@ const Contract = () => {
         setSubmitted(true);
         setShowPopup(true);
         setFormData({
-          insurer_code: "",
           computer_code: "",
           reshte: "",
-          user_id: "",
-          insurance_id: "",
+          insurance_user_id: "",
         });
       } catch (error) {
         const backendErrors = {};
@@ -132,8 +116,8 @@ const Contract = () => {
       }
     }
   };
-  
-  
+
+
 
   return (
     <>
@@ -192,12 +176,13 @@ const Contract = () => {
                     flex="flex flex-col items-center"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
-                    type="insurance"
+                    type="insuranceUser"
+                    // onChangeSearch={(newSeachValue) => setLastTenInsurance(lastTenInsurance.filter(newSeachValue))}
                     items={lastTenInsurance}
-                    onSelect={(insurance) => {
+                    onSelect={(selectedItem) => {
                       setFormData((prev) => ({
                         ...prev,
-                        insurance_id: insurance.id,
+                        insurance_user_id: parseInt(selectedItem),
                       }));
                     }}
                   />
@@ -210,13 +195,28 @@ const Contract = () => {
               <Button mt="mt-10" type="submit" width="w-8/12" />
               </div>
             </div>
-          
+
           </div>
         </form>
       </div>
     </>
   );
 };
+
+
+// 
+
+// function (){
+
+//   return (
+//     <></>
+//     <></>
+//     <></>
+//   )
+// }
+
+
+// 
 
 export default Contract;
 
