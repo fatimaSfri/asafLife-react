@@ -5,8 +5,8 @@ import Text from './Text';
 export default function Treatment(props) {
     
       const [ image ] =useState([
-          './img/Animation/treatment/02-ob.webp', 
-          './img/Animation/treatment/02-Textbutton.png',
+          './img/banner/treatment/02-ob.webp', 
+          './img/banner/treatment/02-Textbutton.png',
        ])  
        
        const preloadImages = () => {
@@ -27,7 +27,7 @@ export default function Treatment(props) {
      
      {/* text */}
     
-     <Text colorText="text-red-500"  title="با بیمه درمان"  subTitle=" مسیر بهبودی را هموار کنید" icon="./img/Animation/treatment/02-Shield.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
+     <Text colorText="text-red-500"  title="با بیمه درمان"  subTitle=" مسیر بهبودی را هموار کنید" icon="./img/banner/treatment/02-Shield.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
      
      {/* object */}
 

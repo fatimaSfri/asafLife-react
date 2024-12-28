@@ -148,14 +148,7 @@ const Contract = () => {
             </h1>
             <div className="max-md:w-10/12 md:w-full h-full flex flex-col lg:gap-8 items-center mx-auto">
               <div className="md:flex max-md:flex-col w-full gap-4 ">
-                {/* <InputField
-                  label="کد بیمه‌گذار"
-                  items="items-end"
-                  name="insurer_code"
-                  value={formData.insurer_code}
-                  onChange={handleInputChange}
-                  error={errors.insurer_code || backendErrors.insurer_code}
-                /> */}
+               
                 <InputField
                   label="کد رایانامه"
                   name="computer_code"
@@ -175,34 +168,14 @@ const Contract = () => {
                 />
               </div>
               <div className="md:flex max-md:flex-col w-full ">
-
-                {/* <div className="w-full xl:mx-2">
+              
+                
+                <div className="w-full xl:mx-2 ">
+                  
                   <Dropdown
                     size="w-8/12"
-                    name="نام فرد"
-                    width="lg:w-[27.5%] max-lg:w-[80%]"
-                    labelW="lg:w-8/12 max-lg:w-full"
-                    mt="mt-[5.5rem]"
-                    flex="items-end flex flex-col"
-                    items={lastTenUsers}
-                    type="user"
-                    onSelect={(user) => {
-                      setFormData((prev) => ({
-                        ...prev,
-                        user_id: user.id,
-                      }));
-                    }}
-                  />
-                  {(errors.user_id || backendErrors.user_id) && (
-                  <div className="w-full flex justify-end">
-                    <p className="text-red-500 text-sm mt-2 lg:w-8/12 max-lg:w-full">{errors.user_id || backendErrors.user_id}</p></div>
-                  )}
-                </div> */}
-                <div className="w-full xl:mx-2">
-                  <Dropdown
-                    size="w-8/12"
-                    width="lg:w-[27.5%] max-lg:w-[80%]"
-                    name="نام کاربر و شرکت بیمه"
+                    width="lg:w-[55.5%] max-lg:w-[80%]"
+                    name="نام شرکت بیمه _  بیمه گذار  "
                     flex="flex flex-col items-center"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
@@ -216,16 +189,13 @@ const Contract = () => {
                       }));
                     }}
                   />
-                  {(errors.insurance_user_id || backendErrors.insurance_user_id) && (
-                    <p className="text-red-500 text-sm mt-2 ">
-                      {errors.insurance_user_id || backendErrors.insurance_user_id}
-                    </p>
+                  {(errors.insurance_id || backendErrors.insurance_id) && (
+                    <p className="text-red-500 text-sm mt-2 lg:w-8/12 max-lg:w-full mx-auto">{errors.insurance_id || backendErrors.insurance_id}</p>
                   )}
                 </div>
-
-              </div>
-              <div className="w-full ">
-                <Button mt="mt-10" type="submit" width="w-8/12 " />
+               </div>
+                <div className="w-full ">
+              <Button mt="mt-10" type="submit" width="w-8/12" />
               </div>
             </div>
 
