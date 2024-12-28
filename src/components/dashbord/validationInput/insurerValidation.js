@@ -15,7 +15,7 @@ const insurarValidation = Joi.object({
     .positive()
     .required()
     .messages({
-      "number.base": "ایدی کاربر باید یک عدد صحیح مثبت باشد.",
+      "number.base": "وارد کردن نام فرد الزامی می باشد",
       "any.required": "ایدی کاربر الزامی است.",
     }),
 
@@ -24,7 +24,7 @@ const insurarValidation = Joi.object({
     .positive()
     .required()
     .messages({
-      "number.base": "ایدی بیمه باید یک عدد صحیح مثبت باشد.",
+      "number.base": "وارد کردن شرکت بیمه الزامی می باشد.",
       "any.required": "ایدی بیمه الزامی است.",
     }),
     url: Joi.string().default("google.com")

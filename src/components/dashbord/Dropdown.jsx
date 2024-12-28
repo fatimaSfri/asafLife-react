@@ -31,7 +31,7 @@ export default function Dropdown(props) {
         {props.name}
       </label>
 
-      {/* دکمه Dropdown */}
+
       <div
         className={`max-lg:w-full bg-white rounded-2xl px-4 py-2 border border-gray-300 shadow-sm focus:outline-none text-[#213063] text-[18px] font-bold cursor-pointer flex items-center justify-between ${props.size}`}
         onClick={handleDropdownToggle}
@@ -64,7 +64,7 @@ export default function Dropdown(props) {
 
           {/* لیست آیتم‌ها */}
           <ul className="max-h-60 overflow-auto">
-            {filteredItems.map((item) => (
+            {filteredItems.slice(-10).map((item) => (
               <li
                 key={item.key}
                 className="px-4 py-2 text-[#213063] text-[18px] hover:bg-gray-100 cursor-pointer"

@@ -22,7 +22,7 @@ const contractValidation = Joi.object({
       .positive()
       .required()
       .messages({
-        "number.base": "نام کاربر و شرکت بیمه باید بصورت  عدد باشد",
+        "number.base": "لطفا نام کاربر و شرکت بیمه انتخاب شود",
         "any.required": "ایدی کاربر الزامی است.",
       }),
 
