@@ -2,7 +2,6 @@ import  {  useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
-import Border from '../newbanner/border';
 import Text from '../newbanner/Text';
 import PhoneCall from './PhoneCall';
 
@@ -17,9 +16,7 @@ export default function CarBody() {
    <Navbar></Navbar>
     <div className=  {` bg-gradient-circle-life back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
             h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
-        {/* around */}
-         <Border background="bg-life" ></Border>
-        
+      
         {/* text */}
         <Text colorText="text-life"  title="بیمـــه زنـدگــی "  subTitle="فردات ساخته ،امروزت آسوده " icon="./img/Animation/life/08-iconButton.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
         <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>

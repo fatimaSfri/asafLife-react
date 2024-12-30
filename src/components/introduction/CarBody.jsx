@@ -3,7 +3,6 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
 import "./Introduction.css"
-import Border from '../newbanner/border';
 import Text from '../newbanner/Text';
 import PhoneCall from './PhoneCall';
 
@@ -18,8 +17,7 @@ export default function CarBody() {
      <Navbar></Navbar>
     <div className=  {` bg-gradient-circle-carBody back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
             h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
-        {/* around */}
-         <Border background="bg-car" ></Border>
+       
         
         {/* text */}
         <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/banner/car/01-Shield.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>

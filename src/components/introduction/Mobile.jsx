@@ -16,9 +16,7 @@ export default function Mobile() {
 <Navbar></Navbar>
     <div className=  {`bg-gradient-circle-Mobile back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
             h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
-        {/* around */}
-         {/* <Border background="bg-car" ></Border> */}
-        
+    
         {/* text */}
          <Text colorText="text-[#d21a1a]"  title="بیمــه موبایل "  subTitle="در امان، از خط و خش و زیان" icon="./img/banner/mobile/07-Shield.webp"
               sizeTitle="xl:text-[70px] lg:text-[65px] md:text-[50px] max-md:text-[45px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[24px]" colorSubTitle="text-[#552ade]"></Text>

@@ -1,7 +1,7 @@
 import  { useEffect , useState } from 'react';
 import "./NewBanner.css"
 
-export default function LegalBanner(props) {
+export default function LegalBanner() {
     
       const [ image ] =useState([
           './img/banner/legal/05-ob.webp', 
@@ -32,7 +32,6 @@ export default function LegalBanner(props) {
       <img src={image[0]}alt=""  className=" max-md:h-full pt-5 " />
      </div>
      
-  
      {/* text */}
      <div className=" xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-right flex md:flex-col md:justify-center items-center md:mt-20 z-20">
       <img src= {image[1]} alt="" className=" px-8 cursor-pointer" />
