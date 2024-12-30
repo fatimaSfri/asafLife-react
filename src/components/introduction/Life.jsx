@@ -2,7 +2,9 @@ import  {  useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
-import LifeBanner from '../newbanner/LifeBanner';
+import Border from '../newbanner/border';
+import Text from '../newbanner/Text';
+import PhoneCall from './PhoneCall';
 
 export default function CarBody() {
   useEffect(() => {
@@ -13,10 +15,15 @@ export default function CarBody() {
     <>
   
    <Navbar></Navbar>
-   <LifeBanner play="hidden" gap="xl:gap-96 gap-20" size="xl:w-4/12"></LifeBanner>
-   <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full  flex justify-center items-center py-16 '>
-   <video className="rounded-3xl  lg:h-[700px] "
+    <div className=  {` bg-gradient-circle-life back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
+            h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
+        {/* around */}
+         <Border background="bg-life" ></Border>
+        
+        {/* text */}
+        <Text colorText="text-life"  title="بیمـــه زنـدگــی "  subTitle="فردات ساخته ،امروزت آسوده " icon="./img/Animation/life/08-iconButton.webp" sizeTitle="xl:text-[80px] lg:text-[70px] md:text-[60px] max-md:text-[48px]" sizeSubTitle="xl:text-[40px] lg:text-[35px] md:text-[30px] max-md:text-[24px]"></Text>
+        <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
+         <video className="rounded-lg"
         src= "./img/video/allinsurance.MP4"
         preload="auto"
         autoPlay
@@ -24,55 +31,23 @@ export default function CarBody() {
         controls
        >
      </video>
-  
+
    </div>
-   <div className='w-full mx-auto md:h-[700px] max-md:h-[950px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 flex items-center gap-2  '>
-    <div className='md:w-4 max-md:w-3 h-10 bg-[#29a8ac] rounded-full'></div>
-    <h1 className='font-bold text-[20px] text-[#213063]' >بیمه زندگی  </h1>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#29a8ac] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' > تأمین مالی خانواده: </h1>
-    </div>
-    <p className=' '> اگر بیمه‌شده سرپرست مالی خانواده باشد، فوت او می‌تواند به شدت بر روی وضعیت مالی خانواده تأثیر بگذارد. مبلغ بیمه به خانواده کمک می‌کند تا بدون نگرانی از مسائل مالی، به سوگواری و سازگاری با فقدان بپردازند در صورت فوت بیمه‌شده، مبلغ بیمه به وراث پرداخت می‌شود تا نیازهای مالی آن‌ها تأمین گردد مبلغ بیمه می‌تواند به تأمین هزینه‌های روزمره مانند مسکن، خوراک و تحصیل فرزندان کمک کند، به‌طوری‌که خانواده به راحتی بتوانند به زندگی ادامه دهند.
-    </p>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 '>
-    <div className='flex items-center gap-4  '>
-    <div className='w-4 h-4 bg-[#29a8ac] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >مفهوم تأمین مالی </h1>
-    </div>
-    <p className=' '>تأمین مالی به معنای فراهم آوردن منابع مالی لازم برای تأمین نیازهای زندگی روزمره، هزینه‌های تحصیل، مسکن، درمان و سایر مخارج ضروری خانواده است. در صورت فوت بیمه‌شده، مبلغ بیمه به وراث یا ذینفعان پرداخت می‌شود تا آنها بتوانند به راحتی با این شرایط کنار بیایند
-    </p>
-    </div>
-    <div className='xl:w-[1250px] max-xl:w-full lg:h-1/6 px-4 '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#29a8ac] rounded-full'></div>
-    <h1 className='font-bold text-[18px] text-[#213063] '>انتخاب ذینفعان</h1>
-    </div>
-    <p className='    ' >
-    بیمه‌گذاران می‌توانند ذینفعان خود را انتخاب کنند، که معمولاً شامل همسر، فرزندان، والدین یا هر فرد دیگری است که در زندگی مالی بیمه‌شده نقش دارد. این انتخاب به تأمین مالی مستقیم برای افرادی که بیشترین نیاز به حمایت مالی دارند، کمک می‌کند
-    </p></div>
-    <div className='xl:w-[1250px] max-xl:w-full px-4 h-1/6  flex items-center justify-end mouse-pointer'>
-     {/* <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/> */}
-     <button className='w-[150px] h-10 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2' 
-      style={{
-        background: 'linear-gradient(to bottom, #b5feff 0.2%, #00c3c5, #004f52 )',
-      }}>
-      <img src="./img/button/Asset.svg" alt="" className='w-8'/>
-      درخواست
-     </button>
-    </div>
    </div>
+
+   <div className='h-auto w-full bg-gray-200' >
+   <div className='w-full lg:h-[370px] max-lg:h-[300] py-4 flex justify-center items-center'>
+   <div className='w-[96%] lg:h-[340px] max-lg:h-[500px] grid  gap-4 lg:grid-cols-3 max-lg:grid-cols-1 py-10 items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
    
-   <PreviewServices></PreviewServices>
+      <PhoneCall post=" پشتیبانی " phone="09021887644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="پشتیبانی "   phone="09366507644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="دفتر مرکزی" phone="021-91098951"  ></PhoneCall>
+   </div>
+   </div>
+  <PreviewServices></PreviewServices>
    <Footer></Footer>
    </div>
+
 
    
     </>

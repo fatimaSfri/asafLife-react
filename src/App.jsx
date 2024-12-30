@@ -22,7 +22,7 @@ import GetDashbordUsers from './components/dashbord/GetDashbordUsers.jsx'
 import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 import Test from "./components/test/Test.jsx"
-
+import Insurer from './components/dashbord/Insurer.jsx';
 
 function App() {
  
@@ -62,7 +62,8 @@ function App() {
         <Route path='/user'  element={<GetDashbordUsers/>} />
         <Route path='/contract' element={<Contract/>} />
         <Route path='/test'  element={<Test/>} />
-
+        <Route path='/Insurer'  element={<Insurer/>} />
+        
    </Routes>
   
    </>

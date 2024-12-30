@@ -9,7 +9,7 @@ export default {
       colors:{
         life:'#f6f462',
         car :'#fdce0b',
-        
+        pet :'#975fff'
       },
       fontFamily: {
         KalamehBold: ['Kalameh-Bold'],

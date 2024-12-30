@@ -3,6 +3,11 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
 import "./Introduction.css"
+import Border from '../newbanner/border';
+import Text from '../newbanner/Text';
+import PhoneCall from './PhoneCall';
+
+
 export default function CarBody() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -10,30 +15,16 @@ export default function CarBody() {
 
   return (
     <>
-  
-   <Navbar></Navbar>
-
-  
-{/* ****************** */}
-
-
-<div className='bg-gradient-circle-carBody back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md h-[750px] 
-       w-full flex justify-center max-md:flex-col  items-center overflow-hidden' >
-          
-          {/* object */}
-         <div className=' w-10/12 h-10/12 flex items-center 
-        justify-center ' >
-           <img src="./img/ten-ten/img-ob.png" alt="" className=" xl:w-10/12 xl:h-10/12 max-xl:w-full absolute"/>
-       
-          </div></div>
-
-
-{/* ****************************** */}
-
-
-   <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full flex justify-center items-center py-16 '>
-   <video className="rounded-3xl  lg:h-[700px] "
+     <Navbar></Navbar>
+    <div className=  {` bg-gradient-circle-carBody back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
+            h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
+        {/* around */}
+         <Border background="bg-car" ></Border>
+        
+        {/* text */}
+        <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>
+        <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
+         <video className="rounded-lg"
         src= "./img/video/forCar.MP4"
         preload="auto"
         autoPlay
@@ -41,58 +32,26 @@ export default function CarBody() {
         controls
        >
      </video>
-  
+
    </div>
-   <div className=' w-full md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 mx-auto'>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4  flex items-center gap-2 '>
-    <div className='md:w-4 max-md:w-3 h-10 bg-[#6827b5] rounded-full'></div>
-    <h1 className='font-bold text-[20px] text-[#213063]' > بیمه ثالث بدنه</h1>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col  '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >بیمه بدنه:</h1>
-    </div>
-    <p className=' '> این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.این بیمه اختیاری است و خسارت‌هایی را که به خودروی خود بیمه‌گذار وارد می‌شود، جبران می‌کند.
-    </p>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 '>
-    <div className='flex items-center gap-4  '>
-    <div className='w-4 h-4 bg-[#6827b5] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >پوشش‌های اصلی: </h1>
-    </div>
-    <p className=' '>شامل حوادثی مانند تصادف، آتش‌سوزی، سرقت کلی خودرو، یا واژگونی
-    </p>
-    </div>
-    <div className='xl:w-[1250px] max-xl:w-full px-4 lg:h-1/6 '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#6827b5] rounded-full'></div>
-    <h1 className='font-bold text-[18px] text-[#213063] '>پوشش‌های اضافی:</h1>
-    </div>
-    <p className='    ' >شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
-    امکان انتخاب پوشش‌های متنوع بر اساس نیاز و ارزش خودرو.
-   مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
-   شامل سرقت قطعات، شکستن شیشه، بلایای طبیعی (سیل، زلزله)، یا آسیب ناشی از آشوب و اعتصاب.
-   امکان انتخاب پوشش‌های متنوع بر اساس نیاز و ارزش خودرو.
-   مناسب برای کاهش هزینه‌های ناشی از خسارات سنگین به خودرو
-    </p></div>
-    <div className='xl:w-[1250px] max-xl:w-full px-4 h-1/6  flex items-center justify-end mouse-pointer'>
-     {/* <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/> */}
-     <button className='w-[150px] h-10  rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'>
-      <img src="./img/button/Asset.svg" alt="" className='w-8'/>
-      درخواست
-     </button>
-    </div>
-    
    </div>
-   <PreviewServices ></PreviewServices>
+
+   <div className='h-auto w-full bg-gray-200' >
+   <div className='w-full lg:h-[370px] max-lg:h-[300] py-4 flex justify-center items-center'>
+   <div className='w-[96%] lg:h-[340px] max-lg:h-[500px] grid  gap-4 lg:grid-cols-3 max-lg:grid-cols-1 py-10 items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
+   
+      <PhoneCall post=" پشتیبانی " phone="09021887644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="پشتیبانی "   phone="09366507644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="دفتر مرکزی" phone="021-91098951"  ></PhoneCall>
+   </div>
+   </div>
+  <PreviewServices></PreviewServices>
    <Footer></Footer>
    </div>
+  
 
-   
     </>
   )
 }
+
+

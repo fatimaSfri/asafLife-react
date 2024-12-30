@@ -30,7 +30,7 @@ export default function ManagementPanel() {
     <div className={`w-full h-16 absolute  flex md:flex-row-reverse items-center ${!bgColor?'bg-[#e9e9e9] shadow-lg':''}`}>
     <img src={toggle?icon.close:icon.menu} className={`${!toggle?"w-10 h-8 p-[2px]":"w-10 h-10"} mr-4 font-[#4f4f4f] lg:hidden cursor-pointer z-50 md:hidden `} onClick={handleMenu}></img>
     <div className="md:w-10/12 max-md:w-full h-full  flex items-center justify-between px-4 ">
-     <img src="../img/pannel/Notification.svg" alt="" className="md:w-10 md:h-10 md:mr-20 mr-2 max-md:w-6 max-md:w-h-6" />
+     <img src="../img/pannel/Notification.svg" alt="" className="md:w-10 md:h-10 lg:mr-20 md:mr-12 mr-2 max-md:w-7 max-md:h-7" />
      <img src="../img/icon/ASAF Logo copy.svg" alt="" className="md:h-14 max-md:h-10" />
     </div>
     </div>
@@ -50,7 +50,7 @@ export default function ManagementPanel() {
     <ul className="xl:w-[300px] lg:w-[250px] h-[300px]  flex flex-col justify-evenly" >
 
     <NavLink
-            to="/panel/profile"
+            to="/dashbord/profile"
             className={({ isActive }) =>
               isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
             }
@@ -62,7 +62,7 @@ export default function ManagementPanel() {
      </NavLink>
 
    <NavLink
-            to="/panel/services"
+            to="/dashbord/services"
             className={({ isActive }) =>
            isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
               }> 
@@ -72,7 +72,7 @@ export default function ManagementPanel() {
  </NavLink>
 
  <NavLink
-           to="/panel/mycontracts"
+           to="/dashbord/mycontracts"
             className={({ isActive }) =>
           isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
               }>
@@ -81,7 +81,7 @@ export default function ManagementPanel() {
           قرارداد های من </li></NavLink>
  
       <NavLink
-           to="/panel/support"
+           to="/dashbord/support"
             className={({ isActive }) =>
         isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
            } >

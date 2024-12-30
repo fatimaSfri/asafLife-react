@@ -22,7 +22,7 @@ export default function MyContracts() {
         <td className="border border-gray-300 text-center"> عمر انفرادی</td>
         <td className="border border-gray-300 text-center">9</td>
         <td className="border border-gray-300 text-center">
-        <Link to="/panel/table" ><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
+        <Link to="/dashbord/table" ><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
       </tr>
       <tr className="max-md:text-[12px]">
         <td className="border border-gray-300 text-center">1403/09/03</td>
@@ -30,7 +30,7 @@ export default function MyContracts() {
         <td className="border border-gray-300 text-center">تشکیل سرمایه</td>
         <td className="border border-gray-300 text-center">18</td>
         <td className="border border-gray-300 text-center">
-        <Link to="/panel/table"><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
+        <Link to="/dashbord/table"><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link></td>
       </tr>
     </tbody>
   </table>

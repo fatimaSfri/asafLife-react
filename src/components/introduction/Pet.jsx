@@ -66,7 +66,7 @@ export default function CarBody() {
     ،هزینه‌های درمان‌های تخصصی که توسط دامپزشکان متخصص انجام می‌شود، مانند درمان‌های اورتوپدی یا قلبی
        </p></div>
        <div className='xl:w-[1250px] max-xl:w-full px-4 h-1/6  flex items-center justify-end mouse-pointer'>
-     {/* <img src="./img/Animation/car/button.png" alt=""  className='w-[150px]  cursor-pointer'/> */}
+     {/* <img src="./img/Animation/car/button.png" alt="" className='w-[150px]  cursor-pointer'/> */}
      <button className='w-[150px] h-10 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'
      style={{
       background: 'linear-gradient(to bottom, #fff7d4 0.2%, #ffea87, #ffae00 50%)',
