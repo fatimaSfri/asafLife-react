@@ -508,10 +508,7 @@ export default function Login() {
       setValidationErrorsPass(errorsPass);
       return false;
     }
-
     verifyCode()
-
-
     return true;
   };
 
@@ -519,7 +516,7 @@ export default function Login() {
     setValidationErrors({});
     setValidationErrorsPass({});
   };
-  
+
   const handleInputChange = (name, value) => {
     setPhone({ [name]: value });
     Cookies.set("phone", value, { expires: 7 });
