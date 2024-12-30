@@ -29,9 +29,9 @@ export default function Card({ title , gap ,titleCardOne,subTitleOne , titleCard
 
   return (
     <>
-      <div className={`w-full flex flex-col items-center justify-center h-auto  ${gap}`} data-aos="fade-up" data-aos-duration="1500" >
-        <div className="xl:w-[1100px] lg:w-[900px] md:w-[700px] sm:w-[400px] max-sm:w-[300px] flex items-center">
-          <div className="flex justify-center items-center w-14 -mt-5">
+      <div className={`w-full flex flex-col items-center justify-center h-auto overflow-hidden ${gap}`} data-aos="fade-up" data-aos-duration="1500" >
+        <div className="xl:w-[1100px] lg:w-[900px] md:w-[700px] sm:w-[400px] max-sm:w-[250px] flex items-center">
+          <div className="flex justify-center items-center w-14  -mt-5">
             <Lottie animationData={blog} loop={true} />
           </div>
           <p className="font-bold text-[#213063] text-[18px] px-2">{title}</p>

@@ -75,6 +75,10 @@ animation: float-one 12s ease-in-out infinite;
     }
 }
 
-.bg{
+.bg-elderly{
     background: radial-gradient(circle at 30% 30%, #77e7ff, #007eff );
+}
+
+.bg-carBody{
+    background: radial-gradient(circle at 30% 30%, #975fff, #59169d );
 }

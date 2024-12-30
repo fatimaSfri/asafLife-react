@@ -1,4 +1,3 @@
-import React from 'react';
 import NewBanner from './newbanner/NewBanner.jsx';
 import Services from './services/Services.jsx';
 import Logo from "./logo/Logo.jsx"
