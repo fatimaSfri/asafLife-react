@@ -71,7 +71,7 @@
 //       generateNewCode();
 //     }
 //   }, [phone.phone]);
-  
+
 //   // Timer logic
 //   useEffect(() => {
 //     let interval = null;
@@ -90,7 +90,7 @@
 
 //     return () => clearInterval(interval);
 //   }, [isActive, data.timeOut]);
-  
+
 //   useEffect(() => {
 //     const storedData = localStorage.getItem('timerData');
 //     if (storedData) {
@@ -100,7 +100,7 @@
 //       setShowLink(timeOut === 0); 
 //     }
 //   }, []);
-  
+
 //   useEffect(() => {
 //     if (isActive && data.timeOut > 0) {
 //       const interval = setInterval(() => {
@@ -110,7 +110,7 @@
 //         }));
 //       }, 1000);
 //       localStorage.setItem('timerData', JSON.stringify({ timeOut: data.timeOut, isActive }));
-  
+
 //       return () => clearInterval(interval);
 //     } else if (data.timeOut === 0) {
 //       setShowLink(true);
@@ -148,15 +148,15 @@
 //         phone: phone.phone,
 //         code: code.code,
 //       });
-  
+
 //       console.log('Code verified successfully:', response.data);
-  
+
 //       return response.data;
 //     } catch (error) {
 //       console.error('Error verifying code:', error.response?.data || error.message);
 //     }
 //   };
-  
+
 
 //   const validate = () => {
 //     const { error } = schema.validate(phone, { abortEarly: false });
@@ -171,7 +171,7 @@
 //       return false;
 //     }
 //     Cookies.set("phone", phone.phone, { expires: 7 });
-   
+
 //     return true;
 //   };
 
@@ -275,7 +275,7 @@
 //                   className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
 //                   onClick={() => {
 //                     if (handleErrorPass()) {
-                      
+
 //                       verifyCode()
 //                     }
 //                   }}
@@ -337,14 +337,14 @@
 
 
 
-import Joi from "joi";
+import  Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
 import Cookies from "js-cookie";
 
 export default function Login() {
-  const initialTimeOut = 60; 
+  const initialTimeOut = 120;
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState({ code: "" });
   const [isActive, setIsActive] = useState(false);
@@ -353,6 +353,7 @@ export default function Login() {
   const [password, setPassword] = useState({ password: "" });
   const [validationErrors, setValidationErrors] = useState({});
   const [validationErrorsPass, setValidationErrorsPass] = useState({});
+  const [apiError, setApiError] = useState("");
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
@@ -384,40 +385,61 @@ export default function Login() {
 
   useEffect(() => {
     let interval = null;
-  
+
     if (isActive && data.timeOut > 0) {
       interval = setInterval(() => {
-        setData((prevData) => ({
-          ...prevData,
-          timeOut: prevData.timeOut - 1,
-        }));
+        setData((prevData) => {
+          const updatedTimeOut = prevData.timeOut - 1;
+          localStorage.setItem('timerData', JSON.stringify({
+            timeOut: updatedTimeOut,
+            isActive: true
+          }));
+          return {
+            ...prevData,
+            timeOut: updatedTimeOut,
+          };
+        });
       }, 1000);
-    } else if (data.timeOut === 0) {
+    }
+
+    if (data.timeOut === 0) {
       clearInterval(interval);
       setShowLink(true);
+      setIsActive(false);
     }
-  
+
     return () => clearInterval(interval);
   }, [isActive, data.timeOut]);
-  
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('timerData');
+    if (storedData) {
+      const { timeOut, isActive } = JSON.parse(storedData);
+      setData({ timeOut });
+      setIsActive(isActive);
+      setShowLink(timeOut === 0);
+    }
+  }, []);
 
   const generateNewCode = () => {
     const newCode = Math.floor(1000 + Math.random() * 9000);
     const auth = JSON.parse(localStorage.getItem("auth")) || {};
+    const userPhone = Cookies.get("phone");
     auth[phone.phone] = { created_at: new Date().toISOString(), password: newCode };
     localStorage.setItem("auth", JSON.stringify(auth));
-  
-    setCode({ code: String(newCode) });
+    localStorage.setItem('timerData', JSON.stringify({
+      timeOut: initialTimeOut,
+      isActive: true
+    }));
     setData((prevData) => ({
       ...prevData,
       timeOut: initialTimeOut,
     }));
+    sendSmsCode(userPhone);
     setIsActive(true);
     setShowLink(false);
-  
     console.log("New code generated:", newCode);
   };
-  
 
   const sendSmsCode = async (phoneNumber) => {
     try {
@@ -425,27 +447,35 @@ export default function Login() {
         phone: phoneNumber,
       });
       console.log("SMS code sent successfully:", response.data);
+      setApiError("");
       return response.data;
     } catch (error) {
       console.error("Error sending SMS code:", error.response?.data || error.message);
+      console.log(error.response)
+      setApiError(error.response?.data.message || "خطایی در ارسال کد رخ داده است.");
       throw error;
     }
   };
 
   const verifyCode = async () => {
     try {
-      const response = await axiosInstance.post("user/verify-code", {
-        phone: phone.phone,
-        code: code.code,
-      });
+        const response = await axiosInstance.post("user/verify-code", {
+            phone: phone.phone,
+            code: code.code,
+        });
+        console.log("Code verified successfully:", response.data);
+        setApiError("");
+        navigate("/dashboard"); 
 
-      console.log("Code verified successfully:", response.data);
-
-      return response.data;
+        return response.data;
     } catch (error) {
-      console.error("Error verifying code:", error.response?.data || error.message);
+        console.log(code.code)
+        console.error("Error verifying code:", error.response?.data || error.message);
+
+        setApiError(error.response?.data?.message || "کد وارد شده صحیح نیست.");
     }
-  };
+};
+
 
   const validate = () => {
     const { error } = schema.validate(phone, { abortEarly: false });
@@ -478,12 +508,7 @@ export default function Login() {
     }
 
     verifyCode()
-      .then(() => {
-        navigate("/login/password");
-      })
-      .catch((error) => {
-        console.error("Error sending verification:", error);
-      });
+      
 
     return true;
   };
@@ -495,11 +520,13 @@ export default function Login() {
 
   const handleInputChange = (name, value) => {
     setPhone({ [name]: value });
+    setApiError("");
   };
 
   const handleInputChangePass = (name, value) => {
     setPassword({ [name]: value });
     setCode({ code: value });
+    setApiError("");
   };
 
   const inputProps = isPassword
@@ -534,9 +561,17 @@ export default function Login() {
       ></video>
       <div className="h-full flex max-lg:flex-col-reverse items-center justify-evenly max-lg:gap-10 xl:w-10/12 max-xl:w-full">
         <div className="w-1/2 max-lg:w-full h-4/5 flex flex-col items-center lg:justify-center max-lg:justify-start">
+          <div>
+            {apiError && (
+              <div className="text-red-500 bg-red-100 border border-red-400 rounded-md p-2 mt-2">
+                {apiError}
+              </div>
+            )}
+          </div>
           <h1 className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20 text-white text-lg font-bold flex items-center">
             ورود/ثبت نام
           </h1>
+
           {!isPassword && (
             <>
               <Outlet context={{ inputProps }} />
@@ -545,9 +580,13 @@ export default function Login() {
                   className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={() => {
                     if (validate()) {
-                      generateNewCode(); 
-                      sendSmsCode(phone.phone);
-                      navigate("/login/password");
+                      generateNewCode();
+                      sendSmsCode(phone.phone).then(() => {
+                        navigate("/login/password");
+                      }).catch((error) => {
+                        console.error("Error sending SMS code:", error);
+                        setApiError("خطایی در ارسال کد رخ داد.");
+                      });
                     }
                   }}
                 >
@@ -569,12 +608,14 @@ export default function Login() {
               </div>
             </>
           )}
+
           <div className="md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5">
             {isPassword && (
               <div className="text-[14px] h-10 bg-gray-200 flex flex-row-reverse items-center justify-center max-sm:w-1/2 sm:w-[250px] rounded-lg text-bold md:text-[18px] gap-2">
                 {data.timeOut !== null
-                  ? `00:${String(data.timeOut).padStart(2, "0")}`
+                  ? `${String(Math.floor(data.timeOut / 60)).padStart(2, "0")}:${String(data.timeOut % 60).padStart(2, "0")}`
                   : ""}
+
                 {showLink && (
                   <>
                     <div className="w-[3px] rounded-2xl h-5 bg-[#55c7e0]"></div>
@@ -607,3 +648,4 @@ export default function Login() {
     </div>
   );
 }
+

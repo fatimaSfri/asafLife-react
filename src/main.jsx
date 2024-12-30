@@ -6,11 +6,11 @@ import  { StrictMode } from 'react';
 
 createRoot(document.getElementById('root')).render(
 
-<StrictMode>
+
 <Router>
 <App></App>
 </Router>  
-</StrictMode>
+
 
 
 );
