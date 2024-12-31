@@ -6,22 +6,23 @@ import Navbar from '../navbar/Navbar'
 import LifeBanner from './LifeBanner';
 
 
-function  NewBanner(){
+function  NewBanner(props){
 
     const [videoShow , setVideoShow] = useState(false)
    
-
-    //  , frontObjectCarOff:image[0],frontObjectCarOn:image[1], text:image[2]
+  
     const [sliderImages]= useState(
       [
-      { component: <LifeBanner videoShowHandle={videoShowHandle}></LifeBanner> , 
+      { component: <LifeBanner videoShowHandle={videoShowHandle} 
+      src={props.srcLife} onLoad={props.onLoad}>
+      </LifeBanner> , 
         modalVideo:'./img/video/allinsurance.MP4'},
         { component: <BannerForCar  videoShowHandle={videoShowHandle}></BannerForCar> ,
         modalVideo:"./img/video/forCar.MP4" },
       ]
      )
 
-   
+    
 
     const [newIndex ,setNewIndex] = useState(0)
      function sliderTimeOut (step = 1) { 

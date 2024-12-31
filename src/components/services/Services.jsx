@@ -73,7 +73,7 @@ const servicesData = [
   },
 ];
 
-function ServiceCard({ animation , title, description , imgSrc , color, bgColor }) {
+function ServiceCard({ animation , title, description , imgSrc , color }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

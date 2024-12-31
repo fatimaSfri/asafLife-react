@@ -25,7 +25,6 @@ export default function PsychologyBanner(props) {
             const [ image ] =useState([
                 './img/banner/car/01-obl.webp',
                 './img/banner/car/01-obwl.webp', 
-                './img/banner/car/Textbutton.png',
              ])  
 
        const preloadImages = () => {
