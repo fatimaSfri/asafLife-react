@@ -23,6 +23,7 @@ import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 import Test from "./components/test/Test.jsx"
 import Insurer from './components/dashbord/Insurer.jsx';
+import Installments from './components/dashbord/Installments.jsx';
 
 function App() {
  
@@ -51,7 +52,6 @@ function App() {
             <Route index   element={< Profile/>}/>
             <Route path='profile' element={< Profile/>}/>
             <Route path='table' element={< ChildProfil/>}/>
-        
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>
@@ -63,7 +63,8 @@ function App() {
         <Route path='/contract' element={<Contract/>} />
         <Route path='/test'  element={<Test/>} />
         <Route path='/Insurer'  element={<Insurer/>} />
-        
+        <Route path='/Installments'  element={<Installments/>} />
+
    </Routes>
   
    </>
