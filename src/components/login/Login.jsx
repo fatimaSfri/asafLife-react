@@ -337,14 +337,14 @@
 
 
 
-import Joi from "joi";
+import  Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
 import Cookies from "js-cookie";
 
 export default function Login() {
-  const initialTimeOut = 125;
+  const initialTimeOut = 120;
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState({ code: "" });
   const [isActive, setIsActive] = useState(false);
@@ -354,7 +354,6 @@ export default function Login() {
   const [validationErrors, setValidationErrors] = useState({});
   const [validationErrorsPass, setValidationErrorsPass] = useState({});
   const [apiError, setApiError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
@@ -392,7 +391,7 @@ export default function Login() {
         setData((prevData) => {
           const updatedTimeOut = prevData.timeOut - 1;
           localStorage.setItem('timerData', JSON.stringify({
-            timeOut: initialTimeOut,
+            timeOut: updatedTimeOut,
             isActive: true
           }));
           return {
@@ -426,7 +425,7 @@ export default function Login() {
     const newCode = Math.floor(1000 + Math.random() * 9000);
     const auth = JSON.parse(localStorage.getItem("auth")) || {};
     const userPhone = phone.phone || Cookies.get("phone");
-    auth[userPhone] = { created_at: new Date().toISOString(), password: newCode };
+    auth[phone.phone] = { created_at: new Date().toISOString(), password: newCode };
     localStorage.setItem("auth", JSON.stringify(auth));
     localStorage.setItem('timerData', JSON.stringify({
       timeOut: initialTimeOut,
@@ -441,6 +440,7 @@ export default function Login() {
     setShowLink(false);
     console.log("New code generated:", newCode);
   };
+  
 
   const sendSmsCode = async (phoneNumber) => {
     try {
@@ -449,7 +449,6 @@ export default function Login() {
       });
       console.log("SMS code sent successfully:", response.data);
       setApiError("");
-
       return response.data;
     } catch (error) {
       console.error("Error sending SMS code:", error.response?.data || error.message);
@@ -461,22 +460,22 @@ export default function Login() {
 
   const verifyCode = async () => {
     try {
-      const response = await axiosInstance.post("user/verify-code", {
-        phone: phone.phone,
-        code: code.code,
-      });
-      console.log("Code verified successfully:", response.data);
-      setApiError("");
-      navigate("/dashboard");
-
-      return response.data;
+        const response = await axiosInstance.post("user/verify-code", {
+            phone: phone.phone,
+            code: code.code,
+        });
+        console.log("Code verified successfully:", response.data);
+        setApiError("");
+        navigate("/dashbord"); 
+        
+        return response.data;
     } catch (error) {
-      console.log(`code:${code.code} and phone ${phone.phone}`)
-      console.error("Error verifying code:", error.response?.data || error.message);
+        console.log(code.code)
+        console.error("Error verifying code:", error.response?.data || error.message);
 
-      setApiError(error.response?.data?.message || "کد وارد شده صحیح نیست.");
+        setApiError(error.response?.data?.message || "کد وارد شده صحیح نیست.");
     }
-  };
+};
 
 
   const validate = () => {
@@ -508,7 +507,10 @@ export default function Login() {
       setValidationErrorsPass(errorsPass);
       return false;
     }
+
     verifyCode()
+      
+
     return true;
   };
 
@@ -519,7 +521,6 @@ export default function Login() {
 
   const handleInputChange = (name, value) => {
     setPhone({ [name]: value });
-    Cookies.set("phone", value, { expires: 7 });
     setApiError("");
   };
 
@@ -531,26 +532,25 @@ export default function Login() {
 
   const inputProps = isPassword
     ? {
-      placeholder: "****",
-      icon: "../img/login/key.png",
-      initialValue: password.password,
-      name: "password",
-      validationError: validationErrorsPass.password,
-      count: 4,
-      onChange: handleInputChangePass,
-      type: showPassword ? "text" : "password",
-      maxLength: 4,
-      showToggle: true,
-    }
+        placeholder: "****",
+        icon: "../img/login/key.png",
+        initialValue: password.password,
+        name: "password",
+        validationError: validationErrorsPass.password,
+        count: 4,
+        maxLength: 4,
+        onChange: handleInputChangePass,
+      }
     : {
-      icon: "../img/login/phone.png",
-      initialValue: phone.phone,
-      name: "phone",
-      validationError: validationErrors.phone,
-      count: 11,
-      onChange: handleInputChange,
-      placeholder: "09** *** ****",
-    };
+        icon: "../img/login/phone.png",
+        initialValue: phone.phone,
+        name: "phone",
+        validationError: validationErrors.phone,
+        count: 11,
+        maxLength: 13,
+        onChange: handleInputChange,
+        placeholder: "09** *** ****",
+      };
 
   return (
     <div className="relative w-full h-screen overflow-hidden flex justify-center">
@@ -583,7 +583,7 @@ export default function Login() {
                   className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={() => {
                     if (validate()) {
-                      // generateNewCode();
+                      generateNewCode();
                       sendSmsCode(phone.phone).then(() => {
                         navigate("/login/password");
                       }).catch((error) => {
@@ -618,7 +618,6 @@ export default function Login() {
                 {data.timeOut !== null
                   ? `${String(Math.floor(data.timeOut / 60)).padStart(2, "0")}:${String(data.timeOut % 60).padStart(2, "0")}`
                   : ""}
-
 
                 {showLink && (
                   <>

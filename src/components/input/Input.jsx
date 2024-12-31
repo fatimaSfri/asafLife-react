@@ -9,7 +9,8 @@ function Input() {
     onChange,
     name,
     validationError,
-    placeholder
+    placeholder,
+    maxLength
   } = inputProps;
 
   const [value, setValue] = useState(''); 
@@ -31,7 +32,7 @@ function Input() {
                 type="text"
                 value={phoneView(value)}
                 onChange={(e) => handleChange(e)}
-                maxLength={13}
+                maxLength={maxLength}
                 className="h-12 w-full text-center appearance-none bg-transparent focus:outline-none text-[#a8a8a8] bg-[#dcddde] text-xl"
                 placeholder={placeholder}
               />
