@@ -537,7 +537,6 @@ export default function Login() {
         initialValue: password.password,
         name: "password",
         validationError: validationErrorsPass.password,
-        count: 4,
         maxLength: 4,
         onChange: handleInputChangePass,
       }
@@ -546,7 +545,6 @@ export default function Login() {
         initialValue: phone.phone,
         name: "phone",
         validationError: validationErrors.phone,
-        count: 11,
         maxLength: 13,
         onChange: handleInputChange,
         placeholder: "09** *** ****",
