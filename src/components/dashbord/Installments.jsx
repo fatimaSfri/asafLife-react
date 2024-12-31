@@ -30,9 +30,10 @@ const Installments = () => {
   
         <thead>
           <tr className="bg-gray-200 rounded-2xl h-14  ">
-            <th className=" w-1/5 p-2  ">ردیف</th>
-            <th className=" w-2/5 p-2  ">نام</th>
-            <th className=" w-2/5 p-2 ">مقدار قسط</th>
+            <th className=" w-1/8 p-2 ">شناسه واریز</th>
+            <th className=" w-2/8 p-2 ">تاریخ سررسید</th>
+            <th className=" w-2/8 p-2 "> تاریخ پرداخت</th>
+            <th className=" w-2/8 p-2 "> مبلغ</th>
           </tr>
         </thead>
   
@@ -40,16 +41,19 @@ const Installments = () => {
           <tr>
             <td className="border-b border-gray-200 p-2 text-center">1</td>
             <td className="border-b border-gray-200 p-2 text-center">قسط اول</td>
+            <td className="border-b border-gray-300 text-center">1403/09/03</td>
             <td className="border-b border-gray-200 p-2 text-center">100,000 تومان</td>
           </tr>
           <tr>
             <td className="border-b border-gray-200 p-2 text-center">2</td>
             <td className="border-b border-gray-200 p-2 text-center">قسط دوم</td>
+            <td className="border-b border-gray-300 text-center">1403/09/03</td>
             <td className="border-b border-gray-200 p-2 text-center">150,000 تومان</td>
           </tr>
           <tr>
             <td className="border-b border-gray-200 p-2 text-center">3</td>
             <td className="border-b border-gray-200 p-2 text-center">قسط سوم</td>
+            <td className="border-b border-gray-300 text-center">1403/09/03</td>
             <td className="border-b border-gray-200 p-2 text-center">200,000 تومان</td>
           </tr>
         </tbody>
