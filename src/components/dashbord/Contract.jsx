@@ -148,32 +148,38 @@ const Contract = () => {
                
                 <InputField
                   label="کد رایانامه"
+                  items="items-end"
                   name="computer_code"
                   value={formData.computer_code}
                   onChange={handleInputChange}
                   error={errors.computer_code || backendErrors.computer_code}
                 />
-              </div>
-              <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
                 <InputField
                   label="رشته"
-                  items="items-center"
+                  items="justify-end"
                   name="reshte"
                   value={formData.reshte}
                   onChange={handleInputChange}
                   error={errors.reshte || backendErrors.reshte}
                 />
               </div>
-              <div className="md:flex max-md:flex-col w-full ">
-              
+             
+              <div className="md:flex max-md:flex-col w-full gap-4">
+              <InputField
+                  label="شناسه پرداخت"
+                  items="items-end"
+                  name="reshte"
+                  value={formData.reshte}
+                  onChange={handleInputChange}
+                 />
                 
                 <div className="w-full xl:mx-2 ">
-                  
+               
                   <Dropdown
                     size="w-8/12"
-                    width="lg:w-[55.5%] max-lg:w-[80%]"
+                    width="lg:w-[27.5%] max-lg:w-[40%] max-md:w-[80%]"
                     name="نام شرکت بیمه _  بیمه گذار  "
-                    flex="flex flex-col items-center"
+                    flex="flex flex-col max-md:items-center md:items-start "
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
                     type="insuranceUser"
