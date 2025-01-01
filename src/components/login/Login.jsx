@@ -337,7 +337,7 @@
 
 
 
-import  Joi from "joi";
+import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
@@ -383,6 +383,16 @@ export default function Login() {
       }),
   });
 
+  const resetTimer = () => {
+    setData({ timeOut: initialTimeOut });
+    setIsActive(true);
+    setShowLink(false);
+    localStorage.setItem('timerData', JSON.stringify({
+      timeOut: initialTimeOut,
+      isActive: true
+    }));
+  };
+
   useEffect(() => {
     let interval = null;
 
@@ -424,23 +434,25 @@ export default function Login() {
   const generateNewCode = () => {
     const newCode = Math.floor(1000 + Math.random() * 9000);
     const auth = JSON.parse(localStorage.getItem("auth")) || {};
-    const userPhone = phone.phone || Cookies.get("phone");
-    auth[phone.phone] = { created_at: new Date().toISOString(), password: newCode };
+    const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
+
+    localStorage.setItem("userPhone", userPhone);
+
+    auth[userPhone] = { created_at: new Date().toISOString(), password: newCode };
     localStorage.setItem("auth", JSON.stringify(auth));
     localStorage.setItem('timerData', JSON.stringify({
       timeOut: initialTimeOut,
       isActive: true
     }));
-    setData((prevData) => ({
-      ...prevData,
-      timeOut: initialTimeOut,
-    }));
-    sendSmsCode(userPhone);
+    setData({ timeOut: initialTimeOut });
     setIsActive(true);
     setShowLink(false);
+
+    sendSmsCode(userPhone);
     console.log("New code generated:", newCode);
   };
-  
+
+
 
   const sendSmsCode = async (phoneNumber) => {
     try {
@@ -451,6 +463,7 @@ export default function Login() {
       setApiError("");
       return response.data;
     } catch (error) {
+
       console.error("Error sending SMS code:", error.response?.data || error.message);
       console.log(error.response)
       setApiError(error.response?.data.message || "خطایی در ارسال کد رخ داده است.");
@@ -460,22 +473,27 @@ export default function Login() {
 
   const verifyCode = async () => {
     try {
-        const response = await axiosInstance.post("user/verify-code", {
-            phone: phone.phone,
-            code: code.code,
-        });
-        console.log("Code verified successfully:", response.data);
-        setApiError("");
-        navigate("/dashbord"); 
-        
-        return response.data;
-    } catch (error) {
-        console.log(code.code)
-        console.error("Error verifying code:", error.response?.data || error.message);
+      const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
 
-        setApiError(error.response?.data?.message || "کد وارد شده صحیح نیست.");
+      const response = await axiosInstance.post("user/verify-code", {
+        phone: userPhone,
+        code: code.code,
+      });
+
+      console.log("Code verified successfully:", response.data);
+      setApiError("");
+      navigate("/dashbord");
+
+      return response.data;
+    } catch (error) {
+      console.log("Code:", code.code);
+      console.log("Phone:", phone.phone || localStorage.getItem("userPhone"));
+      console.error("Error verifying code:", error.response?.data || error.message);
+
+      setApiError(error.response?.data?.message || "کد وارد شده صحیح نیست.");
     }
-};
+  };
+
 
 
   const validate = () => {
@@ -490,10 +508,13 @@ export default function Login() {
       setValidationErrors(errors);
       return false;
     }
+
     Cookies.set("phone", phone.phone, { expires: 7 });
+    localStorage.setItem("userPhone", phone.phone);
 
     return true;
   };
+
 
   const handleErrorPass = () => {
     const { error } = schemaPassword.validate(password, { abortEarly: false });
@@ -509,7 +530,7 @@ export default function Login() {
     }
 
     verifyCode()
-      
+
 
     return true;
   };
@@ -532,23 +553,23 @@ export default function Login() {
 
   const inputProps = isPassword
     ? {
-        placeholder: "****",
-        icon: "../img/login/key.png",
-        initialValue: password.password,
-        name: "password",
-        validationError: validationErrorsPass.password,
-        maxLength: 4,
-        onChange: handleInputChangePass,
-      }
+      placeholder: "****",
+      icon: "../img/login/key.png",
+      initialValue: password.password,
+      name: "password",
+      validationError: validationErrorsPass.password,
+      maxLength: 4,
+      onChange: handleInputChangePass,
+    }
     : {
-        icon: "../img/login/phone.png",
-        initialValue: phone.phone,
-        name: "phone",
-        validationError: validationErrors.phone,
-        maxLength: 13,
-        onChange: handleInputChange,
-        placeholder: "09** *** ****",
-      };
+      icon: "../img/login/phone.png",
+      initialValue: phone.phone,
+      name: "phone",
+      validationError: validationErrors.phone,
+      maxLength: 13,
+      onChange: handleInputChange,
+      placeholder: "09** *** ****",
+    };
 
   return (
     <div className="relative w-full h-screen overflow-hidden flex justify-center">
@@ -581,8 +602,9 @@ export default function Login() {
                   className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={() => {
                     if (validate()) {
-                      generateNewCode();
+                      // generateNewCode();
                       sendSmsCode(phone.phone).then(() => {
+                        resetTimer();
                         navigate("/login/password");
                       }).catch((error) => {
                         console.error("Error sending SMS code:", error);
@@ -634,7 +656,7 @@ export default function Login() {
         </div>
         <div className="w-1/2 h-4/5 max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end">
           <img
-            src="../img/icon/Asaflogo.png"
+            src="../img/icon/ASAF.svg"
             alt=""
             className="md:w-[300px] max-md:w-7/12 xl:w-[48%]"
           />
@@ -649,4 +671,5 @@ export default function Login() {
     </div>
   );
 }
+
 
