@@ -11,7 +11,7 @@ export default function InputForDashbord({
   const toPersianNumbers = (str) => str.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
   return (
     <>
-    <div className={`w-full flex flex-col justify-center items-center `}>
+    <div className={`w-full flex flex-col ${items}`}>
     <div className="flex lg:w-8/12 max-lg:w-full">
       <p className="text-[16px] text-[#213063] mt-4 b ">
         {label}

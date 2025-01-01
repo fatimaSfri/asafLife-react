@@ -3,7 +3,7 @@
 
 import  { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
-import contractValidation from "./validationInput/contractValidation";
+import insurarValidation from "./validationInput/insurerValidation.js";
 import Dashbord from "./Dashbord";
 import Button from "../button/Button";
 import InputField from "./InputForDashbord.jsx";
@@ -13,10 +13,9 @@ import Dropdown from "./Dropdown";
 const Insurer = () => {
   const [formData, setFormData] = useState({
     insurer_code: "",
-    computer_code: "",
-    reshte: "",
     user_id: "",
     insurance_id: "",
+    url:"google.com"
   });
 
   const [errors, setErrors] = useState({});
@@ -25,8 +24,18 @@ const Insurer = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [users, setUsers] = useState([]);
   const [insurance, setInsurance] = useState([]);
-  const lastTenUsers = users.slice(-10);
-  const lastTenInsurance = insurance.slice(-10);
+  // const lastTenUsers = users.slice(-10);
+  // console.log(lastTenUsers.map((item) => { return {key:item.id, value: item.user.first_name}}));
+
+  const lastTenUsers = users.map((item) => ({
+    key: item.id,
+    value: `${item.first_name} ${item.last_name}`
+  }));
+
+  const lastTenInsurance = insurance.map((item) => ({
+    key: item.id,
+    value: item.name
+  }));
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -90,14 +99,13 @@ const Insurer = () => {
     const formDataInEnglish = {
       ...formData,
       insurer_code: convertToEnglishNumbers(formData.insurer_code),
-      computer_code: convertToEnglishNumbers(formData.computer_code),
-      reshte: convertToEnglishNumbers(formData.reshte),
-      user_id: convertToEnglishNumbers(formData.user_id),
-      insurance_id: convertToEnglishNumbers(formData.insurance_id),
+      user_id: parseInt(convertToEnglishNumbers(formData.user_id)),
+      insurance_id: parseInt(convertToEnglishNumbers(formData.insurance_id)),
+      url:formData.url
     };
     console.log(formDataInEnglish);
 
-    const { error } = contractValidation.validate(formDataInEnglish, { abortEarly: false });
+    const { error } = insurarValidation.validate(formDataInEnglish, { abortEarly: false });
     console.log(error);
     if (error) {
       const validationErrors = {};
@@ -109,15 +117,14 @@ const Insurer = () => {
     } else {
       setErrors({});
       try {
-        await axiosInstance.post("/contract", formDataInEnglish);
+        await axiosInstance.post("/insurance-user", formDataInEnglish);
         setSubmitted(true);
         setShowPopup(true);
         setFormData({
           insurer_code: "",
-          computer_code: "",
-          reshte: "",
           user_id: "",
           insurance_id: "",
+          url:""
         });
       } catch (error) {
         const backendErrors = {};
@@ -182,13 +189,15 @@ const Insurer = () => {
                     width="lg:w-[27.5%] max-lg:w-[80%]"
                     labelW="lg:w-8/12 max-lg:w-full"
                     mt="mt-[5.5rem]"
-                    flex="items-end flex flex-col"
-                    items={lastTenUsers}
                     type="user"
+                    flex="items-end flex flex-col"
+                    // [{key:0,value:'asdasdsad}]
+                    items={lastTenUsers}
+
                     onSelect={(user) => {
                       setFormData((prev) => ({
                         ...prev,
-                        user_id: user.id,
+                        user_id: user,
                       }));
                     }}
                   />
@@ -211,7 +220,7 @@ const Insurer = () => {
                     onSelect={(insurance) => {
                       setFormData((prev) => ({
                         ...prev,
-                        insurance_id: insurance.id,
+                        insurance_id: insurance,
                       }));
                     }}
                   />

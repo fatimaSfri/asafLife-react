@@ -2,7 +2,9 @@ import  {  useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
-import Animal from '../newbanner/AnimalBanner.jsx';
+import PhoneCall from './PhoneCall';
+import Text from '../newbanner/Text';
+import Border from '../newbanner/border'
 
 export default function CarBody() {
   useEffect(() => {
@@ -12,11 +14,17 @@ export default function CarBody() {
   return (
     <>
   
-   <Navbar></Navbar>
-   <Animal ></Animal>
-   <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full  flex justify-center items-center py-16 '>
-   <video className="rounded-3xl  lg:h-[700px] "
+  <Navbar></Navbar>
+    <div className=  {`bg-gradient-circle-pet back_medium_01  bg-[length:100%_100%] bg-no-repeat shadow-md
+            h-[750px] w-full flex justify-center max-md:flex-col items-center px-4 xl:gap-40 max-xl:gap-20 `}>
+        {/* around */}
+         {/* <Border background="bg-car" ></Border> */}
+        
+        {/* text */}
+        <Text colorText="text-[#552ade]"  title="بیمــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/banner/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[20px]" colorSubTitle="text-[#552ade]"></Text>
+    
+        <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
+         <video className="rounded-lg"
         src= "./img/video/insurancePet.MP4"
         preload="auto"
         autoPlay
@@ -24,63 +32,24 @@ export default function CarBody() {
         controls
        >
      </video>
-  
+
    </div>
-   <div className='w-full mx-auto md:h-[700px] max-md:h-[850px] flex flex-col items-center justify-center md:gap-8 max-md:gap-4 '>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4  flex items-center gap-2  '>
-    <div className='md:w-4 max-md:w-3 h-10 bg-[#ffae00] rounded-full'></div>
-    <h1 className='font-bold text-[20px] text-[#213063]' > بیمه حیوانات خانگی</h1>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4 flex flex-col  '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#ffae00] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >معاینات سالانه</h1>
-    </div>
-    <p className=' '> 
-    خدمات تشخیصی پیشرفته: شامل هزینه‌های تصویربرداری (مانند رادیوگرافی، سونوگرافی) و آزمایشات تخصصی 
-    هزینه‌های معاینه‌های دوره‌ای که برای بررسی سلامتی حیوان خانگی انجام می‌شود و هزینه‌های واکسن‌های ضروری برای جلوگیری از بیماری‌های شایع
-    </p>
-    </div>
-
-    <div className='xl:w-[1250px] max-xl:w-full px-4  '>
-    <div className='flex items-center gap-4  '>
-    <div className='w-4 h-4 bg-[#ffae00] rounded-full '></div>
-    <h1 className='font-bold text-[18px] text-[#213063]' >درمان‌های اورژانسی</h1>
-    </div>
-    <p className=' '> 
-     پوشش هزینه‌های درمان در مواقع اضطراری، مانند تصادفات یا بیماری‌های ناگهانی.
-     داروهای تجویزی: هزینه‌های داروهایی که دامپزشک برای درمان بیماری‌های خاص تجویز می‌کند آزمایشات تشخیصی: هزینه‌های آزمایشات اولیه مانند آزمایش خون یا ادرار
-    </p>
-    </div>
-    <div className='xl:w-[1250px] max-xl:w-full px-4  lg:h-1/6 '>
-    <div className='flex items-center gap-4 '>
-    <div className='w-4 h-4 bg-[#ffae00] rounded-full'></div>
-    <h1 className='font-bold text-[18px] text-[#213063] '>
-    هزینه‌های جراحی
-      </h1>
-    </div>
-    <p className='    ' >
-    پوشش هزینه‌های جراحی‌های ضروری، مانند جراحی‌های اورژانسی یا جراحی‌های مرتبط با بیماری‌ها
-    ،هزینه‌های درمان‌های تخصصی که توسط دامپزشکان متخصص انجام می‌شود، مانند درمان‌های اورتوپدی یا قلبی
-       </p></div>
-       <div className='xl:w-[1250px] max-xl:w-full px-4 h-1/6  flex items-center justify-end mouse-pointer'>
-     {/* <img src="./img/Animation/car/button.png" alt="" className='w-[150px]  cursor-pointer'/> */}
-     <button className='w-[150px] h-10 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2'
-     style={{
-      background: 'linear-gradient(to bottom, #fff7d4 0.2%, #ffea87, #ffae00 50%)',
-    }}
-     >
-      <img src="./img/button/Asset.svg" alt="" className='w-8'/>
-      درخواست
-     </button>
-    </div>
-    
    </div>
-   <PreviewServices></PreviewServices>
+
+   <div className='h-auto w-full bg-gray-200' >
+   <div className='w-full lg:h-[370px] max-lg:h-[300] py-4 flex justify-center items-center'>
+   <div className='w-[96%] lg:h-[340px] max-lg:h-[500px] grid  gap-4 lg:grid-cols-3 max-lg:grid-cols-1 py-10 items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
+   
+      <PhoneCall post=" پشتیبانی " phone="09021887644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="پشتیبانی "   phone="09366507644"  employeeName=" " ></PhoneCall>
+      <PhoneCall post="دفتر مرکزی" phone="021-91098951"  ></PhoneCall>
+   </div>
+   </div>
+  <PreviewServices></PreviewServices>
    <Footer></Footer>
    </div>
+  
+
 
    
     </>

@@ -1,16 +1,20 @@
-
 import './RoadMap.css'
 import  { useState, useEffect } from 'react';
-
+import Lottie from "lottie-react";
+import seo from '/src/assets/json/seo.json';
+import chart from '/src/assets/json/chart.json'
+import testing from '/src/assets/json/Testing.json'
+import growth from '/src/assets/json/Growth.json'
+import target from '/src/assets/json/target.json'
 
 const Roadmap = () => {
 
   const milestones = [
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/seo.png' , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'تحلیل بازار و رقبا بهبود محصولات زیر ساخت های دیجیتال ', date: '1400' , color: '#fdce0b' },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/discount.png' , subTitle: 'تثبیت جایگاه و افزایش سهم بازار' , description: 'بهره وری عملیاتی ارتباطات موثر با مشتریان  ', date: '1401'  , color: '#115052' },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/testing.png' , subTitle: 'شبکه  فروش  و تبلیغات  گسترده' , description: 'نوآوری در محصولات بهبود خدمات مشتریان سرویس های پس انداز و سرمایه گذاری  ', date: '1402' , color: '#26b890'  },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/growth.png' ,subTitle: 'گسـترش نوآوری و خدمـات مشــتریان توسعه' , description: 'افزایش کانال های توزیع کمپین های بازار یابی آموزش و بهبود مهارت های فروش  ', date: '1403' , color: '#55c7e0'  },
-    { image:'./img/roadMap/circle.svg' ,icon :'./img/roadMap/target.png' , subTitle: 'رسیدن به هدف ۳۰ درصد سهم بازار ' , description: 'ارزیابی عملکرد و بهبود استراتژی ها تمرکز بر رضایت مشتری', date: '1404'  , color: '#213063' },
+    { image:'./img/roadMap/circle.svg' ,icon :seo , subTitle: 'تحلیل بازار و ایجاد زیر ساخت ها ' , description: 'تحلیل بازار و رقبا بهبود محصولات زیر ساخت های دیجیتال ', date: '1400' , color: '#fdce0b' },
+    { image:'./img/roadMap/circle.svg' ,icon :chart , subTitle: 'تثبیت جایگاه و افزایش سهم بازار' , description: 'بهره وری عملیاتی ارتباطات موثر با مشتریان  ', date: '1401'  , color: '#115052' },
+    { image:'./img/roadMap/circle.svg' ,icon :testing , subTitle: 'شبکه  فروش  و تبلیغات  گسترده' , description: 'نوآوری در محصولات بهبود خدمات مشتریان سرویس های پس انداز و سرمایه گذاری  ', date: '1402' , color: '#26b890'  },
+    { image:'./img/roadMap/circle.svg' ,icon :growth ,subTitle: 'گسـترش نوآوری و خدمـات مشــتریان توسعه' , description: 'افزایش کانال های توزیع کمپین های بازار یابی آموزش و بهبود مهارت های فروش  ', date: '1403' , color: '#55c7e0'  },
+    { image:'./img/roadMap/circle.svg' ,icon :target , subTitle: 'رسیدن به هدف ۳۰ درصد سهم بازار ' , description: 'ارزیابی عملکرد و بهبود استراتژی ها تمرکز بر رضایت مشتری', date: '1404'  , color: '#213063' },
   ]
 
   const [progress, setProgress] = useState(0);
@@ -61,7 +65,8 @@ const Roadmap = () => {
               }}
             >
           <div className='w-16 h-16 rounded-full border flex items-center justify-center ' style={{borderColor:milestone.color}}>
-            <img src={`${milestone.icon}`} alt="" className=' w-7 ' />
+          <div className='w-12'>
+          <Lottie animationData={milestone.icon} loop={true} /></div>
             </div>
             <div className='w-2 h-2  rounded-full ' style={{backgroundColor:milestone.color}}></div>
             <div className='h-[35px] w-[1px] ' style={{backgroundColor:milestone.color}}></div>
@@ -107,7 +112,8 @@ const Roadmap = () => {
                 <div className='h-[35px] w-[1px] ' style={{backgroundColor:milestone.color}}></div>
                 <div className='w-2 h-2  rounded-full ' style={{backgroundColor:milestone.color}}></div>
               <div className='w-16 h-16 rounded-full border flex items-center justify-center ' style={{borderColor:milestone.color}}>
-            <img src={`${milestone.icon}`} alt="" className=' w-7 ' />
+              <div className='w-12'>
+              <Lottie animationData={milestone.icon} loop={true} /></div>
             </div>
             
               <span className="text-[28px] text-bold" style={{color:milestone.color}}>{milestone.date}</span>
@@ -155,7 +161,8 @@ const Roadmap = () => {
             >
              
             <div className='w-14 h-14 rounded-full border flex items-center justify-center' style={{borderColor:milestone.color}}>
-            <img src={`${milestone.icon}`} alt="" className=' w-7 ' />
+            <div className='w-10'>
+            <Lottie animationData={milestone.icon} loop={true} /></div>
             </div>
             <div className='w-2 h-2  rounded-full -mr-1' style={{backgroundColor:milestone.color}}></div>
             <div className='w-[35px] h-[1px] ' style={{backgroundColor:milestone.color}}></div>
@@ -210,7 +217,8 @@ const Roadmap = () => {
             <div className='w-2 h-2  rounded-full -ml-1' style={{backgroundColor:milestone.color}}></div>
             <div className='w-14 h-14 rounded-full border flex items-center justify-center' style={{borderColor:milestone.color}}>
              
-            <img src={`${milestone.icon}`} alt="" className=' w-7  '/>
+            <div className='w-10'>
+            <Lottie animationData={milestone.icon} loop={true} /></div>
             </div>
             
             </div> :

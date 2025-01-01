@@ -1,5 +1,4 @@
 import  { useEffect , useState } from 'react';
-import { Link } from 'react-router-dom';
 import "./NewBanner.css"
 import Text from './Text';
 import Border from './border';
@@ -24,9 +23,8 @@ export default function PsychologyBanner(props) {
         
           
             const [ image ] =useState([
-                './img/Animation/car/01-obl.webp',
-                './img/Animation/car/01-obwl.webp', 
-                './img/Animation/car/Textbutton.png',
+                './img/banner/car/01-obl.webp',
+                './img/banner/car/01-obwl.webp', 
              ])  
 
        const preloadImages = () => {
@@ -51,14 +49,14 @@ export default function PsychologyBanner(props) {
         <Border background="bg-car" ></Border>
      
 
-          <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/Animation/life/08-iconButton.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px] "></Text>
+          <Text colorText="text-car"  title="بیمـــه ثالث بدنــه "  subTitle=" همگام با شما تا آینده ای مطمئن" icon="./img/banner/car/01-Shield.webp"  sizeTitle="xl:text-[70px] lg:text-[60px] md:text-[44px] max-md:text-[40px]" sizeSubTitle="xl:text-[34px] lg:text-[30px] max-lg:text-[22px]" arrow="./img/banner/car/Arrow.png"></Text>
          
           {/* play */}
           <div className={` md:w-3/12 md:h-4/5 max-md:w-10/12 max-md:h-1/6 flex items-center mb-20 justify-center ${props.play}`}>
-           <img src="./img/Animation/car/01-Play.webp" alt=""  className=
+           <img src="./img/banner/car/01-Play.webp" alt=""  className=
            " xl:w-[90px]  max-xl:w-[70px] xl:hover:w-[100px]  max-xl:hover:w-[80px] transition-width duration-300 ease-in-in  z-30 cursor-pointer max-md:-mb-10 "  onClick={props.videoShowHandle} />
-           <img src="./img/Animation/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10" />
-           <img src='./img/Animation/car/mouse.png' className='absolute z-30 lg:w-[30px] lg:h-[40px] max-lg:w-[20px] max-lg:h-[25px] movement -mb-[100px] md:ml-[70px] max-md:ml-[50px]  max-sm:hidden'></img>
+           <img src="./img/banner/PlayText.svg" alt=""  className="absolute route xl:w-[140px] max-xl:w-[100px] cursor-pointer max-md:-mb-10" />
+           <img src='./img/banner/mouse.png' className='absolute z-30 lg:w-[30px] lg:h-[40px] max-lg:w-[20px] max-lg:h-[25px] movement -mb-[100px] md:ml-[70px] max-md:ml-[50px]  max-sm:hidden'></img>
           </div>
           
            {/* object */}

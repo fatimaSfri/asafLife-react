@@ -16,7 +16,7 @@ const servicesData = [
     title: "بیمه زندگی",
     description:
    "این نوع بیمه به عنوان یک ابزار مالی مهم برای تأمین آینده مالی خانواده‌ها و جلوگیری از مشکلات مالی در صورت فوت ناگهانی یکی از اعضای خانواده عمل می‌کند.",
-    imgSrc: "./img/servics/life-service.jpg",
+    imgSrc: "./img/servics/life.webp",
     link:"/life",
     color:"#f6f461",
     bgColor:"#29a8ac"
@@ -26,7 +26,7 @@ const servicesData = [
     title: "ثالث بدنه",
     description: 
    "بیمه ثالث بدنه، نوعی بیمه خودرو است که شامل دو بخش اصلی می‌شود: بیمه مسئولیت مدنی (ثالث) و بیمه .بدنه این نوع بیمه به مالکان خودرو کمک می‌کند . ",
-    imgSrc: "./img/servics/carBody.jpg",
+    imgSrc: "./img/servics/car.webp",
     link:"./carBody",
     color:"#fdce0b",
     bgColor:"#975fff"
@@ -36,7 +36,7 @@ const servicesData = [
     title: " بیمه درمان",
     description: 
    "بیمه درمان به افراد کمک می‌کند تا در صورت بروز بیماری یا حادثه، نگرانی کمتری درباره هزینه‌های درمان داشته باشند و بتوانند به راحتی به خدمات پزشکی دسترسی پیدا کنند." , 
-  imgSrc: "./img/servics/treatment.jpg",
+  imgSrc: "./img/servics/treatment.webp",
     link:"/treatment",
     color:"#c32c3e",
     bgColor:"#72e2fb"
@@ -46,7 +46,7 @@ const servicesData = [
     title: "بیمه حیوانات خانگی ",
     description: 
     "بیمه حیوانات خانگی به شما این امکان را می‌دهد که با خیال راحت، بهترین خدمات درمانی و مراقبتی را برای دوست کوچک خود فراهم کنید.",
-    imgSrc: "./img/servics/animals.jpg",
+    imgSrc: "./img/servics/pet.webp",
     link:"/pet",
     color:"#552ade",
     bgColor:"#fcb000"
@@ -56,7 +56,7 @@ const servicesData = [
     title: "بیمه موبایل",
     description: 
     "بیمه موبایل به کاربران کمک می‌کند تا از هزینه‌های بالای تعمیر یا تعویض گوشی‌های خود در صورت بروز حادثه محافظت کنند و آرامش خاطر بیشتری داشته باشند.",
-    imgSrc: "./img/servics/mobile.jpg",
+    imgSrc: "./img/servics/mobile.webp",
     link:"/mobile",
     color:"#d21a1a",
     bgColor:"#a7a7a7"
@@ -66,14 +66,14 @@ const servicesData = [
     title: "بیمه خدام",
     description:
     "پوشش بیماری: برخی از بیمه‌ها ممکن است هزینه‌های درمانی را در صورت بیماری کارمند نیز پوشش دهند  و همچنین امنیت بیشتری برای کارمندان فراهم کند.",
-    imgSrc: "./img/servics/ministrant.jpg",
+    imgSrc: "./img/servics/shrine.webp",
     color:"#ffcb05",
    bgColor:"#f8c67a",
    link:"/ministrant"
   },
 ];
 
-function ServiceCard({ animation , title, description , imgSrc , color, bgColor }) {
+function ServiceCard({ animation , title, description , imgSrc , color }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

@@ -2,14 +2,14 @@ import "./Logo.css"
 import React from "react";
 
 const logos = [
-  "./img/logo/01.png",
-  "./img/logo/02.png",
-  "./img/logo/03.png",
-  "./img/logo/04.png",
-  "./img/logo/01.png",
-  "./img/logo/02.png",
-  "./img/logo/03.png",
-  "./img/logo/04.png",
+  "./img/logo/razi.webp",
+  "./img/logo/saman.webp",
+  "./img/logo/sina.webp",
+  "./img/logo/tavon.webp",
+  "./img/logo/razi.webp",
+  "./img/logo/saman.webp",
+  "./img/logo/sina.webp",
+  "./img/logo/tavon.webp",
  
 ];
 

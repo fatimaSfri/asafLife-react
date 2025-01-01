@@ -19,7 +19,7 @@ export const registrationSchema = Joi.object({
         return helpers.error("file.required");
       }
 
-      const validFormats = ["image/jpeg", "image/png", "image/jpg"];
+      const validFormats = ["image/jpeg", "image/png", "image/jpg" , "image/webp"];
       if (!validFormats.includes(file.type)) {
         return helpers.error("file.invalidFormat");
       }
@@ -32,7 +32,7 @@ export const registrationSchema = Joi.object({
     })
     .messages({
       "file.required": "انتخاب آواتار الزامی است.",
-      "file.invalidFormat": "فرمت فایل باید یکی از jpeg, png یا jpg باشد.",
+      "file.invalidFormat": "فرمت فایل باید یکی از webp, jpeg, png یا jpg باشد.",
       "file.maxSize": "حجم فایل نباید بیشتر از ۵۰۰ کیلوبایت باشد.",
     }),
 });

@@ -33,7 +33,8 @@ export default function Informathion() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-[url('../../img/elderly/background.jpg')]" data-aos="fade-up" data-aos-duration="2000">
+    // bg-[url('../../img/elderly/background.jpg')]
+    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-elderly" data-aos="fade-up" data-aos-duration="2000">
       {/* Information Section */}
       <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
         <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
@@ -50,7 +51,7 @@ export default function Informathion() {
 
       {/* Image Section */}
      
-     <div className='lg:w-1/2 max-lg:w-full h-[450px]  flex items-center justify-center relative '>
+     <div className='lg:w-1/2 max-lg:w-full h-[450px]  flex items-center justify-center relative overflow-hidden'>
      <div className='flex flex-col z-50 sm:w-[600px] max-sm:w-[500px] sm:-mt-72 max-sm:-mt-60 '>
      <div className='w-full h-1/6 flex items-center justify-center  '>
     <img src="./img/elderly/saman.png" alt="" className="md:w-16 md:h-20 max-md:w-12 max-md:h-14 suspended "/>
@@ -60,7 +61,7 @@ export default function Informathion() {
     <img src="./img/elderly/iconOne.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12  max-sm:ml-3 -rotate-[20deg] suspended-heart"/>
     </div></div>
 
-     <img src="./img/elderly/subject.png" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4" />
+     <img src="./img/elderly/elderly.webp" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4" />
       </div>
 
     </div>

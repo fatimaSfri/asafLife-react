@@ -1,16 +1,17 @@
 import { useEffect , useState } from 'react';
 import InfoOne from './InfoOne.jsx' 
 import InfoTwo from "./InfoTwo.jsx"
-
+import InfoCarBody from "./InfoCarBody"
 
 function  NewBanner(){
 
 
 
-    const [sliderImages,setsliderImages]= useState(
+    const [sliderImages]= useState(
       [
      {componnet:<InfoOne></InfoOne>},
-     {componnet:<InfoTwo></InfoTwo>}
+     {componnet:<InfoTwo></InfoTwo>},
+     {componnet:<InfoCarBody></InfoCarBody>}
      ]
      )
 
@@ -41,7 +42,6 @@ function  NewBanner(){
      function setActiveImage(index){
        setNewIndex(index);   
     }
-
 
     
 return (
