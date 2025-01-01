@@ -1,9 +1,63 @@
 
 import Dashbord from "./Dashbord";
 import InputField from "./InputForDashbord";
+import { useState, useEffect } from "react";
+import Button from "../button/Button";
 
 
 const Installments = () => {
+  const [formData, setFormData] = useState({
+    date_sar: "",
+    ammount: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [backendErrors, setBackendErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const fetchInsurance = async () => {
+      try {
+        const response = await axiosInstance.get("/insurance-user");
+        console.log(response.data?.data);
+        setInsurance(response.data?.data || []);
+      } catch (error) {
+        console.error("خطا در دریافت اطلاعات بیمه:", error);
+      }
+    };
+    fetchInsurance();
+  }, []);
+
+  useEffect(() => {
+    let timeout;
+    if (showPopup) {
+      timeout = setTimeout(() => setShowPopup(false), 7000);
+    }
+    return () => clearTimeout(timeout);
+  }, [showPopup]);
+
+  const convertToEnglishNumbers = (str) => {
+    if (typeof str !== 'string') {
+      str = String(str);
+    }
+
+    const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    return str.split('').map(char => {
+      const index = persianDigits.indexOf(char);
+      return index !== -1 ? englishDigits[index] : char;
+    }).join('');
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+    setBackendErrors({});
+  };
+
 
 
   return (
@@ -18,30 +72,33 @@ const Installments = () => {
               اقساط
             </h1>
             <div className="w-full h-full flex flex-col lg:gap-8 items-center mx-auto">
-            <div className="w-full flex flex-col md:flex-row items-center justify-center md:gap-16 ">
-                  <div className="w-full md:w-1/2 flex items-center justify-center  mb-4 md:mb-0 md:mr-4">
-                    <div className="max-md:w-10/12 md:w-full flex items-center justify-center">
-                      <InputField
-                        label="تاریخ سر رسید"
-                        items="items-end"
-                        name="reshte"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full md:w-1/2 flex items-center justify-center ">
-                    <div className="max-md:w-10/12 md:w-full flex items-center justify-center">
-                      <InputField
-                        label="مبلغ"
-                        items="items-start "
-                        name="reshte"
-                        value=""
-                      />
-                    </div>
+              <div className="w-full flex flex-col md:flex-row items-center justify-center md:gap-16 ">
+                <div className="w-full md:w-1/2 flex items-center justify-center  mb-4 md:mb-0 md:mr-4">
+                  <div className="max-md:w-10/12 md:w-full flex items-center justify-center">
+                    <InputField
+                      label="تاریخ سر رسید"
+                      items="items-end"
+                      name="reshte"
+                      value=""
+                    />
                   </div>
                 </div>
+                <div className="w-full md:w-1/2 flex items-center justify-center ">
+                  <div className="max-md:w-10/12 md:w-full flex items-center justify-center">
+                    <InputField
+                      label="مبلغ"
+                      items="items-start "
+                      name="reshte"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full ">
+                <Button mt="mt-2" type="submit" width="w-8/12" />
+              </div>
               <div className="lg:w-11/12 max-lg:w-full mx-auto bg-white p-6 rounded-lg shadow-md flex items-center justify-center flex-col max-sm:overflow-auto max-lg:mt-10">
-               
+
                 <table className=" h-1/3 w-full rounded-2xl overflow-hidden mx-auto sm:ml-96">
 
                   <thead>

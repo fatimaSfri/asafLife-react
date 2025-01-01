@@ -130,6 +130,7 @@ const Contract = () => {
               <li key={key}>{value}</li>
             ))}
           </ul>
+          <Link to={`/users/${user.id}`} activeClassName="current">ثبت اقساط بیمه</Link>
         </div>
       )}
       <div className="w-full h-[802px] flex items-center justify-center bg-gray-200 ">
@@ -171,7 +172,9 @@ const Contract = () => {
                   items="items-end"
                   name="reshte"
                   value={formData.reshte}
+                  required= {false}
                   onChange={handleInputChange}
+                  // error={errors.reshte || backendErrors.reshte}
                  />
                 
                 <div className="w-full xl:mx-2 ">

@@ -8,7 +8,8 @@ export default function ManagementPanel() {
 
   const [toggle, setToggle] = useState(false)
   const icon = {
-    menu: "../img/icon/Menu.png", close: "../img/icon/close.svg"
+    menu: "../img/icon/Menu.png",
+    close: "../img/icon/close.svg"
   }
   const [bgColor, setBgColor] = useState(false);
 

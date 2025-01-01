@@ -16,7 +16,7 @@ export default function InputForDashbord({
       <p className="text-[16px] text-[#213063] mt-4 b ">
         {label}
       </p>
-      <p className="text-red-500 text-[20px] pr-1 my-2">*</p>
+    {required && <p className="text-red-500 text-[20px] pr-1 my-2">*</p>}
     </div>
     <input  className="lg:w-8/12 max-lg:w-full h-10 rounded-2xl px-5" 
         type={type}
