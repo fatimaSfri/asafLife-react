@@ -137,6 +137,7 @@ const Contract = () => {
           <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
             قرارداد با موفقیت ثبت شد.
           </div>
+          
         )}
         <form onSubmit={handleSubmit} className="w-full md:mt-4  flex items-center justify-center ">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
