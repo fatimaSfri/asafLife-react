@@ -10,20 +10,14 @@ import Mobile from "./components/introduction/Mobile.jsx"
 import Psychology from "./components/introduction/Psychology.jsx"
 import LegalAdvice from "./components/introduction/LegalAdvice.jsx"
 import Input from './components/input/Input.jsx';
-import CreateUser from "./components/dashbord/CreateUser.jsx"
-import Registration from "./components/dashbord/Registration.jsx"
-import Contract from "./components/dashbord/Contract.jsx"
 import Ministrant from "./components/introduction/Ministrant.jsx"
 import MyContracts from './components/managementPanel/MyContracts.jsx';
 import Profile from './components/managementPanel/Profile.jsx';
 import Services from './components/managementPanel/ServicesPanel.jsx';
 import Support from './components/managementPanel/Support.jsx';
-import GetDashbordUsers from './components/dashbord/GetDashbordUsers.jsx'
 import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
-import Test from "./components/test/Test.jsx"
-import Insurer from './components/dashbord/Insurer.jsx';
-import Installments from './components/dashbord/Installments.jsx';
+
 
 function App() {
  
@@ -57,13 +51,7 @@ function App() {
            <Route  path="support" element={<Support />}/>
          </Route>
 
-         <Route path='/user-create' element={<CreateUser/>} />
-        <Route path='/insurance' element={<Registration/>} />
-        <Route path='/user'  element={<GetDashbordUsers/>} />
-        <Route path='/contract' element={<Contract/>} />
-        <Route path='/test'  element={<Test/>} />
-        <Route path='/Insurer'  element={<Insurer/>} />
-        <Route path='/Installments'  element={<Installments/>} />
+    
 
    </Routes>
   
