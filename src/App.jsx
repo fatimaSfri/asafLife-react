@@ -17,7 +17,8 @@ import Services from './components/managementPanel/ServicesPanel.jsx';
 import Support from './components/managementPanel/Support.jsx';
 import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
-
+import PanelCarBody from './components/managementPanel/Car.jsx';
+import Third from './components/managementPanel/Third.jsx';
 
 function App() {
  
@@ -49,9 +50,10 @@ function App() {
             <Route path="mycontracts"  element={<MyContracts />}/>
             <Route path="services"  element={<Services />}/>
            <Route  path="support" element={<Support />}/>
-         </Route>
+        </Route>
 
-    
+        <Route  path="Third" element={<Third />}/>
+        <Route  path="carBody" element={<PanelCarBody />}/>
 
    </Routes>
   
