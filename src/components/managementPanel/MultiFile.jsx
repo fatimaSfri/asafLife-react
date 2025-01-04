@@ -92,12 +92,13 @@
 // }
 
 
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function FileUploadComponent({ setFiles , textbox1 ,  textbox2 , textbox3}) {
+export default function FileUploadComponent({ setFiles, textbox1, textbox2, textbox3 }) {
   const [selectedFiles, setSelectedFiles] = useState([null, null, null]);
   const [previews, setPreviews] = useState([null, null, null]);
 
+  // تغییر فایل انتخاب‌شده
   const handleFileChange = (index) => (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -111,6 +112,7 @@ export default function FileUploadComponent({ setFiles , textbox1 ,  textbox2 , 
     }
   };
 
+  // حذف فایل انتخاب‌شده
   const handleFileRemove = (index) => () => {
     const newSelectedFiles = [...selectedFiles];
     const newPreviews = [...previews];
@@ -121,58 +123,62 @@ export default function FileUploadComponent({ setFiles , textbox1 ,  textbox2 , 
     setFiles(newSelectedFiles.filter(Boolean));
   };
 
-  const uploadTexts = [
-    textbox1,
-    textbox2,
-    textbox3
-  ];
+  
+  const uploadTexts = [textbox1, textbox2, textbox3];
 
   return (
     <div className="w-11/12 lg:h-4/6 max-lg:h-[600px] max-md:h-[680px] mx-auto p-4 border-dashed bg-white rounded-md flex max-md:flex-col items-center justify-center">
-       {selectedFiles.map((file, index) => (
-        <>
-      <div className=" bg-white rounded-lg p-4 flex flex-col flex-wrap justify-center gap-4 ">
-       
-          <div key={index} className={` flex flex-col items-center justify-center border border-gray-300 rounded-lg  relative ${file?"w-52":"p-4"}`}>
-            {!file ? (
-              <>
-                <div className="flex flex-col items-center text-center mb-4">
-                  <img
-                    src="./img/icon/Upload.png"
-                    alt="Upload Icon"
-                    className="w-10 mb-2"
+      {selectedFiles.map((file, index) => (
+        <React.Fragment key={index}>
+          <div className="bg-white rounded-lg p-4 flex flex-col flex-wrap justify-center gap-4">
+            <div
+              className={`flex flex-col items-center justify-center border border-gray-300 rounded-lg relative ${
+                file ? "w-52" : "p-4"
+              }`}
+            >
+              {!file ? (
+                <>
+                  <div className="flex flex-col items-center text-center mb-4">
+                    <img
+                      src="./img/icon/Upload.png"
+                      alt="Upload Icon"
+                      className="w-10 mb-2"
+                    />
+                    <p className="text-gray-600 max-lg:text-[14px]">
+                      {uploadTexts[index]}
+                    </p>
+                  </div>
+                  <label
+                    htmlFor={`fileInput${index}`}
+                    className="bg-gray-100 hover:bg-gray-200 text-[#213063] font-bold py-2 px-4 border border-gray-300 text-[16px] rounded cursor-pointer"
+                  >
+                    بارگذاری تصویر
+                  </label>
+                  <input
+                    id={`fileInput${index}`}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleFileChange(index)}
                   />
-                  <p className="text-gray-600 max-lg:text-[14px]">{uploadTexts[index]}</p>
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center w-full h-32 overflow-hidden">
+                  <img
+                    src={previews[index]}
+                    alt={`Preview ${index + 1}`}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
                 </div>
-                <label
-                  htmlFor={`fileInput${index}`}
-                  className="bg-gray-100 hover:bg-gray-200 text-[#213063] font-bold py-2 px-4 border border-gray-300 text-[16px] rounded cursor-pointer"
-                >
-                  بارگذاری تصویر
-                </label>
-                <input
-                  id={`fileInput${index}`}
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleFileChange(index)}
-                />
-              </>
-            ) : (
-              <div className="flex flex-col items-center justify-center w-full h-32 overflow-hidden">
-                <img
-                  src={previews[index]}
-                  alt={`Preview ${index + 1}`}
-                  className="w-full h-full object-cover rounded-lg" // Fill the container
-                />
-              </div>
-            )}
+              )}
+            </div>
+
             
-          </div>
-          {/* Move the file name and remove button completely outside of the image preview container */}
-          {file && (
-              <div className="flex items-center justify-between mt-2  w-full overflow-hidden">
-                <span className="text-sm text-gray-700 flex-grow w-10 px-4">{file.name}</span>
+            {file && (
+              <div className="flex items-center justify-between mt-2 w-full overflow-hidden">
+                <span className="text-sm text-gray-700 flex-grow w-10 px-4">
+                  {file.name}
+                </span>
                 <button
                   onClick={handleFileRemove(index)}
                   className="text-red-500 text-lg font-bold ml-2"
@@ -195,9 +201,8 @@ export default function FileUploadComponent({ setFiles , textbox1 ,  textbox2 , 
               </div>
             )}
           </div>
-          </>
-        ))}
-    
+        </React.Fragment>
+      ))}
     </div>
   );
 }
