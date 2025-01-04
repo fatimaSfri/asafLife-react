@@ -66,7 +66,7 @@ const Installments = () => {
 
       <div className="w-full h-[802px] flex items-center justify-center bg-gray-200 ">
 
-        <form className="w-full md:mt-4 flex items-center justify-center ">
+        <form   className="w-full md:mt-4 flex items-center justify-center ">
           <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
             <h1 className="md:text-[28px] max-md:text-[20px] mb-8 font-bold text-[#213063] border lg:w-11/12 max-lg:w-10/12">
               اقساط
@@ -80,6 +80,7 @@ const Installments = () => {
                       items="items-end"
                       name="reshte"
                       value=""
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -95,7 +96,7 @@ const Installments = () => {
                 </div>
               </div>
               <div className="w-full ">
-                <Button mt="mt-2" type="submit" width="w-8/12" />
+                <Button mt="mt-2.75" type="submit" width="w-8/12" />
               </div>
               <div className="lg:w-11/12 max-lg:w-full mx-auto bg-white p-6 rounded-lg shadow-md flex items-center justify-center flex-col max-sm:overflow-auto max-lg:mt-10">
 

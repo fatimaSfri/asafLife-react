@@ -49,7 +49,7 @@ function App() {
          </Route>
 
          <Route path="dashbord/*"  element={<ManagementPanel/>}>
-            <Route index   element={< Profile/>}/>
+            <Route index  element={< Profile/>}/>
             <Route path='profile' element={< Profile/>}/>
             <Route path='table' element={< ChildProfil/>}/>
             <Route path="mycontracts"  element={<MyContracts />}/>
@@ -57,7 +57,7 @@ function App() {
            <Route  path="support" element={<Support />}/>
          </Route>
 
-         <Route path='/user-create' element={<CreateUser/>} />
+        <Route path='/user-create' element={<CreateUser/>} />
         <Route path='/insurance' element={<Registration/>} />
         <Route path='/user'  element={<GetDashbordUsers/>} />
         <Route path='/contract' element={<Contract/>} />
