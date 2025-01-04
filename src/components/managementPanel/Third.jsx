@@ -86,6 +86,7 @@ import CustomInput from './CustomInput';
 import axiosInstance from "../axiosConfig";
 import { useState, useEffect } from "react";
 import ThirdSchema from "./validator/thirdSchema.jsx";
+import moment from 'moment-jalaali';
 
 export default function Third() {
   const [formData, setFormData] = useState({ owner_birthday: "", phone: "", address: "" });
@@ -108,12 +109,14 @@ export default function Third() {
       if (timeout) clearTimeout(timeout);
     };
   }, [popup.show]);
-
+  const convertShamsiToMiladi = (shamsiDate) => {
+      return moment(shamsiDate, 'jYYYY/jMM/jDD').format('YYYY-MM-DD');
+    };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Form Data before submission:", formData);
-
+    console.log("Form selected after submission:", selectedFiles);
     const { vehicle_cart_photos, certificate_photo } = selectedFiles;
     const { owner_birthday, phone, address } = formData;
 
@@ -130,8 +133,11 @@ export default function Third() {
 
     try {
       const uploadData = new FormData();
-      uploadData.append("owner_birthday", owner_birthday);
+      const miladiDate = convertShamsiToMiladi(formData.owner_birthday);
+
+      uploadData.append("owner_birthday", miladiDate);
       uploadData.append("phone", phone);
+      uploadData.append("address", address);
 
       vehicle_cart_photos.forEach((file) => {
         uploadData.append("vehicle_cart_photos", file);

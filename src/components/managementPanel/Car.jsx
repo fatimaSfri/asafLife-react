@@ -4,6 +4,9 @@ import CustomInput from "./CustomInput";
 import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import BadanehSchema from "./validator/badanehSchema.jsx";
+import moment from 'moment-jalaali';
+
+
 export default function Car() {
   const [formData, setFormData] = useState({
     insurer_code: "",
@@ -35,14 +38,16 @@ export default function Car() {
       if (timeout) clearTimeout(timeout);
     };
   }, [popup.show]);
-
+  const convertShamsiToMiladi = (shamsiDate) => {
+    return moment(shamsiDate, 'jYYYY/jMM/jDD').format('YYYY-MM-DD');
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     console.log("Form Data before submission:", formData);
     console.log("Selected Files:", selectedFiles);
     const { vehicle_cart_photos } = selectedFiles;
-    
+  
     if (
       !formData.insurer_code ||
       !formData.expiration_insurer_date ||
@@ -57,29 +62,29 @@ export default function Car() {
       });
       return;
     }
-
+  
     try {
       const uploadData = new FormData();
+  
+      // تبدیل تاریخ شمسی به میلادی
+      const miladiDate = convertShamsiToMiladi(formData.expiration_insurer_date);
+  
       uploadData.append("insurer_code", formData.insurer_code);
-      uploadData.append(
-        "expiration_insurer_date",
-        formData.expiration_insurer_date
-      );
+      uploadData.append("expiration_insurer_date", miladiDate); // تاریخ میلادی
       uploadData.append("isDamaged", formData.isDamaged);
-
+  
       vehicle_cart_photos.forEach((file) => {
         uploadData.append("vehicle_cart_photos", file);
       });
-
- 
+  
       const { error } = BadanehSchema.validate(formData, { abortEarly: false });
-      
+  
       if (error) {
         console.error('Validation errors:', error.details);
         setErrors(error.details[0].message);
         return;
       }
-
+  
       const response = await axiosInstance.post(
         "/badane",
         uploadData,
@@ -87,7 +92,7 @@ export default function Car() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-
+  
       console.log("Response:", response.data);
       setFormData({
         insurer_code: "",
@@ -97,10 +102,10 @@ export default function Car() {
       setSelectedFiles({ vehicle_cart_photos: [] });
       setErrors({});
       setBackendErrors({});
-      
+  
       setSuccessPopup(true);
       setSuccessMessage("اطلاعات با موفقیت ارسال شد.");
-      
+  
       setTimeout(() => {
         setFormData({
           insurer_code: "",
@@ -132,6 +137,7 @@ export default function Car() {
       }
     }
   };
+  
 
   const handleInputChange = (e) => {
     console.log("Input changed:", e.target.name, e.target.value);

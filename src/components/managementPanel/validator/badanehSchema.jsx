@@ -13,6 +13,7 @@ const BadanehSchema = Joi.object({
   }),
   expiration_insurer_date: Joi.string()
     .required()
+    .pattern(/^\d{4}\/\d{2}\/\d{2}$/)
     .label('تاریخ انقضا')
     .custom((value, helpers) => {
       const date = new Date(value);
@@ -22,6 +23,7 @@ const BadanehSchema = Joi.object({
       return value;
     })
     .messages({
+      "string.pattern.base": "تاریخ تولد باید در فرمت YYYY/MM/DD باشد.",
       'any.required': 'تاریخ انقضا الزامی است.',
       'string.base': 'تاریخ انقضا باید یک رشته باشد.',
       'custom': 'تاریخ انقضا باید یک تاریخ معتبر باشد.'
