@@ -1,9 +1,14 @@
 import "../newbanner/NewBanner.css"
 import MultiFile from "./MultiFile.jsx"
 import CustomInput from './CustomInput';
+import { useState } from "react";
 
 export default function Third() {
+  const [selectedOption, setSelectedOption] = useState('');
 
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <div className="w-full md:h-[150vh] max-md:h-[200vh] bg-[#e9e9e9]">
@@ -35,26 +40,54 @@ export default function Third() {
        <div className="max-md:w-10/12 md:w-full h-full flex flex-col  items-center mx-auto">
        <div className="md:flex max-md:flex-col w-full gap-4 ">
        <CustomInput
-        label=" تاریخ تولد صاحب پلاک"
+        label=" شماره بیمه نامه سال قبل"
         items="items-end"
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
        <CustomInput
-        label=" تلفن همراه"
+        label=" تاریخ انقضا بیمه نامه"
         items="items-start"
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
        </div>
        </div>
        <div className="max-md:w-10/12 md:w-full h-full flex flex-col items-center mx-auto">
-       <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4">
-       <CustomInput
-                  label=" آدرس دقیق"
-                  items="items-start"
-                  name=""
-                  width="lg:w-[48%] max-lg:w-full"
-              
-                />
+       <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4 h-32 items-center  max-md:pt-4">
+    
+  {/* radio button */}
+    <div className="flex items-center gap-6 py-6">
+      <h2 className="mr-4 text-[#213063]"> تا حالا خسارت داشتی؟</h2>
+      <label className="flex items-center cursor-pointer mr-4 text-[#213063]">
+        <input
+          type="radio"
+          value="yes"
+          checked={selectedOption === 'yes'}
+          onChange={handleChange}
+          className="hidden"
+        />
+        <span className="w-5 h-5 border-2 border-[#55c7e0] rounded-full flex items-center justify-center mr-2 relative mx-1">
+          {selectedOption === 'yes' && (
+            <span className="w-3 h-3 bg-[#55c7e0] rounded-full"></span>
+          )}
+        </span>
+        بله
+      </label>
+      <label className="flex items-center cursor-pointer text-[#213063]">
+        <input
+          type="radio"
+          value="no"
+          checked={selectedOption === 'no'}
+          onChange={handleChange}
+          className="hidden"
+        />
+        <span className="w-5 h-5 border-2 border-[#55c7e0] rounded-full flex items-center justify-center mr-2 relative mx-1">
+          {selectedOption === 'no' && (
+            <span className="w-3 h-3 bg-[#55c7e0] rounded-full "></span>
+          )}
+        </span>
+        خیر
+      </label>
+    </div>
          </div>
        </div>
        <div className="lg:w-8/12 max-lg:w-full max-lg:items-end max-sm:px-8 h-16 flex justify-end">
