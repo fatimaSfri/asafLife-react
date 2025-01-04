@@ -53,7 +53,7 @@ function App() {
         </Route>
 
         <Route  path="Third" element={<Third />}/>
-        <Route  path="carBody" element={<PanelCarBody />}/>
+        <Route  path="car" element={<PanelCarBody />}/>
 
    </Routes>
   

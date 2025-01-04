@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 
 export default function FileUploadComponent({ setFile }) {
@@ -11,14 +10,14 @@ export default function FileUploadComponent({ setFile }) {
     if (file) {
       setSelectedFileState(file);
       setPreview(URL.createObjectURL(file));
-      setFile(file); // ارسال فایل به کامپوننت والد
+      setFile(file); 
     }
   };
 
   const handleFileRemove = () => {
     setSelectedFileState(null);
     setPreview(null);
-    setFile(null); // پاک کردن فایل در کامپوننت والد
+    setFile(null); 
   };
 
   return (
