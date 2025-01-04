@@ -88,121 +88,92 @@ import { useState, useEffect } from "react";
 
 
 export default function Third() {
-  const [state, setState] = useState({
-    formData: { owner_birthday: "", phone: "", address: "" },
-    selectedFiles: { vehicleCartPhotos: [], certificatePhoto: null },
-    errors: {},
-    backendErrors: {},
-    popup: {
-      show: false,
-      message: "",
-      isError: false,
-    },
-  });
+  const [formData, setFormData] = useState({ owner_birthday: "", phone: "", address: "" });
+  const [selectedFiles, setSelectedFiles] = useState({ vehicle_cart_photos: [], certificate_photo: null });
+  const [errors, setErrors] = useState({});
+  const [backendErrors, setBackendErrors] = useState({});
+  const [popup, setPopup] = useState({ show: false, message: "", isError: false });
 
   useEffect(() => {
     let timeout;
-    if (state.popup.show) {
+    if (popup.show) {
       timeout = setTimeout(() => {
-        setState((prevState) => ({
-          ...prevState,
-          popup: { ...prevState.popup, show: false },
-        }));
+        setPopup({ ...popup, show: false });
       }, 7000);
     }
 
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, [state.popup.show]);
+  }, [popup.show]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Owner Birthday:", state.formData.owner_birthday);
-console.log("Phone:", state.formData.phone);
-console.log("Selected Files:", state.selectedFiles);
 
-    // اطلاعات فرم را در اینجا چک کنید
-    console.log("Form Data before submission:", state.formData);
-    
-    const { vehicleCartPhotos, certificatePhoto } = state.selectedFiles;
-    const { owner_birthday, phone } = state.formData;
-  
-    if (!owner_birthday || !phone || !vehicleCartPhotos.length || !certificatePhoto) {
-      setState((prevState) => ({
-        ...prevState,
-        errors: {
-          owner_birthday: !owner_birthday ? "تاریخ تولد الزامی است." : "",
-          phone: !phone ? "تلفن الزامی است." : "",
-          vehicleCartPhotos: !vehicleCartPhotos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
-          certificatePhoto: !certificatePhoto ? "تصویر گواهینامه الزامی است." : "",
-        },
-      }));
+    console.log("Form Data before submission:", formData);
+
+    const { vehicle_cart_photos, certificate_photo } = selectedFiles;
+    const { owner_birthday, phone } = formData;
+
+    if (!owner_birthday || !phone || !vehicle_cart_photos.length || !certificate_photo) {
+      setErrors({
+        owner_birthday: !owner_birthday ? "تاریخ تولد الزامی است." : "",
+        phone: !phone ? "تلفن الزامی است." : "",
+        vehicle_cart_photos: !vehicle_cart_photos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
+        certificate_photo: !certificate_photo ? "تصویر گواهینامه الزامی است." : "",
+      });
       return;
     }
-  
-    // ارسال داده‌ها
+
     try {
       const uploadData = new FormData();
       uploadData.append("owner_birthday", owner_birthday);
       uploadData.append("phone", phone);
-      uploadData.append("address", state.formData.address);
-  
-      // اضافه کردن فایل‌ها به FormData
-      vehicleCartPhotos.forEach((file) => {
+      uploadData.append("address", formData.address);
+
+      vehicle_cart_photos.forEach((file) => {
         uploadData.append("vehicle_cart_photos", file);
       });
-  
-      uploadData.append("certificate_photo", certificatePhoto);
-  
-      // ارسال داده‌ها به سرور
+
+      uploadData.append("certificate_photo", certificate_photo);
+
       const response = await axiosInstance.post("/thaleth", uploadData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-  
+
       console.log('Response:', response.data);
-      setState((prevState) => ({
-        ...prevState,
-        formData: { owner_birthday: "", phone: "", address: "" },
-        selectedFiles: { vehicleCartPhotos: [], certificatePhoto: null },
-        errors: {},
-        backendErrors: {},
-        popup: {
-          show: true,
-          message: "اطلاعات با موفقیت ارسال شد.",
-          isError: false,
-        },
-      }));
-  
+      setFormData({ owner_birthday: "", phone: "", address: "" });
+      setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
+      setErrors({});
+      setBackendErrors({});
+      setPopup({ show: true, message: "اطلاعات با موفقیت ارسال شد.", isError: false });
     } catch (error) {
       console.error('Error sending data:', error.response ? error.response.data : error.message);
-      // مدیریت خطاها
     }
   };
-  
-  
 
   const handleInputChange = (e) => {
     console.log('Input changed:', e.target.name, e.target.value);
+    console.log("Owner Birthday:", formData.owner_birthday);
+    console.log("Phone:", formData.phone);
+    console.log("Selected Files:", selectedFiles);
     const { name, value } = e.target;
-    setState((prevState) => ({
-      ...prevState,
-      formData: { ...prevState.formData, [name]: value },
-      errors: { ...prevState.errors, [name]: "" },
-    }));
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+    setErrors(prevState => ({ ...prevState.errors, [name]: "" }));
   };
 
   const handleFileChange = (e, type) => {
     console.log('File change event:', e.target.files);
     const files = e.target.files;
     if (files.length > 0) {
-      setState((prevState) => ({
-        ...prevState,
-        selectedFiles: {
-          ...prevState.selectedFiles,
-          [type]: Array.from(files), 
-        },
-      }));
+      setSelectedFiles(prevState => {
+        if (type === 'certificate_photo') {
+          return { ...prevState, certificate_photo: files[0] };
+        } else {
+          const newFiles = Array.from(files);
+          return { ...prevState, vehicle_cart_photos: newFiles };
+        }
+      });
     }
   };
   
@@ -231,10 +202,11 @@ console.log("Selected Files:", state.selectedFiles);
         </div> 
         <div className=" flex max-xl:w-11/12 xl:w-8/12 ">
           <MultiFile
-            handleFileChange={handleFileChange}
-            setFiles={(files) => setState(prevState => ({
+            onChange={handleFileChange}
+            setFiles={(files) => setSelectedFiles(prevState => ({
               ...prevState,
-              selectedFiles: { ...prevState.selectedFiles, vehicleCartPhotos: files }
+              vehicle_cart_photos: files.slice(0, 2),
+              certificate_photo: files.length > 2 ? files[2] : null
             }))}
             textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
             textbox2="لطفاً تصویر پشت کارت ماشین خود را بارگذاری کنید"
@@ -248,16 +220,16 @@ console.log("Selected Files:", state.selectedFiles);
                 label="تاریخ تولد صاحب پلاک"
                 items="items-end"
                 name="owner_birthday"
-                value={state.formData.owner_birthday}
-                handleInputChange={handleInputChange}
+                value={formData.owner_birthday}
+                onChange={handleInputChange}
                 width="lg:w-8/12 max-lg:w-full"
               />
               <CustomInput
                 label="تلفن همراه"
                 items="items-start"
                 name="phone"
-                value={state.formData.phone}
-                handleInputChange={handleInputChange}
+                value={formData.phone}
+                onChange={handleInputChange}
                 width="lg:w-8/12 max-lg:w-full"
               />
             </div>
@@ -268,8 +240,8 @@ console.log("Selected Files:", state.selectedFiles);
                 label="آدرس دقیق"
                 items="items-start"
                 name="address"
-                value={state.formData.address}
-                handleInputChange={handleInputChange}
+                value={formData.address}
+                onChange={handleInputChange}
                 width="lg:w-[48%] max-lg:w-full"
               />
             </div>

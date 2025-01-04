@@ -123,7 +123,6 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2, text
     setFiles(newSelectedFiles.filter(Boolean));
   };
 
-  
   const uploadTexts = [textbox1, textbox2, textbox3];
 
   return (
