@@ -85,7 +85,7 @@ import MultiFile from "./MultiFile.jsx";
 import CustomInput from './CustomInput';
 import axiosInstance from "../axiosConfig";
 import { useState, useEffect } from "react";
-
+import ThirdSchema from "./validator/thirdSchema.jsx";
 
 export default function Third() {
   const [formData, setFormData] = useState({ owner_birthday: "", phone: "", address: "" });
@@ -93,6 +93,8 @@ export default function Third() {
   const [errors, setErrors] = useState({});
   const [backendErrors, setBackendErrors] = useState({});
   const [popup, setPopup] = useState({ show: false, message: "", isError: false });
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     let timeout;
@@ -113,12 +115,13 @@ export default function Third() {
     console.log("Form Data before submission:", formData);
 
     const { vehicle_cart_photos, certificate_photo } = selectedFiles;
-    const { owner_birthday, phone } = formData;
+    const { owner_birthday, phone, address } = formData;
 
     if (!owner_birthday || !phone || !vehicle_cart_photos.length || !certificate_photo) {
       setErrors({
         owner_birthday: !owner_birthday ? "تاریخ تولد الزامی است." : "",
         phone: !phone ? "تلفن الزامی است." : "",
+        address: !address ? "آدرس الزامی است." : "",
         vehicle_cart_photos: !vehicle_cart_photos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
         certificate_photo: !certificate_photo ? "تصویر گواهینامه الزامی است." : "",
       });
@@ -129,13 +132,23 @@ export default function Third() {
       const uploadData = new FormData();
       uploadData.append("owner_birthday", owner_birthday);
       uploadData.append("phone", phone);
-      uploadData.append("address", formData.address);
 
       vehicle_cart_photos.forEach((file) => {
         uploadData.append("vehicle_cart_photos", file);
       });
 
       uploadData.append("certificate_photo", certificate_photo);
+
+      const { error } = ThirdSchema.validate(formData, { abortEarly: false });
+      
+      if (error) {
+        console.error('Validation errors:', error.details);
+        setErrors(error.details.reduce((acc, curr) => {
+          acc[curr.path] = curr.message;
+          return acc;
+        }, {}));
+        return;
+      }
 
       const response = await axiosInstance.post("/thaleth", uploadData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -146,7 +159,17 @@ export default function Third() {
       setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
       setErrors({});
       setBackendErrors({});
-      setPopup({ show: true, message: "اطلاعات با موفقیت ارسال شد.", isError: false });
+
+      // Show success popup
+      setSuccessPopup(true);
+      setSuccessMessage("اطلاعات با موفقیت ارسال شد.");
+      
+      
+      setTimeout(() => {
+        setFormData({ owner_birthday: "", phone: "", address: "" });
+        setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
+      }, 5000);
+
     } catch (error) {
       console.error('Error sending data:', error.response ? error.response.data : error.message);
     }
@@ -156,7 +179,7 @@ export default function Third() {
     console.log('Input changed:', e.target.name, e.target.value);
     console.log("Owner Birthday:", formData.owner_birthday);
     console.log("Phone:", formData.phone);
-    console.log("Selected Files:", selectedFiles);
+    console.log("Address:", formData.address);
     const { name, value } = e.target;
     setFormData(prevState => ({ ...prevState, [name]: value }));
     setErrors(prevState => ({ ...prevState.errors, [name]: "" }));
@@ -213,6 +236,16 @@ export default function Third() {
             textbox3="لطفاً تصویر گواهینامه خود را بارگذاری کنید"
           />
         </div>
+        {(errors.vehicle_cart_photos || backendErrors.vehicle_cart_photos) && (
+          <p className="text-red-500 text-sm  max-lg:w-11/12 xl:w-8/12 mx-auto">
+            {errors.vehicle_cart_photos || backendErrors.vehicle_cart_photos}
+          </p>
+        )}
+        {(errors.certificate_photo || backendErrors.certificate_photo) && (
+          <p className="text-red-500 text-sm  max-lg:w-11/12 xl:w-8/12 mx-auto">
+            {errors.certificate_photo || backendErrors.certificate_photo}
+          </p>
+        )}
         <div className="max-lg:w-11/12 lg:w-11/12 mt-10 rounded-lg flex flex-col items-center justify-center ">
           <div className="max-md:w-10/12 md:w-full h-full flex flex-col  items-center mx-auto">
             <div className="md:flex max-md:flex-col w-full gap-4 ">
@@ -223,6 +256,7 @@ export default function Third() {
                 value={formData.owner_birthday}
                 onChange={handleInputChange}
                 width="lg:w-8/12 max-lg:w-full"
+                error={errors.owner_birthday}
               />
               <CustomInput
                 label="تلفن همراه"
@@ -231,6 +265,7 @@ export default function Third() {
                 value={formData.phone}
                 onChange={handleInputChange}
                 width="lg:w-8/12 max-lg:w-full"
+                error={errors.phone}
               />
             </div>
           </div>
@@ -243,6 +278,7 @@ export default function Third() {
                 value={formData.address}
                 onChange={handleInputChange}
                 width="lg:w-[48%] max-lg:w-full"
+                error={errors.address}
               />
             </div>
           </div>
@@ -259,6 +295,13 @@ export default function Third() {
           </div>
         </div>
       </div>
+
+      {successPopup && (
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
+          {successMessage}
+        </div>
+      )}
+
     </div>
   );
 }
