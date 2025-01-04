@@ -1,97 +1,13 @@
 import "../newbanner/NewBanner.css"
 import MultiFile from "./MultiFile.jsx"
 import CustomInput from './CustomInput';
-import axiosInstance from "../axiosConfig";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function Car() {
-  const [formData, setFormData] = useState({ expiration_insurer_date: "", insurer_code: "", address: "" });
-  const [selectedFiles, setSelectedFiles] = useState({ vehicle_cart_photos: [] });
-  const [errors, setErrors] = useState({});
-  const [backendErrors, setBackendErrors] = useState({});
-  const [popup, setPopup] = useState({ show: false, message: "", isError: false });
+export default function Third() {
+  const [selectedOption, setSelectedOption] = useState('');
 
-  useEffect(() => {
-    let timeout;
-    if (popup.show) {
-      timeout = setTimeout(() => {
-        setPopup({ ...popup, show: false });
-      }, 7000);
-    }
-
-    return () => {
-      if (timeout) clearTimeout(timeout);
-    };
-  }, [popup.show]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    console.log("Form Data before submission:", formData);
-
-    const { vehicle_cart_photos, certificate_photo } = selectedFiles;
-    const { expiration_insurer_date, phone } = formData;
-
-    if (!expiration_insurer_date || !phone || !vehicle_cart_photos.length || !certificate_photo) {
-      setErrors({
-        expiration_insurer_date: !expiration_insurer_date ? "تاریخ تولد الزامی است." : "",
-        phone: !phone ? "تلفن الزامی است." : "",
-        vehicle_cart_photos: !vehicle_cart_photos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
-        certificate_photo: !certificate_photo ? "تصویر گواهینامه الزامی است." : "",
-      });
-      return;
-    }
-
-    try {
-      const uploadData = new FormData();
-      uploadData.append("expiration_insurer_date", expiration_insurer_date);
-      uploadData.append("phone", phone);
-      uploadData.append("address", formData.address);
-
-      vehicle_cart_photos.forEach((file) => {
-        uploadData.append("vehicle_cart_photos", file);
-      });
-
-      uploadData.append("certificate_photo", certificate_photo);
-
-      const response = await axiosInstance.post("/thaleth", uploadData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      console.log('Response:', response.data);
-      setFormData({ expiration_insurer_date: "", phone: "", address: "" });
-      setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
-      setErrors({});
-      setBackendErrors({});
-      setPopup({ show: true, message: "اطلاعات با موفقیت ارسال شد.", isError: false });
-    } catch (error) {
-      console.error('Error sending data:', error.response ? error.response.data : error.message);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    console.log('Input changed:', e.target.name, e.target.value);
-    console.log("Owner Birthday:", formData.expiration_insurer_date);
-    console.log("Phone:", formData.phone);
-    console.log("Selected Files:", selectedFiles);
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
-    setErrors(prevState => ({ ...prevState.errors, [name]: "" }));
-  };
-
-  const handleFileChange = (e, type) => {
-    console.log('File change event:', e.target.files);
-    const files = e.target.files;
-    if (files.length > 0) {
-      setSelectedFiles(prevState => {
-        if (type === 'certificate_photo') {
-          return { ...prevState, certificate_photo: files[0] };
-        } else {
-          const newFiles = Array.from(files);
-          return { ...prevState, vehicle_cart_photos: newFiles };
-        }
-      });
-    }
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
@@ -124,26 +40,54 @@ export default function Car() {
        <div className="max-md:w-10/12 md:w-full h-full flex flex-col  items-center mx-auto">
        <div className="md:flex max-md:flex-col w-full gap-4 ">
        <CustomInput
-        label=" تاریخ تولد صاحب پلاک"
+        label=" شماره بیمه نامه سال قبل"
         items="items-end"
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
        <CustomInput
-        label="کد بیمه گذار"
+        label=" تاریخ انقضا بیمه نامه"
         items="items-start"
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
        </div>
        </div>
        <div className="max-md:w-10/12 md:w-full h-full flex flex-col items-center mx-auto">
-       <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4">
-       <CustomInput
-                  label=" آدرس دقیق"
-                  items="items-start"
-                  name=""
-                  width="lg:w-[48%] max-lg:w-full"
-              
-                />
+       <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4 h-32 items-center  max-md:pt-4">
+    
+  {/* radio button */}
+    <div className="flex items-center gap-6 py-6">
+      <h2 className="mr-4 text-[#213063]"> تا حالا خسارت داشتی؟</h2>
+      <label className="flex items-center cursor-pointer mr-4 text-[#213063]">
+        <input
+          type="radio"
+          value="yes"
+          checked={selectedOption === 'yes'}
+          onChange={handleChange}
+          className="hidden"
+        />
+        <span className="w-5 h-5 border-2 border-[#55c7e0] rounded-full flex items-center justify-center mr-2 relative mx-1">
+          {selectedOption === 'yes' && (
+            <span className="w-3 h-3 bg-[#55c7e0] rounded-full"></span>
+          )}
+        </span>
+        بله
+      </label>
+      <label className="flex items-center cursor-pointer text-[#213063]">
+        <input
+          type="radio"
+          value="no"
+          checked={selectedOption === 'no'}
+          onChange={handleChange}
+          className="hidden"
+        />
+        <span className="w-5 h-5 border-2 border-[#55c7e0] rounded-full flex items-center justify-center mr-2 relative mx-1">
+          {selectedOption === 'no' && (
+            <span className="w-3 h-3 bg-[#55c7e0] rounded-full "></span>
+          )}
+        </span>
+        خیر
+      </label>
+    </div>
          </div>
        </div>
        <div className="lg:w-8/12 max-lg:w-full max-lg:items-end max-sm:px-8 h-16 flex justify-end">
