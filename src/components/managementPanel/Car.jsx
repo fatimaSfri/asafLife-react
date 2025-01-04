@@ -1,9 +1,98 @@
 import "../newbanner/NewBanner.css"
 import MultiFile from "./MultiFile.jsx"
 import CustomInput from './CustomInput';
+import axiosInstance from "../axiosConfig";
+import { useState, useEffect } from "react";
 
-export default function Third() {
+export default function Car() {
+  const [formData, setFormData] = useState({ expiration_insurer_date: "", insurer_code: "", address: "" });
+  const [selectedFiles, setSelectedFiles] = useState({ vehicle_cart_photos: [] });
+  const [errors, setErrors] = useState({});
+  const [backendErrors, setBackendErrors] = useState({});
+  const [popup, setPopup] = useState({ show: false, message: "", isError: false });
 
+  useEffect(() => {
+    let timeout;
+    if (popup.show) {
+      timeout = setTimeout(() => {
+        setPopup({ ...popup, show: false });
+      }, 7000);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [popup.show]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log("Form Data before submission:", formData);
+
+    const { vehicle_cart_photos, certificate_photo } = selectedFiles;
+    const { expiration_insurer_date, phone } = formData;
+
+    if (!expiration_insurer_date || !phone || !vehicle_cart_photos.length || !certificate_photo) {
+      setErrors({
+        expiration_insurer_date: !expiration_insurer_date ? "تاریخ تولد الزامی است." : "",
+        phone: !phone ? "تلفن الزامی است." : "",
+        vehicle_cart_photos: !vehicle_cart_photos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
+        certificate_photo: !certificate_photo ? "تصویر گواهینامه الزامی است." : "",
+      });
+      return;
+    }
+
+    try {
+      const uploadData = new FormData();
+      uploadData.append("expiration_insurer_date", expiration_insurer_date);
+      uploadData.append("phone", phone);
+      uploadData.append("address", formData.address);
+
+      vehicle_cart_photos.forEach((file) => {
+        uploadData.append("vehicle_cart_photos", file);
+      });
+
+      uploadData.append("certificate_photo", certificate_photo);
+
+      const response = await axiosInstance.post("/thaleth", uploadData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log('Response:', response.data);
+      setFormData({ expiration_insurer_date: "", phone: "", address: "" });
+      setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
+      setErrors({});
+      setBackendErrors({});
+      setPopup({ show: true, message: "اطلاعات با موفقیت ارسال شد.", isError: false });
+    } catch (error) {
+      console.error('Error sending data:', error.response ? error.response.data : error.message);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    console.log('Input changed:', e.target.name, e.target.value);
+    console.log("Owner Birthday:", formData.expiration_insurer_date);
+    console.log("Phone:", formData.phone);
+    console.log("Selected Files:", selectedFiles);
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+    setErrors(prevState => ({ ...prevState.errors, [name]: "" }));
+  };
+
+  const handleFileChange = (e, type) => {
+    console.log('File change event:', e.target.files);
+    const files = e.target.files;
+    if (files.length > 0) {
+      setSelectedFiles(prevState => {
+        if (type === 'certificate_photo') {
+          return { ...prevState, certificate_photo: files[0] };
+        } else {
+          const newFiles = Array.from(files);
+          return { ...prevState, vehicle_cart_photos: newFiles };
+        }
+      });
+    }
+  };
 
   return (
     <div className="w-full md:h-[150vh] max-md:h-[200vh] bg-[#e9e9e9]">
@@ -40,7 +129,7 @@ export default function Third() {
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
        <CustomInput
-        label=" تلفن همراه"
+        label="کد بیمه گذار"
         items="items-start"
         name=""
         width="lg:w-8/12 max-lg:w-full"/>
