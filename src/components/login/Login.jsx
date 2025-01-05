@@ -578,7 +578,7 @@ export default function Login() {
               <Outlet context={{ inputProps }} />
               <div className="mt-4">
                 <button
-                  className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  className="w-[200px]  h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={() => {
                     if (validate()) {
                       generateNewCode();
@@ -601,7 +601,7 @@ export default function Login() {
               <Outlet context={{ inputProps }} />
               <div className="mt-4">
                 <button
-                  className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  className="w-[250px]  h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={handleErrorPass}
                 >
                   ورود
@@ -634,7 +634,7 @@ export default function Login() {
         </div>
         <div className="w-1/2 h-4/5 max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end">
           <img
-            src="../img/icon/Asaflogo.png"
+            src="../img/icon/ASAF.svg"
             alt=""
             className="md:w-[300px] max-md:w-7/12 xl:w-[48%]"
           />
