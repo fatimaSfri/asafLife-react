@@ -2,8 +2,9 @@ import Button from "./Button.jsx";
 import axiosInstance from "../axiosConfig.js";
 import { useState, useCallback } from "react";
 import InputField from "./InputForDashbord.jsx";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CreateUserValidation from "./validator/CreateUserValidation.jsx"; 
+
 
 export default function InsuredPerson() {
     const location = useLocation();
@@ -18,7 +19,8 @@ export default function InsuredPerson() {
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-
+    const navigate = useNavigate();
+    
     const toEnglishNumbers = (str) => {
         return str.replace(/[۰-۹]/g, (d) => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
     };
@@ -67,10 +69,11 @@ export default function InsuredPerson() {
                     phone: "",
                 });
 
+                navigate("/dashbord")
                 setSubmitted(true);
                 setShowPopup(true);
                 setTimeout(() => setShowPopup(false), 7000);
-                setTimeout(() => navigate("/dashboard") , 5000);
+                
                 
             } catch (error) {
                 const backendErrors = {};

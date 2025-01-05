@@ -8,7 +8,7 @@ export default function ManagementPanel() {
 
   const [toggle, setToggle] = useState(false)
   const icon = {
-    menu: "../img/icon/Menu.png",
+    menu: "../img/icon/Menu.svg",
     close: "../img/icon/close.svg"
   }
   const [bgColor, setBgColor] = useState(false);
@@ -19,7 +19,7 @@ export default function ManagementPanel() {
     const fetchUsers = async () => {
       try {
         console.log('درخواست اطلاعات کاربران...');
-        const response = await axiosInstance.get("/user");
+        const response = await axiosInstance.get("/user/dashbored");
         if (response.data) {
           console.log(response.data);
           const currentUserPhone = localStorage.getItem('phone');
@@ -94,6 +94,29 @@ export default function ManagementPanel() {
                   پروفایل
                 </li>
               </NavLink>
+              <NavLink
+                to="/dashbord/car"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   بدنه
+                </li>
+              </NavLink>
+              <NavLink
+                to="/dashbord/Third"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   ثالث بدنه
+                </li>
+              </NavLink>
+
 
               <NavLink
                 to="/dashbord/services"

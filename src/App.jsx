@@ -20,6 +20,8 @@ import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 import PanelCarBody from './components/managementPanel/Car.jsx';
 import Third from './components/managementPanel/Third.jsx';
 import InsuredPerson from './components/login/setInfo.jsx';
+
+
 function App() {
 
    return (
@@ -50,15 +52,16 @@ function App() {
                <Route path="mycontracts" element={<MyContracts />} />
                <Route path="services" element={<Services />} />
                <Route path="support" element={<Support />} />
-            </Route>
+               <Route path="car" element={<PanelCarBody />} />
+               <Route path="Third" element={<Third />} />
+          </Route>
             <Route path="insured-person" element={<InsuredPerson/>} />
-            <Route path="Third" element={<Third />} />
-            <Route path="car" element={<PanelCarBody />} />
-
-
+            {/* <Route path="Third" element={<Third />} />
+            <Route path="car" element={<PanelCarBody />} /> */}
          </Routes>
 
       </>
+
    )
 }
 
