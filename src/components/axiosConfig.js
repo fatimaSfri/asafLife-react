@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+
 
 const axiosInstance = axios.create({
     baseURL: "https://asaflife.com/api", 
@@ -7,6 +7,7 @@ const axiosInstance = axios.create({
         "Content-Type": "application/json",
     },
     withCredentials: true,
+    timeout:5000
 });
 
 axiosInstance.interceptors.response.use(
@@ -14,11 +15,10 @@ axiosInstance.interceptors.response.use(
         return response; 
     },
     (error) => {
-        const navigate = useNavigate(); 
-
         if (error.response) {
             if (error.response.status === 401) {
-                navigate("/login");
+                if(!window.location.href.includes('/login'))
+                    window.location.href = "/login";
             } else if (error.response.status === 400) {
                 console.error("Bad Request: ", error.response.data);
             } else if (error.response.status === 500) {

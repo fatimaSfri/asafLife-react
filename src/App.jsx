@@ -50,7 +50,6 @@ function App() {
                <Route path="mycontracts" element={<MyContracts />} />
                <Route path="services" element={<Services />} />
                <Route path="support" element={<Support />} />
-
             </Route>
             <Route path="insured-person" element={<InsuredPerson/>} />
             <Route path="Third" element={<Third />} />

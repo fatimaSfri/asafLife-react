@@ -57,18 +57,9 @@ export default function InsuredPerson() {
             
             console.log(formData)
             try {
-                const token = document.cookie
-                    .split('; ')
-                    .find(row => row.startsWith('X-token='))
-                    ?.split('=')[1];
-
-                await axiosInstance.post("/user/set-user-information", formData ,{
-                    headers: {
-                        'X-token': token,
-                    }
-                });
+                const res = await axiosInstance.post("/user/set-user-information", formData);
+                console.log(res.data)
                 localStorage.setItem("set-user-information", JSON.stringify(formData));
-                
                 setFormData({
                     first_name: "",
                     last_name: "",
