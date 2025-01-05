@@ -1,7 +1,7 @@
 
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 
-export default function Rules() {
+export default function Rules({onChange}) {
     const [isScrollable, setIsScrollable] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
 
@@ -14,13 +14,22 @@ export default function Rules() {
         }
     };
 
-    const handleRadioChange = () => {
-        setIsChecked(!isChecked);
-        console.log(!isChecked);
+   
+
+    const handleCheckboxChange = () => {
+        setIsChecked(prev => !prev);
     };
 
+    useEffect(() => {
+        if (isChecked) {
+            onChange(true); 
+        } else {
+            onChange(false); 
+        }
+    }, [isChecked, onChange]);
+
     return (
-        <div className="absolute z-50 bg-[rgba(0,0,0,0.2)] w-full h-full flex items-center justify-center">
+        <div className="absolute z-50 bg-[rgba(0,0,0,0.2)]  h-full flex items-center justify-center">
             <div className="lg:w-5/12 max-lg:w-7/12 max-md:w-10/12 bg-white rounded-xl lg:p-16 max-lg:p-10 h-4/6 flex flex-col">
                 <div
                     className="overflow-y-auto flex-grow"
@@ -56,7 +65,7 @@ export default function Rules() {
                             className="hidden"
                             disabled={!isScrollable}
                             checked={isChecked}
-                            onChange={handleRadioChange}
+                            onChange={handleCheckboxChange}
                         />
                         <span className={`w-5 h-5 border-2 border-[#55c7e0] rounded-full flex items-center justify-center mr-2 relative mx-1`}>
                             {isChecked && <span className="w-3 h-3 bg-[#55c7e0] rounded-full"></span>}

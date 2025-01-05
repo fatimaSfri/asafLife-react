@@ -26,11 +26,11 @@ export default function FileUploadComponent({ setFile }) {
         {!selectedFile ? (
           <>
             <div className="flex flex-col items-center text-center mb-4">
-              <img
-                src="./img/icon/Upload.png"
+              {/* <img
+                src="./public/img/icon/Upload.png"
                 alt="Upload Icon"
                 className="w-10 mb-2"
-              />
+              /> */}
               <p className="text-gray-600">عکس خود را در این مکان بارگذاری کنید</p>
             </div>
             <label

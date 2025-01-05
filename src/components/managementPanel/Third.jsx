@@ -87,6 +87,7 @@ import axiosInstance from "../axiosConfig";
 import { useState, useEffect } from "react";
 import ThirdSchema from "./validator/thirdSchema.jsx";
 import moment from 'moment-jalaali';
+import Rules from "../rules/Rules.jsx";
 
 export default function Third() {
   const [formData, setFormData] = useState({ owner_birthday: "", phone: "", address: "" });
@@ -206,22 +207,30 @@ export default function Third() {
     }
   };
   
+  const [isChecked, setIsChecked] = useState(false);
 
+  const handleCheckChange = (checked) => {
+      setIsChecked(checked);
+      console.log('چک باکس تغییر کرد:', checked);
+  };
 
 
 
   return (
-    <div className="w-full md:h-[150vh] max-md:h-[200vh] bg-[#e9e9e9]">
+    <div className="w-full h-[100vh] bg-[#e9e9e9] overflow-auto">
+       {!isChecked && <Rules onChange={handleCheckChange} ></Rules>}
+        {isChecked && 
+        <>   
       <div className="w-full h-[400px]  flex justify-center items-end">
         <div className="max-xl:w-11/12 xl:w-8/12 h-5/6 flex items-center justify-center rounded-2xl bg-gradient-circle-carBody">
-          <img src="./img/ten-ten/img-ob.png" alt="" className="object-cover lg:h-[400px]"/>
+          <img src="../img/ten-ten/img-ob.png" alt="" className="object-cover lg:h-[400px]"/>
         </div>
       </div>
       {/* form */}
       <div className="w-full  flex flex-col items-center justify-center">
         <div className=" w-full h-[130px] max-xl:w-11/12 xl:w-8/12 flex flex-col">
           <div className=" flex justify-end">
-            <img src="./img/logo/tavon.webp" alt="" className="h-20"/> 
+            <img src="../img/logo/tavon.webp" alt="" className="h-20"/> 
           </div>
           <div className="w-full flex items-center justify-center relative">
             <div className="bg-[#55c7e0] w-4 h-4 rounded-full"></div>
@@ -239,7 +248,8 @@ export default function Third() {
             }))}
             textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
             textbox2="لطفاً تصویر پشت کارت ماشین خود را بارگذاری کنید"
-            textbox3="لطفاً تصویر گواهینامه خود را بارگذاری کنید"
+            textbox3="لطفاً تصویر کارت ملی خود را بارگذاری کنید"
+            count= {3}
           />
         </div>
         {(errors.vehicle_cart_photos || backendErrors.vehicle_cart_photos) && (
@@ -306,8 +316,9 @@ export default function Third() {
             </button>
           </div>
         </div>
+       
       </div>
-
+      </> }
       {successPopup && (
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
           {successMessage}

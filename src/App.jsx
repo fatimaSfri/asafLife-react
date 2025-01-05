@@ -53,10 +53,11 @@ function App() {
                <Route path="services" element={<Services />} />
                <Route path="support" element={<Support />} />
                <Route path="car" element={<PanelCarBody />} />
+               <Route path="Third" element={<Third />} />
           </Route>
             <Route path="insured-person" element={<InsuredPerson/>} />
-            <Route path="Third" element={<Third />} />
-            <Route path="car" element={<PanelCarBody />} />
+            {/* <Route path="Third" element={<Third />} />
+            <Route path="car" element={<PanelCarBody />} /> */}
          </Routes>
 
       </>

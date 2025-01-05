@@ -92,13 +92,19 @@
 // }
 
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
-export default function FileUploadComponent({ setFiles, textbox1, textbox2, textbox3 }) {
-  const [selectedFiles, setSelectedFiles] = useState([null, null, null]);
-  const [previews, setPreviews] = useState([null, null, null]);
+export default function FileUploadComponent({ setFiles, textbox1, textbox2 , textbox3 ,textbox4 , count }){
 
-  // تغییر فایل انتخاب‌شده
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [previews, setPreviews] = useState([]);
+
+  useEffect(() => {
+    const newFiles = Array(count).fill(null);
+    setSelectedFiles(newFiles);
+  }, [count]); 
+
+
   const handleFileChange = (index) => (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -123,10 +129,10 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2, text
     setFiles(newSelectedFiles.filter(Boolean));
   };
 
-  const uploadTexts = [textbox1, textbox2, textbox3];
+  const uploadTexts = [textbox1, textbox2, textbox3 , textbox4];
 
   return (
-    <div className="w-11/12 lg:h-4/6 max-lg:h-[600px] max-md:h-[680px] mx-auto p-4 border-dashed bg-white rounded-md flex max-md:flex-col items-center justify-center">
+    <div className="w-11/12 lg:h-4/6 max-lg:h-[700px] max-md:h-[780px] mx-auto p-4 border-dashed bg-white rounded-md flex max-md:flex-col items-center justify-center">
       {selectedFiles.map((file, index) => (
         <React.Fragment key={index}>
           <div className="bg-white rounded-lg p-4 flex flex-col flex-wrap justify-center gap-4">
@@ -139,7 +145,7 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2, text
                 <>
                   <div className="flex flex-col items-center text-center mb-4">
                     <img
-                      src="./img/icon/Upload.png"
+                      src="../img/icon/Upload.png"
                       alt="Upload Icon"
                       className="w-10 mb-2"
                     />

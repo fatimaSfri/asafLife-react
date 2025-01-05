@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import BadanehSchema from "./validator/badanehSchema.jsx";
 import moment from 'moment-jalaali';
-
+import Rules from "../rules/Rules.jsx"
 
 export default function Car() {
   const [formData, setFormData] = useState({
@@ -159,9 +159,20 @@ export default function Car() {
       setErrors((prevState) => ({ ...prevState, vehicle_cart_photos: "" }));
     }
   };
+  
+  const [isChecked, setIsChecked] = useState(false);
 
+  const handleCheckChange = (checked) => {
+      setIsChecked(checked);
+      console.log('چک باکس تغییر کرد:', checked);
+  };
   return (
-    <div className="w-full md:h-[150vh] max-md:h-[200vh] bg-[#e9e9e9]">
+
+   
+    <div className="w-full h-[100vh] bg-[#e9e9e9] overflow-auto " >
+       {!isChecked && <Rules onChange={handleCheckChange} ></Rules>}
+       {isChecked &&
+       <>
       {Object.keys(backendErrors).length > 0 && (
         <div className="bg-red-100 text-red-700 px-4 py-2 rounded relative mb-4 space-y-1 w-full max-w-lg mx-auto">
           <strong className="font-bold">خطاهای سرور:</strong>
@@ -182,7 +193,7 @@ export default function Car() {
       <div className="w-full h-[400px]  flex justify-center items-end">
         <div className="max-xl:w-11/12 xl:w-8/12 h-5/6 flex items-center justify-center rounded-2xl bg-gradient-circle-carBody">
           <img
-            src="./img/ten-ten/img-ob.png"
+            src="../img/ten-ten/img-ob.png"
             alt=""
             className="object-cover lg:h-[400px]"
           />
@@ -192,7 +203,7 @@ export default function Car() {
       <div className="w-full  flex flex-col items-center justify-center">
         <div className=" w-full h-[130px] max-xl:w-11/12 xl:w-8/12 flex flex-col">
           <div className=" flex justify-end">
-            <img src="./img/logo/tavon.webp" alt="" className="h-20" />
+            <img src="../img/logo/tavon.webp" alt="" className="h-20" />
           </div>
           <div className="w-full flex items-center justify-center relative">
             <div className="bg-[#55c7e0] w-4 h-4 rounded-full"></div>
@@ -212,7 +223,9 @@ export default function Car() {
             }))}
             textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
             textbox2="لطفاً تصویر پشت کارت ماشین خود را بارگذاری کنید"
-            textbox3="لطفاً تصویر گواهینامه خود را بارگذاری کنید"
+            textbox3="لطفاً تصویر کارت ملی خود را بارگذاری کنید"
+            textbox4="لطفاً تصویر بیمه نامه خود را بارگذاری کنید"
+            count= {4}
           />
         </div>
         {(errors.vehicle_cart_photos || backendErrors.vehicle_cart_photos) && (
@@ -223,7 +236,7 @@ export default function Car() {
         <div className="max-lg:w-11/12 lg:w-11/12 mt-10 rounded-lg flex flex-col items-center justify-center ">
           <div className="md:flex max-md:flex-col w-full gap-4 ">
             <CustomInput
-              label="شماره بیمه نامه سال قبل"
+              label=" آدرس "
               items="items-end"
               name="insurer_code"
               value={formData.insurer_code}
@@ -232,7 +245,7 @@ export default function Car() {
               error={errors.insurer_code || backendErrors.insurer_code}
             />
             <CustomInput
-              label="تاریخ انقضا بیمه نامه"
+              label="  شماره تلفن"
               items="items-start"
               name="expiration_insurer_date"
               value={formData.expiration_insurer_date}
@@ -242,7 +255,7 @@ export default function Car() {
             />
           </div>
         </div>
-        <div className="max-md:w-10/12 md:w-full h-full flex flex-col items-center mx-auto">
+        {/* <div className="max-md:w-10/12 md:w-full h-full flex flex-col items-center mx-auto">
           <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4 h-32 items-center  max-md:pt-4">
             <div className="flex items-center gap-6 py-6">
               <h2 className="mr-4 text-[#213063]">تا حالا خسارت داشتی؟</h2>
@@ -280,8 +293,8 @@ export default function Car() {
               </label>
             </div>
           </div>
-        </div>
-        <div className="lg:w-8/12 max-lg:w-full max-lg:items-end max-sm:px-8 h-16 flex justify-end">
+        </div> */}
+        <div className="lg:w-8/12 max-lg:w-full max-lg:items-end max-sm:px-8 h-16 flex justify-end mt-10">
           <button
             onClick={handleSubmit}
             className="w-[150px] h-10 rounded-full custom-bg custom-shadow flex items-center justify-center text-white gap-2"
@@ -294,6 +307,7 @@ export default function Car() {
           </button>
         </div>
       </div>
+      </>}
     </div>
   );
 }
