@@ -32,15 +32,18 @@ const consultations = [
 
 export default function ServicesPanel() {
   const renderServices = (items) => (
+ 
     <div className="grid gap-6 lg:grid-cols-6 max-lg:grid-cols-3 justify-items-center xl:px-14">
-      {items.map(({ icon, label }) => (
-        <div key={label}>
+      {items.map(({ icon, label },index) => {
+         return (
+        <div key={index}>
           <div className="sm:w-24 sm:h-24 max-sm:w-20 max-sm:h-20 bg-white rounded-3xl shadow-2xl m-2 flex items-center justify-center cursor-pointer">
             <Icon animationData={icon} />
           </div>
           <p className="w-24 text-center mx-auto md:text-[14px] max-md:text-[12px] mt-4 text-gray-700 cursor-pointer">{label}</p>
         </div>
-      ))}
+      )}
+      )}
     </div>
   );
 

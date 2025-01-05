@@ -8,9 +8,12 @@ export default function ManagementPanel() {
 
   const [toggle, setToggle] = useState(false)
   const icon = {
-    menu: "../img/icon/Menu.png", close: "../img/icon/close.svg"
+    menu: "../img/icon/Menu.png",
+    close: "../img/icon/close.svg"
   }
   const [bgColor, setBgColor] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -18,9 +21,10 @@ export default function ManagementPanel() {
         console.log('درخواست اطلاعات کاربران...');
         const response = await axiosInstance.get("/user");
         if (response.data) {
-          const currentUserPhone = localStorage.getItem('userPhone');
+          console.log(response.data);
+          const currentUserPhone = localStorage.getItem('phone');
           const currentUserData = response.data.data.find(user => user.phone === currentUserPhone);
-
+          console.log(currentUserData);
           if (currentUserData) {
             setCurrentUser(currentUserData);
           } else {
@@ -119,6 +123,26 @@ export default function ManagementPanel() {
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   پشتیبانی
                 </li></NavLink>
+
+              {/* <NavLink
+                to="/dashbord/Third"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                } >
+                <li className="flex items-center gap-4">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  ثبت ثالب
+                </li></NavLink> */}
+
+              {/* <NavLink
+                to="/dashbord/car"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                } >
+                <li className="flex items-center gap-4">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  ثبت بیمه بدنه
+                </li></NavLink> */}
 
               <li className="flex items-center gap-4">
                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>

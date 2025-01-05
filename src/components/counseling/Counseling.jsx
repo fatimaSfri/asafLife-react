@@ -90,7 +90,6 @@ export default function Counseling() {
         <div className=" flex  w-full gap-4  " >
         
           {cards.map((card, index) => (
-            <>
             
             <div key={index}
               className={`${isMobile?' w-full h-full transition-transform duration-500 ease-in-out  flex items-center justify-center' : 'w-full '} 
@@ -125,8 +124,7 @@ export default function Counseling() {
 
               </div>
             </div>
-            
-            </>
+          
           ))}
           </div>
 
