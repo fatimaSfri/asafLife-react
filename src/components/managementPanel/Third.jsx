@@ -288,6 +288,12 @@ export default function Third() {
               />
             </div>
           </div>
+          <div className="max-md:w-10/12 md:w-full h-full flex flex-col items-center mx-auto">
+            <div className="md:flex max-md:flex-col lg:w-8/12 max-lg:w-full gap-4">
+              
+            </div>
+          </div>
+
           <div className="lg:w-8/12 max-lg:w-full max-lg:items-end max-sm:px-8 h-16 flex justify-end">
             <button
               onClick={handleSubmit}

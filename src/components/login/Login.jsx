@@ -421,6 +421,9 @@ export default function Login() {
     return () => clearInterval(interval);
   }, [isActive, data.timeOut]);
 
+
+  
+
   useEffect(() => {
     const storedData = localStorage.getItem('timerData');
     if (storedData) {
@@ -479,10 +482,15 @@ export default function Login() {
         phone: userPhone,
         code: code.code,
       });
-
+      console.dir(response)
       console.log("Code verified successfully:", response.data);
       setApiError("");
-      navigate("/dashbord");
+      const { isInformationSet } = response.data;
+      if (isInformationSet) {
+        navigate("/dashboard"); 
+      } else {
+        navigate("/insured-person", { state: { phone: userPhone } });
+      }
 
       return response.data;
     } catch (error) {
@@ -509,7 +517,7 @@ export default function Login() {
       return false;
     }
 
-    Cookies.set("phone", phone.phone, { expires: 7 });
+    // Cookies.set("phone", phone.phone, { expires: 7 });
     localStorage.setItem("userPhone", phone.phone);
 
     return true;

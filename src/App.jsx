@@ -19,7 +19,7 @@ import ManagementPanel from "./components/managementPanel/ManagementPanel.jsx"
 import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 import PanelCarBody from './components/managementPanel/Car.jsx';
 import Third from './components/managementPanel/Third.jsx';
-
+import InsuredPerson from './components/login/setInfo.jsx';
 function App() {
 
    return (
@@ -52,6 +52,7 @@ function App() {
                <Route path="support" element={<Support />} />
 
             </Route>
+            <Route path="insured-person" element={<InsuredPerson/>} />
             <Route path="Third" element={<Third />} />
             <Route path="car" element={<PanelCarBody />} />
 

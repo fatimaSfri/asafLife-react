@@ -12,6 +12,8 @@ export default function ManagementPanel() {
     close: "../img/icon/close.svg"
   }
   const [bgColor, setBgColor] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -19,9 +21,10 @@ export default function ManagementPanel() {
         console.log('درخواست اطلاعات کاربران...');
         const response = await axiosInstance.get("/user");
         if (response.data) {
-          const currentUserPhone = localStorage.getItem('userPhone');
+          console.log(response.data);
+          const currentUserPhone = localStorage.getItem('phone');
           const currentUserData = response.data.data.find(user => user.phone === currentUserPhone);
-
+          console.log(currentUserData);
           if (currentUserData) {
             setCurrentUser(currentUserData);
           } else {
