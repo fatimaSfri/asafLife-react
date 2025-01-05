@@ -66,11 +66,11 @@ export default function Car() {
     try {
       const uploadData = new FormData();
   
-      // تبدیل تاریخ شمسی به میلادی
+   
       const miladiDate = convertShamsiToMiladi(formData.expiration_insurer_date);
   
       uploadData.append("insurer_code", formData.insurer_code);
-      uploadData.append("expiration_insurer_date", miladiDate); // تاریخ میلادی
+      uploadData.append("expiration_insurer_date", miladiDate); 
       uploadData.append("isDamaged", formData.isDamaged);
   
       vehicle_cart_photos.forEach((file) => {
