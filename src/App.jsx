@@ -21,44 +21,45 @@ import PanelCarBody from './components/managementPanel/Car.jsx';
 import Third from './components/managementPanel/Third.jsx';
 
 function App() {
- 
+
    return (
-   
-   <>    
-    <Routes>
-         <Route path="/"      element={<Home />}/>
-         <Route path='/carBody'  element={<CarBody/>} />
-         <Route path='/life'     element={<Life/>} />
-         <Route path='/treatment'  element={<Treatment/>} />
-         <Route path='/pet'   element={<Pet/>} />
-         <Route path='/mobile'  element={<Mobile/>} />
-         <Route path='/psychology' element={<Psychology/>} />
-         <Route path='/legal-advice' element={<LegalAdvice/>} />
-         <Route path='/ministrant' element={<Ministrant/>} />
-         <Route path="login/*"  element={<Login/>}>
-                <Route
-                 index element={ <Input />} />
-                <Route
+
+      <>
+         <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/carBody' element={<CarBody />} />
+            <Route path='/life' element={<Life />} />
+            <Route path='/treatment' element={<Treatment />} />
+            <Route path='/pet' element={<Pet />} />
+            <Route path='/mobile' element={<Mobile />} />
+            <Route path='/psychology' element={<Psychology />} />
+            <Route path='/legal-advice' element={<LegalAdvice />} />
+            <Route path='/ministrant' element={<Ministrant />} />
+            <Route path="login/*" element={<Login />}>
+               <Route
+                  index element={<Input />} />
+               <Route
                   path="password"
-                  element={<Input /> } />
-         </Route>
+                  element={<Input />} />
+            </Route>
 
-         <Route path="dashbord/*"  element={<ManagementPanel/>}>
-            <Route index  element={< Profile/>}/>
-            <Route path='profile' element={< Profile/>}/>
-            <Route path='table' element={< ChildProfil/>}/>
-            <Route path="mycontracts"  element={<MyContracts />}/>
-            <Route path="services"  element={<Services />}/>
-           <Route  path="support" element={<Support />}/>
-        </Route>
+            <Route path="dashbord/*" element={<ManagementPanel />}>
+               <Route index element={< Profile />} />
+               <Route path='profile' element={< Profile />} />
+               <Route path='table' element={< ChildProfil />} />
+               <Route path="mycontracts" element={<MyContracts />} />
+               <Route path="services" element={<Services />} />
+               <Route path="support" element={<Support />} />
 
-        <Route  path="Third" element={<Third />}/>
-        <Route  path="car" element={<PanelCarBody />}/>
+            </Route>
+            <Route path="Third" element={<Third />} />
+            <Route path="car" element={<PanelCarBody />} />
 
-   </Routes>
-  
-   </>
-  )
+
+         </Routes>
+
+      </>
+   )
 }
 
 export default App
