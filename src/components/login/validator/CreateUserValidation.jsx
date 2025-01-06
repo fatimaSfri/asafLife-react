@@ -28,13 +28,13 @@ const CreateUserValidation = Joi.object({
       "string.pattern.base": "نام خانوادگی فقط می‌تواند شامل حروف فارسی و انگلیسی باشد.",
     }),
 
-  phone: Joi.string()
-    .pattern(/^09[0-9]{9}$/)
-    .required()
-    .messages({
-      "string.empty": "شماره تماس نمی‌تواند خالی باشد.",
-      "string.pattern.base": "شماره تماس باید با ۰۹ شروع شده و شامل ۱۱ رقم باشد.",
-    }),
+  // phone: Joi.string()
+  //   .pattern(/^09[0-9]{9}$/)
+  //   .required()
+  //   .messages({
+  //     "string.empty": "شماره تماس نمی‌تواند خالی باشد.",
+  //     "string.pattern.base": "شماره تماس باید با ۰۹ شروع شده و شامل ۱۱ رقم باشد.",
+  //   }),
 
 });
 

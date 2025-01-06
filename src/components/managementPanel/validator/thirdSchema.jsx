@@ -11,7 +11,7 @@ const ThirdSchema = Joi.object({
 
   phone: Joi.string()
     .trim()
-    .pattern(/^09[0-9]{9}]$/)
+    .pattern(/^09[0-9]{9}$/)
     .required()
     .label("شماره تلفن")
     .messages({
@@ -26,7 +26,7 @@ const ThirdSchema = Joi.object({
     .required()
     .label("تاریخ تولد صاحب پلاک")
     .messages({
-      "string.pattern.base": "تاریخ تولد باید در فرمت YYYY/MM/DD باشد.",
+      "string.pattern.base": "تاریخ تولد باید در فرمت روز/ماه/سال باشد.",
       "string.empty": "تاریخ تولد الزامی است.",
       "string.base": "تاریخ تولد باید یک رشته باشد.",
       "any.required": "تاریخ تولد الزامی است.",

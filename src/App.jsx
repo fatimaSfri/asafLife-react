@@ -20,6 +20,8 @@ import ChildProfil from "./components/managementPanel/ChildProfil.jsx"
 import PanelCarBody from './components/managementPanel/Car.jsx';
 import Third from './components/managementPanel/Third.jsx';
 import InsuredPerson from './components/login/setInfo.jsx';
+import GetThaleth from './components/managementPanel/GetThaleth.jsx';
+import GetBimeBadane from './components/managementPanel/GetBimeBadane.jsx';
 
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
                <Route path="support" element={<Support />} />
                <Route path="car" element={<PanelCarBody />} />
                <Route path="Third" element={<Third />} />
+               <Route path="GetThird" element={< GetThaleth/>} />
+               <Route path="GetCar" element={<GetBimeBadane/>} />
           </Route>
             <Route path="insured-person" element={<InsuredPerson/>} />
             {/* <Route path="Third" element={<Third />} />

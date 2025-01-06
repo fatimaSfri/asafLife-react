@@ -341,7 +341,7 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const initialTimeOut = 120;
@@ -357,7 +357,7 @@ export default function Login() {
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
-
+  Cookies.remove('phone');
   const schema = Joi.object({
     phone: Joi.string()
       .pattern(new RegExp("^09[0-9]{9}$"))
@@ -461,7 +461,7 @@ useEffect(() => {
 const generateNewCode = () => {
   const newCode = Math.floor(1000 + Math.random() * 9000);
   const auth = JSON.parse(localStorage.getItem("auth")) || {};
-  const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
+  const userPhone = phone.phone || localStorage.getItem("userPhone");
 
   localStorage.setItem("userPhone", userPhone);
 
@@ -498,7 +498,7 @@ const sendSmsCode = async (phoneNumber) => {
 
 const verifyCode = async () => {
   try {
-    const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
+    const userPhone = phone.phone  || localStorage.getItem("userPhone");
 
     const response = await axiosInstance.post("user/verify-code", {
       phone: userPhone,
@@ -517,7 +517,7 @@ const verifyCode = async () => {
     //   navigate("/dashbord");
     // }
 
-    if (isInformationSet ?? false) {
+    if (!isInformationSet) {
       navigate("/insured-person", { state: { phone: userPhone } });
     } else {
       navigate("/dashbord");
