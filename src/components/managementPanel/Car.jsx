@@ -414,7 +414,7 @@ export default function Car() {
         setErrors(validationErrors);
         return;
       }
-      console.log("XXXXX")
+    
       
       const uploadData = new FormData();
       uploadData.append("address", formData.address);

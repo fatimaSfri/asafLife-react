@@ -11,7 +11,7 @@ const ThirdSchema = Joi.object({
 
   phone: Joi.string()
     .trim()
-    .pattern(/^\d{11}$/)
+    .pattern(/^09[0-9]{9}]$/)
     .required()
     .label("شماره تلفن")
     .messages({
