@@ -34,16 +34,10 @@ function  NewBanner(){
     
       // slider
       useEffect(() => {
-        const intervalId = setInterval(sliderTimeOut, 6000);
+        const intervalId = setInterval(sliderTimeOut, 10000);
         return () => clearInterval(intervalId); 
         });
-     
-    
-     function setActiveImage(index){
-       setNewIndex(index);   
-    }
-
-    
+        
 return (
      <>  
     {sliderImages[newIndex].componnet}
