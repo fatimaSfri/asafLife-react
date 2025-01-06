@@ -43,7 +43,7 @@ function  NewBanner(props){
     
       // slider
       useEffect(() => {
-        const intervalId = setInterval(sliderTimeOut, 6000);
+        const intervalId = setInterval(sliderTimeOut, 15000);
         return () => clearInterval(intervalId); 
         });
      
