@@ -522,7 +522,6 @@ const verifyCode = async () => {
     } else {
       navigate("/dashbord");
     }
-
     return response.data;
   } catch (error) {
     console.log("Code:", code.code);

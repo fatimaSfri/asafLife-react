@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../axiosConfig";
 
+
 const GetBimeBadane = () => {
   const [bimeha, setBimeh] = useState([]);
   const [filterBimeha, setfilterBimeha] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const recordsPerPage = 10;
+
+
+  const convertToPersianNumbers = (num) => {
+    const persianNumbers = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    return num.toString().split('').map(char => persianNumbers[parseInt(char)] || char).join('');
+  };
 
   useEffect(() => {
     const fetchBimeBadaneh = async () => {
@@ -39,7 +46,6 @@ const GetBimeBadane = () => {
 
   const generatePageNumbers = () => {
     const pageNumbers = [];
-
     if (totalPages <= 5) {
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
@@ -63,14 +69,13 @@ const GetBimeBadane = () => {
 
       pageNumbers.push(totalPages);
     }
-
     return pageNumbers;
   };
 
   return (
-    <div className="w-full h-full pt-2 " dir="rtl">
+    <div className="w-full h-full pt-6" dir="rtl">
       <div className="w-full overflow-x-auto shadow-lg rounded-lg">
-        <table className="min-w-full table-auto">
+        <table className="min-w-full table-auto mt-[20%]">
           <thead>
             <tr className="text-right">
               <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">شماره همراه</th>
@@ -148,7 +153,7 @@ const GetBimeBadane = () => {
               : "bg-white hover:bg-gray-50"
               }`}
           >
-            {pageNum}
+            {convertToPersianNumbers(pageNum)} 
           </button>
         ))}
 
