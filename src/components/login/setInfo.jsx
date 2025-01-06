@@ -53,12 +53,14 @@ export default function InsuredPerson() {
             e.preventDefault();
             
             if (!handleValidation()) {
+                console.log("ressss")
                 setSubmitted(false);
                 return;
             }
             
             console.log(formData)
             try {
+
                 const res = await axiosInstance.post("/user/set-user-information", formData);
                 console.log(res.data)
                 localStorage.setItem("set-user-information", JSON.stringify(formData));
@@ -66,7 +68,7 @@ export default function InsuredPerson() {
                     first_name: "",
                     last_name: "",
                     // password: "",
-                    phone: "",
+                    phone: phoneFromState,
                 });
 
                 navigate("/dashbord")
@@ -144,7 +146,7 @@ export default function InsuredPerson() {
                                     error={errors.last_name}
                                 />
                             </div>
-                            <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
+                            {/* <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
                                 <InputField
                                     items="items-start"
                                     label="شماره تماس"
@@ -153,7 +155,7 @@ export default function InsuredPerson() {
                                     onChange={handleInputChange}
                                     error={errors.phone}
                                 />
-                            </div>
+                            </div> */}
                             <div className="w-full">
                                 <Button mt="mt-10" type="submit" width="w-8/12" />
                             </div>

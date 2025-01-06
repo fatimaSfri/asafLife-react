@@ -113,7 +113,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   ثالث بدنه
+                   ثالث 
                 </li>
               </NavLink>
 

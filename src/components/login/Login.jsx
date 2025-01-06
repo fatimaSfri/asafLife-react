@@ -509,11 +509,18 @@ const verifyCode = async () => {
     setApiError("");
 
     const { isInformationSet } = response.data;
+    console.log("isInformationSet:", isInformationSet);
 
-    if (isInformationSet) {
-      navigate("/dashboard");
-    } else {
+    // if (!isInformationSet) {
+    //   navigate("/insured-person", { state: { phone: userPhone } });
+    // } else {
+    //   navigate("/dashbord");
+    // }
+
+    if (isInformationSet ?? false) {
       navigate("/insured-person", { state: { phone: userPhone } });
+    } else {
+      navigate("/dashbord");
     }
 
     return response.data;

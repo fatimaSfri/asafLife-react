@@ -378,57 +378,68 @@ export default function Car() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("Form Data before submission:", formData);
-    console.log("Selected Files:", selectedFiles);
-
-    if (
-      !formData.address ||
-      !formData.phone ||
-      !selectedFiles.vehicle_cart_photos.length ||
-      !selectedFiles.insurer_photo
-    ) {
-      setErrors({
-        address: !formData.address ? "آدرس الزامی است." : "",
-        phone: !formData.phone ? "شماره تلفن الزامی است." : "",
-        vehicle_cart_photos: !selectedFiles.vehicle_cart_photos.length ? "تصاویر کارت ماشین الزامی هستند." : "",
-        insurer_photo: !selectedFiles.insurer_photo ? "تصویر بیمه‌نامه الزامی است." : "",
-      });
-      return;
-    }
-
+    
     try {
-      const uploadData = new FormData();
+      const dataToValidate = {
+        address: formData.address,
+        phone: formData.phone,
+        vehicle_cart_photos: selectedFiles.vehicle_cart_photos.map((file) => ({
+          type: file.type,
+          size: file.size,
+        })),
+        national_cart_photo: selectedFiles.national_cart_photo
+          ? {
+              type: selectedFiles.national_cart_photo.type,
+              size: selectedFiles.national_cart_photo.size,
+            }
+          : undefined,
+        insurer_photo: selectedFiles.insurer_photo
+          ? {
+              type: selectedFiles.insurer_photo.type,
+              size: selectedFiles.insurer_photo.size,
+            }
+          : undefined,
+      };
 
-      uploadData.append("address", formData.address);
-      uploadData.append("phone", formData.phone);
-
-      selectedFiles.vehicle_cart_photos.forEach((file) => {
-        uploadData.append("vehicle_cart_photos", file);
-      });
-
-      uploadData.append("insurer_photo", selectedFiles.insurer_photo);
-      if (selectedFiles.national_cart_photo) {
-        uploadData.append("national_cart_photo", selectedFiles.national_cart_photo);
-      }
-
-      const { error } = BadanehSchema.validate(formData, { abortEarly: false });
-
+  
+      const { error } = BadanehSchema.validate(dataToValidate, { abortEarly: false });
+      
       if (error) {
-        console.error("Validation errors:", error.details);
-        setErrors(error.details[0].message);
+        console.log(error)
+        const validationErrors = {};
+        error.details.forEach((detail) => {
+          console.log(detail)
+          validationErrors[detail.context.key] = detail.message;
+        });
+        setErrors(validationErrors);
         return;
       }
-
+      console.log("XXXXX")
+      
+      const uploadData = new FormData();
+      uploadData.append("address", formData.address);
+      uploadData.append("phone", formData.phone);
+  
+      selectedFiles.vehicle_cart_photos.forEach((file) => {
+        uploadData.append("vehicle_cart_photos", file.raw || file);
+      });
+  
+      if (selectedFiles.national_cart_photo) {
+        uploadData.append("national_cart_photo", selectedFiles.national_cart_photo.raw || selectedFiles.national_cart_photo);
+      }
+  
+      if (selectedFiles.insurer_photo) {
+        uploadData.append("insurer_photo", selectedFiles.insurer_photo.raw || selectedFiles.insurer_photo);
+      }
       const response = await axiosInstance.post("/badane", uploadData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
-
-      console.log("Response:", response.data);
-      setFormData({
-        address: "",
-        phone: "",
-      });
+      console.log('Response:', response.data);
+      
+  
+      setFormData({ address: "", phone: "" });
       setSelectedFiles({
         vehicle_cart_photos: [],
         national_cart_photo: null,
@@ -436,10 +447,9 @@ export default function Car() {
       });
       setErrors({});
       setBackendErrors({});
-
+  
       setSuccessPopup(true);
       setSuccessMessage("اطلاعات با موفقیت ارسال شد.");
-
       setTimeout(() => {
         setFormData({
           address: "",
@@ -450,7 +460,7 @@ export default function Car() {
           national_cart_photo: null,
           insurer_photo: null,
         });
-      }, 5000);
+      }, 2000);
     } catch (error) {
       console.error("Error sending data:", error.response ? error.response.data : error.message);
       setPopup({
@@ -469,9 +479,9 @@ export default function Car() {
       }
     }
   };
+  
 
   const handleInputChange = (e) => {
-    console.log("Input changed:", e.target.name, e.target.value);
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -480,7 +490,6 @@ export default function Car() {
   };
 
   const handleFileChange = (e) => {
-    console.log("File change event:", e.target.files);
     const files = e.target.files;
     if (files.length > 0) {
       setSelectedFiles((prevState) => ({
@@ -502,7 +511,6 @@ export default function Car() {
 
   const handleCheckChange = (checked) => {
     setIsChecked(checked);
-    console.log("چک باکس تغییر کرد:", checked);
   };
 
   return (
@@ -555,8 +563,8 @@ export default function Car() {
                   setSelectedFiles((prevState) => ({
                     ...prevState,
                     vehicle_cart_photos: files.slice(0, 2),
-                    national_cart_photo: files[2],
-                    insurer_photo: files[3],
+                    insurer_photo:files[2] ,
+                    national_cart_photo: files[3],
                   }))
                 }
                 textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
@@ -566,14 +574,14 @@ export default function Car() {
                 count={4}
               />
             </div>
-            {errors.address && (
+            {errors.vehicle_cart_photos && (
               <p className="text-red-500 text-sm mt-2 max-lg:w-11/12 xl:w-8/12 mx-auto">
-                {errors.address}
+                {errors.vehicle_cart_photos}
               </p>
             )}
-            {errors.phone && (
+            {errors.insurer_photo && (
               <p className="text-red-500 text-sm mt-2 max-lg:w-11/12 xl:w-8/12 mx-auto">
-                {errors.phone}
+                {errors.insurer_photo}
               </p>
             )}
             <div className="max-lg:w-11/12 lg:w-11/12 mt-10 rounded-lg flex flex-col items-center justify-center ">

@@ -57,29 +57,23 @@ const BadanehSchema = Joi.object({
     "string.base": "آدرس باید یک رشته باشد.",
     "any.required": "آدرس الزامی است.",
   }),
-
   phone: Joi.string()
     .trim()
     .pattern(/^\d{11}$/)
     .required()
     .label("شماره تلفن")
     .messages({
-      "string.pattern.base":
-        "شماره تلفن باید با ۰۹ شروع شده و دقیقاً ۱۱ رقم داشته باشد.",
+      "string.pattern.base": "شماره تلفن باید با ۰۹ شروع شده و دقیقاً ۱۱ رقم داشته باشد.",
       "string.empty": "شماره تلفن الزامی است.",
       "string.base": "شماره تلفن باید یک رشته باشد.",
       "any.required": "شماره تلفن الزامی است.",
     }),
-
   vehicle_cart_photos: Joi.array()
     .items(
       Joi.object({
-        file: Joi.object({
-          type: Joi.string().valid("image/jpeg", "image/png").required(),
-          size: Joi.number().integer().min(1).max(500000).required(),
-        }).required(),
-        base64: Joi.string().required(),
-      })
+        type: Joi.string().valid("image/jpeg", "image/png").required(),
+        size: Joi.number().integer().min(1).max(500000).required(),
+      }).required()
     )
     .min(1)
     .label("تصاویر کارت ماشین")
@@ -87,26 +81,22 @@ const BadanehSchema = Joi.object({
       "array.min": "حداقل یک تصویر باید انتخاب شود.",
       "any.required": "تصاویر کارت ماشین الزامی هستند.",
     }),
-
-    national_cart_photo: Joi.object({
-    file: Joi.object({
-      type: Joi.string().valid("image/jpeg", "image/png").required(),
-      size: Joi.number().integer().min(1).max(500000).required(),
-    }).required(),
-    base64: Joi.string().required(),
+  national_cart_photo: Joi.object({
+    type: Joi.string().valid("image/jpeg", "image/png").required(),
+    size: Joi.number().integer().min(1).max(500000).required(),
   })
     .optional()
     .label("تصویر کارت ملی"),
-
-    insurer_photo: Joi.object({
-    file: Joi.object({
-      type: Joi.string().valid("image/jpeg", "image/png").required(),
-      size: Joi.number().integer().min(1).max(500000).required(),
-    }).required(),
-    base64: Joi.string().required(),
+  insurer_photo: Joi.object({
+    type: Joi.string().valid("image/jpeg", "image/png").required(),
+    size: Joi.number().integer().min(1).max(500000).required(),
   })
-    .optional()
-    .label("تصویر بیمه‌نامه"),
+    .required()
+    .label("تصویر بیمه‌نامه")
+    .messages({
+      "any.required": "تصاویر کارت ماشین الزامی هستند.",
+      "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
+    }),
 });
 
 export default BadanehSchema;
