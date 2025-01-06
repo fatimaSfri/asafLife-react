@@ -94,7 +94,7 @@
 
 import React, { useState,useEffect } from "react";
 
-export default function FileUploadComponent({ setFiles, textbox1, textbox2 , textbox3 ,textbox4 , count }){
+export default function FileUploadComponent({ setFiles, textbox1, textbox2 , textbox3 ,textbox4 , count , grid }){
 
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
@@ -118,7 +118,7 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2 , tex
     }
   };
 
-  // حذف فایل انتخاب‌شده
+ 
   const handleFileRemove = (index) => () => {
     const newSelectedFiles = [...selectedFiles];
     const newPreviews = [...previews];
@@ -132,13 +132,13 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2 , tex
   const uploadTexts = [textbox1, textbox2, textbox3 , textbox4];
 
   return (
-    <div className="w-11/12 lg:h-4/6 max-lg:h-[700px] max-md:h-[780px] mx-auto p-4 border-dashed bg-white rounded-md flex max-md:flex-col items-center justify-center">
+    <div className={`w-full mx-auto p-4 border-dashed bg-white rounded-md flex max-lg:flex-col items-center justify-center ${grid}`}>
       {selectedFiles.map((file, index) => (
         <React.Fragment key={index}>
-          <div className="bg-white rounded-lg p-4 flex flex-col flex-wrap justify-center gap-4">
+          <div className="bg-white  w-full rounded-lg p-4 flex flex-col flex-wrap justify-center items-center gap-4">
             <div
-              className={`flex flex-col items-center justify-center border border-gray-300 rounded-lg relative ${
-                file ? "w-52" : "p-4"
+              className={`flex flex-col items-center justify-center border border-gray-300 rounded-lg  ${
+                file ? "sm:w-52 max-sm:w-36" : "px-2 py-4"
               }`}
             >
               {!file ? (
@@ -168,7 +168,7 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2 , tex
                   />
                 </>
               ) : (
-                <div className="flex flex-col items-center justify-center w-full h-32 overflow-hidden">
+                <div className="flex flex-col items-center justify-center w-full  h-32 overflow-hidden ">
                   <img
                     src={previews[index]}
                     alt={`Preview ${index + 1}`}
@@ -180,7 +180,7 @@ export default function FileUploadComponent({ setFiles, textbox1, textbox2 , tex
 
             
             {file && (
-              <div className="flex items-center justify-between mt-2 w-full overflow-hidden">
+              <div className="flex items-center justify-between mt-2 w-10/12 overflow-hidden">
                 <span className="text-sm text-gray-700 flex-grow w-10 px-4">
                   {file.name}
                 </span>

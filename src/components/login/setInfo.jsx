@@ -2,8 +2,9 @@ import Button from "./Button.jsx";
 import axiosInstance from "../axiosConfig.js";
 import { useState, useCallback } from "react";
 import InputField from "./InputForDashbord.jsx";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CreateUserValidation from "./validator/CreateUserValidation.jsx"; 
+
 
 export default function InsuredPerson() {
     const location = useLocation();
@@ -18,7 +19,8 @@ export default function InsuredPerson() {
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-
+    const navigate = useNavigate();
+    
     const toEnglishNumbers = (str) => {
         return str.replace(/[۰-۹]/g, (d) => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
     };
@@ -51,35 +53,29 @@ export default function InsuredPerson() {
             e.preventDefault();
             
             if (!handleValidation()) {
+                console.log("ressss")
                 setSubmitted(false);
                 return;
             }
             
             console.log(formData)
             try {
-                const token = document.cookie
-                    .split('; ')
-                    .find(row => row.startsWith('X-token='))
-                    ?.split('=')[1];
 
-                await axiosInstance.post("/user/set-user-information", formData ,{
-                    headers: {
-                        'X-token': token,
-                    }
-                });
+                const res = await axiosInstance.post("/user/set-user-information", formData);
+                console.log(res.data)
                 localStorage.setItem("set-user-information", JSON.stringify(formData));
-                
                 setFormData({
                     first_name: "",
                     last_name: "",
                     // password: "",
-                    phone: "",
+                    phone: phoneFromState,
                 });
 
+                navigate("/dashbord")
                 setSubmitted(true);
                 setShowPopup(true);
                 setTimeout(() => setShowPopup(false), 7000);
-                setTimeout(() => navigate("/dashboard") , 5000);
+                
                 
             } catch (error) {
                 const backendErrors = {};
@@ -150,7 +146,7 @@ export default function InsuredPerson() {
                                     error={errors.last_name}
                                 />
                             </div>
-                            <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
+                            {/* <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
                                 <InputField
                                     items="items-start"
                                     label="شماره تماس"
@@ -159,7 +155,7 @@ export default function InsuredPerson() {
                                     onChange={handleInputChange}
                                     error={errors.phone}
                                 />
-                            </div>
+                            </div> */}
                             <div className="w-full">
                                 <Button mt="mt-10" type="submit" width="w-8/12" />
                             </div>

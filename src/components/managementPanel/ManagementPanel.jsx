@@ -19,7 +19,7 @@ export default function ManagementPanel() {
     const fetchUsers = async () => {
       try {
         console.log('درخواست اطلاعات کاربران...');
-        const response = await axiosInstance.get("/user");
+        const response = await axiosInstance.get("/user/dashbored");
         if (response.data) {
           console.log(response.data);
           const currentUserPhone = localStorage.getItem('phone');
@@ -53,7 +53,7 @@ export default function ManagementPanel() {
 
   return (
     <>
-      <header className="rounded-b-sm  pt-0 w-full fixed z-40 " >
+      <header className="rounded-b-sm  pt-0 w-full fixed z-40" >
         {toggle ? (
           <MenuForPannel></MenuForPannel>
         )
@@ -100,7 +100,7 @@ export default function ManagementPanel() {
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 absolute ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    بدنه
                 </li>
@@ -113,7 +113,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   ثالث بدنه
+                   ثالث 
                 </li>
               </NavLink>
 
