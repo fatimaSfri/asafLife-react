@@ -79,17 +79,18 @@ const GetThaleth = () => {
 
   return (
     <div className="w-full h-full pt-2" dir="rtl">
-      <div className="w-full overflow-x-auto shadow-lg rounded-lg pb-50">
-        <table className="min-w-full table-auto ">
-          <thead>
-            <tr className="text-right relative">
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">تاریخ تولد صاحب پلاک</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">تلفن همراه</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">آدرس</th>
-            </tr>
-          </thead>
-
-          <tbody className="divide-y divide-gray-200">
+      <div className="w-full overflow-x-auto shadow-lg rounded-lg ">
+        <div className="h-20"></div>
+        <table className="w-full max-md:w-[95%] h-1/3  rounded-2xl overflow-hidden " >
+            <thead>
+              <tr key={thaleth.id} className="bg-gray-200 rounded-2xl h-14 max-md:text-[12px] ">
+              <th className="">تاریخ تولد صاحب پلاک</th>
+              <th className="">تلفن همراه</th>
+              <th className="">آدرس</th>
+              <th className="">وضعیت</th>
+              </tr>
+            </thead>
+            <tbody>
             {loading ? (
               <tr>
                 <td colSpan="4" className="text-center py-4 text-gray-700">در حال بارگذاری...</td>
@@ -98,22 +99,27 @@ const GetThaleth = () => {
               getCurrentPageData().map((thaleth) => (
                 <tr
                   key={thaleth.id}
-                  className="hover:bg-gray-50 transition-colors duration-200 text-right"
+                  className="max-md:text-[12px]"
                 >
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  <td className="border border-gray-300 text-center">
                     {convertToShamsi(thaleth.owner_birthday)} {/* تاریخ به شمسی */}
                   </td>
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  <td className="border border-gray-300 text-center">
                     {convertToPersianNumbers(thaleth.phone)} {/* شماره به فارسی */}
                   </td>
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  <td className="border border-gray-300 text-center">
                     {thaleth.address}
+                  </td>
+                  <td className="border border-gray-300 text-center">
+                    {thaleth.status === "pending_review" ? "در انتظار بررسی" : thaleth.status}
                   </td>
                 </tr>
               ))
             )}
-          </tbody>
-        </table>
+             
+              
+            </tbody>
+          </table>
       </div>
 
       <div className="flex flex-wrap justify-center mt-6 gap-2">

@@ -18,7 +18,7 @@ const GetBimeBadane = () => {
   useEffect(() => {
     const fetchBimeBadaneh = async () => {
       try {
-        const response = await axiosInstance.get("badane/my-badane");
+        const response = await axiosInstance.get("badane/report");
         console.log(response.data);
         if (response.data && Array.isArray(response.data.data)) {
           setBimeh(response.data.data);
@@ -75,14 +75,16 @@ const GetBimeBadane = () => {
   return (
     <div className="w-full h-full pt-6" dir="rtl">
       <div className="w-full overflow-x-auto shadow-lg rounded-lg">
-        <table className="min-w-full table-auto mt-[20%]">
+        <div className="h-20"></div>
+        <table className="w-full max-md:w-[95%] h-1/3  rounded-2xl overflow-hidden ">
           <thead>
-            <tr className="text-right">
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">شماره همراه</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">آدرس</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">عکس کارت ماشین (پشت و رو)</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">کارت ملی</th>
-              <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">تصویر بیمه نامه</th>
+            <tr className="bg-gray-200 rounded-2xl h-14 max-md:text-[12px] ">
+              <th className="">شماره همراه</th>
+              <th className="">آدرس</th>
+              <th className="">وضعیت</th>
+              {/* <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">عکس کارت ماشین (پشت و رو)</th> */}
+              {/* <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">کارت ملی</th> */}
+              {/* <th className="px-2 md:px-6 py-4 text-xs md:text-sm font-medium text-gray-700">تصویر بیمه نامه</th> */}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -93,14 +95,20 @@ const GetBimeBadane = () => {
             ) : (
               getCurrentPageData().map((badaneh) => (
                 <tr
-                  key={badaneh.phone}
+                  key={badaneh.id}
                   className="hover:bg-gray-50 transition-colors duration-200 text-right"
                 >
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  <td className="border border-gray-300 text-center">
+                    {badaneh.phone}
+                  </td>
+                  <td className="border border-gray-300 text-center">
                     {badaneh.address}
                   </td>
+                  <td className="border border-gray-300 text-center">
+                    {badaneh.status === "pending_review" ? "در انتظار بررسی" : badaneh.status}
+                  </td>
 
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  {/* <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
                     {badaneh.vehicle_cart_photos && badaneh.vehicle_cart_photos.map((photo, index) => (
                       <img
                         key={index}
@@ -109,8 +117,8 @@ const GetBimeBadane = () => {
                         className="w-16 h-16 rounded-md object-cover mx-1 inline-block"
                       />
                     ))}
-                  </td>
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  </td> */}
+                  {/* <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
                     {badaneh.national_cart_photo && (
                       <img
                         src={badaneh.national_cart_photo}
@@ -118,8 +126,8 @@ const GetBimeBadane = () => {
                         className="w-16 h-16 rounded-md object-cover"
                       />
                     )}
-                  </td>
-                  <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
+                  </td> */}
+                  {/* <td className="px-2 md:px-6 py-4 text-xs md:text-sm text-gray-700">
                     {badaneh.insurer_photo && (
                       <img
                         src={badaneh.insurer_photo}
@@ -127,7 +135,7 @@ const GetBimeBadane = () => {
                         className="w-16 h-16 rounded-md object-cover"
                       />
                     )}
-                  </td>
+                  </td> */}
                 </tr>
               ))
             )}
@@ -153,7 +161,7 @@ const GetBimeBadane = () => {
               : "bg-white hover:bg-gray-50"
               }`}
           >
-            {convertToPersianNumbers(pageNum)} 
+            {convertToPersianNumbers(pageNum)}
           </button>
         ))}
 

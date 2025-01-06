@@ -39,7 +39,7 @@ function App() {
             <Route path='/psychology' element={<Psychology />} />
             <Route path='/legal-advice' element={<LegalAdvice />} />
             <Route path='/ministrant' element={<Ministrant />} />
-            
+
             <Route path="login/*" element={<Login />}>
                <Route
                   index element={<Input />} />
@@ -64,7 +64,8 @@ function App() {
             {/* <Route path="Third" element={<Third />} />
             <Route path="car" element={<PanelCarBody />} /> */}
          </Routes>
-
+         
+            
       </>
 
    )
