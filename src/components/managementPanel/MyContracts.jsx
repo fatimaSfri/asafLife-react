@@ -1,10 +1,17 @@
 import {Link} from "react-router-dom";
+import InsuranceCard from "./InsuranceCard.jsx"
 
 export default function MyContracts() {
   return (
     <>
-   
-   <div className="w-full h-full flex items-center justify-center " >
+
+   <div className="w-full h-full flex flex-col items-center justify-center gap-10  overflow-auto " >
+      <div className="lg:w-10/12 max-lg:w-full flex items-center justify-evenly gap-2 overflow-auto  flex-wrap ">
+      <InsuranceCard bgColor="bg-[#59169d]" textColor="text-[#59169d]" title="بیمه ثالث بدنه" number="٢" ></InsuranceCard>
+      <InsuranceCard bgColor="bg-[#115052]" textColor="text-[#115052]" title="بیمه زندگی " number="٢"></InsuranceCard>
+      <InsuranceCard bgColor="bg-[#fdce0b]" textColor="text-[#fdce0b]" title="بیمه خدام " number="٣ "></InsuranceCard>
+  
+      </div>
     <table className="md:w-10/12 max-md:w-[95%] h-1/3  rounded-2xl overflow-hidden " >
     <thead>
       <tr className="bg-gray-200 rounded-2xl h-14 max-md:text-[12px] ">
