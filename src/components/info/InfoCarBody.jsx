@@ -22,7 +22,7 @@ export const infoData = [
 
 export default function InfoCarBody() {
   return (
-        <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-carBody" data-aos="fade-up" data-aos-duration="2000">
+        <div className="w-full flex justify-center items-center  max-lg:flex-col-reverse my-32 py-8 bg-carBody" data-aos="fade-right" data-aos-duration="2000">
           {/* Information Section */}
           <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
             <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
@@ -39,7 +39,7 @@ export default function InfoCarBody() {
     
           {/* Image Section */}
        <div className="max-lg:w-full h-[400px] flex items-center justify-center overflow-hidden">
-          <img src="./img/info/car-ob.webp" alt="" className= " md:object-cover md:h-full md:min-w-[750px] max-sm:min-w-[650px] max-xl:p-14 max-lg:p-4 xl:p-2" />
+          <img src="./img/info/car-ob.webp" alt="" className= " md:object-cover md:h-full md:min-w-[750px] max-sm:min-w-[650px] max-xl:p-14 max-lg:p-4 xl:p-2 " />
         </div>
     </div>
     

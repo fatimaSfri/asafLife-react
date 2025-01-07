@@ -34,7 +34,7 @@ export default function Informathion() {
 
   return (
     // bg-[url('../../img/elderly/background.jpg')]
-    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-elderly" data-aos="fade-up" data-aos-duration="2000">
+    <div className="w-full flex justify-center items-center  max-lg:flex-col-reverse my-32 py-8 bg-elderly" data-aos="fade-right" data-aos-duration="2000">
       {/* Information Section */}
       <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
         <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
@@ -61,7 +61,7 @@ export default function Informathion() {
     <img src="./img/elderly/iconOne.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12  max-sm:ml-3 -rotate-[20deg] suspended-heart"/>
     </div></div>
 
-     <img src="./img/elderly/elderly.webp" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4" />
+     <img src="./img/elderly/elderly.webp" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4  "/>
       </div>
 
     </div>

@@ -1,4 +1,4 @@
-import  {  useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import Navbar from '../navbar/Navbar.jsx'
 import Footer from '../footer/Footer.jsx'
 import PreviewCounseling from '../counseling/PreviewCounseling.jsx';
@@ -9,6 +9,19 @@ export default function CarBody() {
     window.scrollTo(0, 0);
   }, []);
 
+  const [play,setPlay]= useState(true)
+    
+    useEffect(()=>{
+    if(window.innerWidth<900){
+      setPlay(false)
+    }else{
+      setPlay(true)
+    }
+    },[])
+  
+
+
+
   return (
     <>
  
@@ -16,10 +29,10 @@ export default function CarBody() {
    <Psychology ></Psychology>
    <div className='h-auto w-full bg-gray-200' >
    <div className='w-full  flex justify-center items-center py-16 '>
-   <video className="rounded-3xl  lg:h-[700px] "
+   <video className="rounded-3xl lg:h-[700px] "
         src= "./img/video/allinsurance.MP4"
         preload="auto"
-        autoPlay
+        autoPlay={play}
         loop
         controls
        >

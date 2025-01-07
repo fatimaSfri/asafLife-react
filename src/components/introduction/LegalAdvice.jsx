@@ -1,4 +1,4 @@
-import  {  useEffect } from 'react'
+import  { useState , useEffect } from 'react'
 import Navbar from '../navbar/Navbar.jsx'
 import Footer from '../footer/Footer.jsx'
 import PreviewCounseling from '../counseling/PreviewCounseling.jsx';
@@ -8,6 +8,17 @@ export default function CarBody() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [play,setPlay]= useState(true)
+    
+    useEffect(()=>{
+    if(window.innerWidth<900){
+      setPlay(false)
+    }else{
+      setPlay(true)
+    }
+    },[])
+  
 
   return (
     <>
@@ -20,7 +31,7 @@ export default function CarBody() {
    <video className="rounded-3xl  lg:h-[700px] "
         src= "./img/video/allinsurance.MP4"
         preload="auto"
-        autoPlay
+        autoPlay={play}
         loop
         controls
        >

@@ -28,7 +28,28 @@ export default function MenuForPannel() {
                  پروفایل 
               </li> 
             </NavLink>
-       
+            <NavLink
+                to="/dashbord/car"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   بدنه
+                </li>
+              </NavLink>
+              <NavLink
+                to="/dashbord/Third"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   ثالث 
+                </li>
+              </NavLink>
           <NavLink
                    to="/dashbord/services"
                    className={({ isActive }) =>

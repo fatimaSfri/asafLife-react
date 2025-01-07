@@ -1,5 +1,4 @@
-import Lottie from "lottie-react";
-import  phone   from  '/src/assets/json/PhoneService.json'
+import { Link } from "react-router-dom";
 
 function  Footer(){
     return(
@@ -44,13 +43,11 @@ function  Footer(){
         
         </div>
         
-        <img src="./img/footer/ASAFLogo.svg" alt="" className='w-[20%] h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' />
+       <a href="#"><img src="./img/footer/ASAFLogo.svg" alt="" className='w-[60%] lg:h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' /></a>
   </div>     
 </div>
 
     )
-
-
 
 }
 

@@ -1,4 +1,4 @@
-import  {  useEffect } from 'react'
+import  { useState,useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
@@ -9,6 +9,17 @@ export default function Mobile() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+const [play,setPlay]= useState(true)
+
+useEffect(()=>{
+if(window.innerWidth<900){
+  setPlay(false)
+}else{
+  setPlay(true)
+}
+},[])
+
 
   return (
 
@@ -22,11 +33,11 @@ export default function Mobile() {
               sizeTitle="xl:text-[76px] lg:text-[65px] md:text-[50px] max-md:text-[45px]" sizeSubTitle="xl:text-[42px] lg:text-[38px] max-lg:text-[28px]" 
           ></Text>
     
-        <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
+        <div className='md:w-6/12 max-md:w-11/12 max-sm:w-full flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
          <video className="rounded-lg"
         src= "./img/video/ministrant.MP4"
         preload="auto"
-        autoPlay
+        autoPlay={play}
         loop
         controls
        >
@@ -37,8 +48,8 @@ export default function Mobile() {
 
 
    <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full lg:h-[430px] max-lg:h-[300] py-4 flex justify-center items-center'>
-   <div className='w-[96%]  lg:h-[400px] max-lg:h-[500px] grid  gap-4 lg:grid-cols-2 max-lg:grid-cols-1 py-10 justify-items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
+   <div className='w-full lg:h-[330px]  py-4 flex justify-center items-center'>
+   <div className='w-[96%]  lg:h-[300px]  grid  gap-4 lg:grid-cols-2 max-lg:grid-cols-1 py-10 justify-items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
       <PhoneCall post=" کارشناس صدور" phone="09150758200"  employeeName="سرکار خانم صباغ" ></PhoneCall>
       <PhoneCall post=" کارشناس خسارت " phone="09021887644"  employeeName=" جناب آقای  حسین زاده" ></PhoneCall>
       <PhoneCall post="مدیریت" phone="09121887644"  employeeName=" جناب آقای مجتبایی " ></PhoneCall>

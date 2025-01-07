@@ -1,16 +1,25 @@
-import  {  useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import PreviewServices from '../services/PreviewSrvices';
 import PhoneCall from './PhoneCall';
 import Text from '../newbanner/Text';
-import Border from '../newbanner/border'
+
 
 export default function CarBody() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+   const [play,setPlay]= useState(true)
+     
+     useEffect(()=>{
+     if(window.innerWidth<900){
+       setPlay(false)
+     }else{
+       setPlay(true)
+     }
+     },[])
+   
   return (
     <>
   
@@ -23,11 +32,11 @@ export default function CarBody() {
         {/* text */}
         <Text colorText="text-[#552ade]"  title="بیمــه حیوانات خانگی "  subTitle=" خیالتون راحت ، حیوونتون بیمه ست " icon="./img/banner/animal/06-Shield.webp"  sizeTitle="xl:text-[55px] lg:text-[50px] md:text-[34px] max-md:text-[30px]" sizeSubTitle="xl:text-[34px] lg:text-[32px] max-lg:text-[20px]" colorSubTitle="text-[#552ade]"></Text>
     
-        <div className='md:w-6/12 max-md:w-11/12  flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
+        <div className='md:w-6/12 max-md:w-11/12 max-sm:w-full flex justify-center items-center py-16 max-md:-mt-20 xl:p-8'>
          <video className="rounded-lg"
         src= "./img/video/insurancePet.MP4"
         preload="auto"
-        autoPlay
+        autoPlay={play}
         loop
         controls
        >
@@ -37,8 +46,8 @@ export default function CarBody() {
    </div>
 
    <div className='h-auto w-full bg-gray-200' >
-   <div className='w-full lg:h-[370px] max-lg:h-[300] py-4 flex justify-center items-center'>
-   <div className='w-[96%] lg:h-[340px] max-lg:h-[500px] grid  gap-4 lg:grid-cols-3 max-lg:grid-cols-1 py-10 items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
+   <div className='w-full lg:h-[270px]  py-4 flex justify-center items-center'>
+   <div className='w-[96%] lg:h-[240px]  grid  gap-4 lg:grid-cols-3 max-lg:grid-cols-1 py-10 items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
    
       <PhoneCall post=" پشتیبانی " phone="09021887644"  employeeName=" " ></PhoneCall>
       <PhoneCall post="پشتیبانی "   phone="09366507644"  employeeName=" " ></PhoneCall>

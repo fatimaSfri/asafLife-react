@@ -37,16 +37,12 @@ function  NewBanner(){
         const intervalId = setInterval(sliderTimeOut, 6000);
         return () => clearInterval(intervalId); 
         });
-     
-    
-     function setActiveImage(index){
-       setNewIndex(index);   
-    }
-
-    
+        
 return (
      <>  
+     <div className='overflow-hidden '>
     {sliderImages[newIndex].componnet}
+    </div>
     </>
 
 )
