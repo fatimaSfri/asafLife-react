@@ -3,12 +3,8 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
-<<<<<<< HEAD
-import Cookies from 'js-cookie';
-=======
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
->>>>>>> origin/feature-auth
 
 export default function Login() {
   const initialTimeOut = 120;
