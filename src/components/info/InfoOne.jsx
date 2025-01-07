@@ -32,7 +32,7 @@ export default function Informathion() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center h-auto max-lg:flex-col-reverse my-32 py-8 bg-gray-100" data-aos="fade-up" data-aos-duration="2000">
+    <div className="w-full flex justify-center items-center  max-lg:flex-col-reverse my-32 py-8 bg-gray-100" data-aos="fade-right" data-aos-duration="2000">
       {/* Information Section */}
       <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
         <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
@@ -60,7 +60,7 @@ export default function Informathion() {
             <img src="./img/info/heart.png" alt="" className="md:w-16 md:h-16 max-md:w-14 max-md:h-14 mr-10" />
           </div>
           <img src="./img/info/bg-blue.png" alt="" className="w-full absolute self-center" />
-          <img src="./img/info/family-photo.png" alt="" className="w-11/12 absolute self-center mr-2" />
+          <img src="./img/info/family-photo.png" alt="" className="w-11/12 absolute self-center mr-2 " />
         </div>
       </div>
     </div>

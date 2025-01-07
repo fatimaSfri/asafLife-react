@@ -1,7 +1,7 @@
 
 export default function Text({colorText , title , subTitle , icon , sizeTitle , sizeSubTitle ,colorSubTitle }) {
   return (
-    <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex flex-col md:justify-center items-center md:mt-20 z-20 ">
+    <div className= " xl:max-w-[550px] max-xl:max-w-[400px] max-sm:min-w-[250px] jump-to-left flex flex-col md:justify-center items-center md:mt-20 z-20  ">
     <h1 className={` font-bold  whitespace-nowrap font-KalamehBold cursor-pointer ${sizeTitle} ${colorText}`}>{title}</h1>
    <p  className={` whitespace-nowrap text-white cursor-pointer ${sizeSubTitle} ${colorSubTitle} `} >
      {subTitle}</p>

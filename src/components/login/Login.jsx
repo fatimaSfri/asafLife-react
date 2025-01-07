@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const initialTimeOut = 120;
@@ -99,7 +100,7 @@ export default function Login() {
 
   useEffect(() => {
         axiosInstance.get("user/dashbord").then(res => {
-          console.log("کوکی:", response);
+          console.log("کوکی:", res);
           setApiError("");
         });
   },[]);
@@ -296,7 +297,7 @@ return (
             <Outlet context={{ inputProps }} />
             <div className="mt-4">
               <button
-                className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                className="sm:w-[250px] max-sm:w-[200px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                 onClick={() => {
                   if (validate()) {
                     localStorage.setItem("userPhone", phone.phone);
@@ -321,7 +322,7 @@ return (
             <div className="flex justify-around items-center w-[75%]">
               <div className="mt-4">
                 <button
-                  className="w-[250px]  h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  className="sm:w-[250px] max-sm:[100px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={handleErrorPass}
                 >
                   ورود
@@ -329,7 +330,7 @@ return (
               </div>
               <div className="mt-4">
                 <button
-                  className="sm:w-[250px] max-sm:w-1/2 h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  className="sm:w-[250px] max-sm:w-[100px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
                   onClick={() => {
                     navigate(`/login`);
                   }}
@@ -364,11 +365,12 @@ return (
         </div>
       </div>
       <div className="w-1/2 h-4/5 max-lg:w-full bo flex flex-col items-center lg:justify-center max-lg:justify-end">
+      <Link to="/"  className="md:w-[300px] max-md:w-7/12 xl:w-[48%]">
         <img
           src="../img/icon/ASAF.svg"
           alt=""
-          className="md:w-[300px] max-md:w-7/12 xl:w-[48%]"
-        />
+         
+        /></Link>
         <p className="text-white md:text-[38px] max-md:text-[30px]">
           آینده سازان آسایش فردا
         </p>
