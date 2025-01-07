@@ -517,10 +517,10 @@ const verifyCode = async () => {
     //   navigate("/dashbord");
     // }
 
-    if (!isInformationSet) {
-      navigate("/insured-person", { state: { phone: userPhone } });
-    } else {
+    if (isInformationSet === undefined) {
       navigate("/dashbord");
+    } else if (isInformationSet === false) {
+      navigate("/insured-person", { state: { phone: userPhone } });
     }
     return response.data;
   } catch (error) {
