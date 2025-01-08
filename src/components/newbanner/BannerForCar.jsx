@@ -59,16 +59,15 @@ export default function PsychologyBanner(props) {
            <img src='./img/banner/mouse.png' className='absolute z-30 lg:w-[30px] lg:h-[40px] max-lg:w-[20px] max-lg:h-[25px] movement -mb-[100px] md:ml-[70px] max-md:ml-[50px]  max-sm:hidden'></img>
           </div>
           
-           {/* object */}
+          {/* object */}
          <div className= {`md:h-4/5 xl:min-w-[500px] sm:min-w-[350px] max-sm:w-full max-md:h-3/6 -mb-[4.5rem] jump-to-right max-md:p-8 flex items-center 
         justify-center ${props.size}`} >
            <img src={image[0]} alt=""  className="max-md:h-full max-md:pb-5  absolute" />
         {carAnimation &&
          <img src={image[1]} className={ `max-md:h-full  max-md:pb-5 z-50 absolute ${Opacity ? 'opacity-100' : 'opacity-0'}`} ></img>}
         {!carAnimation &&
-        <img src={image[0]}  className={ `max-md:h-full  max-md:pb-5 z-50 absolute ${Opacity ? 'opacity-100' : 'opacity-0'}`} 
-         ></img>}
-          </div></div>
+        <img src={image[0]}  className={ `max-md:h-full  max-md:pb-5 z-50 absolute ${Opacity ? 'opacity-100' : 'opacity-0'}`} ></img>}
+       </div></div>
 
       )
     }

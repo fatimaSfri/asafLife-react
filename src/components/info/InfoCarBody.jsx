@@ -22,7 +22,7 @@ export const infoData = [
 
 export default function InfoCarBody() {
   return (
-        <div className="w-full flex justify-center items-center  max-lg:flex-col-reverse my-32 py-8 bg-carBody" data-aos="fade-right" data-aos-duration="2000">
+        <div className="w-full flex justify-center items-center max-md:h-screen max-lg:flex-col-reverse my-32 py-8 bg-carBody" data-aos="fade-right" data-aos-duration="2000">
           {/* Information Section */}
           <div className="lg:w-1/2 max-lg:w-full flex lg:justify-end max-lg:justify-center items-end max-sm:-mt-16">
             <div className="w-11/12 max-sm:w-full flex lg:items-end max-lg:items-center justify-center min-h-[450px] flex-col max-lg:mt-14">
