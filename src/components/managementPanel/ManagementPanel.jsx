@@ -82,9 +82,9 @@ export default function ManagementPanel() {
           <div className="w-full h-[1px] bg-black"></div>
 
           <div>
+            
             <ul className="xl:w-[300px] lg:w-[250px] h-[300px]  flex flex-col justify-evenly" >
-
-              <NavLink
+                <NavLink
                 to="/dashbord/profile"
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
@@ -160,17 +160,7 @@ export default function ManagementPanel() {
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   قرارداد های من </li></NavLink>
 
-              <NavLink
-                to="/dashbord/support"
-                className={({ isActive }) =>
-                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                } >
-                <li className="flex items-center gap-4">
-                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  پشتیبانی
-                </li></NavLink>
-
-
+          
               <li className="flex items-center gap-4">
                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                 خروج

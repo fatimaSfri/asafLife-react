@@ -15,20 +15,19 @@ export default function MenuForPannel() {
            <div className="w-full h-[1px] bg-black"></div>
        
            <div>
-           <ul className="max-sm:w-[250px] sm:w-[350px] h-[300px] flex  flex-col justify-evenly " >
-       
-           <NavLink
-                   to="/dashbord/profile"
-                   className={({ isActive }) =>
-                     isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                   }
-                 >
-               <li className="flex items-center gap-4  ">
-                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                 پروفایل 
-              </li> 
-            </NavLink>
-            <NavLink
+           <ul className="xl:w-[300px] lg:w-[250px] h-[300px]  flex flex-col justify-evenly" >
+                <NavLink
+                to="/dashbord/profile"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                  پروفایل
+                </li>
+              </NavLink>
+              <NavLink
                 to="/dashbord/car"
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
@@ -37,6 +36,17 @@ export default function MenuForPannel() {
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    بدنه
+                </li>
+              </NavLink>
+              <NavLink
+                to="/dashbord/GetCar"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   جدول بدنه 
                 </li>
               </NavLink>
               <NavLink
@@ -50,41 +60,45 @@ export default function MenuForPannel() {
                    ثالث 
                 </li>
               </NavLink>
-          <NavLink
-                   to="/dashbord/services"
-                   className={({ isActive }) =>
+              <NavLink
+                to="/dashbord/GetThird"
+                className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                     }> 
-                  <li className="flex items-center gap-4"> 
-                <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                }
+              >
+                <li className="flex items-center gap-4  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
+                   جدول ثالث 
+                </li>
+              </NavLink>
+
+
+              <NavLink
+                to="/dashbord/services"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }>
+                <li className="flex items-center gap-4">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   سرویس ها</li>
-        </NavLink>
-       
-        <NavLink
-                  to="/dashbord/mycontracts"
-                   className={({ isActive }) =>
-                 isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                     }>
+              </NavLink>
+                
+              <NavLink
+                to="/dashbord/mycontracts"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
+                }>
                 <li className="flex items-center gap-4">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  قرارداد های من </li></NavLink>
+
+          
+              <li className="flex items-center gap-4">
                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                 قرارداد های من </li></NavLink>
-        
-             <NavLink
-                  to="/dashbord/support"
-                   className={({ isActive }) =>
-               isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                  } >
-                <li className="flex items-center gap-4">
-                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-               پشتیبانی 
-                </li></NavLink>
-       
-           <li className="flex items-center gap-4">
-           <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-           خروج  
-           </li>
-       
-           </ul>
+                خروج
+              </li>
+
+            </ul>
           </div>
           </div>
         </div>

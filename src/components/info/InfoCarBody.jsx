@@ -39,7 +39,7 @@ export default function InfoCarBody() {
     
           {/* Image Section */}
        <div className="max-lg:w-full h-[400px] flex items-center justify-center overflow-hidden">
-          <img src="./img/info/car-ob.webp" alt="" className= " md:object-cover md:h-full md:min-w-[750px] max-sm:min-w-[650px] max-xl:p-14 max-lg:p-4 xl:p-2 " />
+          <img src="./img/info/car-ob.webp" alt="" className= " md:object-cover md:h-full md:min-w-[750px] max-sm:min-w-[500px] max-xl:p-14 max-lg:p-4 xl:p-2 " />
         </div>
     </div>
     

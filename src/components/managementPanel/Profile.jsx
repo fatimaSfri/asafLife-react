@@ -26,7 +26,7 @@ export default function Profile() {
             <p className="text-red-500 text-[20px] pr-1 my-2">*</p>
           </div>
        <textarea name="آدرس" id="1"
-        className="h-10 rounded-2xl px-5 w-full" >
+        className="h-10 rounded-2xl px-5 w-full py-2" >
        </textarea>
        </div>
        {/* phone */}

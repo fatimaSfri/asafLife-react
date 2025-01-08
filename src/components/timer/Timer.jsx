@@ -38,8 +38,7 @@ export default function TestTwo() {
   return (
     <div className='flex max-sm:flex-col-reverse justify-center items-center sm:gap-8 h-full lg:w-5/12 max-lg:w-full max-sm:w-full mx-auto  max-sm:h-[300px]  max-lg:relative max-lg:overflow-hidden px-6'>
       <div className='flex sm:flex-col sm:gap-6 max-sm:gap-6 justify-between items-center max-sm:h-2/6  max-sm:w-full md:h-[450px] max-lg:relative z-10  md:mr-10 max-sm:mt-8 '>
-      
-        <div className='w-10 h-10 flex items-center justify-center md:-ml-28 sm:-ml-12 
+       <div className='w-10 h-10 flex items-center justify-center md:-ml-28 sm:-ml-12 
         max-sm:-mt-14 lg:text-[22px] max-lg:text-[20px] text-white opacity-50 media-R'>{String(time.secendFour).padStart(2, '0')}</div>
         <div className='w-10 h-10 lg:text-[22px] max-lg:text-[20px] text-white opacity-75 flex items-center justify-center '>{String(time.secendThree).padStart(2, '0')}</div>
        
