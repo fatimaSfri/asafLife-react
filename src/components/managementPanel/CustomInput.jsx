@@ -10,6 +10,7 @@ export default function CustomInput({
     width,
     value,
     error,
+ 
   }) {
     return (
       <>

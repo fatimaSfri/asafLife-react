@@ -30,8 +30,13 @@ export default function Profile() {
        </textarea>
        </div>
        {/* phone */}
-       <div className=" h-20 flex items-center mt-6">
-       <p className="bg-white p-4 rounded-lg text-[#213063]">شماره موبایل ثبت شده: 09036886218</p></div>
+       {/* <div className=" h-20 flex items-center mt-6">
+       <p className="bg-white p-4 rounded-lg text-[#213063]">شماره موبایل ثبت شده: 09036886218</p></div> */}
+         <CustomInput
+        label="شماره تلفن"
+        value="*******0903"
+        readOnly="readonly"
+       ></CustomInput>
        <div className=" h-10 mt-10">
        <Button></Button></div>
     </div>
