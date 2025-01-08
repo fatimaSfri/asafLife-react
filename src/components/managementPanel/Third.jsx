@@ -30,6 +30,9 @@ export default function Third() {
   const [successPopup, setSuccessPopup] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
+  const toEnglishDigits = (str) => {
+    return str.replace(/[۰-۹]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
+  };
   useEffect(() => {
     let timeout;
     if (popup.show) {
@@ -53,7 +56,7 @@ export default function Third() {
     try {
       const dataToValidate = {
         owner_birthday: formData.owner_birthday,
-        phone: formData.phone,
+        phone: toEnglishDigits(formData.phone),
         address: formData.address,
         vehicle_cart_photos: selectedFiles.vehicle_cart_photos.map((file) => ({
           type: file.type,
@@ -82,9 +85,10 @@ export default function Third() {
 
       const uploadData = new FormData();
       const miladiDate = convertShamsiToMiladi(formData.owner_birthday);
-
+      console.log(selectedFiles.vehicle_cart_photos);
+      console.log(selectedFiles.certificate_photo);
       uploadData.append("owner_birthday", miladiDate);
-      uploadData.append("phone", formData.phone);
+      uploadData.append("phone", toEnglishDigits(formData.phone));
       uploadData.append("address", formData.address);
 
       selectedFiles.vehicle_cart_photos.forEach((file) => {

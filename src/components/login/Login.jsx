@@ -20,7 +20,7 @@ export default function Login() {
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
   const navigate = useNavigate();
-
+  Cookies.remove('phone');
   const schema = Joi.object({
     phone: Joi.string()
       .pattern(new RegExp("^09[0-9]{9}$"))
@@ -111,7 +111,7 @@ useEffect(() => {
 const generateNewCode = () => {
   const newCode = Math.floor(1000 + Math.random() * 9000);
   const auth = JSON.parse(localStorage.getItem("auth")) || {};
-  const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
+  const userPhone = phone.phone || localStorage.getItem("userPhone");
 
   localStorage.setItem("userPhone", userPhone);
 
@@ -148,7 +148,7 @@ const sendSmsCode = async (phoneNumber) => {
 
 const verifyCode = async () => {
   try {
-    const userPhone = phone.phone || Cookies.get("phone") || localStorage.getItem("userPhone");
+    const userPhone = phone.phone  || localStorage.getItem("userPhone");
 
     const response = await axiosInstance.post("user/verify-code", {
       phone: userPhone,
@@ -163,12 +163,11 @@ const verifyCode = async () => {
 
   
 
-    if (isInformationSet ?? false) {
-      navigate("/insured-person", { state: { phone: userPhone } });
-    } else {
+    if (isInformationSet === undefined) {
       navigate("/dashbord");
+    } else if (isInformationSet === false) {
+      navigate("/insured-person", { state: { phone: userPhone } });
     }
-
     return response.data;
   } catch (error) {
     console.log("Code:", code.code);
@@ -304,7 +303,7 @@ return (
             <Outlet context={{ inputProps }} />
             <div className="flex justify-around items-center lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 gap-8">
              
-              <div className="mt-4 w-1/2 ">
+            <div className="mt-4 w-1/2 ">
                 <button
                   className="w-full h-10 max-sm:text-[14px] text-[#213063] rounded-lg bg-gray-200"
                   onClick={() => {

@@ -12,7 +12,6 @@ export default function InsuredPerson() {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
-        phone: phoneFromState,
         // password: "",
     });
 
@@ -36,7 +35,7 @@ export default function InsuredPerson() {
         const { error } = CreateUserValidation.validate(formData, {
             abortEarly: false,
         });
-
+        console.log(error)
         const validationErrors = {};
         if (error) {
             error.details.forEach((detail) => {
@@ -61,14 +60,13 @@ export default function InsuredPerson() {
             console.log(formData)
             try {
 
-                const res = await axiosInstance.post("/user/set-user-information", formData);
+                const res = await axiosInstance.patch("/user/set-user-information", formData);
                 console.log(res.data)
                 localStorage.setItem("set-user-information", JSON.stringify(formData));
                 setFormData({
                     first_name: "",
                     last_name: "",
                     // password: "",
-                    phone: phoneFromState,
                 });
 
                 navigate("/dashbord")
@@ -83,9 +81,7 @@ export default function InsuredPerson() {
                 if (error.response && error.response.data) {
                     const { message, errors } = error.response.data;
 
-                    if (message?.includes(`شماره تلفن \"${formData.phone}\" قبلا ثبت شده است.`)) {
-                        backendErrors.phone = "شماره تماس وارد شده قبلاً ثبت شده است.";
-                    }
+                    
 
                     if (errors) {
                         for (const field in errors) {

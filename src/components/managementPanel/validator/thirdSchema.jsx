@@ -11,7 +11,7 @@ const ThirdSchema = Joi.object({
 
   phone: Joi.string()
     .trim()
-    .pattern(/^\d{11}$/)
+    .pattern(/^09[0-9]{9}$/)
     .required()
     .label("شماره تلفن")
     .messages({
@@ -26,7 +26,7 @@ const ThirdSchema = Joi.object({
     .required()
     .label("تاریخ تولد صاحب پلاک")
     .messages({
-      "string.pattern.base": "تاریخ تولد باید در فرمت YYYY/MM/DD باشد.",
+      "string.pattern.base": "تاریخ تولد باید در فرمت روز/ماه/سال باشد.",
       "string.empty": "تاریخ تولد الزامی است.",
       "string.base": "تاریخ تولد باید یک رشته باشد.",
       "any.required": "تاریخ تولد الزامی است.",
@@ -39,10 +39,12 @@ const ThirdSchema = Joi.object({
         size: Joi.number().integer().min(1).max(500000).required(),
       }).required()
     )
-    .min(1)
+    .min(2)
     .label("تصاویر کارت ماشین")
     .messages({
-      "array.min": "حداقل یک تصویر باید انتخاب شود.",
+      "array.min": "دو تصویر کارت ماشین الزامی هستند.",
+      "array.items.type": "فایل انتخاب شده باید یک تصویر باشد با فرمت jpeg یا png.",
+      "array.items.size": "حجم فایل نباید بیشتر از 500 کیلوبایت باشد.",
       "any.required": "تصاویر کارت ماشین الزامی هستند.",
     }),
 

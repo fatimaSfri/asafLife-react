@@ -75,10 +75,12 @@ const BadanehSchema = Joi.object({
         size: Joi.number().integer().min(1).max(500000).required(),
       }).required()
     )
-    .min(1)
+    .min(2)
     .label("تصاویر کارت ماشین")
     .messages({
-      "array.min": "حداقل یک تصویر باید انتخاب شود.",
+      "array.min": "تصاویر کارت ماشین الزامی هستند.",
+      "array.items.type": "فایل انتخاب شده باید یک تصویر باشد با فرمت jpeg یا png.",
+      "array.items.size": "حجم فایل نباید بیشتر از 500 کیلوبایت باشد.",
       "any.required": "تصاویر کارت ماشین الزامی هستند.",
     }),
   national_cart_photo: Joi.object({
