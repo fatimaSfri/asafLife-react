@@ -84,20 +84,7 @@ export default function Login() {
 
     return () => clearInterval(interval);
   }, [isActive, data.timeOut]);
-  // useEffect(() => {
-  //   const isLogedIn = async (cookie) => {
-  //     try {
-  //       const response = await axiosInstance.get("user/dashbord");
-  //       console.log("کوکی:", response);
-  //       setApiError("");
-  //       return response.data;
-  //     } catch (error) {
-
-  //       throw error;
-  //     }
-  //   }
-  // })
-
+  
   useEffect(() => {
         axiosInstance.get("user/dashbord").then(res => {
           console.log("کوکی:", res);
@@ -174,11 +161,7 @@ const verifyCode = async () => {
     const { isInformationSet } = response.data;
     console.log("isInformationSet:", isInformationSet);
 
-    // if (!isInformationSet) {
-    //   navigate("/insured-person", { state: { phone: userPhone } });
-    // } else {
-    //   navigate("/dashbord");
-    // }
+  
 
     if (isInformationSet ?? false) {
       navigate("/insured-person", { state: { phone: userPhone } });
@@ -319,18 +302,11 @@ return (
         {isPassword && (
           <>
             <Outlet context={{ inputProps }} />
-            <div className="flex justify-around items-center w-[75%]">
-              <div className="mt-4">
+            <div className="flex justify-around items-center lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 gap-8">
+             
+              <div className="mt-4 w-1/2 ">
                 <button
-                  className="sm:w-[250px] max-sm:[100px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
-                  onClick={handleErrorPass}
-                >
-                  ورود
-                </button>
-              </div>
-              <div className="mt-4">
-                <button
-                  className="sm:w-[250px] max-sm:w-[100px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  className="w-full h-10 max-sm:text-[14px] text-[#213063] rounded-lg bg-gray-200"
                   onClick={() => {
                     navigate(`/login`);
                   }}
@@ -338,13 +314,21 @@ return (
                   تصحیح شماره همراه
                 </button>
               </div>
+              <div className="mt-4 w-1/2 ">
+                <button
+                  className="w-full h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
+                  onClick={handleErrorPass}
+                >
+                  ورود
+                </button>
+              </div>
             </div>
           </>
         )}
 
-        <div className="md:w-[400px] max-md:w-10/12 h-20 flex items-center justify-center gap-5">
+        <div className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12  h-20 flex items-center justify-center gap-5">
           {isPassword && (
-            <div className="text-[14px] h-10 bg-gray-200 flex flex-row-reverse items-center justify-center max-sm:w-1/2 sm:w-[250px] rounded-lg text-bold md:text-[18px] gap-2">
+            <div className="text-[14px] h-10 bg-gray-200 flex flex-row-reverse items-center justify-center w-full rounded-lg text-bold md:text-[18px] gap-2 text-[#213063]">
               {data.timeOut !== null
                 ? `${String(Math.floor(data.timeOut / 60)).padStart(2, "0")}:${String(data.timeOut % 60).padStart(2, "0")}`
                 : ""}
@@ -353,7 +337,7 @@ return (
                 <>
                   <div className="w-[3px] rounded-2xl h-5 bg-[#55c7e0]"></div>
                   <p
-                    className="text-[14px] cursor-pointer max-sm:text-[12px]"
+                    className="text-[14px] cursor-pointer max-sm:text-[12px] text-[#213063]"
                     onClick={generateNewCode}
                   >
                     ارسال دوباره کد
