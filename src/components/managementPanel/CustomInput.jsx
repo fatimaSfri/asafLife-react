@@ -1,3 +1,5 @@
+
+
 export default function CustomInput({
     label,
     name,
@@ -8,6 +10,7 @@ export default function CustomInput({
     width,
     value,
     error,
+ 
   }) {
     return (
       <>

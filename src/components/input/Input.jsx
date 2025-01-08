@@ -28,7 +28,7 @@ function Input() {
   return (
     <div className="lg:w-[470px] max-lg:w-7/12 max-md:w-10/12 h-20 flex flex-col items-center">
       <div className="bg-white w-full rounded-xl h-4/5 flex items-center justify-end" dir="ltr">
-       <input
+         <input
                 type="text"
                 value={phoneView(value)}
                 onChange={(e) => handleChange(e)}
@@ -40,7 +40,7 @@ function Input() {
               </div>
       {validationError && (
         <span className="w-full text-[12px] text-red-500 pt-1 pr-1">
-          {typeof validationErrors === "string"
+          {typeof validationError === "string"
             ? validationError
             : JSON.stringify(validationError)}
         </span>

@@ -67,7 +67,7 @@ return (
      
         <Modal videoShow={videoShow}  setVideoShow={setVideoShow} defultVideo={sliderImages[newIndex].modalVideo} ></Modal>
         <Navbar></Navbar>
-          <div className="w-full z-10 h-[750px] flex items-end justify-center gap-4 pb-3 absolute">
+          <div className="w-full z-10 h-[750px] flex items-end justify-center gap-4 pb-3 absolute overflow-hidden">
           {sliderImages.map((item, index) => (
         <span
           key={index}

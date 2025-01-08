@@ -12,9 +12,8 @@ export default function Menu() {
       <div className='h-[2px] w-full bg-gray-400 mt-4'></div>
       <div className='w-full h-[10%] flex items-center justify-center'>
       <div className='w-[50px]  h-3/6 rounded-lg bg-blue-950 flex items-center justify-center ' >
-       <img src="./img/icon/search.png" alt=""  className='w-6 h-6'/></div>
-       <input type="search" placeholder='جستجو' className='w-full  h-3/6 bg-white px-4 rounded-r-lg '/>
-                     
+       <img src="./img/icon/Search.svg" alt=""  className='w-6 h-6'/></div>
+       <input type="search" placeholder='جستجو' className='w-full  h-3/6 bg-white px-4 rounded-r-lg '/>           
       </div>
       <div className='w-full  h-full flex flex-col '>
         {/* ************ */}

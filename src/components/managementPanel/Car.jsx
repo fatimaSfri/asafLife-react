@@ -29,6 +29,10 @@ export default function Car() {
   const [successPopup, setSuccessPopup] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
+  const toEnglishDigits = (str) => {
+    return str.replace(/[۰-۹]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
+  };
+  
   useEffect(() => {
     let timeout;
     if (popup.show) {
@@ -48,7 +52,7 @@ export default function Car() {
     try {
       const dataToValidate = {
         address: formData.address,
-        phone: formData.phone,
+        phone: toEnglishDigits(formData.phone),
         vehicle_cart_photos: selectedFiles.vehicle_cart_photos.map((file) => ({
           type: file.type,
           size: file.size,
@@ -84,7 +88,7 @@ export default function Car() {
       
       const uploadData = new FormData();
       uploadData.append("address", formData.address);
-      uploadData.append("phone", formData.phone);
+      uploadData.append("phone", toEnglishDigits(formData.phone));
   
       selectedFiles.vehicle_cart_photos.forEach((file) => {
         uploadData.append("vehicle_cart_photos", file.raw || file);
@@ -93,10 +97,12 @@ export default function Car() {
       if (selectedFiles.national_cart_photo) {
         uploadData.append("national_cart_photo", selectedFiles.national_cart_photo.raw || selectedFiles.national_cart_photo);
       }
-  
+      
       if (selectedFiles.insurer_photo) {
         uploadData.append("insurer_photo", selectedFiles.insurer_photo.raw || selectedFiles.insurer_photo);
       }
+
+      console.log('Upload data:', uploadData);
       const response = await axiosInstance.post("/badane", uploadData, {
         headers: {
           "Content-Type": "multipart/form-data",

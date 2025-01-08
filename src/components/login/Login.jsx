@@ -318,7 +318,7 @@ return (
         {isPassword && (
           <>
             <Outlet context={{ inputProps }} />
-            <div className="flex justify-around items-center w-[75%]">
+            <div className="flex justify-around items-center md:w-[75%]">
               <div className="mt-4">
                 <button
                   className="sm:w-[250px] max-sm:[100px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
