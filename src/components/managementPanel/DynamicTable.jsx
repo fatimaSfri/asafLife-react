@@ -19,6 +19,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get(apiEndpoint);
+        console.log(response)
         if (response.data && Array.isArray(response.data.data)) {
           setData(response.data.data);
           setFilterData(response.data.data);

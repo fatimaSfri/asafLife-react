@@ -1,7 +1,15 @@
 import {Link} from "react-router-dom";
 import InsuranceCard from "./InsuranceCard.jsx"
-
+import DynamicTable from "./DynamicTable.jsx";
 export default function MyContracts() {
+  const columns = [
+    { header: 'شناسه', accessor: 'id' },
+    { header: 'تاریخ صدور ', accessor: 'reshte' },
+    { header: 'کد رایانامه صدور	', accessor: 'payment_code' },
+    { header: 'عنوان رشته	', accessor: 'insurance_user_id.insurer_code' },
+    { header: 'شماره بیمه نامه	', accessor: 'computer_code' },
+    { header: 'تنظیمات', accessor: 'installments' },
+  ];
   return (
     <>
 
@@ -41,6 +49,25 @@ export default function MyContracts() {
       </tr>
     </tbody>
   </table>
+
+  <div className="w-full h-full pt-2" dir="rtl">
+      <DynamicTable
+        apiEndpoint="contract/my-contracts"
+        columns={columns}
+        customRender={(row, colIndex) => (
+          colIndex === columns.length - 1 ? (
+            <td className=" flex items-center justify-center">
+              <Link to="/dashbord/table"><button className="bg-[#40ba8d] rounded-3xl p-2 text-white ">مشاهده</button></Link>
+            </td>
+          ) : (
+            <td className="flex items-center justify-center ">
+              {row[columns[colIndex].accessor] || '-'}
+            </td>
+          )
+
+        )}
+      />
+    </div>
    </div>
    
 </>
