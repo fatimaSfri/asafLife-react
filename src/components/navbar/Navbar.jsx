@@ -66,7 +66,7 @@ return(
                 
                         <a><li className="hover:text-[#55c7e0] text-white px-3 font-asaf cursor-pointer">خانه</li></a>
                         <a href="#"><li className="hover:text-[#55c7e0] text-white  px-3 py-5 cursor-pointer"> پشتیبانی </li></a>
-                        <a><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">سامانه</li></a>
+                        <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">سامانه</li></Link>
                         <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">ثبت نام / ورود</li></Link>
                          </ul>
 

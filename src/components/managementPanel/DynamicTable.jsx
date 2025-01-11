@@ -46,7 +46,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center" dir="rtl">
+    <div className="flex flex-col items-center justify-center w-full h-full" dir="rtl">
       <div className="lg:w-[95%] max-lg:w-[98%] overflow-x-auto shadow-lg rounded-2xl border border-opacity-25 border-[#213063] flex items-center justify-center">
         <table className="w-full rounded-2xl overflow-hidden bg-white">
           <thead>

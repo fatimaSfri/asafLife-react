@@ -33,7 +33,7 @@ export default function MyContracts() {
         </div>
         
         {/* contract/my-contracts/report/55 */}
-        <div className="w-full h-full pt-2" dir="rtl">
+        <div className=" w-full">
           <DynamicTable
             apiEndpoint="contract/my-contracts"
             columns={columns}

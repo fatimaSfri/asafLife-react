@@ -25,7 +25,7 @@ const GetBimeBadane = () => {
   };
 
   return (
-    <div className="w-full h-full pt-2" dir="rtl">
+    <div className="w-full h-full flex flex-col items-center justify-center " dir="rtl">
       <DynamicTable
         apiEndpoint="/badane/report"
         columns={columns}
