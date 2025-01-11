@@ -1,8 +1,4 @@
 
-
-
-
-import React from 'react';
 import DynamicTable from './DynamicTable';
 
 const GetBimeBadane = () => {

@@ -2,6 +2,7 @@ import CustomInput from "./CustomInput";
 import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import profileSchema from "./validator/profileSchema";
+import {  useNavigate } from "react-router-dom";
 
 
 
@@ -16,7 +17,7 @@ export default function Profile() {
     address: "",
     phone: "",
   });
-  
+  const navigate = useNavigate();
 
   
 
@@ -71,7 +72,11 @@ export default function Profile() {
       const response = await axiosInstance.patch("user/dashboard/update", value);
       if (response.status === 200) {
         setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 3000);
+        setTimeout(() => {
+          setShowPopup(false)
+          navigate("/dashbord/services")
+        } , 1500);
+        
       }
     } catch (error) {
       console.error("خطا در ارسال اطلاعات:", error);

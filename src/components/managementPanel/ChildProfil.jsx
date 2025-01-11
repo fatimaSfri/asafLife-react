@@ -1,45 +1,79 @@
 import Button from "../button/Button";
 import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import DynamicTable from "./DynamicTable.jsx";
 import axiosInstance from "../axiosConfig.js";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ChildProfil() {
   const [showPopup, setShowPopup] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [Installments, setInstallments] = useState(false);
   const [data, setData] = useState([]);
-  // const { contractId } = useParams();
+  const { contractId } = useParams();
   const columns = [
     { header: 'شناسه', accessor: 'id' },
-    { header: 'عنوان رشته	', accessor: 'reshte' },
-    { header: 'تاریخ صدور ', accessor: 'payment' },
-    { header: 'کد رایانامه صدور	', accessor: 'installments' },
-    { header: 'شناسه پرداخت', accessor: 'payment_code' },
+    { header: 'مبلغ	', accessor: 'amount' },
+    { header: 'تاریخ صدور ', accessor: 'due_date' },
+    
+    { header: 'تاریخ پرداخت', accessor: 'payment_date' },
+    { header: 'شناسه پرداخت', accessor: 'ref_id' },
     { header: 'تنظیمات', accessor: 'settings' },
+
   ];
 
-  useEffect(() => {
-    const fetchInstallments = async () => {
-      try {
-        const response = await axiosInstance.get(`contract/my-contracts/report/${contractId}`);
-        setInstallments(response.data.data);
-      } catch (error) {
-        console.error('Error fetching installments:', error);
-      }
-    };
-    fetchInstallments();
-  }, [data]);
+  // useEffect(() => {
+  //   const fetchInstallments = async () => {
+  //     try {
+  //       const response = await axiosInstance.get(`contract/my-contracts/report/${contractId}`);
+  //       setInstallments(response.data.id);
+  //       const response2 = await axiosInstance.post(`installment/pay/${response.data.id}`);
+  //       const refId = response2.data.RefId;
+        
+  //     } catch (error) {
+  //       console.error('Error fetching installments:', error);
+  //     }
+  //   };
+  //   fetchInstallments();
+  // }, [data]);
 
-  const sendReq=async()=>{
-    const res=await axiosInstance.post(`installment/pay/${installmentId}`)
-    console.log(res)
-    try{
-      setSubmitted(true);
-      setShowPopup(true);
+  // const sendReq=async()=>{
+  //   const res=await axiosInstance.post(`installment/pay/${installmentId}`)
+  //   console.log(res)
+  //   try{
+  //     setSubmitted(true);
+  //     setShowPopup(true);
 
-    }catch(err){
-      alert(err)
-    }
-  }
+  //   }catch(err){
+  //     alert(err)
+  //   }
+  // }
+
+
+  // if payment_date has value button no button: already payed بنویس 
+  // رداخت شد
+ 
+  // if RefID boodesh va red_id_Created_at less then 10 minute disable
+  // در انتظار 
+  // رداخت
+  const customRenderers = {
+    settings: (value, row) => (
+      <button 
+        className="bg-[#40ba8d] rounded-3xl p-2 text-white"
+        onClick={async () => {
+          try {
+            const {data} = await axiosInstance.get(`installment/pay/${row.id}`);
+            window.open(`https://bpm.shaparak.ir/pgwchannel/result.mellat?RefId=${data.ref_id}`, '_blank');
+            
+          } catch (error) {
+            console.error('Error fetching installments:', error);
+          }
+        }}
+      >
+        پرداخت
+      </button>
+    ),
+  };
 
   return (
     <>
@@ -55,7 +89,7 @@ export default function ChildProfil() {
             <thead>
               <tr className="bg-gray-200 rounded-2xl h-14 max-md:text-[12px] ">
                 <th className="">  کد رایانامه اعلامیه بدهکار </th>
-                <th className="  ">  تاریخ ثبت اعلامیه بدهکار</th>
+                <th className=" ">  تاریخ ثبت اعلامیه بدهکار</th>
                 <th className="  "> سال قسط </th>
                 <th className=" "> تعداد اقساط پرداخت نشده </th>
     
@@ -77,7 +111,7 @@ export default function ChildProfil() {
            <DynamicTable
                 apiEndpoint={`contract/my-contracts/report/${contractId}`}
                 columns={columns}
-                
+                customRenderers={customRenderers}
             />
            </div>
     </>

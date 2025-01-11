@@ -43,7 +43,7 @@ export default function Home(){
     <Infography></Infography>
     <Staff></Staff>
     <Blog></Blog>
-   <Footer></Footer>
+    <Footer></Footer>
    </div>}
 
    </div>

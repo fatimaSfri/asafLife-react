@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 function  Footer(){
+    const handleLogoClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
     return(
     <div className=" rounded-t-3xl bg-[#213063] max-lg:h-[550px] w-full mx-auto h-60  flex flex-col items-end mb-0 px-3 ">
 
@@ -43,7 +47,7 @@ function  Footer(){
         
         </div>
         
-       <a href="#"><img src="./img/footer/ASAFLogo.svg" alt="" className='w-[60%] lg:h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' /></a>
+       <Link to="/" onClick={handleLogoClick}><img src="./img/footer/ASAFLogo.svg" alt="" className='w-[60%] lg:h-40 lg:m-8 max-lg:mx-auto  max-lg:w-[25%] max-sm:w-[42%]' /></Link>
   </div>     
 </div>
 
