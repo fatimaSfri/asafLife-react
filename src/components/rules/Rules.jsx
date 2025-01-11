@@ -9,7 +9,7 @@ export default function Rules({ onChange }) {
 
     const handleScroll = () => {
         const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
-        if (scrollTop + clientHeight >= scrollHeight) {
+        if (scrollTop + clientHeight >= scrollHeight-10) {
             setIsScrollable(true); 
         } else {
             setIsScrollable(false); 

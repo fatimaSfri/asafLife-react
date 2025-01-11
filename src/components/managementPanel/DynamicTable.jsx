@@ -73,7 +73,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
                 ))}
               </tr>
             ))}
-            {!loading && data.length === 0 && (
+            {!loading && data.length == 0 && (
               <tr>
                 <td colSpan={columns.length} className="text-center py-6">داده‌ای موجود نیست.</td>
               </tr>
