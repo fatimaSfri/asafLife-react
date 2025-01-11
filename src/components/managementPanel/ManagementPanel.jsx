@@ -21,7 +21,7 @@ export default function ManagementPanel() {
       
       try {
         const response = await axiosInstance.get("/user/dashbord");
-        // console.log(response);
+        console.log(response);
         if (response.data) {
           // console.log(response.data.data);
           const currentUserData = response.data.data

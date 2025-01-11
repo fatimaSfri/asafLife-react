@@ -82,6 +82,7 @@ export default function Car() {
           validationErrors[detail.context.key] = detail.message;
         });
         setErrors(validationErrors);
+        
         return;
       }
     
@@ -148,6 +149,9 @@ export default function Car() {
             : error.response.data[key];
         });
         setBackendErrors(backendErrors);
+        setTimeout(() => {
+          setBackendErrors({});
+        }, 3000);
       }
     }
   };
