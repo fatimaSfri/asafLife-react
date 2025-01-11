@@ -122,7 +122,7 @@ export default function Profile() {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            className="h-10 rounded-2xl px-5 w-full "
+            className="h-10 rounded-2xl px-5 w-full pt-2"
           />
           {errors.address && <p className="text-red-500 text-sm w-full">{errors.address}</p>}
         </div>
