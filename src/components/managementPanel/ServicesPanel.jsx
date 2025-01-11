@@ -11,10 +11,11 @@ import counseling from '/src/assets/json/counseling';
 import household from '/src/assets/json/household';
 import checkupHealth from '/src/assets/json/checkup';
 import mentor from '/src/assets/json/mentorship';
+import { Link } from 'react-router-dom';
 
 const services = [
   { icon: checkup, label: 'بیمه درمان' },
-  { icon: carBody, label: 'بیمه ثالث بدنه' },
+  { icon: carBody, label: 'بیمه ثالث بدنه' , link:'/dashbord/Third' },
   { icon: life, label: 'بیمه زندگی' },
   { icon: mosque, label: 'بیمه قبر جا' },
   { icon: psychology, label: 'مشاوره روانشناسی' },
@@ -34,12 +35,12 @@ export default function ServicesPanel() {
   const renderServices = (items) => (
  
     <div className="grid gap-6 lg:grid-cols-6 max-lg:grid-cols-3 justify-items-center xl:px-14">
-      {items.map(({ icon, label },index) => {
+      {items.map(({ icon, label ,link },index) => {
          return (
         <div key={index}>
-          <div className="sm:w-24 sm:h-24 max-sm:w-20 max-sm:h-20 bg-white rounded-3xl shadow-2xl m-2 flex items-center justify-center cursor-pointer">
+         <Link to={link}> <div className="sm:w-24 sm:h-24 max-sm:w-20 max-sm:h-20 bg-white rounded-3xl shadow-2xl m-2 flex items-center justify-center cursor-pointer">
             <Icon animationData={icon} />
-          </div>
+          </div></Link>
           <p className="w-24 text-center mx-auto md:text-[14px] max-md:text-[12px] mt-4 text-gray-700 cursor-pointer">{label}</p>
         </div>
       )}

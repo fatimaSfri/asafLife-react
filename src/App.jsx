@@ -51,7 +51,7 @@ function App() {
             <Route path="dashbord/*" element={<ManagementPanel />}>
                <Route index element={< Profile />} />
                <Route path='profile' element={< Profile />} />
-               <Route path='table' element={< ChildProfil />} />
+               <Route path='installment/:contractId' element={<ChildProfil />} />
                <Route path="mycontracts" element={<MyContracts />} />
                <Route path="services" element={<Services />} />
                <Route path="support" element={<Support />} />

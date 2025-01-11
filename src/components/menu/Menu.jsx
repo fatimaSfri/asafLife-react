@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 export default function Menu() {
 
@@ -18,7 +18,7 @@ export default function Menu() {
       <div className='w-full  h-full flex flex-col '>
         {/* ************ */}
        <div className="bg-white w-full h-14 mt-2 rounded-xl flex justify-end items-center">
-         <p className="text-[18px]"> خانه</p>
+        <Link to="/"> <p className="text-[18px]"> خانه</p></Link> 
          <img src="./img/menu/home.png" alt="" className="w-6 h-6 mx-4" />
          <img src="./img/menu/angle.svg" alt="" className="w-6 h-6 mx-4" />
        </div>
@@ -48,7 +48,7 @@ export default function Menu() {
        </div>
          {/* ************ */}
          <div className="bg-white w-full h-14 mt-2 rounded-xl flex justify-end items-center">
-         <p className="text-[18px]"> سامانه</p>
+        <Link to="/login" > <p className="text-[18px]"> سامانه</p></Link>
          <img src="./img/menu/files.png" alt="" className="w-6 h-6 mx-4" />
          <img src="./img/menu/angle.svg" alt="" className="w-6 h-6 mx-4" />
        </div>
@@ -57,7 +57,7 @@ export default function Menu() {
  
     </div>
     
-    <button className="w-9/12 bg-white text-[#55c7e0] h-9 rounded-xl">ورود / ثبت نام</button>
+   <Link to="/login" className="w-full flex items-center justify-center"><button className="w-9/12 bg-white text-[#55c7e0] h-9 rounded-xl">ورود / ثبت نام</button></Link> 
     <div className='h-[2px] w-9/12 bg-gray-400 '></div>
     <div className="w-full h-10 -mt-4 flex flex-row-reverse mx-auto gap-2 justify-center overflow-hidden "> 
     <div className="flex items-center gap-1"> 
