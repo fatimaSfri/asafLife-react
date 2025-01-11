@@ -134,6 +134,9 @@ export default function Third() {
             : error.response.data[key];
         });
         setBackendErrors(backendErrors);
+        setTimeout(() => {
+          setBackendErrors({});
+        }, 3000);
       }
     }
   };

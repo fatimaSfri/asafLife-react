@@ -18,12 +18,14 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+
         const response = await axiosInstance.get(apiEndpoint);
-        console.log(response)
+        console.log('data: ',(response.data.data.installments));
         if (response.data && Array.isArray(response.data.data)) {
-          setData(response.data.data);
+          setData([response.data.data]);
           setFilterData(response.data.data);
         } else {
+          console.log(response)
           console.error('داده‌های دریافتی نامعتبر است:', response.data);
         }
       } catch (error) {
