@@ -50,7 +50,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
       <div className="lg:w-[95%] max-lg:w-[98%] overflow-x-auto shadow-lg rounded-2xl border border-opacity-25 border-[#213063] flex items-center justify-center">
         <table className="w-full rounded-2xl overflow-hidden bg-white">
           <thead>
-            <tr className="bg-gray-200 h-14 text-[#213063] text-center">
+            <tr className="bg-gray-200 h-14 text-[#213063] text-center max-sm:text-[14px]">
               {columns.map((col, index) => (
                 <th key={index}>{col.header}</th>
               ))}
@@ -65,7 +65,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
             {!loading && data.length > 0 && getCurrentPageData().map((row, rowIndex) => (
               <tr key={rowIndex} className="hover:bg-gray-50">
                 {columns.map((col, colIndex) => (
-                  <td key={colIndex} className="border border-gray-300 text-center py-2">
+                  <td key={colIndex} className="border border-gray-300 text-center py-2 ">
                     {customRenderers && customRenderers[col.accessor]
                       ? customRenderers[col.accessor](row[col.accessor], row)
                       : row[col.accessor] || '-'}
