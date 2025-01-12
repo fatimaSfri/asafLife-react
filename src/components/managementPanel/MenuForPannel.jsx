@@ -1,6 +1,40 @@
 import { NavLink } from "react-router-dom"
+import { useState, useEffect } from 'react';
+import axiosInstance from "../axiosConfig";
 
 export default function MenuForPannel() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      console.log('درخواست اطلاعات کاربران...');
+      
+      try {
+        const response = await axiosInstance.get("/user/dashbord");
+        console.log(response);
+        if (response.data) {
+          // console.log(response.data.data);
+          const currentUserData = response.data.data
+          // console.log(currentUserData);
+          if (currentUserData) {
+            setCurrentUser(currentUserData);
+          } else {
+            console.warn('اطلاعات کاربر فعلی یافت نشد.');
+          }
+        } else {
+          console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+        }
+      } catch (error) {
+        console.error("خطا در دریافت اطلاعات کاربران:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
     return (
         <div className='h-screen w-full bg-[rgba(0,0,0,0.8)] z-30 ' > 
@@ -8,7 +42,7 @@ export default function MenuForPannel() {
            <div className=" h-full w-10/12 bg-[#e9e9e9] rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28 ">
            <div className=" w-[120px] h-[120px] rounded-full relative">
              <img src="../img/pannel/User.svg" alt="" className="object-center "/>
-             <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#535353] ">حسن مومنی</p>
+             <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#535353] ">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''}</p>
            </div>
            
          
