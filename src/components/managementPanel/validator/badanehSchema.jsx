@@ -96,7 +96,7 @@ const BadanehSchema = Joi.object({
     .required()
     .label("تصویر بیمه‌نامه")
     .messages({
-      "any.required": "تصاویر کارت ماشین الزامی هستند.",
+      "any.required": "تصاویر بیمه نامه الزامی هستند.",
       "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
     }),
 });
