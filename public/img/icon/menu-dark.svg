@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <g id="Layer_2">
+    <rect width="500" height="500" fill="none"/>
+  </g>
+  <g id="Layer_1">
+    <g>
+      <rect x="6" y="326.14" width="488" height="81.86" rx="40.93" ry="40.93" fill="#213063"/>
+      <rect x="6" y="209.07" width="488" height="81.86" rx="40.93" ry="40.93" fill="#213063"/>
+      <rect x="6" y="92" width="488" height="81.86" rx="40.93" ry="40.93" fill="#213063"/>
+    </g>
+  </g>
+</svg>

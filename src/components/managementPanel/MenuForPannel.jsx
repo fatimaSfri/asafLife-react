@@ -2,9 +2,18 @@ import { NavLink } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axiosInstance from "../axiosConfig";
 
-export default function MenuForPannel() {
+export default function MenuForPannel({onChange}) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [toggel ,setToggel]= useState(false)
+
+  function handelMenu(){
+    setToggel(prev => !prev)
+    onChange(toggel)
+    console.log(toggel)
+  }
+
+
 
 
   useEffect(() => {
@@ -54,9 +63,9 @@ export default function MenuForPannel() {
                 to="/dashbord/profile"
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
-                }
+                } 
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                   پروفایل
                 </li>
@@ -67,7 +76,7 @@ export default function MenuForPannel() {
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    بدنه
                 </li>
@@ -78,7 +87,7 @@ export default function MenuForPannel() {
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    جدول بدنه 
                 </li>
@@ -89,7 +98,7 @@ export default function MenuForPannel() {
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    ثالث 
                 </li>
@@ -100,7 +109,7 @@ export default function MenuForPannel() {
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }
               >
-                <li className="flex items-center gap-4  ">
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
                    جدول ثالث 
                 </li>
@@ -112,7 +121,7 @@ export default function MenuForPannel() {
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }>
-                <li className="flex items-center gap-4">
+                <li className="flex items-center gap-4" onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   سرویس ها</li>
               </NavLink>
@@ -122,12 +131,12 @@ export default function MenuForPannel() {
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
                 }>
-                <li className="flex items-center gap-4">
+                <li className="flex items-center gap-4" onClick={handelMenu}>
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   قرارداد های من </li></NavLink>
 
           
-              <li className="flex items-center gap-4">
+              <li className="flex items-center gap-4" onClick={handelMenu}>
                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                 خروج
               </li>
