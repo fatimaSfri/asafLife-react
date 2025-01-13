@@ -70,8 +70,8 @@ export default function ManagementPanel() {
           </div>
         </div>
 
-        <div className=" h-full w-3/12 bg-[#e9e9e9] rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28 max-md:hidden">
-          <div className=" w-[120px] h-[120px] rounded-full relative">
+        <div className=" h-full w-3/12 bg-[#e9e9e9] rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28 max-md:hidden ">
+          <div className=" w-[120px] h-[120px]  rounded-full relative">
             <img src="../img/pannel/User.svg" alt="" className="object-center " />
             {/* div for notification */}
             {/* <div className="xl:w-10 xl:h-10 max-xl:w-8 max-xl:h-8 bg-red-500 rounded-full absolute -mt-10 -mr-2 text-white"></div> */}
@@ -81,9 +81,9 @@ export default function ManagementPanel() {
 
           <div className="w-full h-[1px] bg-black"></div>
 
-          <div>
+          <div className="h-full -mt-10">
             
-            <ul className="xl:w-[300px] lg:w-[250px] h-[300px]  flex flex-col justify-evenly" >
+            <ul className="xl:w-[300px] lg:w-[250px] h-full  flex flex-col justify-evenly " >
                 <NavLink
                 to="/dashbord/profile"
                 className={({ isActive }) =>

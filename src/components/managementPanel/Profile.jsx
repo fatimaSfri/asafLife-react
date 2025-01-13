@@ -2,6 +2,7 @@ import CustomInput from "./CustomInput";
 import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import profileSchema from "./validator/profileSchema";
+import {  useNavigate } from "react-router-dom";
 
 
 
@@ -16,7 +17,7 @@ export default function Profile() {
     address: "",
     phone: "",
   });
-  
+  const navigate = useNavigate();
 
   
 
@@ -71,7 +72,11 @@ export default function Profile() {
       const response = await axiosInstance.patch("user/dashboard/update", value);
       if (response.status === 200) {
         setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 3000);
+        setTimeout(() => {
+          setShowPopup(false)
+          navigate("/dashbord/services")
+        } , 1500);
+        
       }
     } catch (error) {
       console.error("خطا در ارسال اطلاعات:", error);
@@ -117,9 +122,9 @@ export default function Profile() {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            className="h-10 rounded-2xl px-5 w-full"
+            className="h-10 rounded-2xl px-5 w-full pt-2"
           />
-          {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
+          {errors.address && <p className="text-red-500 text-sm w-full">{errors.address}</p>}
         </div>
         <CustomInput
           label="شماره تلفن"
@@ -128,10 +133,10 @@ export default function Profile() {
           readOnly={true}
           error={errors.phone}
         />
-        <div className="h-10 mt-10">
+        <div className="h-10 mt-10 flex justify-end">
           <button
             onClick={handleSaveChanges}
-            className="md:w-[150px] max-md:w-[100px] h-10 rounded-2xl custom-shadow flex items-center justify-center text-white gap-2"
+            className="md:w-[150px] max-md:w-[100px] h-10 rounded-2xl custom-shadow flex items-center justify-center text-white gap-2 "
             style={{
               background: "linear-gradient(to bottom, #dbf7ff 0.2%, #7fe2ff ,#0096e3 30%)",
             }}
