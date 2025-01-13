@@ -8,7 +8,7 @@ export default function ManagementPanel() {
 
   const [toggle, setToggle] = useState(false)
   const icon = {
-    menu: "../img/icon/Menu.svg",
+    menu: "../img/icon/menu-dark.svg",
     close: "../img/icon/close.svg"
   }
   const [bgColor, setBgColor] = useState(false);
@@ -51,12 +51,16 @@ export default function ManagementPanel() {
       console.log(toggle)
     }
   }
+  
+  function onChange(e){
+  setToggle(e)   
+  }
 
   return (
     <>
       <header className="rounded-b-sm  pt-0 w-full fixed z-40" >
         {toggle ? (
-          <MenuForPannel></MenuForPannel>
+          <MenuForPannel onChange={onChange} ></MenuForPannel>
         )
           : <div></div>
         }  </header>
