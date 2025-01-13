@@ -131,7 +131,7 @@ const generateNewCode = () => {
 
 const sendSmsCode = async (phoneNumber) => {
   try {
-    const response = await axiosInstance.post("user/send-sms-code", {
+    const response = await axiosInstance.post("auth/send-sms-code", {
       phone: phoneNumber,
     });
     console.log("SMS code sent successfully:", response.data);
@@ -150,7 +150,7 @@ const verifyCode = async () => {
   try {
     const userPhone = phone.phone  || localStorage.getItem("userPhone");
 
-    const response = await axiosInstance.post("user/verify-code", {
+    const response = await axiosInstance.post("auth/verify-code", {
       phone: userPhone,
       code: code.code,
     });
