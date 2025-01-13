@@ -3,14 +3,15 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import DynamicTable from "./DynamicTable.jsx";
 import axiosInstance from "../axiosConfig.js";
-import { Link, useNavigate } from "react-router-dom";
-
+import PaymentStatus from "./PaymentStatus.jsx";
 export default function ChildProfil() {
   const [showPopup, setShowPopup] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState(null);
-  const [isRequesting, setIsRequesting] = useState(false);;
+  const [Installments, setInstallments] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [lastCheckTime, setLastCheckTime] = useState(null);
   const [backendErrors, setBackendErrors] = useState({});
+  const [paymentStatus, setPaymentStatus] = useState(null);
 
   const [data, setData] = useState([]);
   const { contractId } = useParams();
@@ -26,23 +27,6 @@ export default function ChildProfil() {
 
   ];
 
-  const checkPaymentStatus = async (contractId) => {
-    try {
-      setIsRequesting(true);
-      const response = await axiosInstance.get(`contract/my-contracts/report/${contractId}`);
-      if (response.data.payment_date) {
-        setPaymentStatus('paid');
-      } else {
-        setPaymentStatus('pending');
-      }
-    } catch (error) {
-      console.error("Error checking payment status:", error);
-      setPaymentStatus('error');
-    } finally {
-      setIsRequesting(false);
-    }
-  };
-  
   
 
 
@@ -85,16 +69,7 @@ export default function ChildProfil() {
       </button>
     ),
 
-    status: (value, row) => {
-       setInterval(() => {
-        res = axiosInstance.get(`contract/my-contracts/report/${row.id}`);
-        if (res.data.payment_date) {
-          <button className="whitespace-nowrap w-24 h-8 flex items-center justify-center border rounded-lg border-green-600 bg-[rgba(250,96,96,0.4)]  text-green-600 ">پرداخت نشده</button>
-        } else {
-          <button className="whitespace-nowrap w-24 h-8 flex items-center justify-center border rounded-lg border-red-600 bg-[rgba(250,96,96,0.4)]  text-red-600 ">پرداخت نشده</button>
-        }
-      }, 600000);
-    }
+    status: (value, row) => <PaymentStatus row={row} /> 
 
   };
 
