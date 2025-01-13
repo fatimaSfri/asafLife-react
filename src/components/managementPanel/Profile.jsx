@@ -85,7 +85,7 @@ export default function Profile() {
 
   return (
     
-    <div className="w-full h-full flex items-center justify-center bg-[#e7e7e7]">
+    <div className="w-full h-full flex items-center justify-center bg-[#f1f5f9]">
       {showPopup && (
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
           اطلاعات با موفقیت به‌روزرسانی شد!
