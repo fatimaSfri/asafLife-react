@@ -107,12 +107,12 @@ export default function ChildProfil() {
             </tbody>
           </table>
            <Button width="md:w-10/12 " mt="mt-10" linkback="/panel/mycontracts"></Button>
-    
+           <div className=" w-full mt-5">
            <DynamicTable
                 apiEndpoint={`contract/my-contracts/report/${contractId}`}
                 columns={columns}
                 customRenderers={customRenderers}
-            />
+            /></div>
            </div>
     </>
     
