@@ -1,7 +1,8 @@
 // DynamicTable.jsx
 
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
+import PaymentStatus from './PaymentStatus';
 
 const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   const [data, setData] = useState([]);
@@ -18,9 +19,8 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const response = await axiosInstance.get(apiEndpoint);
-        console.log(response.data.id);
+        console.log(response.data);
         if (response.data && Array.isArray(response.data.data)) {
           setData([response.data.data]);
           setFilterData(response.data.data);
@@ -34,7 +34,6 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [apiEndpoint]);
 
@@ -73,7 +72,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
                 ))}
               </tr>
             ))}
-            {!loading && data.length == 0 && (
+            {!loading && data.length === 0 && (
               <tr>
                 <td colSpan={columns.length} className="text-center py-6">داده‌ای موجود نیست.</td>
               </tr>
@@ -82,7 +81,6 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
         </table>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-center items-center mt-6 gap-2">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
