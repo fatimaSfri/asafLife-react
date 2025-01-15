@@ -1,6 +1,5 @@
-import Button from "../button/Button";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import DynamicTable from "./DynamicTable.jsx";
 import axiosInstance from "../axiosConfig.js";
 import PaymentStatus from "./PaymentStatus.jsx";
@@ -26,11 +25,6 @@ export default function ChildProfil() {
     { header: 'وضعیت پرداخت', accessor: 'status' },
 
   ];
-
-  
-
-
-
 
   // if payment_date has value button no button: already payed بنویس 
   // رداخت شد

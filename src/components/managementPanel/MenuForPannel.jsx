@@ -151,7 +151,7 @@ export default function MenuForPannel({onChange}) {
               </li>
             </div>
             <div className="w-10/12 h-[2px] bg-[#e9e9e9] px-10 mx-auto "></div>
-             <p className=" max-xl:text-[8px] w-full flex justify-center whitespace-nowrap flex-nowrap overflow-hidden text-[#535353] mt-2"> کلیه حقوق مادی و معنوی شرکت <p className="px-[1px] text-[#55c7e0]">asaflife</p>محفوظ است.</p>
+             <p className=" max-xl:text-[10px] w-full flex justify-center whitespace-nowrap flex-nowrap overflow-hidden text-[#535353] mt-2"> کلیه حقوق مادی و معنوی شرکت <p className="px-[1px] text-[#55c7e0]">asaflife</p>محفوظ است.</p>
           </div>
 
 
