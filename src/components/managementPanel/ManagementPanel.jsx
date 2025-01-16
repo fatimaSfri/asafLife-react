@@ -16,44 +16,53 @@ export default function ManagementPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      console.log('درخواست اطلاعات کاربران...');
-      
-      try {
-        const response = await axiosInstance.get("/user/dashbord");
-        console.log(response);
-        if (response.data) {
-          // console.log(response.data.data);
-          const currentUserData = response.data.data
-          // console.log(currentUserData);
-          if (currentUserData) {
-            setCurrentUser(currentUserData);
-          } else {
-            console.warn('اطلاعات کاربر فعلی یافت نشد.');
-          }
+    axiosInstance.get("/user/dashbord").then(response => {
+      if (response.data) {
+        const currentUserData = response.data.data
+        // console.log(currentUserData);
+        if (currentUserData) {
+          setCurrentUser(currentUserData);
         } else {
-          console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+          console.warn('اطلاعات کاربر فعلی یافت نشد.');
         }
-      } catch (error) {
-        console.error("خطا در دریافت اطلاعات کاربران:", error);
-      } finally {
-        setLoading(false);
+      } else {
+        console.error("داده‌های دریافتی آرایه نیستند:", response.data);
       }
-    };
-
-    fetchUsers();
+    }).catch(error => {
+      console.error("خطا در دریافت اطلاعات کاربران:", error);
+    }).finally(() => {
+      setLoading(false);
+    })
   }, []);
+
+  const exit = async () => {
+    if (!window.confirm("آیا برای خروج مطمئن هستید؟")) return;
+    try {
+      const response = await axiosInstance.get("/auth/logout");
+      if (response.data) {
+
+      } else {
+        console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+      }
+    } catch (error) {
+      console.error("خطا در دریافت اطلاعات کاربران:", error);
+    } finally {
+      setLoading(false);
+    }
+
+
+  }
 
   function handleMenu() {
     if (window.innerWidth < 700) {
       setToggle(prev => !prev)
       setBgColor(prev => !prev)
-      console.log(toggle)
+      // console.log(toggle)
     }
   }
-  
-  function onChange(e){
-  setToggle(e)   
+
+  function onChange(e) {
+    setToggle(e)
   }
 
   return (
@@ -86,9 +95,9 @@ export default function ManagementPanel() {
           <div className="w-full h-[1px] bg-black"></div>
 
           <div className="h-full -mt-10">
-            
+
             <ul className="xl:w-[300px] lg:w-[250px] h-full  flex flex-col justify-evenly " >
-                <NavLink
+              <NavLink
                 to="/dashbord/profile"
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(250,250,250,0.9)] rounded-xl h-10 flex items-center' : ''
@@ -107,7 +116,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   بدنه
+                  بدنه
                 </li>
               </NavLink>
               <NavLink
@@ -118,7 +127,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   جدول بدنه 
+                  جدول بدنه
                 </li>
               </NavLink>
               <NavLink
@@ -129,7 +138,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   ثالث 
+                  ثالث
                 </li>
               </NavLink>
               <NavLink
@@ -140,7 +149,7 @@ export default function ManagementPanel() {
               >
                 <li className="flex items-center gap-4  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block text-[#535353]"></span>
-                   جدول ثالث 
+                  جدول ثالث
                 </li>
               </NavLink>
 
@@ -154,7 +163,7 @@ export default function ManagementPanel() {
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   سرویس ها</li>
               </NavLink>
-                
+
               <NavLink
                 to="/dashbord/mycontracts"
                 className={({ isActive }) =>
@@ -164,10 +173,14 @@ export default function ManagementPanel() {
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   قرارداد های من </li></NavLink>
 
-          
+
               <li className="flex items-center gap-4">
                 <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                خروج
+                <button
+                  onClick={exit}>
+                  خروج
+
+                </button>
               </li>
 
             </ul>
