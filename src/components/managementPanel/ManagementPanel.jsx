@@ -177,7 +177,7 @@ export default function ManagementPanel() {
             <div className=" mt-10">
             <div className="w-full   flex justify-center items-end  ">
               <img src="../../img/icon/exit.png" alt="" className=" w-10"/>
-            <li className="flex h-10 gap-4 items-center justify-center text-[#535353] font-Kalameh-Bold cursor-pointer lg:text-[20px]">
+            <li className="flex h-10 gap-4 items-center justify-center text-[#535353] font-Kalameh-Bold cursor-pointer lg:text-[20px]" onClick={exit}>
                  خـــــروج
               </li>
             </div>
