@@ -18,7 +18,7 @@
 //       return value;
 //     })
 //     .messages({
-//       "string.pattern.base": "تاریخ تولد باید در فرمت YYYY/MM/DD باشد.",
+//       "string.pattern.base": "تاریخ تولد ب��ید در فرمت YYYY/MM/DD باشد.",
 //       'any.required': 'تاریخ انقضا الزامی است.',
 //       'string.base': 'تاریخ انقضا باید یک رشته باشد.',
 //       'custom': 'تاریخ انقضا باید یک تاریخ معتبر باشد.'
@@ -49,7 +49,7 @@
 
 // badanehSchema.jsx
 
-import Joi from "joi";
+import Joi, { types } from "joi";
 
 const BadanehSchema = Joi.object({
   address: Joi.string().trim().required().label("آدرس").messages({
@@ -60,35 +60,45 @@ const BadanehSchema = Joi.object({
   phone: Joi.string()
     .trim()
     .pattern(/^\d{11}$/)
-    .required()
     .label("شماره تلفن")
+    .required()
     .messages({
       "string.pattern.base": "شماره تلفن باید با ۰۹ شروع شده و دقیقاً ۱۱ رقم داشته باشد.",
       "string.empty": "شماره تلفن الزامی است.",
       "string.base": "شماره تلفن باید یک رشته باشد.",
       "any.required": "شماره تلفن الزامی است.",
-    }),
-  vehicle_cart_photos: Joi.array()
-    .items(
-      Joi.object({
-        type: Joi.string().valid("image/jpeg", "image/png").required(),
-        size: Joi.number().integer().min(1).max(500000).required(),
-      }).required()
-    )
-    .min(2)
-    .label("تصاویر کارت ماشین")
-    .messages({
-      "array.min": "تصاویر کارت ماشین الزامی هستند.",
-      "array.items.type": "فایل انتخاب شده باید یک تصویر باشد با فرمت jpeg یا png.",
-      "array.items.size": "حجم فایل نباید بیشتر از 500 کیلوبایت باشد.",
-      "any.required": "تصاویر کارت ماشین الزامی هستند.",
-    }),
+    })
+  .required(),
+  vehicle_cart_photo_behind: Joi.object({
+    type: Joi.string().valid("image/jpeg", "image/png").required(),
+    size: Joi.number().integer().min(1).max(500000).required(),
+  })
+  .required()
+  .label("تصویر پشت کارت ماشین")
+  .messages({
+    "any.required": "تصاویر پشت کارت ماشین الزامی هستند.",
+    "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
+  }),
+  vehicle_cart_photo_front: Joi.object({
+    type: Joi.string().valid("image/jpeg", "image/png").required(),
+    size: Joi.number().integer().min(1).max(500000).required(),
+  })
+  .required()
+  .label("تصویر روی کارت ماشین")
+  .messages({
+    "any.required": "تصاویر روی کارت ماشین الزامی هستند.",
+    "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
+  }),
   national_cart_photo: Joi.object({
     type: Joi.string().valid("image/jpeg", "image/png").required(),
     size: Joi.number().integer().min(1).max(500000).required(),
   })
-    .optional()
-    .label("تصویر کارت ملی"),
+    .required()
+    .label("تصویر کارت ملی")
+    .messages({
+      "any.required": "تصویر کارت ملی الزامی است.",
+      "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
+    }),
   insurer_photo: Joi.object({
     type: Joi.string().valid("image/jpeg", "image/png").required(),
     size: Joi.number().integer().min(1).max(500000).required(),
@@ -96,7 +106,7 @@ const BadanehSchema = Joi.object({
     .required()
     .label("تصویر بیمه‌نامه")
     .messages({
-      "any.required": "تصاویر کارت ماشین الزامی هستند.",
+      "any.required": "تصاویر بیمه نامه الزامی هستند.",
       "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
     }),
 });

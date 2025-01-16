@@ -1,4 +1,4 @@
-import Card from "../card/Card"
+import Card from "@/components/Card/Card.jsx"
 
 export default function PreviewServices() {
   return (

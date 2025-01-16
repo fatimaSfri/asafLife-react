@@ -16,7 +16,8 @@ export default function Third() {
   });
 
   const [selectedFiles, setSelectedFiles] = useState({
-    vehicle_cart_photos: [],
+    vehicle_cart_photo_front: null,
+    vehicle_cart_photo_behind: null,
     certificate_photo: null,
   });
 
@@ -31,8 +32,9 @@ export default function Third() {
   const [successMessage, setSuccessMessage] = useState('');
 
   const toEnglishDigits = (str) => {
-    return str.replace(/[۰-۹]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
+    return str.replace(/[\u06F0-\u06F9]/g, (digit) => "0123456789"["\u06F0\u06F1\u06F2\u06F3\u06F4\u06F5\u06F6\u06F7\u06F8\u06F9".indexOf(digit)]);
   };
+
   useEffect(() => {
     let timeout;
     if (popup.show) {
@@ -58,25 +60,31 @@ export default function Third() {
         owner_birthday: formData.owner_birthday,
         phone: toEnglishDigits(formData.phone),
         address: formData.address,
-        vehicle_cart_photos: selectedFiles.vehicle_cart_photos.map((file) => ({
-          type: file.type,
-          size: file.size,
-        })),
+        vehicle_cart_photo_front: selectedFiles.vehicle_cart_photo_front
+          ? {
+            type: selectedFiles.vehicle_cart_photo_front.type,
+            size: selectedFiles.vehicle_cart_photo_front.size,
+          }
+          : undefined,
+        vehicle_cart_photo_behind: selectedFiles.vehicle_cart_photo_behind
+          ? {
+            type: selectedFiles.vehicle_cart_photo_behind.type,
+            size: selectedFiles.vehicle_cart_photo_behind.size,
+          }
+          : undefined,
         certificate_photo: selectedFiles.certificate_photo
           ? {
-              type: selectedFiles.certificate_photo.type,
-              size: selectedFiles.certificate_photo.size,
-            }
+            type: selectedFiles.certificate_photo.type,
+            size: selectedFiles.certificate_photo.size,
+          }
           : undefined,
       };
 
       const { error } = ThirdSchema.validate(dataToValidate, { abortEarly: false });
-      
+
       if (error) {
-        console.log(error)
         const validationErrors = {};
         error.details.forEach((detail) => {
-          console.log(detail)
           validationErrors[detail.context.key] = detail.message;
         });
         setErrors(validationErrors);
@@ -85,15 +93,17 @@ export default function Third() {
 
       const uploadData = new FormData();
       const miladiDate = convertShamsiToMiladi(formData.owner_birthday);
-      console.log(selectedFiles.vehicle_cart_photos);
-      console.log(selectedFiles.certificate_photo);
       uploadData.append("owner_birthday", miladiDate);
       uploadData.append("phone", toEnglishDigits(formData.phone));
       uploadData.append("address", formData.address);
 
-      selectedFiles.vehicle_cart_photos.forEach((file) => {
-        uploadData.append("vehicle_cart_photos", file.raw || file);
-      });
+      if (selectedFiles.vehicle_cart_photo_front) {
+        uploadData.append("vehicle_cart_photo_front", selectedFiles.vehicle_cart_photo_front.raw || selectedFiles.vehicle_cart_photo_front);
+      }
+
+      if (selectedFiles.vehicle_cart_photo_behind) {
+        uploadData.append("vehicle_cart_photo_behind", selectedFiles.vehicle_cart_photo_behind.raw || selectedFiles.vehicle_cart_photo_behind);
+      }
 
       if (selectedFiles.certificate_photo) {
         uploadData.append("certificate_photo", selectedFiles.certificate_photo.raw || selectedFiles.certificate_photo);
@@ -105,22 +115,22 @@ export default function Third() {
         },
       });
 
-      console.log('Response:', response.data);
-      
       setFormData({ owner_birthday: "", phone: "", address: "" });
-      setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
+      setSelectedFiles({
+        vehicle_cart_photo_front: null,
+        vehicle_cart_photo_behind: null,
+        certificate_photo: null,
+      });
       setErrors({});
       setBackendErrors({});
 
       setSuccessPopup(true);
       setSuccessMessage("اطلاعات با موفقیت ارسال شد.");
       setTimeout(() => {
-        setFormData({ owner_birthday: "", phone: "", address: "" });
-        setSelectedFiles({ vehicle_cart_photos: [], certificate_photo: null });
+        setSuccessPopup(false);
       }, 5000);
 
     } catch (error) {
-      console.error('Error sending data:', error.response ? error.response.data : error.message);
       setPopup({
         show: true,
         message: error.response ? error.response.data : "خطایی در ارسال اطلاعات رخ داد.",
@@ -149,31 +159,28 @@ export default function Third() {
     setErrors((prevState) => ({ ...prevState, [e.target.name]: "" }));
   };
 
-  const handleFileChange = (e) => {
-    const files = e.target.files;
-    if (files.length > 0) {
-      setSelectedFiles((prevState) => ({
-        ...prevState,
-        vehicle_cart_photos: Array.from(files).slice(0, 2),
-        certificate_photo: files[2],
-      }));
-      setErrors((prevState) => ({
-        ...prevState,
-        vehicle_cart_photos: "",
-        certificate_photo: "",
-      }));
-    }
+  const handleFileChange = (files) => {
+    setSelectedFiles({
+      vehicle_cart_photo_front: files[0] || null,
+      vehicle_cart_photo_behind: files[1] || null,
+      certificate_photo: files[2] || null,
+    });
+    setErrors((prevState) => ({
+      ...prevState,
+      vehicle_cart_photo_front: "",
+      vehicle_cart_photo_behind: "",
+      certificate_photo: "",
+    }));
   };
 
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckChange = (checked) => {
     setIsChecked(checked);
-    console.log('چک باکس تغییر کرد:', checked);
   };
 
   return (
-    <div className="w-full h-[100vh] bg-[#e9e9e9] overflow-auto">
+    <div className="w-full h-[100vh] bg-[#f1f5f9] overflow-auto">
       {!isChecked && <Rules onChange={handleCheckChange}></Rules>}
       {isChecked && (
         <>
@@ -214,24 +221,25 @@ export default function Third() {
               </div>
             </div>
             <div className="flex max-xl:w-[98%] xl:w-9/12 ">
+
               <MultiFile
-                onChange={handleFileChange}
-                setFiles={(files) =>
-                  setSelectedFiles((prevState) => ({
-                    ...prevState,
-                    vehicle_cart_photos: files.slice(0, 2),
-                    certificate_photo: files[2],
-                  }))
-                }
+                onChange={(files) => handleFileChange(files)}
+                setFiles={handleFileChange}
                 textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
                 textbox2="لطفاً تصویر پشت کارت ماشین خود را بارگذاری کنید"
                 textbox3="لطفاً تصویر گواهینامه خود را بارگذاری کنید"
                 count={3}
               />
+
             </div>
-            {errors.vehicle_cart_photos && (
+            {errors.vehicle_cart_photo_behind && (
               <p className="text-red-500 text-sm mt-2 max-xl:w-[98%] xl:w-9/12 mx-auto">
-                {errors.vehicle_cart_photos}
+                {errors.vehicle_cart_photo_behind}
+              </p>
+            )}
+            {errors.vehicle_cart_photo_front && (
+              <p className="text-red-500 text-sm mt-2 max-xl:w-[98%] xl:w-9/12 mx-auto">
+                {errors.vehicle_cart_photo_front}
               </p>
             )}
             {errors.certificate_photo && (
@@ -259,20 +267,20 @@ export default function Third() {
                   width="w-[95%]"
                   error={errors.phone || backendErrors.phone}
                 />
-             
+
                 <CustomInput
                   label="آدرس دقیق"
                   items="items-center"
                   name="address"
                   value={formData.address}
                   onChange={handleInputChange}
-                 width="w-[95%]"
+                  width="w-[95%]"
                   error={errors.address || backendErrors.address}
                 />
-             
+
               </div>
             </div>
-           
+
             <div className="xl:w-[75%] max-xl:w-[95%] max-lg:w-[99%] max-lg:items-end px-2 h-16 flex justify-end lg:mt-10 max-lg:mb-6 ">
               <button
                 onClick={handleSubmit}

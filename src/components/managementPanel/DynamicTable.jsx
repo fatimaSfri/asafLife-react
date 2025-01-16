@@ -1,8 +1,6 @@
-// DynamicTable.jsx
-
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
-import PaymentStatus from './PaymentStatus';
+import moment from 'moment-jalaali'; // برای تبدیل تاریخ به شمسی
 
 const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   const [data, setData] = useState([]);
@@ -11,9 +9,22 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   const [loading, setLoading] = useState(true);
   const recordsPerPage = 10;
 
+  // تبدیل عدد به اعداد فارسی
   const convertToPersianNumbers = (num) => {
     const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return num.toString().split('').map(char => persianNumbers[parseInt(char)] || char).join('');
+  };
+
+  // قالب‌بندی عدد به صورت ۱,۵۰۰,۰۰۰
+  const formatCurrency = (num) => {
+    if (num == null) return '-';
+    return new Intl.NumberFormat('fa-IR').format(num);
+  };
+
+  // تبدیل تاریخ میلادی به شمسی
+  const convertToJalaliDate = (gregorianDate) => {
+    if (!gregorianDate) return '-';
+    return moment(gregorianDate).format('jYYYY/jMM/jDD');
   };
 
   useEffect(() => {
@@ -22,10 +33,9 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
         const response = await axiosInstance.get(apiEndpoint);
         console.log(response.data);
         if (response.data && Array.isArray(response.data.data)) {
-          setData([response.data.data]);
+          setData(response.data.data);
           setFilterData(response.data.data);
         } else {
-          console.log(response)
           console.error('داده‌های دریافتی نامعتبر است:', response.data);
         }
       } catch (error) {
@@ -45,7 +55,7 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full" dir="rtl">
+    <div className="flex flex-col items-center justify-center w-full h-full bg-[#f1f5f9]" dir="rtl">
       <div className="lg:w-[95%] max-lg:w-[98%] overflow-x-auto shadow-lg rounded-2xl border border-opacity-25 border-[#213063] flex items-center justify-center">
         <table className="w-full rounded-2xl overflow-hidden bg-white">
           <thead>
@@ -67,6 +77,10 @@ const DynamicTable = ({ apiEndpoint, columns, customRenderers }) => {
                   <td key={colIndex} className="border border-gray-300 text-center py-2 ">
                     {customRenderers && customRenderers[col.accessor]
                       ? customRenderers[col.accessor](row[col.accessor], row)
+                      : col.accessor.includes('amount')
+                      ? formatCurrency(row[col.accessor])
+                      : col.accessor.includes('date')
+                      ? convertToJalaliDate(row[col.accessor])
                       : row[col.accessor] || '-'}
                   </td>
                 ))}

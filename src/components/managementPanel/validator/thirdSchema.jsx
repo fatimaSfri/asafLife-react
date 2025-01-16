@@ -32,30 +32,35 @@ const ThirdSchema = Joi.object({
       "any.required": "تاریخ تولد الزامی است.",
     }),
 
-  vehicle_cart_photos: Joi.array()
-    .items(
-      Joi.object({
-        type: Joi.string().valid("image/jpeg", "image/png").required(),
-        size: Joi.number().integer().min(1).max(500000).required(),
-      }).required()
-    )
-    .min(2)
-    .label("تصاویر کارت ماشین")
+  vehicle_cart_photo_behind: Joi.object({
+      type: Joi.string().valid("image/jpeg", "image/png").required(),
+      size: Joi.number().integer().min(1).max(500000).required(),
+    })
+    .required()
+    .label("تصویر پشت کارت ماشین")
     .messages({
-      "array.min": "دو تصویر کارت ماشین الزامی هستند.",
-      "array.items.type": "فایل انتخاب شده باید یک تصویر باشد با فرمت jpeg یا png.",
-      "array.items.size": "حجم فایل نباید بیشتر از 500 کیلوبایت باشد.",
-      "any.required": "تصاویر کارت ماشین الزامی هستند.",
+      "any.required": "تصاویر پشت کارت ماشین الزامی هستند.",
+      "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
+    }),
+    vehicle_cart_photo_front: Joi.object({
+      type: Joi.string().valid("image/jpeg", "image/png").required(),
+      size: Joi.number().integer().min(1).max(500000).required(),
+    })
+    .required()
+    .label("تصویر روی کارت ماشین")
+    .messages({
+      "any.required": "تصاویر روی کارت ماشین الزامی هستند.",
+      "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
     }),
 
   certificate_photo: Joi.object({
     type: Joi.string().valid("image/jpeg", "image/png").required(),
     size: Joi.number().integer().min(1).max(500000).required(),
   })
-    .optional()
+    .required()
     .label("تصویر گواهینامه")
     .messages({
-      "any.required": "تصاویر کارت ماشین الزامی هستند.",
+      "any.required": "تصویر گواهینامه الزامی هستند.",
       "any.size": "تصویر باید کمتر از 500 کیلوبایت باشد.",
     }),
 });

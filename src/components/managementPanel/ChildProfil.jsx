@@ -1,6 +1,5 @@
-import Button from "../button/Button";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import DynamicTable from "./DynamicTable.jsx";
 import axiosInstance from "../axiosConfig.js";
 import PaymentStatus from "./PaymentStatus.jsx";
@@ -17,21 +16,13 @@ export default function ChildProfil() {
   const { contractId } = useParams();
   const columns = [
     { header: 'شناسه', accessor: 'id' },
-    { header: 'مبلغ	', accessor: 'amount' },
-    { header: 'تاریخ صدور ', accessor: 'due_date' },
-
+    { header: 'مبلغ(ریال)	', accessor: 'amount' },
+    { header: 'تاریخ سررسید ', accessor: 'due_date' },
     { header: 'تاریخ پرداخت', accessor: 'payment_date' },
     { header: 'شناسه پرداخت', accessor: 'ref_id' },
-    { header: 'تنظیمات', accessor: 'settings' },
+    { header: 'عملیات', accessor: 'settings' },
     { header: 'وضعیت پرداخت', accessor: 'status' },
-
   ];
-
-  
-
-
-
-
   // if payment_date has value button no button: already payed بنویس 
   // رداخت شد
 
@@ -40,39 +31,39 @@ export default function ChildProfil() {
   // رداخت
   const customRenderers = {
     settings: (value, row) => (
-      <button
-        className="bg-[#40ba8d] rounded-3xl p-2 text-white"
-        onClick={async () => {
-          try {
-            const { data } = await axiosInstance.get(`installment/pay/${row.id}`);
-            console.log("Payment data:", data);
-            window.open(`https://bpm.shaparak.ir/pgwchannel/result.mellat?RefId=${data.ref_id}`, '_blank');
-
-
-
-          } catch (error) {
-            console.error("Error paying installment:", error);
-            const backendErrors = {};
-            Object.keys(error.response.data).forEach((key) => {
-              backendErrors[key] = Array.isArray(error.response.data[key])
-                ? error.response.data[key].join(", ")
-                : error.response.data[key];
-            });
-            setBackendErrors(backendErrors);
-            setTimeout(() => {
-              setBackendErrors({});
-            }, 4000);
-          }
-        }}
-      >
-        پرداخت
-      </button>
+      row.payment_date ? (
+        <span className="text-gray-500">پرداخت شده</span> // یا متن دیگری به دلخواه
+      ) : (
+        <button
+          className="bg-[#40ba8d] rounded-3xl p-2 text-white"
+          onClick={async () => {
+            try {
+              const { data } = await axiosInstance.get(`installment/pay/${row.id}`);
+              console.log("Payment data:", data);
+              window.open(`https://bpm.shaparak.ir/pgwchannel/result.mellat?RefId=${data.ref_id}`, '_blank');
+            } catch (error) {
+              console.error("Error paying installment:", error);
+              const backendErrors = {};
+              Object.keys(error.response.data).forEach((key) => {
+                backendErrors[key] = Array.isArray(error.response.data[key])
+                  ? error.response.data[key].join(", ")
+                  : error.response.data[key];
+              });
+              setBackendErrors(backendErrors);
+              setTimeout(() => {
+                setBackendErrors({});
+              }, 15000);
+            }
+          }}
+        >
+          پرداخت
+        </button>
+      )
     ),
-
-    status: (value, row) => <PaymentStatus row={row} /> 
-
+  
+    status: (value, row) => <PaymentStatus row={row} />
   };
-
+  
   return (
     <>
       {showPopup && submitted && (

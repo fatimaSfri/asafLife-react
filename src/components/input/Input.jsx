@@ -10,13 +10,13 @@ function Input() {
     name,
     validationError,
     placeholder,
-    maxLength
+    maxLength,
+    onkeydownPressed,
   } = inputProps;
 
   const [value, setValue] = useState(''); 
   const phoneView = (phone) =>  phone.replaceAll(' ','').replace(/^(\d{4})(\d{0,3})(\d{0,4}).*/, "$1 $2 $3").trim();
     // console.log(phone)
-  
   
 
   const handleChange = (event) => isNaN(event.target.value.replaceAll(' ',''))? value : setValue(event.target.value.replaceAll(" ",''));
@@ -31,7 +31,8 @@ function Input() {
          <input
                 type="text"
                 value={phoneView(value)}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
+                onKeyDown={onkeydownPressed}
                 maxLength={maxLength}
                 className="h-12 w-full text-center appearance-none bg-transparent focus:outline-none text-[#a8a8a8] bg-[#dcddde] text-xl"
                 placeholder={placeholder}
