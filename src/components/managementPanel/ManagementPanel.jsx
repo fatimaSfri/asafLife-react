@@ -65,11 +65,10 @@ export default function ManagementPanel() {
           : <div></div>
         }  </header>
 
-      <div className="w-full flex h-screen  relative  ">
+      <div className="w-full flex h-screen relative  ">
         <div className={` h-16  absolute  flex lg:flex-row-reverse items-center ${!toggle?'w-full':'w-9/12'}`}>
           <img src={toggle ? icon.close : icon.menu} className={`${!toggle ? "w-10 h-8 p-[2px] mr-4" : "w-10 h-6 ml-2 order-2"}  font-[#4f4f4f]  cursor-pointer z-50 lg:hidden `} onClick={handleMenu}></img>
           <div className="lg:w-10/12 max-lg:w-full h-full flex items-center justify-end px-4 " >
-            {/* <img src="../img/pannel/Notification.svg" alt="" className="md:w-10 md:h-10 lg:mr-20 md:mr-12 mr-2 max-md:w-7 max-md:h-7" /> */}
             <img src="../img/icon/ASAF Logo copy.svg" alt="" className="md:h-14 max-md:h-10 xl:pl-10 xl:mt-10" />
           </div>
         </div>
@@ -83,17 +82,16 @@ export default function ManagementPanel() {
 
           <div className="w-9/12 h-[2px] bg-[#e9e9e9] "></div>
 
-          <div className="h-[55%] -mt-16 ">
+          <div className="w-11/12 -mt-10 h-[55vh]  min-h-96 flex flex-col justify-between " >
             
-            <ul className="xl:w-[300px] lg:w-[250px] h-full flex flex-col gap-2 " >
+            <ul className="xl:w-[300px] lg:w-[250px] flex flex-col justify-evenly h-[50vh]  ">
                 <NavLink
                 to="/dashbord/profile"
                 className={({ isActive }) =>
                   isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
                 }
               >
-                <li className="flex items-center gap-4  xl:text-[18px]  h-10 
-                ">
+                <li className="flex items-center gap-4  xl:text-[18px]  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   پروفایل
                 </li>
@@ -105,7 +103,7 @@ export default function ManagementPanel() {
                  isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }
               >
-                <li className="flex items-center gap-4  xl:text-[18px] h-10 ">
+                <li className="flex items-center gap-4  xl:text-[18px] ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                    بدنه
                 </li>
@@ -117,7 +115,7 @@ export default function ManagementPanel() {
                     isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }
               >
-                <li className="flex items-center gap-4  xl:text-[18px] h-10">
+                <li className="flex items-center gap-4  xl:text-[18px] ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block"></span>
                    جدول بدنه 
                 </li>
@@ -129,7 +127,7 @@ export default function ManagementPanel() {
                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }
               >
-                <li className="flex items-center gap-4  xl:text-[18px] h-10">
+                <li className="flex items-center gap-4  xl:text-[18px] ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                    ثالث 
                 </li>
@@ -141,7 +139,7 @@ export default function ManagementPanel() {
               isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }
               >
-                <li className="flex items-center gap-4  xl:text-[18px] h-10">
+                <li className="flex items-center gap-4  xl:text-[18px] ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                    جدول ثالث 
                 </li>
@@ -153,7 +151,7 @@ export default function ManagementPanel() {
                 className={({ isActive }) =>
                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }>
-                <li className="flex items-center gap-4 ] xl:text-[18px] h-10 ">
+                <li className="flex items-center gap-4 ] xl:text-[18px]  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   سرویس ها</li>
               </NavLink>
@@ -163,12 +161,13 @@ export default function ManagementPanel() {
                 className={({ isActive }) =>
                     isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
                 }>
-                <li className="flex items-center gap-4  xl:text-[18px] h-10 ">
+                <li className="flex items-center gap-4  xl:text-[18px]  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
                   قرارداد های من </li></NavLink>
 
             </ul>
-            <div className="w-full h-20  flex justify-center items-end ">
+            <div className=" mt-10">
+            <div className="w-full   flex justify-center items-end  ">
               <img src="../../img/icon/exit.png" alt="" className=" w-10"/>
             <li className="flex h-10 gap-4 items-center justify-center text-[#535353] font-Kalameh-Bold cursor-pointer lg:text-[20px]">
                  خـــــروج
@@ -176,6 +175,8 @@ export default function ManagementPanel() {
             </div>
             <div className="w-10/12 h-[2px] bg-[#e9e9e9] px-10 mx-auto"></div>
              <p className="xl:text-[12px] max-xl:text-[10px] w-full flex justify-center whitespace-nowrap flex-nowrap overflow-hidden text-[#535353]"> کلیه حقوق مادی و معنوی شرکت <p className="px-[1px] text-[#55c7e0]">asaflife</p>محفوظ است.</p>
+             </div>
+
           </div>
         </div>
         <div className="w-full h-full flex justify-center items-center">
