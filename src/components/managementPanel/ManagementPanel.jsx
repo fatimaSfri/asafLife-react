@@ -85,7 +85,7 @@ export default function ManagementPanel() {
         <div className=" h-full w-3/12 bg-white rounded-e-xl z-10 shadow-2xl flex flex-col justify-evenly  items-center  max-lg:hidden overflow-y-hidden " >
           <div className=" w-[120px] h-[120px]  rounded-full relative ">
             <img src="../img/pannel/User.svg" alt="" className="object-center " />
-          <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#7a7a7a]">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''} ttttt</p>
+          <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#7a7a7a]">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''} </p>
           </div>
 
           <div className="w-9/12 h-[2px] bg-[#e9e9e9] "></div>
