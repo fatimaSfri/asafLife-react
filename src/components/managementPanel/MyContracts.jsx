@@ -24,7 +24,7 @@ export default function MyContracts() {
   return (
     <>
 
-      <div className="w-full h-full flex flex-col items-center justify-center gap-10  overflow-auto " >
+      <div className="w-full h-full flex flex-col items-center justify-center gap-10  overflow-auto bg-[#f1f5f9]" >
         <div className="lg:w-10/12 max-lg:w-full flex items-center justify-evenly gap-2 overflow-auto  flex-wrap ">
           <InsuranceCard bgColor="bg-[#59169d]" textColor="text-[#59169d]" title="بیمه ثالث بدنه" number="٢" ></InsuranceCard>
           <InsuranceCard bgColor="bg-[#115052]" textColor="text-[#115052]" title="بیمه زندگی " number="٢"></InsuranceCard>

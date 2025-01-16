@@ -205,7 +205,7 @@ export default function Car() {
   };
 
   return (
-    <div className="w-full h-[100vh] bg-[#e9e9e9] overflow-auto ">
+    <div className="w-full h-[100vh] bg-[#f1f5f9] overflow-auto ">
       {!isChecked && <Rules onChange={handleCheckChange}></Rules>}
       {isChecked && (
         <>

@@ -23,14 +23,14 @@ export default function Rules({ onChange }) {
 
     return (
         <div className="absolute z-50 bg-[rgba(0,0,0,0.2)] h-full flex items-center justify-center">
-            <div className="lg:w-5/12 max-lg:w-7/12 max-md:w-10/12 bg-white rounded-xl lg:p-16 max-lg:p-10 h-4/6 flex flex-col">
+            <div className="lg:w-5/12 max-lg:w-7/12 max-md:w-10/12 bg-white rounded-xl lg:p-16 max-lg:p-5 max-sm:p-2 h-4/6 flex flex-col">
                 <div
                     ref={scrollRef}
                     className="overflow-y-auto flex-grow"
                     onScroll={handleScroll}
                     style={{ maxHeight: 'calc(100% - 60px)' }}
                 >
-                    <h1 className="text-[#213063] font-KalamehBold py-4">
+                    <h1 className="text-[#213063] font-KalamehBold py-4 max-md:px-2">
                         تعهدنامه شرایط و مقررات استفاده از تسهیلات اقساطی
                     </h1>
                     <p className='text-justify px-10'>
