@@ -73,16 +73,15 @@ export default function ManagementPanel() {
           </div>
         </div>
 
-        <div className=" h-full w-3/12 bg-white rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28 max-lg:hidden" >
-          <div className=" w-[120px] h-[120px]  rounded-full relative">
+        <div className=" h-full w-3/12 bg-white rounded-e-xl z-10 shadow-2xl flex flex-col justify-evenly  items-center  max-lg:hidden overflow-y-hidden " >
+          <div className=" w-[120px] h-[120px]  rounded-full relative ">
             <img src="../img/pannel/User.svg" alt="" className="object-center " />
-            
-            <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#7a7a7a]">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''} </p>
+          <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#7a7a7a]">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''} ttttt</p>
           </div>
 
           <div className="w-9/12 h-[2px] bg-[#e9e9e9] "></div>
 
-          <div className="w-11/12 -mt-10 h-[55vh]  min-h-96 flex flex-col justify-between " >
+          <div className="w-11/12 -mt-10 h-[55vh]  flex flex-col justify-between " >
             
             <ul className="xl:w-[300px] lg:w-[250px] flex flex-col justify-evenly h-[50vh]  ">
                 <NavLink

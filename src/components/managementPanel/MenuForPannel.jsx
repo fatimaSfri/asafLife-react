@@ -48,8 +48,8 @@ export default function MenuForPannel({onChange}) {
     return (
         <div className='h-screen w-full bg-[rgba(0,0,0,0.5)] z-30 ' > 
        
-           <div className=" h-screen w-9/12 bg-white rounded-e-xl z-10 shadow-2xl flex flex-col gap-20 items-center pt-28  ">
-           <div className=" w-[120px] h-[120px] rounded-full relative ">
+           <div className=" h-screen w-9/12 bg-white rounded-e-xl z-10 shadow-2xl flex flex-col  items-center justify-evenly  ">
+           <div className=" w-[100px] h-[100px] rounded-full relative ">
              <img src="../img/pannel/User.svg" alt="" className="object-center "/>
              <p className="mt-6 text-center xl:text-[20px] font-KalamehBold text-[#535353] ">{currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : ''}</p>
            </div>
