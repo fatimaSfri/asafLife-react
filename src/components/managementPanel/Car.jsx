@@ -14,7 +14,8 @@ export default function Car() {
   });
 
   const [selectedFiles, setSelectedFiles] = useState({
-    vehicle_cart_photos: [],
+    vehicle_cart_photo_front: null,
+    vehicle_cart_photo_behind: null,
     national_cart_photo: null,
     insurer_photo: null,
   });
@@ -32,7 +33,7 @@ export default function Car() {
   const toEnglishDigits = (str) => {
     return str.replace(/[۰-۹]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
   };
-  
+
   useEffect(() => {
     let timeout;
     if (popup.show) {
@@ -48,15 +49,23 @@ export default function Car() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const dataToValidate = {
         address: formData.address,
         phone: toEnglishDigits(formData.phone),
-        vehicle_cart_photos: selectedFiles.vehicle_cart_photos.map((file) => ({
-          type: file.type,
-          size: file.size,
-        })),
+        vehicle_cart_photo_front: selectedFiles.vehicle_cart_photo_front
+          ? {
+              type: selectedFiles.vehicle_cart_photo_front.type,
+              size: selectedFiles.vehicle_cart_photo_front.size,
+            }
+          : undefined,
+        vehicle_cart_photo_behind: selectedFiles.vehicle_cart_photo_behind
+          ? {
+              type: selectedFiles.vehicle_cart_photo_behind.type,
+              size: selectedFiles.vehicle_cart_photo_behind.size,
+            }
+          : undefined,
         national_cart_photo: selectedFiles.national_cart_photo
           ? {
               type: selectedFiles.national_cart_photo.type,
@@ -70,10 +79,11 @@ export default function Car() {
             }
           : undefined,
       };
-
-  
-      const { error } = BadanehSchema.validate(dataToValidate, { abortEarly: false });
       
+
+
+      const { error } = BadanehSchema.validate(dataToValidate, { abortEarly: false });
+
       if (error) {
         console.log(error)
         const validationErrors = {};
@@ -82,23 +92,29 @@ export default function Car() {
           validationErrors[detail.context.key] = detail.message;
         });
         setErrors(validationErrors);
-        
+
         return;
       }
-    
-      
+
+
       const uploadData = new FormData();
       uploadData.append("address", formData.address);
       uploadData.append("phone", toEnglishDigits(formData.phone));
-  
-      selectedFiles.vehicle_cart_photos.forEach((file) => {
-        uploadData.append("vehicle_cart_photos", file.raw || file);
-      });
-  
+
+      // selectedFiles.vehicle_cart_photos.forEach((file) => {
+      //   uploadData.append("vehicle_cart_photos", file.raw || file);
+      // });
+
       if (selectedFiles.national_cart_photo) {
         uploadData.append("national_cart_photo", selectedFiles.national_cart_photo.raw || selectedFiles.national_cart_photo);
       }
-      
+      if (selectedFiles.vehicle_cart_photo_behind) {
+        uploadData.append("vehicle_cart_photo_behind", selectedFiles.vehicle_cart_photo_behind.raw || selectedFiles.vehicle_cart_photo_behind);
+      }
+      if (selectedFiles.vehicle_cart_photo_front) {
+        uploadData.append("vehicle_cart_photo_front", selectedFiles.vehicle_cart_photo_front.raw || selectedFiles.vehicle_cart_photo_front);
+      }
+
       if (selectedFiles.insurer_photo) {
         uploadData.append("insurer_photo", selectedFiles.insurer_photo.raw || selectedFiles.insurer_photo);
       }
@@ -110,17 +126,18 @@ export default function Car() {
         },
       });
       console.log('Response:', response.data);
-      
-  
+
+
       setFormData({ address: "", phone: "" });
       setSelectedFiles({
-        vehicle_cart_photos: [],
+        vehicle_cart_photo_behind: null,
+        vehicle_cart_photo_front: null,
         national_cart_photo: null,
         insurer_photo: null,
       });
       setErrors({});
       setBackendErrors({});
-  
+
       setSuccessPopup(true);
       setSuccessMessage("اطلاعات با موفقیت ارسال شد.");
       setTimeout(() => {
@@ -129,7 +146,8 @@ export default function Car() {
           phone: "",
         });
         setSelectedFiles({
-          vehicle_cart_photos: [],
+          vehicle_cart_photo_behind: null,
+          vehicle_cart_photo_front: null,
           national_cart_photo: null,
           insurer_photo: null,
         });
@@ -155,7 +173,7 @@ export default function Car() {
       }
     }
   };
-  
+
 
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
@@ -170,18 +188,15 @@ export default function Car() {
     if (files.length > 0) {
       setSelectedFiles((prevState) => ({
         ...prevState,
-        vehicle_cart_photos: Array.from(files).slice(0, 2),
-        insurer_photo: files[2],
-        national_cart_photo: files[3],
-      }));
-      setErrors((prevState) => ({
-        ...prevState,
-        vehicle_cart_photos: "",
-        insurer_photo: "",
-        national_cart_photo: "",
+        vehicle_cart_photo_front: files[0] || null,
+        vehicle_cart_photo_behind: files[1] || null,
+        national_cart_photo: files[2] || null,
+        insurer_photo: files[3] || null,
       }));
     }
   };
+  
+
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -238,9 +253,10 @@ export default function Car() {
                 setFiles={(files) =>
                   setSelectedFiles((prevState) => ({
                     ...prevState,
-                    vehicle_cart_photos: files.slice(0, 2),
-                    insurer_photo:files[2] ,
-                    national_cart_photo: files[3],
+                    vehicle_cart_photo_front: files[0] || null, 
+                    vehicle_cart_photo_behind: files[1] || null, 
+                    national_cart_photo: files[2] || null, 
+                    insurer_photo: files[3] || null, 
                   }))
                 }
                 textbox1="لطفاً تصویر رو کارت ماشین خود را بارگذاری کنید"
@@ -248,12 +264,12 @@ export default function Car() {
                 textbox3="لطفاً تصویر کارت ملی خود را بارگذاری کنید"
                 textbox4="لطفاً تصویر بیمه نامه خود را بارگذاری کنید"
                 count={4}
-                grid="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 "
+                grid="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 max-md:grid-cols-1"
               />
             </div>
-            {errors.vehicle_cart_photos && (
+            {errors.vehicle_cart_photo_front && (
               <p className="text-red-500 text-sm mt-2 max-xl:w-[95%] xl:w-11/12 mx-auto ">
-                {errors.vehicle_cart_photos}
+                {errors.vehicle_cart_photo_front}
               </p>
             )}
             {errors.insurer_photo && (
@@ -261,15 +277,25 @@ export default function Car() {
                 {errors.insurer_photo}
               </p>
             )}
+            {errors.vehicle_cart_photo_behind && (
+              <p className="text-red-500 text-sm mt-2 max-xl:w-[95%] xl:w-11/12 mx-auto ">
+                {errors.vehicle_cart_photo_behind}
+              </p>
+            )}
+            {errors.national_cart_photo && (
+              <p className="text-red-500 text-sm mt-2 max-xl:w-[95%] xl:w-11/12 mx-auto ">
+                {errors.national_cart_photo}
+              </p>
+            )}
             <div className="max-xl:w-[98%] xl:w-9/12 mt-10 rounded-lg flex flex-col items-center justify-center ">
               <div className="grid lg:grid-cols-2 max-lg:grid-cols-1  w-full items-center justify-center">
                 <CustomInput
                   label=" آدرس "
-                   name="address"
+                  name="address"
                   items="items-center"
                   value={formData.address}
                   onChange={handleInputChange}
-                 width="w-[95%]"
+                  width="w-[95%]"
                   error={errors.address || backendErrors.address}
                 />
                 <CustomInput
