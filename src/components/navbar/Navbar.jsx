@@ -2,9 +2,11 @@ import './navbar.css'
 import  { useState, useEffect } from 'react';
 import Menu from '../menu/Menu'
 import { Link } from 'react-router-dom';
+import axiosInstance from '../axiosConfig';
 
 function Navbar(){
  
+  const [api , setApi] =useState(false)
   const [toggle ,setToggle] = useState(false)
   
   const icon ={
@@ -20,6 +22,14 @@ function handleMenu(){
     setBgColor(true); 
   }
 }
+useEffect(() => {
+  axiosInstance.get("user/dashbord").then(res => {
+    console.log("کوکی:", res);
+    setApi(true);
+    }).catch(
+    setApi(false)
+  );
+},[]);
 
 const [bgColor, setBgColor] = useState(false);
 
@@ -68,7 +78,10 @@ return(
                         <a><li className="hover:text-[#55c7e0] text-white px-3 font-asaf cursor-pointer">خانه</li></a>
                         <a href="#"><li className="hover:text-[#55c7e0] text-white  px-3 py-5 cursor-pointer"> پشتیبانی </li></a>
                         <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">سامانه</li></Link>
-                        <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">ثبت نام / ورود</li></Link>
+                        <Link to="/login"><li className="hover:text-[#55c7e0] px-3 text-white py-5 cursor-pointer">
+                          {api && "حساب کاربری"} 
+                          {!api && "ثبت نام / ورود"}
+                          </li></Link>
                          </ul>
 
                      </div>
@@ -83,7 +96,7 @@ return(
                         <img src={toggle?icon.close:icon.menu} className={`${!toggle?"w-8 h-6":"w-10 h-10"} font-[#4f4f4f]  lg:hidden cursor-pointer `} onClick={handleMenu} ></img></div>
                         <img src="./img/icon/ASAF.svg" className= {`w-32 max-md:w-44  max-md:hidden  ${toggle?'hidden':''}`} ></img>
                      
-                       
+              
                     </div>
                     </div>
                     </>
