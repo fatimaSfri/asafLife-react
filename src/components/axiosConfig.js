@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
         "Content-Type": "application/json",
     },
     withCredentials: true,
-   timeout: 10000,
+   timeout: 25000,
 });
 
 axiosInstance.interceptors.response.use(
@@ -15,13 +15,14 @@ axiosInstance.interceptors.response.use(
         return response; 
     },
     (error) => {
+        console.error("Error in axios response interceptor: ",error);
         if (error.response) {
             if (error.response.status === 401) {
-                if(!window.location.href.includes('/login'))
+                if(!window.location.href.includes('/login') || window.location.href != '/')
                     window.location.href = "/login";
             } else if (error.response.status === 400) {
                 console.error("Bad Request: ", error.response.data);
-            } else if (error.response.status === 500) {
+            } else if (error.response.status === 500 || error.code ==="ECONNABORTED") {
                 console.error("Server Error: ", error.response.data);
             }
         } else {

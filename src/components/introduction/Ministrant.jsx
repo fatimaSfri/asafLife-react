@@ -10,15 +10,15 @@ export default function Mobile() {
     window.scrollTo(0, 0);
   }, []);
 
-const [play,setPlay]= useState(true)
+// const [play,setPlay]= useState(true)
 
-useEffect(()=>{
-if(window.innerWidth<900){
-  setPlay(false)
-}else{
-  setPlay(true)
-}
-},[])
+// useEffect(()=>{
+// if(window.innerWidth<900){
+//   setPlay(false)
+// }else{
+//   setPlay(true)
+// }
+// },[])
 
 
   return (
@@ -37,7 +37,7 @@ if(window.innerWidth<900){
          <video className="rounded-lg"
         src= "./img/video/ministrant.MP4"
         preload="auto"
-        autoPlay={play}
+        autoPlay
         loop
         controls
        >

@@ -12,15 +12,15 @@ export default function CarBody() {
     window.scrollTo(0, 0);
   }, []);
      
-  const [play,setPlay]= useState(true)
+  // const [play,setPlay]= useState(true)
   
-  useEffect(()=>{
-  if(window.innerWidth<900){
-    setPlay(false)
-  }else{
-    setPlay(true)
-  }
-  },[])
+  // useEffect(()=>{
+  // if(window.innerWidth<900){
+  //   setPlay(false)
+  // }else{
+  //   setPlay(true)
+  // }
+  // },[])
 
 
 
@@ -37,7 +37,7 @@ export default function CarBody() {
          <video className="rounded-lg"
         src= "./img/video/forCar.MP4"
         preload="auto"
-        autoPlay={play}
+        autoPlay
         loop
         controls
        >
