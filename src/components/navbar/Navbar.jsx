@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 function Navbar(){
  
   const [toggle ,setToggle] = useState(false)
+  
   const icon ={
    menu:"./img/icon/Menu.svg", close:"./img/icon/close.svg"
   }
@@ -39,7 +40,7 @@ const [bgColor, setBgColor] = useState(false);
     };
   }, []);
 
-
+  
 
 return(
 

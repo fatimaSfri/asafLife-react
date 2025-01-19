@@ -1,11 +1,11 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink,useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import MenuForPannel from "../managementPanel/MenuForPannel";
 import axiosInstance from "../axiosConfig";
 
 
 export default function ManagementPanel() {
-
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false)
   const icon = {
     menu: "../img/icon/menu-dark.svg",
@@ -40,7 +40,7 @@ export default function ManagementPanel() {
     try {
       const response = await axiosInstance.get("/auth/logout");
       if (response.data) {
-
+        navigate("/login");
       } else {
         console.error("داده‌های دریافتی آرایه نیستند:", response.data);
       }
