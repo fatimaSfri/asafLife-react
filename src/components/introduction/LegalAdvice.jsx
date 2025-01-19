@@ -19,10 +19,9 @@ export default function CarBody() {
   //   }
   //   },[])
   
-
+  
   return (
     <>
- 
    <Navbar></Navbar>
   <LegalBanner></LegalBanner>
   
