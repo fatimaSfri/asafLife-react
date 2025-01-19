@@ -84,17 +84,26 @@ export default function ManagementPanel() {
           <div className="w-11/12 -mt-10 h-[55vh]  flex flex-col justify-between " >
             
             <ul className="xl:w-[300px] lg:w-[250px] flex flex-col justify-evenly h-[50vh]  ">
-                <NavLink
-                to="/dashbord/profile"
+            <NavLink
+                to="/dashbord/services"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
-                }
-              >
+                   isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
+                }>
+                <li className="flex items-center gap-4 ] xl:text-[18px]  ">
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  سرویس ها</li>
+              </NavLink>
+              <div className="w-11/12 h-[1px] bg-[#e9e9e9] mx-auto"></div>
+              <NavLink
+                to="/dashbord/mycontracts"
+                className={({ isActive }) =>
+                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
+                }>
                 <li className="flex items-center gap-4  xl:text-[18px]  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  پروفایل
-                </li>
-              </NavLink>
+                  قرارداد های من </li></NavLink>
+
+              
               <div className="w-11/12 h-[1px] bg-[#e9e9e9] mx-auto"></div>
               <NavLink
                 to="/dashbord/car"
@@ -144,26 +153,18 @@ export default function ManagementPanel() {
                 </li>
               </NavLink>
               <div className="w-11/12 h-[1px] bg-[#e9e9e9] mx-auto"></div>
-
               <NavLink
-                to="/dashbord/services"
+                to="/dashbord/profile"
                 className={({ isActive }) =>
-                   isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
-                }>
-                <li className="flex items-center gap-4 ] xl:text-[18px]  ">
-                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  سرویس ها</li>
-              </NavLink>
-              <div className="w-11/12 h-[1px] bg-[#e9e9e9] mx-auto"></div>
-              <NavLink
-                to="/dashbord/mycontracts"
-                className={({ isActive }) =>
-                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl'
-                }>
+                  isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
+                }
+              >
                 <li className="flex items-center gap-4  xl:text-[18px]  ">
                   <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  قرارداد های من </li></NavLink>
-
+                  حساب کاربری
+                </li>
+              </NavLink>
+            
             </ul>
             <div className=" mt-10">
             <div className="w-full   flex justify-center items-end  ">
