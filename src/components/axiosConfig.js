@@ -18,8 +18,7 @@ axiosInstance.interceptors.response.use(
         console.error("Error in axios response interceptor: ",error);
         if (error.response) {
             if (error.response.status === 401) {
-                console.log(window.location.href);
-                if(!window.location.href.includes('/login') )
+                if(!window.location.href.includes('/login') || window.location.href != "https://asaflife.ir/" || window.location.href != "https://asaflife.ir")
                     window.location.href = "/login";
             } else if (error.response.status === 400) {
                 console.error("Bad Request: ", error.response.data);
