@@ -19,6 +19,7 @@ export default function Login() {
   const [apiError, setApiError] = useState("");
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
+  const [submitBtnStatus ,setSubmitBtnStatus] = useState(false)
   const navigate = useNavigate();
   Cookies.remove('phone');
   const schema = Joi.object({
@@ -59,7 +60,6 @@ export default function Login() {
 
   useEffect(() => {
     let interval = null;
-
     if (isActive && data.timeOut > 0) {
       interval = setInterval(() => {
         setData((prevData) => {
@@ -89,6 +89,7 @@ export default function Login() {
         axiosInstance.get("user/dashbord").then(res => {
           console.log("کوکی:", res);
           setApiError("");
+          navigate('/dashbord');
         });
   },[]);
 
@@ -161,14 +162,10 @@ const verifyCode = async () => {
     const { isInformationSet } = response.data;
     console.log("isInformationSet:", isInformationSet);
 
-  
-
-    if (isInformationSet === undefined) {
-      navigate("/dashbord");
-    } else if (isInformationSet === false) {
-      navigate("/insured-person", { state: { phone: userPhone } });
-    }
-    return response.data;
+    if (isInformationSet) return navigate("/dashbord/services");
+          
+    navigate("/insured-person", { state: { phone: userPhone } });
+    
   } catch (error) {
     console.log("Code:", code.code);
     console.log("Phone:", phone.phone || localStorage.getItem("userPhone"));
@@ -215,6 +212,22 @@ const handleErrorPass = () => {
   return true;
 };
 
+const onSubmit = () => {
+  setSubmitBtnStatus(true);
+  if (validate()) {
+    localStorage.setItem("userPhone", phone.phone);
+    sendSmsCode(phone.phone).then(() => {
+      resetTimer();
+      navigate(`/login/password?phone=${phone.phone}`);
+    }).catch((error) => {
+      console.error("Error sending SMS code:", error);
+      setApiError(error.response?.data['message']);
+    }).finally(() => {
+      setSubmitBtnStatus(false);
+    });
+  }
+};
+
 const clearErrors = () => {
   setValidationErrors({});
   setValidationErrorsPass({});
@@ -247,6 +260,10 @@ const inputProps = isPassword
     name: "phone",
     validationError: validationErrors.phone,
     maxLength: 13,
+    onkeydownPressed: (e) => {
+      if(e.key === 'Enter')
+        onSubmit()
+      },
     onChange: handleInputChange,
     placeholder: "09** *** ****",
   };
@@ -279,20 +296,9 @@ return (
             <Outlet context={{ inputProps }} />
             <div className="mt-4">
               <button
-                className="sm:w-[250px] max-sm:w-[200px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0]"
-                onClick={() => {
-                  if (validate()) {
-                    localStorage.setItem("userPhone", phone.phone);
-                    sendSmsCode(phone.phone).then(() => {
-                      resetTimer();
-                      navigate(`/login/password?phone=${phone.phone}`);
-                    }).catch((error) => {
-                      console.error("Error sending SMS code:", error);
-                      setApiError(error.response?.data['message']);
-                    });
-                  }
-                }}
-              >
+                className={`sm:w-[250px] max-sm:w-[200px] h-10 text-white rounded-lg bg-gradient-to-r from-[#213063] via-[#213063] to-[#55c7e0] `}
+                disabled={submitBtnStatus}
+                onClick={onSubmit}>
                 ورود
               </button>
             </div>

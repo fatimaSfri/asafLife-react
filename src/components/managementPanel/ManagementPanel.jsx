@@ -16,44 +16,53 @@ export default function ManagementPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      console.log('درخواست اطلاعات کاربران...');
-      
-      try {
-        const response = await axiosInstance.get("/user/dashbord");
-        console.log(response);
-        if (response.data) {
-          // console.log(response.data.data);
-          const currentUserData = response.data.data
-          // console.log(currentUserData);
-          if (currentUserData) {
-            setCurrentUser(currentUserData);
-          } else {
-            console.warn('اطلاعات کاربر فعلی یافت نشد.');
-          }
+    axiosInstance.get("/user/dashbord").then(response => {
+      if (response.data) {
+        const currentUserData = response.data.data
+        // console.log(currentUserData);
+        if (currentUserData) {
+          setCurrentUser(currentUserData);
         } else {
-          console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+          console.warn('اطلاعات کاربر فعلی یافت نشد.');
         }
-      } catch (error) {
-        console.error("خطا در دریافت اطلاعات کاربران:", error);
-      } finally {
-        setLoading(false);
+      } else {
+        console.error("داده‌های دریافتی آرایه نیستند:", response.data);
       }
-    };
-
-    fetchUsers();
+    }).catch(error => {
+      console.error("خطا در دریافت اطلاعات کاربران:", error);
+    }).finally(() => {
+      setLoading(false);
+    })
   }, []);
+
+  const exit = async () => {
+    if (!window.confirm("آیا برای خروج مطمئن هستید؟")) return;
+    try {
+      const response = await axiosInstance.get("/auth/logout");
+      if (response.data) {
+
+      } else {
+        console.error("داده‌های دریافتی آرایه نیستند:", response.data);
+      }
+    } catch (error) {
+      console.error("خطا در دریافت اطلاعات کاربران:", error);
+    } finally {
+      setLoading(false);
+    }
+
+
+  }
 
   function handleMenu() {
     if (window.innerWidth < 1200) {
       setToggle(prev => !prev)
       setBgColor(prev => !prev)
-      console.log(toggle)
+      // console.log(toggle)
     }
   }
-  
-  function onChange(e){
-  setToggle(e)   
+
+  function onChange(e) {
+    setToggle(e)
   }
 
   return (
@@ -169,12 +178,12 @@ export default function ManagementPanel() {
             <div className=" mt-10">
             <div className="w-full   flex justify-center items-end  ">
               <img src="../../img/icon/exit.png" alt="" className=" w-10"/>
-            <li className="flex h-10 gap-4 items-center justify-center text-[#535353] font-Kalameh-Bold cursor-pointer lg:text-[20px]">
+            <li className="flex h-10 gap-4 items-center justify-center text-[#535353] font-Kalameh-Bold cursor-pointer lg:text-[20px]" onClick={exit}>
                  خـــــروج
               </li>
             </div>
             <div className="w-10/12 h-[2px] bg-[#e9e9e9] px-10 mx-auto"></div>
-             <p className="xl:text-[12px] max-xl:text-[10px] w-full flex justify-center whitespace-nowrap flex-nowrap overflow-hidden text-[#535353]"> کلیه حقوق مادی و معنوی شرکت <p className="px-[1px] text-[#55c7e0]">asaflife</p>محفوظ است.</p>
+             <div className="xl:text-[12px] max-xl:text-[10px] w-full flex justify-center whitespace-nowrap flex-nowrap overflow-hidden text-[#535353]"> کلیه حقوق مادی و معنوی شرکت <p className="px-[1px] text-[#55c7e0]">asaflife</p>محفوظ است.</div>
              </div>
 
           </div>
