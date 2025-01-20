@@ -18,8 +18,9 @@ axiosInstance.interceptors.response.use(
         console.error("Error in axios response interceptor: ",error);
         if (error.response) {
             if (error.response.status === 401) {
-                if(!window.location.href.includes('/login') && window.location.href != "https://asaflife.ir/" && window.location.href != "https://asaflife.ir")
+                if(window.location.href.includes('dashbord')){
                     window.location.href = "/login";
+                }
             } else if (error.response.status === 400) {
                 console.error("Bad Request: ", error.response.data);
             } else if (error.response.status === 500 || error.code ==="ECONNABORTED") {
