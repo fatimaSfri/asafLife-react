@@ -10,11 +10,11 @@ export default function CustomInput({
     width,
     value,
     error,
- 
-  }) {
+ })
+ {
     return (
       <>
-        <div className={`w-full flex flex-col  ${items}`}>
+        <div className={`w-full flex flex-col ${items}`}>
           <div className={`flex w-[94%] `}>
             <p className="text-[16px] text-[#213063] mt-4 ">
               {label}

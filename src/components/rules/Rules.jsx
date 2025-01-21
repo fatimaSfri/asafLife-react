@@ -22,7 +22,7 @@ export default function Rules({ onChange }) {
     };
 
     return (
-        <div className="absolute z-50 bg-[rgba(0,0,0,0.2)] h-full flex items-center justify-center">
+           <div  className="absolute z-50 bg-[rgba(0,0,0,0.2)] h-full flex items-center justify-center">
             <div className="lg:w-5/12 max-lg:w-7/12 max-md:w-10/12 bg-white rounded-xl lg:p-16 max-lg:p-5 max-sm:p-2 h-4/6 flex flex-col">
                 <div
                     ref={scrollRef}

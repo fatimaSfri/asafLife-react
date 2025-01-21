@@ -27,7 +27,7 @@ import GetBimeBadane from './components/managementPanel/GetBimeBadane.jsx';
 function App() {
 
    return (
-
+      
       <>
          <Routes>
             <Route path="/" element={<Home />} />
@@ -53,18 +53,16 @@ function App() {
                <Route path='profile' element={< Profile />} />
                <Route path='installment/:contractId' element={<ChildProfil />} />
                <Route path="mycontracts" element={<MyContracts />} />
-               <Route path="services" element={<Services />} />
-               <Route path="support" element={<Support />} />
-               <Route path="car" element={<PanelCarBody />} />
-               <Route path="Third" element={<Third />} />
-               <Route path="GetThird" element={< GetThaleth/>} />
+               <Route path="services"   element={<Services />} />
+               <Route path="support"  element={<Support />} />
+               <Route path="car"    element={<PanelCarBody />} />
+               <Route path="Third"  element={<Third />} />
+               <Route path="GetThird" element={<GetThaleth/>} />
                <Route path="GetCar" element={<GetBimeBadane/>} />
           </Route>
             <Route path="insured-person" element={<InsuredPerson/>} />
-         </Routes>
-              
+         </Routes>        
       </>
-   )
-}
+ )}
 
 export default App

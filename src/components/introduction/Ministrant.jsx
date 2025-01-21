@@ -53,7 +53,7 @@ export default function Mobile() {
       <PhoneCall post=" کارشناس صدور" phone="09150758200"  employeeName="سرکار خانم صباغ" ></PhoneCall>
       <PhoneCall post=" کارشناس خسارت " phone="09021887644"  employeeName=" جناب آقای  حسین زاده" ></PhoneCall>
       <PhoneCall post="مدیریت" phone="09121887644"  employeeName=" جناب آقای مجتبایی " ></PhoneCall>
-      <PhoneCall post="دفتر مرکزی" phone="021-91098951"  ></PhoneCall>
+      <PhoneCall post="دفتر مرکزی" phone="021-91098951" ></PhoneCall>
    </div>
    </div>
   <PreviewServices></PreviewServices>

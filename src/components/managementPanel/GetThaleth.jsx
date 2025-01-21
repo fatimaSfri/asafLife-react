@@ -1,6 +1,6 @@
 import DynamicTable from './DynamicTable';
 import moment from 'moment-jalaali';
-
+import NavbarForPannel from './NavbarForPannel';
 
 moment.loadPersian({ dialect: 'persian-modern' });
 const GetThaleth = () => {
@@ -33,6 +33,9 @@ const GetThaleth = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center" dir="rtl">
+    <div className="w-full bg-[#f1f5f9]">
+      <NavbarForPannel width="sm:w-11/12 max-sm:w-11/12 lg:-ml-10" ></NavbarForPannel>
+      </div>
       <DynamicTable
         apiEndpoint="/thaleth/report"
         columns={columns}

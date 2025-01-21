@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import ThirdSchema from "./validator/thirdSchema.jsx";
 import moment from 'moment-jalaali';
 import Rules from "../rules/Rules.jsx";
+import NavbarForPannel from './NavbarForPannel';
 
 export default function Third() {
   const [formData, setFormData] = useState({
@@ -180,7 +181,9 @@ export default function Third() {
   };
 
   return (
+
     <div className="w-full h-[100vh] bg-[#f1f5f9] overflow-auto">
+     
       {!isChecked && <Rules onChange={handleCheckChange}></Rules>}
       {isChecked && (
         <>
@@ -199,6 +202,9 @@ export default function Third() {
               {successMessage}
             </div>
           )}
+          <div className="w-full bg-[#f1f5f9]">
+            <NavbarForPannel width="xl:w-9/12 xl:-ml-8 max-xl:w-full max-lg:w-11/12 "></NavbarForPannel>
+          </div>
           <div className="w-full h-[400px]  flex justify-center items-end">
             <div className="max-xl:w-11/12 xl:w-8/12 h-5/6 flex items-center justify-center rounded-2xl bg-gradient-circle-carBody">
               <img

@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
 export default function Login() {
+
   const initialTimeOut = 120;
   const [data, setData] = useState({ timeOut: null });
   const [code, setCode] = useState({ code: "" });
@@ -19,8 +20,9 @@ export default function Login() {
   const [apiError, setApiError] = useState("");
   const location = useLocation();
   const isPassword = location.pathname.includes("login/password");
-  const [submitBtnStatus ,setSubmitBtnStatus] = useState(false)
+  const [submitBtnStatus ,setSubmitBtnStatus] = useState(false);
   const navigate = useNavigate();
+  
   Cookies.remove('phone');
   const schema = Joi.object({
     phone: Joi.string()
@@ -269,6 +271,7 @@ const inputProps = isPassword
   };
 
 return (
+
   <div className="relative w-full h-screen overflow-hidden flex justify-center">
     <video
       className="absolute top-0 left-0 w-full h-full object-cover -z-10"
@@ -341,10 +344,8 @@ return (
               {showLink && (
                 <>
                   <div className="w-[3px] rounded-2xl h-5 bg-[#55c7e0]"></div>
-                  <p
-                    className="text-[14px] cursor-pointer max-sm:text-[12px] text-[#213063]"
-                    onClick={generateNewCode}
-                  >
+                  <p className="text-[14px] cursor-pointer max-sm:text-[12px] text-[#213063]"
+                    onClick={generateNewCode}>
                     ارسال دوباره کد
                   </p>
                 </>
@@ -369,6 +370,7 @@ return (
       </div>
     </div>
   </div>
+
 );
 }
 

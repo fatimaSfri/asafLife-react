@@ -59,17 +59,25 @@ export default function MenuForPannel({onChange}) {
        
            <div className="w-11/12 -mt-10 h-[55vh]  min-h-96 flex flex-col justify-between">
            <ul className="w-full flex flex-col justify-evenly  h-full" >
-                <NavLink
-                to="/dashbord/profile"
+           <NavLink
+                to="/dashbord/services"
                 className={({ isActive }) =>
                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
-                } 
-              >
-                <li className="flex items-center gap-4 " onClick={handelMenu}>
-                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2 block "></span>
-                  پروفایل
-                </li>
+                }>
+                <li className="flex items-center gap-4" onClick={handelMenu}>
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  سرویس ها</li>
               </NavLink>
+                
+              <NavLink
+                to="/dashbord/mycontracts"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
+                }>
+                <li className="flex items-center gap-4" onClick={handelMenu}>
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
+                  قرارداد های من </li></NavLink>
+
               <NavLink
                 to="/dashbord/car"
                 className={({ isActive }) =>
@@ -114,32 +122,17 @@ export default function MenuForPannel({onChange}) {
                    جدول ثالث 
                 </li>
               </NavLink>
-
-
               <NavLink
-                to="/dashbord/services"
+                to="/dashbord/profile"
                 className={({ isActive }) =>
                    isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
-                }>
-                <li className="flex items-center gap-4" onClick={handelMenu}>
-                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  سرویس ها</li>
+                } 
+              >
+                <li className="flex items-center gap-4 " onClick={handelMenu}>
+                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2 block "></span>
+                  حساب کاربری
+                </li>
               </NavLink>
-                
-              <NavLink
-                to="/dashbord/mycontracts"
-                className={({ isActive }) =>
-                  isActive ? 'bg-[rgba(33,48,99,0.9)] rounded-xl h-10 flex items-center text-white ' : 'text-[#4e4e4e] hover:bg-[rgba(250,250,250,0.9)] rounded-xl '
-                }>
-                <li className="flex items-center gap-4" onClick={handelMenu}>
-                  <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                  قرارداد های من </li></NavLink>
-
-          
-              {/* <li className="flex items-center gap-4" onClick={handelMenu}>
-                <span className="w-3 h-3 bg-[#55c7e0] rounded-full mr-2  block "></span>
-                خروج
-              </li> */}
 
             </ul>
          

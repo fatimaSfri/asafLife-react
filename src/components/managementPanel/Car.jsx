@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import BadanehSchema from "./validator/badanehSchema.jsx";
 import Rules from "../rules/Rules.jsx";
+import NavbarForpanel from "./NavbarForPannel.jsx" 
 
 export default function Car() {
   const [formData, setFormData] = useState({
@@ -101,9 +102,7 @@ export default function Car() {
       uploadData.append("address", formData.address);
       uploadData.append("phone", toEnglishDigits(formData.phone));
 
-      // selectedFiles.vehicle_cart_photos.forEach((file) => {
-      //   uploadData.append("vehicle_cart_photos", file.raw || file);
-      // });
+     
 
       if (selectedFiles.national_cart_photo) {
         uploadData.append("national_cart_photo", selectedFiles.national_cart_photo.raw || selectedFiles.national_cart_photo);
@@ -205,7 +204,8 @@ export default function Car() {
   };
 
   return (
-    <div className="w-full h-[100vh] bg-[#f1f5f9] overflow-auto ">
+    <div className="w-full flex flex-col h-[100vh] bg-[#f1f5f9] overflow-auto ">
+     
       {!isChecked && <Rules onChange={handleCheckChange}></Rules>}
       {isChecked && (
         <>
@@ -224,6 +224,10 @@ export default function Car() {
               {successMessage}
             </div>
           )}
+
+         <div className="w-full bg-[#f1f5f9]">
+         <NavbarForpanel width="sm:w-11/12 max-sm:w-11/12" ></NavbarForpanel>
+        </div>
           <div className="w-full h-[400px]  flex justify-center items-end">
             <div className="max-xl:w-11/12 xl:w-8/12 h-5/6 flex items-center justify-center rounded-2xl bg-gradient-circle-carBody">
               <img

@@ -2,9 +2,8 @@ import CustomInput from "./CustomInput";
 import { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import profileSchema from "./validator/profileSchema";
-import {  useNavigate } from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
+import NavbarForPannel from './NavbarForPannel' ;
 
 export default function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,8 +17,6 @@ export default function Profile() {
     phone: "",
   });
   const navigate = useNavigate();
-
-  
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -84,14 +81,19 @@ export default function Profile() {
   };
 
   return (
+    <>
     
-    <div className="w-full h-full flex items-center justify-center bg-[#f1f5f9]">
+    <div className="w-full h-full flex flex-col items-center bg-[#f1f5f9] ">
+      <div className="w-full">
+     <NavbarForPannel width="sm:w-10/12 max-sm:w-11/12 " ></NavbarForPannel>
+    </div>
       {showPopup && (
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
           اطلاعات با موفقیت به‌روزرسانی شد!
         </div>
       )}
-      <div className="w-10/12 grid lg:grid-cols-2 max-lg:grid-cols-1 gap-4">
+      <div className="w-full h-full  flex items-center justify-center ">
+      <div className="w-10/12 grid lg:grid-cols-2 max-lg:grid-cols-1 gap-4  ">
         <CustomInput
           label="نام"
           name="first_name"
@@ -145,6 +147,8 @@ export default function Profile() {
           </button>
         </div>
       </div>
+      </div>
     </div>
+    </>
   );
 }

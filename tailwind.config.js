@@ -26,7 +26,7 @@ export default {
         'custom-gradient': 'linear-gradient(to left, #213063, #55c7e0)',
         'bg-ministrant':"url('../../img/Animation/ministrant/background.jpg')",
         'bg-sm-ministrant':"url('../../img/Animation/ministrant/09-bg.png')",
-        "bg-carbody" :"url('../../img/ten-ten/bg.png')",
+        "bg-carbody":"url('../../img/ten-ten/bg.png')",
 
          },
     },

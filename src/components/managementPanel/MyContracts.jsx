@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import InsuranceCard from "./InsuranceCard.jsx"
 import DynamicTable from "./DynamicTable.jsx";
+import NavbarForPannel from './NavbarForPannel';
+
 export default function MyContracts() {
   const navigate = useNavigate();
 
@@ -23,8 +25,13 @@ export default function MyContracts() {
 
   return (
     <>
+       
+      <div className="w-full h-full flex flex-col items-center  overflow-auto bg-[#f1f5f9]" >
 
-      <div className="w-full h-full flex flex-col items-center justify-center gap-10  overflow-auto bg-[#f1f5f9]" >
+      <div className="w-full bg-[#f1f5f9]">
+         <NavbarForPannel width="sm:w-11/12 lg:-ml-10 max-sm:w-11/12"></NavbarForPannel>
+       </div>
+       <div className="flex items-center flex-col justify-center h-full gap-10 overflow-auto w-full">
         <div className="lg:w-10/12 max-lg:w-full flex items-center justify-evenly gap-2 overflow-auto  flex-wrap ">
           <InsuranceCard bgColor="bg-[#59169d]" textColor="text-[#59169d]" title="بیمه ثالث بدنه" number="٢" ></InsuranceCard>
           <InsuranceCard bgColor="bg-[#115052]" textColor="text-[#115052]" title="بیمه زندگی " number="٢"></InsuranceCard>
@@ -39,6 +46,7 @@ export default function MyContracts() {
             columns={columns}
             customRenderers={customRenderers}
           />
+        </div>
         </div>
       </div>
 

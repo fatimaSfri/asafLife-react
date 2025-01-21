@@ -54,14 +54,14 @@ export default function Informathion() {
      <div className='lg:w-1/2 max-lg:w-full h-[450px] flex items-center justify-center relative overflow-hidden '>
      <div className='flex flex-col z-50 sm:w-[600px] max-sm:w-[500px] sm:-mt-72 max-sm:-mt-60 '>
      <div className='w-full h-1/6 flex items-center justify-center  '>
-    <img src="./img/elderly/saman.png" alt="" className="md:w-16 md:h-20 max-md:w-12 max-md:h-14 suspended "/>
+    <img src="./img/elderly/saman.png" alt="" className="md:w-16 md:h-20 max-md:w-12 max-md:h-14 suspended"/>
     </div>
     <div className='w-full h-1/6 flex items-center justify-between '>
     <img src="./img/elderly/iconTwo.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12 max-sm:mr-4  suspended-first-aid "/>
     <img src="./img/elderly/iconOne.png" alt="" className="md:w-16 md:h-16 max-md:w-12 max-md:h-12  max-sm:ml-3 -rotate-[20deg] suspended-heart"/>
     </div></div>
 
-     <img src="./img/elderly/elderly.webp" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4  "/>
+     <img src="./img/elderly/elderly.webp" alt="" className= " md:object-cover md:h-full absolute max-md:min-w-[400px] p-4 "/>
       </div>
 
     </div>

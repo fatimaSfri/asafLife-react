@@ -12,7 +12,6 @@ export default function InsuredPerson() {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
-        // password: "",
     });
 
     const [errors, setErrors] = useState({});
@@ -104,7 +103,7 @@ export default function InsuredPerson() {
 
     return (
         <>
-            <div className="w-full h-[802px] flex flex-col items-center justify-start bg-gray-200 ">
+            <div className="w-full h-screen flex flex-col items-center justify-center bg-gray-200 ">
                 {showPopup && (
                     <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded-xl shadow-lg">
                         کاربر با موفقیت ثبت شد.
@@ -118,8 +117,8 @@ export default function InsuredPerson() {
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="w-full mt-4 flex items-center justify-center">
-                    <div className="lg:w-11/12 max-lg:w-[96%] h-[700px] flex flex-col items-center justify-around md:px-16">
+                <form onSubmit={handleSubmit} className="w-full mt-4 flex items-center justify-center ">
+                    <div className="lg:w-11/12 max-lg:w-[96%] h-[500px] flex flex-col items-center justify-around md:px-16">
                         <h1 className="md:text-[28px] max-md:text-[20px] font-bold pt-8 text-[#213063] border md:w-11/12 lg:w-[69%] max-md:w-10/12">
                             ثبت اطلاعات
                         </h1>
@@ -142,16 +141,6 @@ export default function InsuredPerson() {
                                     error={errors.last_name}
                                 />
                             </div>
-                            {/* <div className="md:flex max-md:flex-col w-full lg:gap-16 gap-2">
-                                <InputField
-                                    items="items-start"
-                                    label="شماره تماس"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleInputChange}
-                                    error={errors.phone}
-                                />
-                            </div> */}
                             <div className="w-full">
                                 <Button mt="mt-10" type="submit" width="w-8/12" />
                             </div>
