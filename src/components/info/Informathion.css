@@ -82,3 +82,18 @@ animation: float-one 12s ease-in-out infinite;
 .bg-carBody{
     background: radial-gradient(circle at 30% 30%, #975fff, #59169d );
 }
+
+.slide {
+    animation: slideIn 5s forwards; 
+}
+
+@keyframes slideIn {
+    0% {
+        opacity:0;
+        margin-left: -200px; 
+    }
+    100% {
+        opacity:50;
+        left: 0; 
+    }
+}

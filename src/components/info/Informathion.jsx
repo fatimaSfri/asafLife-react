@@ -5,13 +5,11 @@ import InfoCarBody from "./InfoCarBody"
 
 function  NewBanner(){
 
-
-
     const [sliderImages]= useState(
       [
      {componnet:<InfoOne></InfoOne>},
      {componnet:<InfoTwo></InfoTwo>},
-     {componnet:<InfoCarBody></InfoCarBody>}
+     {componnet:<InfoCarBody></InfoCarBody>},
      ]
      )
 
