@@ -10,16 +10,6 @@ export default function Mobile() {
     window.scrollTo(0, 0);
   }, []);
 
-// const [play,setPlay]= useState(true)
-
-// useEffect(()=>{
-// if(window.innerWidth<900){
-//   setPlay(false)
-// }else{
-//   setPlay(true)
-// }
-// },[])
-
 
   return (
 
@@ -49,11 +39,19 @@ export default function Mobile() {
 
    <div className='h-auto w-full bg-gray-200' >
    <div className='w-full lg:h-[330px]  py-4 flex justify-center items-center'>
-   <div className='w-[96%]  lg:h-[300px]  grid  gap-4 lg:grid-cols-2 max-lg:grid-cols-1 py-10 justify-items-center  mx-auto rounded-xl bg-[#c1c1c1] '>
-      <PhoneCall post=" کارشناس صدور" phone="09150758200"  employeeName="سرکار خانم صباغ" ></PhoneCall>
-      <PhoneCall post=" کارشناس خسارت " phone="09021887644"  employeeName=" جناب آقای  حسین زاده" ></PhoneCall>
-      <PhoneCall post="مدیریت" phone="09121887644"  employeeName=" جناب آقای مجتبایی " ></PhoneCall>
-      <PhoneCall post="دفتر مرکزی" phone="021-91098951" ></PhoneCall>
+   <div className='w-[96%]  lg:h-[300px]  grid  gap-4 lg:grid-cols-2 max-lg:grid-cols-1 py-10 justify-items-center  mx-auto  '>
+      <div className='xl:max-w-[450px] max-xl:w-3/4 max-lg:w-1/2 max-sm:w-9/12'>
+        <img src="../img/phone/sabaq.png" alt="" />
+      </div>
+      <div className='xl:max-w-[450px] max-xl:w-3/4 max-lg:w-1/2 max-sm:w-9/12'>
+        <img src="../img/phone/hoseinzade.png" alt="" />
+      </div>
+      <div className='xl:max-w-[450px] max-xl:w-3/4 max-lg:w-1/2 max-sm:w-9/12'>
+        <img src="../img/phone/Mr-mojtabaei.png" alt="" />
+      </div>
+      <div className='xl:max-w-[450px] max-xl:w-3/4 max-lg:w-1/2 max-sm:w-9/12'>
+        <img src="../img/phone/daftar-markazi.png" alt="" />
+      </div>
    </div>
    </div>
   <PreviewServices></PreviewServices>

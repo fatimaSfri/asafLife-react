@@ -10,16 +10,6 @@ export default function CarBody() {
     window.scrollTo(0, 0);
   }, []);
 
-// const [play,setPlay]= useState(true)
-
-// useEffect(()=>{
-// if(window.innerWidth<900){
-//   setPlay(false)
-// }else{
-//   setPlay(true)
-// }
-// },[])
-
 
   return (
     <>
@@ -50,6 +40,8 @@ export default function CarBody() {
       <PhoneCall post=" پشتیبانی " phone="09021887644"  employeeName=" " ></PhoneCall>
       <PhoneCall post="پشتیبانی "   phone="09366507644"  employeeName=" " ></PhoneCall>
       <PhoneCall post="دفتر مرکزی" phone="021-91098951"  ></PhoneCall>
+
+
    </div>
    </div>
   <PreviewServices></PreviewServices>

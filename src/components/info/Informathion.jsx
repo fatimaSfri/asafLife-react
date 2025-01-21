@@ -40,7 +40,7 @@ function  NewBanner(){
         
 return (
      <>  
-     <div className='overflow-hidden '>
+     <div className='overflow-hidden'>
     {sliderImages[newIndex].componnet}
     </div>
     </>
