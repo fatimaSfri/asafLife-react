@@ -1,15 +1,22 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink,useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axiosInstance from "../axiosConfig";
 
 
 export default function ManagementPanel() {
-
+  const navigate = useNavigate();
+  const [toggle, setToggle] = useState(false)
+  const icon = {
+    menu: "../img/icon/menu-dark.svg",
+    close: "../img/icon/arrow-r.svg"
+  }
+  const [bgColor, setBgColor] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axiosInstance.get("/user/dashbord").then(response => {
+      console.log(response)
       if (response.data) {
         const currentUserData = response.data.data
         if (currentUserData) {
@@ -32,7 +39,7 @@ export default function ManagementPanel() {
     try {
       const response = await axiosInstance.get("/auth/logout");
       if (response.data) {
-
+        navigate("/login");
       } else {
         console.error("داده‌های دریافتی آرایه نیستند:", response.data);
       }

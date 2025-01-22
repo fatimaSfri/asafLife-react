@@ -8,6 +8,7 @@ function Navbar(){
  
   const [api , setApi] =useState(false)
   const [toggle ,setToggle] = useState(false)
+  
   const icon ={
    menu:"./img/icon/Menu.svg", close:"./img/icon/close.svg"
   }
@@ -49,7 +50,7 @@ const [bgColor, setBgColor] = useState(false);
     };
   }, []);
 
-
+  
 
 return(
 
